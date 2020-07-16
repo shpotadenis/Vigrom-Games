@@ -30,17 +30,17 @@
 
                 <div class="header__icons">
                     <div class="header__icon">
-                        <a href="#!">
+                        <a href="#!" class="header__icon-link">
                             <img src="@/assets/img/search-icon.png" alt="Search" class="header__icon-pic">
                         </a>
                     </div>
                     <div class="header__icon">
-                        <a href="#!">
+                        <a href="#!" class="header__icon-link">
                             <img src="@/assets/img/cart-icon.png" alt="Cart" class="header__icon-pic">
                         </a>
                     </div>
                     <div class="header__icon">
-                        <a href="#!">
+                        <a href="#!" class="header__icon-link">
                             <img src="@/assets/img/person-icon.png" alt="Person" class="header__icon-pic">
                         </a>
                     </div>
@@ -57,6 +57,11 @@
 </script>
 
 <style scoped>
+    .header {
+        background-color: #848484;
+        margin-bottom: 74px;
+    }
+
     .wrapper {
         margin: 0 auto;
         max-width: 1124px;
@@ -67,9 +72,6 @@
         flex-wrap: wrap;
     }
 
-    .header {
-        background-color: #848484;
-    }
 
     .header__logo {
         margin: 20px 0;
@@ -115,6 +117,10 @@
 
     .header__icon {
         margin-right: 25px;
+    }
+
+    .header__icon-link:hover, .header__icon-link:active, .header__icon-link:focus {
+        opacity: .65;
     }
 
     .header__icon:last-child {
