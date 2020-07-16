@@ -2,18 +2,24 @@
   <div id="app">
     <header-component></header-component>
     <breadcrumbs-component></breadcrumbs-component>
+    <game-single-page></game-single-page>
+    <footer-component></footer-component>
   </div>
 </template>
 
 <script>
   import HeaderComponent from "@/components/HeaderComponent";
   import BreadcrumbsComponent from "@/components/BreadcrumbsComponent";
+  import GameSinglePage from "@/components/pages/GameSinglePage";
+  import FooterComponent from "@/components/FooterComponent";
 
   export default {
     name: 'App',
     components: {
       HeaderComponent,
-      BreadcrumbsComponent
+      BreadcrumbsComponent,
+      GameSinglePage,
+      FooterComponent
     }
 }
 </script>
