@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <header-component></header-component>
+    <breadcrumbs-component></breadcrumbs-component>
   </div>
 </template>
 
 <script>
   import HeaderComponent from "@/components/HeaderComponent";
+  import BreadcrumbsComponent from "@/components/BreadcrumbsComponent";
 
   export default {
     name: 'App',
     components: {
-      HeaderComponent
+      HeaderComponent,
+      BreadcrumbsComponent
     }
 }
 </script>
