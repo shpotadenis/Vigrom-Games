@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from django.urls import reverse
 
 class Category(models.Model):
     # Модель категорий
@@ -23,7 +24,7 @@ class Registration(models.Model):
     def __str__(self):
         return self.login
 
-class Account():
+class Account(models.Model):
     # Аккаунт пользователя
     user = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)   # Достаем из базы данные регистрации
     tel = models.CharField(max_length=12)   # Номер телефона
@@ -63,7 +64,7 @@ class Orders(models.Model):
 class Role(models.Model):
     #Роль на сайте. В базе прописываются 3 позиции Пользователь/разработчик/модератор.
     #При регистрации выбор между двумя Пользователь/разрабочик
-    user = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)
     role = models.CharField("Пользователь/разработчик", max_length=50)
 
     def __str__(self):
@@ -75,7 +76,7 @@ class Role(models.Model):
 
 class Posts(models.Model):
     # Модель записи в блоге
-    author = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True)
+    author = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)
     title = models.CharField("Заголовок записи", max_length=150)
     url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
@@ -83,6 +84,16 @@ class Posts(models.Model):
     data = models.DateField(date.today)
     # Вопрос по изображениям открыт. Делать для них отдельную модель или сделать загрузку сюда???
     # Вопрос с количеством просмотров тоже открыт
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('Post-url', args=[str(self.url)])
+
+    class Meta:
+        verbose_name = "Запись"
+        verbose_name_plural = "Записи"
 
 class Game(models.Model):
     # Модель игры
