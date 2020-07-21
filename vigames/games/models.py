@@ -2,10 +2,11 @@ from django.db import models
 from datetime import date
 from django.urls import reverse
 
+
 class Category(models.Model):
     # Модель категорий
     name = models.CharField("Категория", max_length=100)
-    descriptions= models.TextField("Описание")
+    descriptions = models.TextField("Описание")
 
     def __str__(self):
         return self.name
@@ -14,15 +15,17 @@ class Category(models.Model):
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
 
+
 class Registration(models.Model):
     # Регистрация пользователя
-    login = models.CharField(max_length=50, unique=True)
+    username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=50)
     date_reg = models.DateField(date.today)
 
     def __str__(self):
         return self.login
+
 
 class Account(models.Model):
     # Аккаунт пользователя
@@ -57,9 +60,11 @@ class Basket(models.Model):
     #Корзину вероятно придется хранить не в базе данных, а в куки
 '''
 
+
 class Orders(models.Model):
     # Заказы
     pass
+
 
 class Role(models.Model):
     #Роль на сайте. В базе прописываются 3 позиции Пользователь/разработчик/модератор.
@@ -73,6 +78,7 @@ class Role(models.Model):
     class Meta:
         verbose_name = "Роль"
         verbose_name_plural = "Роли"
+
 
 class Posts(models.Model):
     # Модель записи в блоге
@@ -95,9 +101,11 @@ class Posts(models.Model):
         verbose_name = "Запись"
         verbose_name_plural = "Записи"
 
+
 class Game(models.Model):
     # Модель игры
     pass
+
 
 class comment(models.Model):
     # Комментарий
