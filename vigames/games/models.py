@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import date
 from django.urls import reverse
-
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     # Модель категорий
@@ -16,20 +16,22 @@ class Category(models.Model):
         verbose_name_plural = "Категории"
 
 
-class Registration(models.Model):
+#class Registration(models.Model): (можно использовать стандартный User, поле date_reg перенести в Account)
     # Регистрация пользователя
-    username = models.CharField(max_length=50, unique=True)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=50)
-    date_reg = models.DateField(date.today)
+    #username = models.CharField(max_length=50, unique=True)
+    #email = models.EmailField(unique=True)
+    #password = models.CharField(max_length=50)
+    #date_reg = models.DateField(date.today)
 
-    def __str__(self):
-        return self.login
+    #def __str__(self):
+    #   return self.login
 
 
 class Account(models.Model):
     # Аккаунт пользователя
-    user = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)   # Достаем из базы данные регистрации
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)   # Достаем из базы
+    # данные регистрации
+    date_reg = models.DateField(date.today)
     tel = models.CharField(max_length=12)   # Номер телефона
     '''Пока номер телефона вводится просто как строка без проверки. В будущем можно будет заменить на этот код:
     from django.core.validators import RegexValidator
@@ -69,7 +71,7 @@ class Orders(models.Model):
 class Role(models.Model):
     #Роль на сайте. В базе прописываются 3 позиции Пользователь/разработчик/модератор.
     #При регистрации выбор между двумя Пользователь/разрабочик
-    user = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     role = models.CharField("Пользователь/разработчик", max_length=50)
 
     def __str__(self):
@@ -82,7 +84,7 @@ class Role(models.Model):
 
 class Posts(models.Model):
     # Модель записи в блоге
-    author = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)
+    author = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     title = models.CharField("Заголовок записи", max_length=150)
     url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()

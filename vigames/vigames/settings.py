@@ -1,6 +1,9 @@
-import os
-
+import os, time
+from datetime import datetime, date, time, timedelta
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from datetime import datetime
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -28,6 +31,7 @@ INSTALLED_APPS = [
 
     'djoser',
     'rest_framework',
+    'rest_framework.authtoken',
     'rest_framework_simplejwt',
 
     'games',
@@ -35,9 +39,16 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
+}
+
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': timedelta(days=2),
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
 }
 
 MIDDLEWARE = [
