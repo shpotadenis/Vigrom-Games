@@ -45,8 +45,12 @@ REST_FRAMEWORK = {
     ),
 }
 
+DJOSER = {
+    'SET_PASSWORD_RETYPE': True,
+}
+
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': timedelta(days=2),
+    'JWT_EXPIRATION_DELTA': timedelta(days=1),
     'JWT_ALLOW_REFRESH': True,
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
 }

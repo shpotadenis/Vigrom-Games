@@ -31,20 +31,20 @@ class Account(models.Model):
     # Аккаунт пользователя
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)   # Достаем из базы
     # данные регистрации
-    date_reg = models.DateField(date.today)
-    tel = models.CharField(max_length=12)   # Номер телефона
+    date_reg = models.DateField(default=date.today)
+    tel = models.CharField(max_length=12, null=True)   # Номер телефона
     '''Пока номер телефона вводится просто как строка без проверки. В будущем можно будет заменить на этот код:
     from django.core.validators import RegexValidator
     class PhoneModel(models.Model):
         phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
         phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
     '''
-    name = models.CharField("Имя", max_length=30)
-    lastname = models.CharField("Фамилия", max_length=30)
-    date_birth = models.CharField("Дата рожения: ДД.ММ.ГГГГ", max_length=10)
+    name = models.CharField("Имя", max_length=30, null=True)
+    lastname = models.CharField("Фамилия", max_length=30, null=True)
+    date_birth = models.CharField("Дата рожения: ДД.ММ.ГГГГ", max_length=10, null=True)
     city = models.CharField("Город", max_length=50, null=True)
-    company = models.CharField("Компания", max_length=50)
-    bank_card = models.CharField("Номер карты", max_length=20)
+    company = models.CharField("Компания", max_length=50, null=True)
+    bank_card = models.CharField("Номер карты", max_length=20, null=True)
     #Добавить список игр - скорее всего связь многие ко многим
 
     def __str__(self):

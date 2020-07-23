@@ -16,6 +16,8 @@ urlpatterns = [
     #/auth//token/login/ получить новый токен, передав действующему пользователю в запросе post
     # эту конечную точку
     #/auth//token/logout/  удалить токен
+    #/auth/users/set_password/ смена пароля
+    #/auth//users/set_username/ смена username
     #информация о urlах и запросах:
     #https://djoser.readthedocs.io/en/latest/getting_started.html
     #https://djoser.readthedocs.io/en/latest/base_endpoints.html
