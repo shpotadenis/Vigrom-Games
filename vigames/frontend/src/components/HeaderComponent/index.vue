@@ -50,81 +50,8 @@
     </header>
 </template>
 
-<script>
-    export default {
-        name: "HeaderComponent"
-    }
+<script src="./index.js" type="application/javascript">
 </script>
 
-<style scoped>
-    .header {
-        background-color: #848484;
-        margin-bottom: 74px;
-    }
-
-    .wrapper {
-        margin: 0 auto;
-        max-width: 1124px;
-    }
-
-    .header__wrapper {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-
-    .header__logo {
-        margin: 20px 0;
-    }
-
-    .header__nav-list {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        margin-bottom: 31px;
-        margin-top: 33px;
-    }
-
-    .header__item {
-        margin-right: 31px;
-    }
-
-    .header__item:last-child {
-        margin-right: 0;
-    }
-
-    .header__link {
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 16px;
-        color: #000;
-        text-decoration: none;
-    }
-
-    .header__link:hover, .header__link:active, .header__link:focus {
-        opacity: .75;
-    }
-
-    .header__nav {
-        margin-left: 119px;
-    }
-
-    .header__icons {
-        margin: 28px 0 28px 348px;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .header__icon {
-        margin-right: 25px;
-    }
-
-    .header__icon-link:hover, .header__icon-link:active, .header__icon-link:focus {
-        opacity: .65;
-    }
-
-    .header__icon:last-child {
-        margin-right: 0;
-    }
-
+<style scoped src="./index.css" rel="stylesheet">
 </style>

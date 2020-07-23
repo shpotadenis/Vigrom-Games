@@ -18,34 +18,8 @@
     </div>
 </template>
 
-<script>
-    export default {
-        name: "BreadcrumbsComponent"
-    }
+<script src="./index.js" type="application/javascript">
 </script>
 
-<style scoped>
-    .wrapper {
-        margin: 0 auto;
-        max-width: 1140px;
-    }
-
-    .breadcrumbs {
-        display: inline-block;
-    }
-
-    .breadcrumb__link {
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 16px;
-        color: #000000;
-        opacity: 0.8;
-        text-decoration: none;
-    }
-
-    .breadcrumb__right {
-        margin: 0 10px;
-    }
-
-
+<style scoped src="./index.css" rel="stylesheet">
 </style>
