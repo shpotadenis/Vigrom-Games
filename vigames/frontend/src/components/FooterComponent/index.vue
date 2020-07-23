@@ -30,62 +30,8 @@
     </footer>
 </template>
 
-<script>
-    export default {
-        name: "FooterComponent"
-    }
+<script src="./index.js" type="application/javascript">
 </script>
 
-<style scoped>
-    .footer {
-        background-color: #848484;
-    }
-
-    .wrapper {
-        margin: 0 auto;
-        max-width: 1124px;
-    }
-
-    .footer__logo {
-        margin: 30px 0;
-    }
-
-    .footer__wrapper {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .footer__copyright {
-        margin: 30px 0 30px 30px;
-    }
-
-    .copyright {
-        font-size: 14px;
-        line-height: 16px;
-        color: #E1E1E1;
-    }
-
-    .footer__links {
-        margin: 30px 0 28px 373px;
-    }
-
-    .footer__links-list {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .list__item {
-        margin-right: 34px;
-    }
-
-    .list__item:last-child {
-        margin-right: 0;
-    }
-
-    .list__link {
-        font-size: 14px;
-        line-height: 16px;
-        color: #FFFFFF;
-        text-decoration: none;
-    }
+<style scoped src="./index.css" rel="stylesheet">
 </style>

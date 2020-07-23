@@ -1,0 +1,21 @@
+.wrapper {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+.breadcrumbs {
+    display: inline-block;
+}
+
+.breadcrumb__link {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    opacity: 0.8;
+    text-decoration: none;
+}
+
+.breadcrumb__right {
+    margin: 0 10px;
+}

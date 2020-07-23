@@ -8,10 +8,10 @@
 </template>
 
 <script>
-  import HeaderComponent from "@/components/HeaderComponent";
-  import BreadcrumbsComponent from "@/components/BreadcrumbsComponent";
-  import GameSinglePage from "@/components/pages/GameSinglePage";
-  import FooterComponent from "@/components/FooterComponent";
+  import GameSinglePage from './pages/GameSinglePage/index.vue'
+  import HeaderComponent from "./components/HeaderComponent/index.vue";
+  import BreadcrumbsComponent from "./components/BreadcrumbsComponent/index.vue";
+  import FooterComponent from "./components/FooterComponent/index.vue";
 
   export default {
     name: 'App',

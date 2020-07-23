@@ -1,0 +1,93 @@
+.reviews__wrapper {
+    margin: 0 auto;
+    max-width: 946px;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.header__text {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.filter__text {
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.filter__icon {
+    margin-left: 10px;
+}
+
+.filter__link {
+    text-decoration: none;
+}
+
+.replay__link {
+    text-decoration: none;
+}
+
+.replay__text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.replay__icon {
+    margin-left: 10px;
+}
+
+.reviews__replay {
+    margin-top: 30px;
+}
+
+.review__card {
+    margin-bottom: 120px;
+    display: grid;
+    grid-template-columns: 14% 86%;
+}
+
+.review__card:first-child {
+    margin-top: 30px;
+}
+
+.review__header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.review__rating {
+    margin-left: 30px;
+}
+
+.review__text {
+    margin-top: 17px;
+    font-size: 14px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 0.8);
+
+}
+
+.review__title {
+    margin-top: 2px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+}
+
+.review__username {
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    margin-top: 10px;
+}
