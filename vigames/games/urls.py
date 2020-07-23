@@ -1,5 +1,5 @@
 from django.urls import include, path
-from .views import UserProfileListCreateView, UserProfileDetailView
+from .views import UserProfileDetailView
 
 urlpatterns = [
     path('profile/<int:pk>', UserProfileDetailView.as_view(), name="profile"),
