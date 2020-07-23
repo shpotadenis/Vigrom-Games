@@ -23,95 +23,22 @@
         </div>
 
         <div class="review__cards">
-            <div class="review__card">
+            <div class="review__card" v-for="review in getReviews" :key="review.id">
                 <div class="review__userplate">
                     <img src="@/assets/img/userpic.png" alt="" class="userplate__pic">
                     <p class="review__username">
-                        Никнейм
+                        {{review.user_nickname}}
                     </p>
                 </div>
                 <div class="review__content">
                     <div class="review__header">
-                        <h4 class="review__title">Заголовок отзыва</h4>
+                        <h4 class="review__title">{{review.title}}</h4>
                         <div class="review__rating">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
+                            <img src="@/assets/img/star.png" alt="" class="review__star" v-for="i in review.rating" :key="i">
                         </div>
                     </div>
                     <div class="review__text">
-                        <p>Maecenas nec nunc lectus. Phasellus suscipit dui id rhoncus iaculis. Proin lobortis, enim nec condimentum vulputate, augue risus fermentum purus, ac pharetra orci justo nec tellus. Ut augue ex, laoreet in orci et, eleifend volutpat augue. Donec tempor dignissim diam blandit viverra. Praesent et neque blandit, ornare arcu imperdiet, tincidunt magna. Etiam sed fermentum lectus, vitae porta mauris. Proin pharetra enim eget enim facilisis, in facilisis enim tincidunt.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="review__card">
-                <div class="review__userplate">
-                    <img src="@/assets/img/userpic.png" alt="" class="userplate__pic">
-                    <p class="review__username">
-                        Никнейм
-                    </p>
-                </div>
-                <div class="review__content">
-                    <div class="review__header">
-                        <h4 class="review__title">Заголовок отзыва</h4>
-                        <div class="review__rating">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                        </div>
-                    </div>
-                    <div class="review__text">
-                        <p>Maecenas nec nunc lectus. Phasellus suscipit dui id rhoncus iaculis. Proin lobortis, enim nec condimentum vulputate, augue risus fermentum purus, ac pharetra orci justo nec tellus. Ut augue ex, laoreet in orci et, eleifend volutpat augue. Donec tempor dignissim diam blandit viverra. Praesent et neque blandit, ornare arcu imperdiet, tincidunt magna. Etiam sed fermentum lectus, vitae porta mauris. Proin pharetra enim eget enim facilisis, in facilisis enim tincidunt.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="review__card">
-                <div class="review__userplate">
-                    <img src="@/assets/img/userpic.png" alt="" class="userplate__pic">
-                    <p class="review__username">
-                        Никнейм
-                    </p>
-                </div>
-                <div class="review__content">
-                    <div class="review__header">
-                        <h4 class="review__title">Заголовок отзыва</h4>
-                        <div class="review__rating">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                        </div>
-                    </div>
-                    <div class="review__text">
-                        <p>Maecenas nec nunc lectus. Phasellus suscipit dui id rhoncus iaculis. Proin lobortis, enim nec condimentum vulputate, augue risus fermentum purus, ac pharetra orci justo nec tellus. Ut augue ex, laoreet in orci et, eleifend volutpat augue. Donec tempor dignissim diam blandit viverra. Praesent et neque blandit, ornare arcu imperdiet, tincidunt magna. Etiam sed fermentum lectus, vitae porta mauris. Proin pharetra enim eget enim facilisis, in facilisis enim tincidunt.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="review__card">
-                <div class="review__userplate">
-                    <img src="@/assets/img/userpic.png" alt="" class="userplate__pic">
-                    <p class="review__username">
-                        Никнейм
-                    </p>
-                </div>
-                <div class="review__content">
-                    <div class="review__header">
-                        <h4 class="review__title">Заголовок отзыва</h4>
-                        <div class="review__rating">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                            <img src="@/assets/img/star.png" alt="" class="review__star">
-                        </div>
-                    </div>
-                    <div class="review__text">
-                        <p>Maecenas nec nunc lectus. Phasellus suscipit dui id rhoncus iaculis. Proin lobortis, enim nec condimentum vulputate, augue risus fermentum purus, ac pharetra orci justo nec tellus. Ut augue ex, laoreet in orci et, eleifend volutpat augue. Donec tempor dignissim diam blandit viverra. Praesent et neque blandit, ornare arcu imperdiet, tincidunt magna. Etiam sed fermentum lectus, vitae porta mauris. Proin pharetra enim eget enim facilisis, in facilisis enim tincidunt.</p>
+                        <p>{{review.text}}</p>
                     </div>
                 </div>
             </div>

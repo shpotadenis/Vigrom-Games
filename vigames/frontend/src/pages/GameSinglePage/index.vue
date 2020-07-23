@@ -4,14 +4,14 @@
             <img src="@/assets/img/top_banner.png" alt="Banner of game" class="full-banner">
             <div class="info-card">
                 <h2 class="info-card__title">
-                    Название игры
+                    {{getGameData.name}}
                 </h2>
                 <p class="info-card__author">
-                    От Имя Разработчика
+                    От {{getGameData.dev}}
                 </p>
                 <div class="info-card__buy">
                     <a href="#!" class="buy__btn">Купить</a>
-                    <span class="buy__price">125 Р</span>
+                    <span class="buy__price">{{getGameData.price}} Р</span>
                 </div>
             </div>
         </div>
@@ -24,8 +24,7 @@
             <div class="game-info">
                 <div class="game-info__desc">
                     <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae quam consectetur, auctor ligula a, rutrum nisl. Aenean eget hendrerit arcu. Pellentesque sodales ligula eget commodo pellentesque. Curabitur bibendum nisi at velit vulputate efficitur. Ut tempus massa erat, nec ultrices mi pellentesque sit amet. Donec hendrerit id diam nec consequat. Praesent sit amet dui cursus, euismod est id, elementum nunc. Integer ut justo urna.
-                            Sed bibendum sollicitudin commodo. Curabitur sollicitudin, nisl a mattis egestas, mi metus iaculis nisi, et ornare eros orci cursus leo.</p>
+                        <p>{{getGameData.desc}}</p>
                     </div>
                 </div>
                 <div class="game__categories">
@@ -51,22 +50,24 @@
                     </ul>
                     <ul class="category__values">
                         <li class="value">
-                            Название
+                            {{getGameData.dev}}
                         </li>
                         <li class="value">
-                            Название
+                            {{getGameData.category}}
                         </li>
                         <li class="value">
-                            Название
+                            {{getGameData.rating}}
                         </li>
                         <li class="value">
-                            Название
+                            {{getGameData.compatible}}
                         </li>
                         <li class="value">
-                            Название
+                            {{getGameData.size}}
                         </li>
                         <li class="value">
-                            Название
+                            <div v-for="lang in getGameData.languages" :key="lang">
+                                {{lang}} <br>
+                            </div>
                         </li>
                     </ul>
                 </div>
