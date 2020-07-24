@@ -3,7 +3,7 @@ from .models import Account, Posts
 
 
 #Сериализатор пользователя
-class UserProfileSerializer(serializers.ModelSerializer):
+class AccountSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(read_only=True)
 
     class Meta:
@@ -17,3 +17,4 @@ class OutputAllNews(serializers.ModelSerializer):
     class Meta:
         model = Posts
         fields = ('author', 'title', 'description', 'data', 'urls', 'img', 'num_views')
+

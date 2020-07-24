@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -16,15 +17,15 @@ class Category(models.Model):
         verbose_name_plural = "Категории"
 
 
-class Registration(models.Model):
+#class Registration(models.Model): (можно использовать стандартный User, поле date_reg перенести в Account)
     # Регистрация пользователя
-    username = models.CharField(max_length=50, unique=True)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=50)
-    date_reg = models.DateField(date.today)
+    #username = models.CharField(max_length=50, unique=True)
+    #email = models.EmailField(unique=True)
+    #password = models.CharField(max_length=50)
+    #date_reg = models.DateField(date.today)
 
-    def __str__(self):
-        return self.username
+    #def __str__(self):
+    #   return self.username
 
 
 class Media(models.Model):
@@ -41,19 +42,25 @@ class Media(models.Model):
 
 class Account(models.Model):
     # Аккаунт пользователя
-    user = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)   # Достаем из базы данные регистрации
-    tel = models.CharField(max_length=12)   # Номер телефона
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)   # Достаем из базы
+    # данные регистрации
+    date_joined = models.DateField(default=date.today)
+    tel = models.CharField(max_length=12, null=True)   # Номер телефона
     '''Пока номер телефона вводится просто как строка без проверки. В будущем можно будет заменить на этот код:
     from django.core.validators import RegexValidator
     class PhoneModel(models.Model):
         phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
         phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True) # validators should be a list
     '''
-    name = models.CharField("Имя", max_length=30)
-    lastname = models.CharField("Фамилия", max_length=30)
-    date_birth = models.CharField("Дата рожения: ДД.ММ.ГГГГ", max_length=10)
+    name = models.CharField("Имя", max_length=30, null=True)
+    lastname = models.CharField("Фамилия", max_length=30, null=True)
+    date_birth = models.DateField("Дата рожения: ДД.ММ.ГГГГ", max_length=10, null=True)
     city = models.CharField("Город", max_length=50, null=True)
-    company = models.CharField("Компания", max_length=50)
+    company = models.CharField("Компания", max_length=50, null=True)
+    bank_card = models.CharField("Номер карты", max_length=20, null=True)
+    is_player = models.BooleanField(default=False, null=True)
+    is_developer = models.BooleanField(default=False, null=True)
+    is_administrator = models.BooleanField(default=False, null=True)
     bank_card = models.CharField("Номер карты", max_length=20)
     foto = models.OneToOneField(Media, on_delete=models.SET_NULL, null=True)
     #Добавить список игр - скорее всего связь многие ко многим
@@ -79,22 +86,23 @@ class Orders(models.Model):
     pass
 
 
-class Role(models.Model):
+#class Role(models.Model):
     #Роль на сайте. В базе прописываются 3 позиции Пользователь/разработчик/модератор.
     #При регистрации выбор между двумя Пользователь/разрабочик
-    user = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)
-    role = models.CharField("Пользователь/разработчик", max_length=50)
+    #user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    #role = models.CharField("Пользователь/разработчик", max_length=50)
 
-    def __str__(self):
-        return self.role
+    #def __str__(self):
+    #    return self.role
 
-    class Meta:
-        verbose_name = "Роль"
-        verbose_name_plural = "Роли"
+    #class Meta:
+    #    verbose_name = "Роль"
+    #    verbose_name_plural = "Роли"
+
 
 class Posts(models.Model):
     # Модель записи в блоге
-    author = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)
+    author = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     title = models.CharField("Заголовок записи", max_length=150)
     url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
