@@ -3,6 +3,7 @@ from datetime import date
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 class Category(models.Model):
     # Модель категорий
     name = models.CharField("Категория", max_length=100)
@@ -31,7 +32,7 @@ class Account(models.Model):
     # Аккаунт пользователя
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)   # Достаем из базы
     # данные регистрации
-    date_reg = models.DateField(default=date.today)
+    date_joined = models.DateField(default=date.today)
     tel = models.CharField(max_length=12, null=True)   # Номер телефона
     '''Пока номер телефона вводится просто как строка без проверки. В будущем можно будет заменить на этот код:
     from django.core.validators import RegexValidator
@@ -41,10 +42,13 @@ class Account(models.Model):
     '''
     name = models.CharField("Имя", max_length=30, null=True)
     lastname = models.CharField("Фамилия", max_length=30, null=True)
-    date_birth = models.CharField("Дата рожения: ДД.ММ.ГГГГ", max_length=10, null=True)
+    date_birth = models.DateField("Дата рожения: ДД.ММ.ГГГГ", max_length=10, null=True)
     city = models.CharField("Город", max_length=50, null=True)
     company = models.CharField("Компания", max_length=50, null=True)
     bank_card = models.CharField("Номер карты", max_length=20, null=True)
+    is_player = models.BooleanField(default=False, null=True)
+    is_developer = models.BooleanField(default=False, null=True)
+    is_administrator = models.BooleanField(default=False, null=True)
     #Добавить список игр - скорее всего связь многие ко многим
 
     def __str__(self):
@@ -68,18 +72,18 @@ class Orders(models.Model):
     pass
 
 
-class Role(models.Model):
+#class Role(models.Model):
     #Роль на сайте. В базе прописываются 3 позиции Пользователь/разработчик/модератор.
     #При регистрации выбор между двумя Пользователь/разрабочик
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    role = models.CharField("Пользователь/разработчик", max_length=50)
+    #user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    #role = models.CharField("Пользователь/разработчик", max_length=50)
 
-    def __str__(self):
-        return self.role
+    #def __str__(self):
+    #    return self.role
 
-    class Meta:
-        verbose_name = "Роль"
-        verbose_name_plural = "Роли"
+    #class Meta:
+    #    verbose_name = "Роль"
+    #    verbose_name_plural = "Роли"
 
 
 class Posts(models.Model):
