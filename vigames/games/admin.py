@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Category, Media, Account, Role, Posts
+
+admin.site.register(Posts)
+admin.site.register(Category)
+admin.site.register(Account)
+admin.site.register(Role)
+admin.site.register(Media)

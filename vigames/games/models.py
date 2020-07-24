@@ -24,7 +24,19 @@ class Registration(models.Model):
     date_reg = models.DateField(date.today)
 
     def __str__(self):
-        return self.login
+        return self.username
+
+
+class Media(models.Model):
+    title = models.CharField('Заголовок изображения', max_length=50)
+    img = models.ImageField("Изображение", upload_to="img/%Y/%m")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Изображение"
+        verbose_name_plural = "Изображения"
 
 
 class Account(models.Model):
@@ -43,6 +55,7 @@ class Account(models.Model):
     city = models.CharField("Город", max_length=50, null=True)
     company = models.CharField("Компания", max_length=50)
     bank_card = models.CharField("Номер карты", max_length=20)
+    foto = models.OneToOneField(Media, on_delete=models.SET_NULL, null=True)
     #Добавить список игр - скорее всего связь многие ко многим
 
     def __str__(self):
@@ -79,7 +92,6 @@ class Role(models.Model):
         verbose_name = "Роль"
         verbose_name_plural = "Роли"
 
-
 class Posts(models.Model):
     # Модель записи в блоге
     author = models.OneToOneField(Registration, on_delete=models.CASCADE, primary_key=True)
@@ -88,6 +100,9 @@ class Posts(models.Model):
     text = models.TextField()
     description = models.TextField("Короткое описание", max_length=160)
     data = models.DateField(date.today)
+    img = models.ImageField('Изображение записи', upload_to='img/%Y/%m')    # Главная фотография записи
+    num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
+    draft = models.BooleanField ("Черновик", default=False)
     # Вопрос по изображениям открыт. Делать для них отдельную модель или сделать загрузку сюда???
     # Вопрос с количеством просмотров тоже открыт
 
@@ -107,10 +122,11 @@ class Game(models.Model):
     pass
 
 
-class comment(models.Model):
+class Comment(models.Model):
     # Комментарий
     user = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True)
     text_comment = models.TextField()
+    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return self.text_comment
