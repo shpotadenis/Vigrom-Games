@@ -4,7 +4,7 @@ from .models import Account
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Account, Registration, Posts
+from .models import Account, Posts
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews
 

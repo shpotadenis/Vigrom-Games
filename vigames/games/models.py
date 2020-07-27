@@ -61,8 +61,8 @@ class Account(models.Model):
     is_player = models.BooleanField(default=False, null=True)
     is_developer = models.BooleanField(default=False, null=True)
     is_administrator = models.BooleanField(default=False, null=True)
-    bank_card = models.CharField("Номер карты", max_length=20)
-    foto = models.OneToOneField(Media, on_delete=models.SET_NULL, null=True)
+    bank_cаrd = models.CharField("Номер карты", max_length=20, null=True)
+    foto = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
     #Добавить список игр - скорее всего связь многие ко многим
 
     def __str__(self):
@@ -108,9 +108,9 @@ class Posts(models.Model):
     text = models.TextField()
     description = models.TextField("Короткое описание", max_length=160)
     data = models.DateField(date.today)
-    img = models.ImageField('Изображение записи', upload_to='img/%Y/%m')    # Главная фотография записи
+    img = models.ImageField('Изображение записи', upload_to='img/%Y/%m', null=True)    # Главная фотография записи
     num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
-    draft = models.BooleanField ("Черновик", default=False)
+    draft = models.BooleanField("Черновик", default=False)
     # Вопрос по изображениям открыт. Делать для них отдельную модель или сделать загрузку сюда???
     # Вопрос с количеством просмотров тоже открыт
 

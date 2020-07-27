@@ -11,6 +11,8 @@ urlpatterns = [
     path('api/accounts/', include("games.urls")),
     path('api-auth/', include('rest_framework.urls')),
 
+    path('api/', include('games.urls')),
+
     #/auth/users/	зарегистрировать нового пользователя
     #/auth/users/me/	получить/обновить зарегистрированного пользователя
     #/auth/jwt/create/	создать JWT-токен, передав действующему пользователю в запросе post эту конечную
@@ -25,6 +27,8 @@ urlpatterns = [
     #https://djoser.readthedocs.io/en/latest/getting_started.html
     #https://djoser.readthedocs.io/en/latest/base_endpoints.html
     #https://djoser.readthedocs.io/en/latest/token_endpoints.html
+
+    # api/ перенаправляет на урлы, указанные в приложении
 ]
 
 

@@ -16,5 +16,5 @@ class OutputAllNews(serializers.ModelSerializer):
 
     class Meta:
         model = Posts
-        fields = ('author', 'title', 'description', 'data', 'urls', 'img', 'num_views')
+        fields = ('author', 'title', 'description', 'data', 'urls', 'num_views')
 
