@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserProfileDetailView, OutputAllNewsView, GameDetail, OutputPostView
+from .views import UserProfileDetailView, OutputAllNewsView, GameDetail, OutputPostView, OutputGames
 
 urlpatterns = [
     path('profile/<int:pk>', UserProfileDetailView.as_view(), name="profile"),
@@ -11,7 +11,8 @@ urlpatterns = [
     path('games/<int:pk>', GameDetail.as_view(), name="current_game"),
 
     path('news/', OutputAllNewsView.as_view()),
-    path(('news/<str:pk>/'), OutputPostView.as_view())
+    path(('news/<str:pk>/'), OutputPostView.as_view()),
+    path('', OutputGames.as_view(), name="main"),
 ]
 
-#/api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)
+# /api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)

@@ -3,7 +3,7 @@ import sqlite3
 import os.path
 
 
-class Search:                                       #первый аргумент - запрос юзера, третий - флаг games или news.
+class Search:  # первый аргумент - запрос юзера, второй - флаг games или news.
     def search(self, reqst, games_or_news):
         end_spis = []  # словарь с рейтингом названий
         right_letters = 0
@@ -42,7 +42,14 @@ class Search:                                       #первый аргумен
         conn.close()
         return tochno_end
 
+    def raiting(self, rt):
+        pass
+
+    def news(self, rt, ):
+        pass
+
 
 start_time = time.time()
 print(Search.search(Search(), 'xcom', 'games'))
 print("--- %s seconds ---" % (time.time() - start_time))
+
