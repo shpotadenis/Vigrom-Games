@@ -31,6 +31,7 @@ class Category(models.Model):
 class Media(models.Model):
     title = models.CharField('Заголовок изображения', max_length=50)
     img = models.ImageField("Изображение", upload_to="img/%Y/%m")
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -102,7 +103,8 @@ class Orders(models.Model):
 
 class Posts(models.Model):
     # Модель записи в блоге
-    author = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    #author = models.ManyToManyField(User, default='admin')
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title = models.CharField("Заголовок записи", max_length=150)
     url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
@@ -132,7 +134,7 @@ class Game(models.Model):
 
 class Comment(models.Model):
     # Комментарий
-    user = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default='NoName', primary_key=True)
     text_comment = models.TextField()
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
 

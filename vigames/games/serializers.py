@@ -13,8 +13,16 @@ class AccountSerializer(serializers.ModelSerializer):
 
 class OutputAllNews(serializers.ModelSerializer):
     """Вывод последних новостей на страницу news"""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
         model = Posts
-        fields = ('author', 'title', 'description', 'data', 'urls', 'num_views')
+        fields = ('author', 'title', 'description', 'data', 'url', 'num_views', 'img')
 
+class OutputPost(serializers.ModelSerializer):
+    """Вывод отдельного поста по url"""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+
+    class Meta:
+        model = Posts
+        exclude = ('draft', )
