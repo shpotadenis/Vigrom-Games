@@ -57,6 +57,7 @@ def add_game(request):
             data['message'] = "не аунтифицирован"
         return HttpResponse(data['message'])
 
+
 @api_view(['PUT'])
 @authentication_classes((TokenAuthentication,))
 def update_game(request, pk): #не работает
@@ -76,7 +77,7 @@ def update_game(request, pk): #не работает
 
 
 
-class GameView(ListAPIView):
+class GameView(RetrieveUpdateDestroyAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
     permission_classes = [AllowAny]
