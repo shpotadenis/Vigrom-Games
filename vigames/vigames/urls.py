@@ -10,7 +10,6 @@ urlpatterns = [
     path('auth/', include('djoser.urls.authtoken')),
     path('api/accounts/', include("games.urls")),
     path('api-auth/', include('rest_framework.urls')),
-
     path('api/', include('games.urls')),
 
     #/auth/users/	зарегистрировать нового пользователя

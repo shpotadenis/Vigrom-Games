@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account, Posts
+from .models import Account, Posts, Game
 
 
 #Сериализатор пользователя
@@ -26,3 +26,11 @@ class OutputPost(serializers.ModelSerializer):
     class Meta:
         model = Posts
         exclude = ('draft', )
+
+#Сериализатор игры
+class GameSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Game
+        fields = '__all__'
+
