@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account, Posts
+from .models import Account, Posts, Game
 
 
 #Сериализатор пользователя
@@ -17,4 +17,12 @@ class OutputAllNews(serializers.ModelSerializer):
     class Meta:
         model = Posts
         fields = ('author', 'title', 'description', 'data', 'urls', 'num_views')
+
+
+#Сериализатор игры
+class GameSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Game
+        fields = '__all__'
 

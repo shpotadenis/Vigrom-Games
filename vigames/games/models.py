@@ -39,6 +39,21 @@ class Media(models.Model):
         verbose_name = "Изображение"
         verbose_name_plural = "Изображения"
 
+class Game(models.Model):
+    #players = models.ManyToManyField(Account, null=True)
+    title = models.CharField(max_length=32, default="")
+    url = models.CharField(max_length=250, null=True) #по идее можно выпилить?
+    short_description = models.CharField(max_length=250, default="")
+    image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True)
+    gameplay_video_link = models.CharField(max_length=250, null=True)
+    release_status = models.BooleanField(default=False)
+    price = models.IntegerField(default=0)
+    screenshots = models.ImageField(upload_to='img/%Y/%m', null=True)
+    #uploads
+    description = models.TextField(default="")
+    genre = models.CharField(max_length=50, default="")
+    tags = models.CharField(max_length=50, default="")
+
 
 class Account(models.Model):
     # Аккаунт пользователя
@@ -63,6 +78,9 @@ class Account(models.Model):
     is_administrator = models.BooleanField(default=False, null=True)
     bank_cаrd = models.CharField("Номер карты", max_length=20, null=True)
     foto = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
+    developed_games = models.ForeignKey(Game, on_delete=models.PROTECT,
+                                        related_name="developed_games", null=True)
+    bought_games = models.ManyToManyField(Game, related_name="bought_games", blank=True)
     #Добавить список игр - скорее всего связь многие ко многим
 
     def __str__(self):
@@ -123,11 +141,6 @@ class Posts(models.Model):
     class Meta:
         verbose_name = "Запись"
         verbose_name_plural = "Записи"
-
-
-class Game(models.Model):
-    # Модель игры
-    pass
 
 
 class Comment(models.Model):
