@@ -129,7 +129,7 @@ class Posts(models.Model):
     url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
     description = models.TextField("Короткое описание", max_length=160)
-    data = models.DateField(date.today)
+    data = models.DateTimeField(auto_now_add=True)
     img = models.ImageField('Изображение записи', upload_to='img/%Y/%m', null=True)    # Главная фотография записи
     num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
     draft = models.BooleanField("Черновик", default=False)
@@ -147,11 +147,14 @@ class Posts(models.Model):
         verbose_name_plural = "Записи"
 
 
-class Comment(models.Model):
-    # Комментарий
-    user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default='NoName', primary_key=True)
+class Comments_Game(models.Model):
+    # Комментарий к игре
+    page = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    moderation = models.BooleanField(default=True)
 
     def __str__(self):
         return self.text_comment
@@ -160,3 +163,19 @@ class Comment(models.Model):
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
 
+
+class Comments_Post(models.Model):
+    # Комментарий к записи
+    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    text_comment = models.TextField()
+    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    moderation = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.text_comment
+
+    class Meta:
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
