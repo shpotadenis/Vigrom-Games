@@ -13,7 +13,7 @@ class Search:
                         right_letters += 1
             end_spis[elem] = right_letters
             right_letters = 0
-        return s
+        return end_spis
 
 
 s = []
