@@ -1,16 +1,15 @@
-from django.http import HttpResponse
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.decorators import api_view, authentication_classes
-from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Account, Game
+from django.http import Http404
+from rest_framework import status
+from rest_framework.generics import (RetrieveUpdateDestroyAPIView)
+from rest_framework.permissions import IsAuthenticated
+from .models import Game
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.views.decorators.csrf import csrf_exempt
+
 
 from .models import Account, Posts
 from .permissions import IsOwnerProfileOrReadOnly
-from .serializers import AccountSerializer, OutputAllNews, GameSerializer
+from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost
 
 
 class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -25,6 +24,12 @@ class OutputAllNewsView(APIView):
         news = Posts.objects.filter(draft=False)
         serializer = OutputAllNews(news, many=True)
 
+class OutputPostView(APIView):
+    """ Вывод страницы записи"""
+
+    def get(self, request, pk):
+        news = Posts.objects.get(url=pk, draft=False)
+        serializer = OutputPost(news)
         return Response(serializer.data)
 
 
@@ -34,50 +39,47 @@ class GameDetailView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerProfileOrReadOnly]
 
 
-#в продакшене выпилить csrf_exempt
-@api_view(['POST'])
-@authentication_classes((TokenAuthentication,))
-@csrf_exempt
-def add_game(request):
-    user = request.user
-    if request.method == 'POST':
-        data = {}
-        data['message'] = ""
-        if user.is_authenticated:
-            account = Account.objects.get(user=user)
-            if account.is_developer:
-                serializer = GameSerializer(data=request.data)
-                if serializer.is_valid():
-                    serializer.save()
-                    data['message'] = "success"
-            else:
-                data['message'] = "не девелопер"
+class GameDetail(APIView):
 
-        else:
-            data['message'] = "не аунтифицирован"
-        return HttpResponse(data['message'])
+    def get_game(self, pk):
+        try:
+            return Game.objects.get(pk=pk)
+        except Game.DoesNotExist:
+            raise Http404
 
+    def post(self, request, format=None):
+        user = request.user
+        serializer = GameSerializer(data=request.data)
+        if serializer.is_valid():
+            if user.is_authenticated:
+                account = Account.objects.get(user=user)
+                if account.is_developer:
+                        serializer.save(author = account)
+                        return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['PUT'])
-@authentication_classes((TokenAuthentication,))
-def update_game(request, pk): #не работает
-    user = request.user
-    if request.method == 'PUT':
-        data = {}
-        data['message'] = "fail"
-        if user.is_authenticated:
-            account = Account.objects.get(user=user)
-            if account.is_developer:
-                if Game.objects.all().get in account.developed_games:
-                    serializer = GameSerializer(data=request.data)
-                    if serializer.is_valid():
+    def get(self, request, pk, format=None):
+        game = self.get_game(pk)
+        serializer = GameSerializer(game)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        game = self.get_game(pk)
+        serializer = GameSerializer(game, data=request.data)
+        user = request.user
+        if serializer.is_valid():
+            if user.is_authenticated:
+                account = Account.objects.get(user=user)
+                if account.is_developer:
+                    if game.author == account:
                         serializer.save()
-                        data['message'] = "success"
-        return HttpResponse(data['message'])
+                        return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
-class GameView(RetrieveUpdateDestroyAPIView):
-    queryset = Game.objects.all()
-    serializer_class = GameSerializer
-    permission_classes = [AllowAny]
+    def delete(self, request, pk, format=None):
+        game = self.get_game(pk)
+        account = Account.objects.get(user=request.user)
+        if account.is_developer:
+            if game.author == account:
+                game.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
