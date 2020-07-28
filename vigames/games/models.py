@@ -112,6 +112,7 @@ class Game(models.Model):
     description = models.TextField(default="")
     genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
+    rait = models.CharField(max_length=50, default="")
 
 
 '''

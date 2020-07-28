@@ -43,7 +43,11 @@ class Search:  # первый аргумент - запрос юзера, вто
         return tochno_end
 
     def raiting(self, rt):
-        pass
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        db_path = os.path.join(BASE_DIR, "db.sqlite3")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute("SELECT rait FROM games_game")
 
     def news(self, rt, ):
         pass
