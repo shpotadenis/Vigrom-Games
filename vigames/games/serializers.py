@@ -48,7 +48,7 @@ class OutputPost(serializers.ModelSerializer):
 
 #Сериализатор игры
 class GameSerializer(serializers.ModelSerializer):
-    comments = CommentsGamesSerializer(many=True)
+    #comments = CommentsGamesSerializer(many=True)
 
     class Meta:
         model = Game
