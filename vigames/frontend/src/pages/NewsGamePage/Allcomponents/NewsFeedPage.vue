@@ -59,14 +59,12 @@
 
 <style scope>
 	.NewsFeedPageComponents{
-		position:absolute;
 		top:430px;
 		display:flex;
 		flex-wrap:wrap;
 		justify-content:space-between;
 	}
 	.FilterAndTitle{
-		position:absolute;
 		top:380px;
 		width:900px;
 		display:flex;

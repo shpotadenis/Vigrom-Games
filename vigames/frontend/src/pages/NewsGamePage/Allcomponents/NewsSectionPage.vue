@@ -11,9 +11,7 @@
 						<input type="text" placeholder="Поиск по новостям...">
 					</div>
 				</div>
-					<div class="BottomLine">
-						<img src="@/assets/img/pic1.png">
-					</div>
+
 			</div>
 		</div>
 		<div class="BlockNewsSection">

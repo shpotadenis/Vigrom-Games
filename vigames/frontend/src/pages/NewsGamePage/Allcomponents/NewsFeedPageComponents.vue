@@ -46,7 +46,6 @@
 		text-decoration: none;
 	}
 	.BlockFeedNews{
-		position:relative;
 		width:430px;
 		height:258px;
 		margin-bottom:136px;
