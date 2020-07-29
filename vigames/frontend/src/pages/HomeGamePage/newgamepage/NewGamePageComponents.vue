@@ -1,14 +1,14 @@
 <template>
   <div class="wrappen">
-      <div class="GameComponent">
-        <img v-bind:src="require('@/assets/img/' + Game.image)" wigth="228" height="289">
-        <div class="RatingAndTitle">
-          <p class="NameGame">{{Game.name}}</p>
-          <div class="RatingGame">{{Game.rating}}</div>
+        <div class="GameComponent">
+          <img v-bind:src="require('@/assets/img/' + Game.image)" wigth="208" height="263">
+          <div class="RatingAndTitle">
+            <p class="NameGame">{{Game.name}}</p>
+            <div class="RatingGame">{{Game.rating}}</div>
+          </div>
+          <p class="UnderName">{{Game.undername}}</p>
+          <p class="Price">{{Game.price}}</p>
         </div>
-        <p class="UnderName">{{Game.undername}}</p>
-        <p class="Price">{{Game.price}}</p>
-      </div>
 
   </div>
 </template>
@@ -32,13 +32,11 @@ props:{
 }
 
 </script>
-
 <style>
 .GameComponent{
   position:relative;
   display:inline-block;
   margin-top:25px;
-  margin-right:23px;
 
 }
 .RatingAndTitle{

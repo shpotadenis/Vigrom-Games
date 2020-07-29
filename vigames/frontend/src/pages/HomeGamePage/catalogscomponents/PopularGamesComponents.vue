@@ -1,14 +1,14 @@
 <template>
-<div id="wrappen">
+
 	<div class="AllItem">
 		<div class="ItemImage">
 
-			<img v-bind:src="require('@/assets/img' + Game_Popular.img) " width="1000" height="390">
+			<img v-bind:src="require('@/assets/img/' + Game_Popular.image) " width="1000" height="390">
 
 		</div>
 		<div class="Info">
 			<div class="ItemInfoGame">
-				<p class="NameGame">{{Game_Popular.name}}
+				<p class="NameGame1">{{Game_Popular.name}}
 
 				</p>
 
@@ -18,7 +18,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 </template>
 
 <script>
@@ -58,7 +58,10 @@ position:relative;
 	top:-3px;
 	background-color: #2D2D42;
 }
-.NameGame{
+.NameGame1{
+	position: absolute;
+	top: 35%;
+    left: 4%;
 	width:200px;
 	color:#FFF;
 	font-style: normal;
@@ -66,11 +69,9 @@ position:relative;
 	font-size: 24px;
 	line-height: 33px;
 	text-transform:uppercase;
-	position: absolute;
 	padding-bottom:2px;
 	height:28px;
-    top: 35%;
-    left: 4%;
+
 
 }
 .DiscriptionGame{
