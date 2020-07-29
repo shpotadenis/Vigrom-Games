@@ -17,7 +17,7 @@
 
 import PopularGamesComponents from "./PopularGamesComponents"
 
-eexport default {
+export default {
 name: 'PopularGames',
 components: {
    PopularGamesComponents
