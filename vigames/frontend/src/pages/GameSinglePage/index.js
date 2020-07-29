@@ -1,5 +1,6 @@
 import ReviewsComponent from "../../components/ReviewsComponent/index.vue";
-
+import BreadcrumbsComponent from "../../components/BreadcrumbsComponent/index.vue"
+import FooterComponent from "../../components/FooterComponent/index.vue"
 const data = {
     id: 1,
     name: 'Название игры',
@@ -17,7 +18,9 @@ const data = {
 export default {
     name: "GameSinglePage",
     components: {
-        ReviewsComponent
+        ReviewsComponent,
+        BreadcrumbsComponent,
+        FooterComponent
     },
     computed: {
         getGameData() {

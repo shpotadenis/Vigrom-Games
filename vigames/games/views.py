@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import timedelta, date
 
 from django.http import Http404
 from rest_framework import status
@@ -8,10 +8,9 @@ from .models import Game
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-
 from .models import Account, Posts
 from .permissions import IsOwnerProfileOrReadOnly
-from .serializers import AccountSerializer, OutputAllNews, GameSerializer, RatingSerializer
+from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, RatingSerializer
 
 
 class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -22,10 +21,18 @@ class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
 
 class OutputAllNewsView(APIView):
     """Вывод списка последних новостей"""
+
     def get(self, request):
         news = Posts.objects.filter(draft=False)
         serializer = OutputAllNews(news, many=True)
 
+
+class OutputPostView(APIView):
+    """ Вывод страницы записи"""
+
+    def get(self, request, pk):
+        news = Posts.objects.get(url=pk, draft=False)
+        serializer = OutputPost(news)
         return Response(serializer.data)
 
 

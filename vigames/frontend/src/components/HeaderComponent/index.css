@@ -1,6 +1,6 @@
 .header {
-    background-color: #848484;
     margin-bottom: 74px;
+    color: #64646E;
 }
 
 .wrapper {
@@ -38,7 +38,7 @@
     font-weight: bold;
     font-size: 14px;
     line-height: 16px;
-    color: #000;
+    color: #7A7A83;
     text-decoration: none;
 }
 
