@@ -10,9 +10,9 @@
 <script>
 
 
-	import NewsSectionPage from "@/components/Allcomponents/NewsSectionPage.vue"
-	import NewsPopularPage from "@/components/Allcomponents/NewsPopularPage.vue"
-	import NewsFeedPage from "@/components/Allcomponents/NewsFeedPage.vue"
+	import NewsSectionPage from "./Allcomponents/NewsSectionPage.vue"
+	import NewsPopularPage from "./Allcomponents/NewsPopularPage.vue"
+	import NewsFeedPage from "./Allcomponents/NewsFeedPage.vue"
 	
 
 	export default{
@@ -37,7 +37,7 @@
 	width:1000px;
 	margin:0 auto;
 	font-family:"Muller-Regular";
-    src: url(../fonts/Muller-Regular.otf) format("woff");
+    /*src: url(../fonts/Muller-Regular.otf) format("woff");*/
 	}
 	
 </style>

@@ -3,7 +3,7 @@
 		<a href="#!" class="LinkFeedNews">
 		<div class="BlockFeedNews">
 
-			<img class="ImageFeed" v-bind:src="require('@/assets/' + News_feed.image) " alt="img" width="430" height="258">
+			<img class="ImageFeed" src="src/assets/img/pic1.png" alt="img" width="430" height="258">
 
 			<p class="TitleFeed">
 				{{News_feed.title}}
