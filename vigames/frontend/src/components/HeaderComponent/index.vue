@@ -3,9 +3,9 @@
         <div class="wrapper">
             <div class="header__wrapper">
                 <div class="header__logo">
-                    <a href="#!">
+                    <router-link :to="{name: 'homePage'}">
                         <img src="@/assets/img/logo.svg" alt="Vigrom" class="header__logo-pic">
-                    </a>
+                    </router-link>
                 </div>
 
                 <nav class="header__nav">
@@ -16,7 +16,9 @@
                             </router-link>
                         </li>
                         <li class="header__item">
-                            <a href="#!" class="header__link">Новости</a>
+                            <router-link :to="{name: 'newsPage'}" class="header__link">
+                                Новости
+                            </router-link>
                         </li>
                         <li class="header__item">
                             <a href="#!" class="header__link">Библиотека</a>

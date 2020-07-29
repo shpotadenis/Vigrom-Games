@@ -14,7 +14,7 @@
 
 <script>
 
-	import NewsPopularPageComponents from "@/components/Allcomponents/NewsPopularPageComponents"
+	import NewsPopularPageComponents from "./NewsPopularPageComponents"
 
 	export default{
 		name:"NewsPopularPage",

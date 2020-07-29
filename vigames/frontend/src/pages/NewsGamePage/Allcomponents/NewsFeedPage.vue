@@ -17,7 +17,7 @@
 
 <script>
 	
-	import NewsFeedPageComponents from "@/components/Allcomponents/NewsFeedPageComponents"
+	import NewsFeedPageComponents from "./NewsFeedPageComponents"
 	export default{
 		name:"NewsFeedPage",
 		components:{
