@@ -7,8 +7,8 @@
 
 <script>
 
-import Categories from "@/components/startcomponents/Categories"
-import PopularGames from "@/components/catalogscomponents/PopularGames"
+import Categories from "./startcomponents/Categories"
+import PopularGames from "./catalogscomponents/PopularGames"
 
 export default {
   name: 'HomePage',

@@ -12,7 +12,7 @@
 		<div class="FilterGames">
 			<div class="SpaceBetweenImageAndText">
 				<div class="SearchImage">
-					<img src="@/assets/Search.svg">
+					<img src="@/assets/img/search-icon.png">
 				</div>
 				<div class="SearchText">
 					<input 
@@ -36,7 +36,7 @@
 
 <script>
 
-import CategoriesChoose from "@/components/startcomponents/CategoriesChoose"
+import CategoriesChoose from "./CategoriesChoose"
 
 export default {
 	name: 'Categories',

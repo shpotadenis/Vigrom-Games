@@ -2,7 +2,7 @@
 <div id="wrappen">
 	<div class="AllItem">
 		<div class="ItemImage">
-			<img src="@/assets/image.svg" width="1000" height="390">
+			<img src="@/assets/img/pic1.png" width="1000" height="390">
 		</div>
 		<div class="Info">
 			<div class="ItemInfoGame">
