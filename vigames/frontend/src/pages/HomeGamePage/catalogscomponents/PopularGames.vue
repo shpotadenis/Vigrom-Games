@@ -6,8 +6,8 @@
     :key="item.id"
 	:Game_Popular="item"
     />
-    <img src="@/assets/arrow3.png" class="strelka1" @click="leftFunc">
-    <img src="@/assets/arrow3.png" class="strelka2" @click="rightFunc">
+    <img src="@/assets/img/arrow3.png" class="strelka1" @click="leftFunc">
+    <img src="@/assets/img/arrow3.png" class="strelka2" @click="rightFunc">
   </div>
 
   </div>

@@ -3,7 +3,7 @@
 	<div class="AllItem">
 		<div class="ItemImage">
 
-			<img v-bind:src="require('@/assets/' + Game_Popular.img) " width="1000" height="390">
+			<img v-bind:src="require('@/assets/img' + Game_Popular.img) " width="1000" height="390">
 
 		</div>
 		<div class="Info">
@@ -13,7 +13,7 @@
 				</p>
 
 				<p class="DiscriptionGame">{{Game_Popular.discription}}</p>
-				<p class="LinkGame"><a href="#!" >Подробнее <img src="@/assets/strelka.svg" class="ImageArrow"></a></p>
+				<p class="LinkGame"><a href="#!" >Подробнее <img src="@/assets/img/strelka.svg" class="ImageArrow"></a></p>
 
 			</div>
 		</div>
