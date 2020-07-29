@@ -13,12 +13,15 @@
 
 import Categories from "./startcomponents/Categories"
 import PopularGames from "./catalogscomponents/PopularGames"
+import LittlePopular from "./popularcomponents/LittlePopularPage.vue"
+
 
 export default {
   name: 'HomePage',
   components: {
     Categories,
-    PopularGames
+    PopularGames,
+    LittlePopular
   },
   data(){
   return{
