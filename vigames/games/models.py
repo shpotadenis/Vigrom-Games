@@ -99,20 +99,25 @@ class Account(models.Model):
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
     author = models.ForeignKey(Account, on_delete=models.PROTECT,
-                               related_name="author", null=True)
+                                        related_name="game_author", null=True)
     title = models.CharField(max_length=32, default="")
     url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     short_description = models.CharField(max_length=250, default="")
     image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True)
     gameplay_video_link = models.CharField(max_length=250, null=True)
     release_status = models.BooleanField(default=False)
+    date_release = models.DateField(default=date.today)
     price = models.IntegerField(default=0)
     screenshots = models.ImageField(upload_to='img/%Y/%m', null=True)
     # uploads
     description = models.TextField(default="")
     genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
+<<<<<<< HEAD
     rait = models.FloatField(default=0)
+=======
+    sale_percent = models.PositiveIntegerField(default=0)
+>>>>>>> origin/master
 
 
 '''
@@ -151,8 +156,8 @@ class Posts(models.Model):
     url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
     description = models.TextField("Короткое описание", max_length=160)
-    data = models.DateField(date.today)
-    img = models.ImageField('Изображение записи', upload_to='img/%Y/%m', null=True)  # Главная фотография записи
+    data = models.DateTimeField(auto_now_add=True)
+    img = models.ImageField('Изображение записи', upload_to='img/%Y/%m', null=True)    # Главная фотография записи
     num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
     draft = models.BooleanField("Черновик", default=False)
     forthegame = models.IntegerField(default=0)
@@ -171,11 +176,14 @@ class Posts(models.Model):
         verbose_name_plural = "Записи"
 
 
-class Comment(models.Model):
-    # Комментарий
-    user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default='NoName')
+class Comments_Game(models.Model):
+    # Комментарий к игре
+    page = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    moderation = models.BooleanField(default=True)
 
     def __str__(self):
         return self.text_comment
@@ -183,3 +191,27 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
+
+
+class Comments_Post(models.Model):
+    # Комментарий к записи
+    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    text_comment = models.TextField()
+    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    moderation = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.text_comment
+
+    class Meta:
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
+
+
+class Rating(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_author", null=True)
+    mark = models.PositiveIntegerField(default=0, null=True)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE,
+                                    related_name="game", null=True)
