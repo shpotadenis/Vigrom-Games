@@ -9,6 +9,10 @@ const state = () => ({
 const getters = {
     isLoggedIn(state) {
         return state.loggedIn
+    },
+
+    getToken(state) {
+        return state.token
     }
 };
 
@@ -29,7 +33,22 @@ const mutations = {
 const actions = {
     login({ commit }, credentials) {
         user.login(credentials).then(response => {
-            commit('userLogin', response.data);
+            commit('userLogin', {
+                login: credentials.username,
+                token: response.data.auth_token
+            });
+        })
+        .catch(error => {
+            console.log('error in store/modules/user.js:')
+            console.log(error)
+        })
+    },
+
+    register(context, credentials) {
+        user.register(credentials).then(response => {
+            if (response.data.id) {
+                context.dispatch('login', credentials)
+            }
         })
         .catch(error => {
             console.log('error in store/modules/user.js:')

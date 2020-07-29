@@ -1,5 +1,7 @@
 <template>
+    <div>
     <div class="wrapper">
+        <breadcrumbs-component></breadcrumbs-component>
         <div class="game-card">
             <img src="@/assets/img/top_banner.png" alt="Banner of game" class="full-banner">
             <div class="info-card">
@@ -106,6 +108,8 @@
                 </a>
             </div>
         </div>
+    </div>
+        <footer-component></footer-component>
     </div>
 </template>
 

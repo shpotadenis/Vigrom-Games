@@ -5,15 +5,13 @@
 			<div class="SearchNewsSection">
 				<div class="SearchBlock">
 					<div class="ImgSearch">
-						<img src="@/assets/serach.png">
+						<img src="@/assets/img/search-icon.png">
 					</div>
 					<div class="InputSearch">
 						<input type="text" placeholder="Поиск по новостям...">
 					</div>
 				</div>
-					<div class="BottomLine">
-						<img src="@/assets/block.png">
-					</div>
+
 			</div>
 		</div>
 		<div class="BlockNewsSection">
@@ -28,11 +26,11 @@
 					</div>
 					<div class="ButtonBlockNewsSection">
 						<input class="Button" type="button" value="Подробнее">
-						<img src="@/assets/Vector.png">
+						<img src="@/assets/img/Vector.png">
 					</div>
 				</div>
 				<div class="BigImgWomen">
-					<img src="@/assets/undraw.svg">
+					<img src="@/assets/img/undraw_happy_news.png">
 				</div>
 			</div>
 		</div>

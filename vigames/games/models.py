@@ -64,24 +64,24 @@ class Account(models.Model):
     is_administrator = models.BooleanField(default=False, null=True)
     bank_cаrd = models.CharField("Номер карты", max_length=20, null=True)
     foto = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
-    strategy = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    rpg = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    f2p = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    shooter = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    racing = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    horror = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    stealth = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    survival_horror = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    sports = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    party = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    platform = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    puzzle = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    god_game = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    flight_simulation = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    fighting = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    beatemup = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    adventure = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    action = models.CharField("Предпочтительный жанр", max_length=20, null=True)
+    strategy = models.IntegerField(default=0)
+    rpg = models.IntegerField(default=0)
+    f2p = models.IntegerField(default=0)
+    shooter = models.IntegerField(default=0)
+    racing = models.IntegerField(default=0)
+    horror = models.IntegerField(default=0)
+    stealth = models.IntegerField(default=0)
+    survival_horror = models.IntegerField(default=0)
+    sports = models.IntegerField(default=0)
+    party = models.IntegerField(default=0)
+    platform = models.IntegerField(default=0)
+    puzzle = models.IntegerField(default=0)
+    god_game = models.IntegerField(default=0)
+    flight_simulation = models.IntegerField(default=0)
+    fighting = models.IntegerField(default=0)
+    beatemup = models.IntegerField(default=0)
+    adventure = models.IntegerField(default=0)
+    action = models.IntegerField(default=0)
 
     # developed_games = models.ForeignKey(Game, on_delete=models.PROTECT,
     #                                   related_name="developed_games", null=True)
@@ -99,19 +99,25 @@ class Account(models.Model):
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
     author = models.ForeignKey(Account, on_delete=models.PROTECT,
-                               related_name="author", null=True)
+                                        related_name="game_author", null=True)
     title = models.CharField(max_length=32, default="")
     url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     short_description = models.CharField(max_length=250, default="")
     image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True)
     gameplay_video_link = models.CharField(max_length=250, null=True)
     release_status = models.BooleanField(default=False)
+    date_release = models.DateField(default=date.today)
     price = models.IntegerField(default=0)
     screenshots = models.ImageField(upload_to='img/%Y/%m', null=True)
     # uploads
     description = models.TextField(default="")
     genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
+<<<<<<< HEAD
+    rait = models.FloatField(default=0)
+=======
+    sale_percent = models.PositiveIntegerField(default=0)
+>>>>>>> origin/master
 
 
 '''
@@ -154,6 +160,7 @@ class Posts(models.Model):
     img = models.ImageField('Изображение записи', upload_to='img/%Y/%m', null=True)    # Главная фотография записи
     num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
     draft = models.BooleanField("Черновик", default=False)
+    forthegame = models.IntegerField(default=0)
 
     # Вопрос по изображениям открыт. Делать для них отдельную модель или сделать загрузку сюда???
     # Вопрос с количеством просмотров тоже открыт
@@ -202,3 +209,9 @@ class Comments_Post(models.Model):
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
 
+
+class Rating(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_author", null=True)
+    mark = models.PositiveIntegerField(default=0, null=True)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE,
+                                    related_name="game", null=True)

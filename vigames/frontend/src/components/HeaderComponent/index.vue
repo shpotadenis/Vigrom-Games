@@ -3,18 +3,22 @@
         <div class="wrapper">
             <div class="header__wrapper">
                 <div class="header__logo">
-                    <a href="#!">
+                    <router-link :to="{name: 'homePage'}">
                         <img src="@/assets/img/logo.svg" alt="Vigrom" class="header__logo-pic">
-                    </a>
+                    </router-link>
                 </div>
 
                 <nav class="header__nav">
                     <ul class="header__nav-list">
                         <li class="header__item">
-                            <a href="#!" class="header__link">Магазин</a>
+                            <router-link :to="{name: 'singlePage'}" class="header__link">
+                                Магазин
+                            </router-link>
                         </li>
                         <li class="header__item">
-                            <a href="#!" class="header__link">Новости</a>
+                            <router-link :to="{name: 'newsPage'}" class="header__link">
+                                Новости
+                            </router-link>
                         </li>
                         <li class="header__item">
                             <a href="#!" class="header__link">Библиотека</a>
@@ -23,26 +27,18 @@
                             <a href="#!" class="header__link">Комьюнити</a>
                         </li>
                         <li class="header__item">
-                            <a href="#!" class="header__link">Справка</a>
+                            <a href="#!" class="header__link">Поддержка</a>
                         </li>
                     </ul>
                 </nav>
 
                 <div class="header__icons">
                     <div class="header__icon">
-                        <a href="#!" class="header__icon-link">
-                            <img src="@/assets/img/search-icon.png" alt="Search" class="header__icon-pic">
-                        </a>
-                    </div>
-                    <div class="header__icon">
-                        <a href="#!" class="header__icon-link">
-                            <img src="@/assets/img/cart-icon.png" alt="Cart" class="header__icon-pic">
-                        </a>
-                    </div>
-                    <div class="header__icon">
-                        <a href="#!" class="header__icon-link">
-                            <img src="@/assets/img/person-icon.png" alt="Person" class="header__icon-pic">
-                        </a>
+                        <router-link :to="{name: 'loginPage'}">
+                            <div class="header__icon-link">
+                                <img src="@/assets/img/person-icon.png" alt="Person" class="header__icon-pic">
+                            </div>
+                        </router-link>
                     </div>
                 </div>
             </div>

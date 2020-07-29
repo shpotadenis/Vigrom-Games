@@ -12,9 +12,6 @@
 
 <script>
 
-
-		
-
 	export default{
 		name:"NewsPopularPageComponents",
 		components:[{
@@ -42,19 +39,16 @@
 		color:#000;
 	}
 	.BlockPopularNews{
-		position:absolute;
 		width:200px;
 		height:200px;
 	}
 	.Date{
-		position:absolute;
 		top:10px;
 		left:30px;
 		z-index:100;
 		font-size:14px;
 	}
 	.TitlePopularNews{
-		position:absolute;
 		text-align:left;
 		font-size:18px;
 		font-weight:bold;
@@ -64,7 +58,6 @@
 		height: 75px;
 	}
 	Image{
-		position:absolute;
 	}
 
 

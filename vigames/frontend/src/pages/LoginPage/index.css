@@ -1,0 +1,31 @@
+.login-form{
+    background: #2D2D42;
+    border-radius: 0px 10px 10px 0px;
+    padding: 0;
+}
+
+.login-pic{
+    padding: 0;
+}
+p{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    text-align: center;
+}
+
+.head_login{
+    padding-top: 40px;
+}
+
+.next-btn{
+    background: #CE6796;
+    border-radius: 6px;
+    position: relative;
+    width: 100px;
+    height: 40px;
+}
