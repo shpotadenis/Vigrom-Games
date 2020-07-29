@@ -22,10 +22,11 @@ class OutputAllNews(serializers.ModelSerializer):
 
 class CommentsNewsSerializer(serializers.ModelSerializer):
     """Вывод комментариев на странице новости"""
+    user = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
         model = Comments_Post
-        exclude = ('moderation', )
+        exclude = ('moderation', 'page')
 
 
 class CommentsGamesSerializer(serializers.ModelSerializer):

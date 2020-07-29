@@ -1,6 +1,7 @@
 from datetime import timedelta, date
 
 from django.http import Http404
+from djoser.conf import User
 from rest_framework import status
 from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
@@ -10,7 +11,7 @@ from rest_framework.views import APIView
 
 from .models import Account, Posts
 from .permissions import IsOwnerProfileOrReadOnly
-from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost
+from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, CommentsNewsSerializer
 
 
 class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -25,7 +26,7 @@ class OutputAllNewsView(APIView):
     def get(self, request):
         news = Posts.objects.filter(draft=False)
         serializer = OutputAllNews(news, many=True)
-
+        return Response(serializer.data)
 
 class OutputPostView(APIView):
     """ Вывод страницы записи"""
@@ -34,6 +35,26 @@ class OutputPostView(APIView):
         news = Posts.objects.get(url=pk, draft=False)
         serializer = OutputPost(news)
         return Response(serializer.data)
+
+
+class CommentCreateView(APIView):
+    """Добавление комментария на страницу записи"""
+    """
+    Help text: комментарий оставляет авторизованный пользователь User.
+    Оставляет его на странице page. Страницу мы ищем по url страницы, который нам отправит фронт
+    Проверяем зарегистрирован ли пользователь и валидный ли комментарий и сохраняем его в базу с соответствующими параметрами
+    
+    Важно! Если зайти в сериализатор комментария, в него не отправляется Page, 
+    т.к. страница у нас определяется по url (то что вверху описано).
+    """
+    def post(self, request):
+        user = request.user
+        comment = CommentsNewsSerializer(data=request.data)
+        posts = Posts.objects.get(url=request.data["page"])    # Ищем пост, к которому был оставлен коммент. По урлу.
+        if comment.is_valid() and user.is_authenticated:
+            comment.save(user=user, page=posts)
+            return Response(comment.data)
+        return Response(comment.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class GameDetailView(RetrieveUpdateDestroyAPIView):
