@@ -78,19 +78,21 @@ class Account(models.Model):
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
     author = models.ForeignKey(Account, on_delete=models.PROTECT,
-                                        related_name="author", null=True)
+                                        related_name="game_author", null=True)
     title = models.CharField(max_length=32, default="")
     url = models.CharField(max_length=250, null=True) #по идее можно выпилить?
     short_description = models.CharField(max_length=250, default="")
     image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True)
     gameplay_video_link = models.CharField(max_length=250, null=True)
     release_status = models.BooleanField(default=False)
+    date_release = models.DateField(default=date.today)
     price = models.IntegerField(default=0)
     screenshots = models.ImageField(upload_to='img/%Y/%m', null=True)
     #uploads
     description = models.TextField(default="")
     genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
+    sale_percent = models.PositiveIntegerField(default=0)
 
 '''
 class Basket(models.Model):
@@ -158,3 +160,9 @@ class Comment(models.Model):
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
 
+
+class Rating(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_author", null=True)
+    mark = models.PositiveIntegerField(default=0, null=True)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE,
+                                    related_name="game", null=True)

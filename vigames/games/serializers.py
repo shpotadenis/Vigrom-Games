@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account, Posts, Game
+from .models import Account, Posts, Game, Rating
 
 
 #Сериализатор пользователя
@@ -26,3 +26,8 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = '__all__'
 
+class RatingSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Rating
+        fields = '__all__'
