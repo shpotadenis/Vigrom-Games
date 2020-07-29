@@ -4,7 +4,7 @@
             <div class="header__wrapper">
                 <div class="header__logo">
                     <router-link :to="{name: 'homePage'}">
-                        <img src="@/assets/img/logo.svg" alt="Vigrom" class="header__logo-pic">
+                        <img src="@/assets/img/Logo.svg" alt="Vigrom" class="header__logo-pic">
                     </router-link>
                 </div>
 
@@ -27,26 +27,18 @@
                             <a href="#!" class="header__link">Комьюнити</a>
                         </li>
                         <li class="header__item">
-                            <a href="#!" class="header__link">Справка</a>
+                            <a href="#!" class="header__link">Поддержка</a>
                         </li>
                     </ul>
                 </nav>
 
                 <div class="header__icons">
                     <div class="header__icon">
-                        <a href="#!">
-                            <div class="header__icon-link">
-                                <img src="@/assets/img/cart-icon.png" alt="Cart" class="header__icon-pic">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="header__icon">
                         <router-link :to="{name: 'loginPage'}">
                             <div class="header__icon-link">
                                 <img src="@/assets/img/person-icon.png" alt="Person" class="header__icon-pic">
                             </div>
                         </router-link>
-
                     </div>
                 </div>
             </div>
