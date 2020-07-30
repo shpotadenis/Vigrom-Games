@@ -278,3 +278,11 @@ class AssessPostDetail(APIView):
             if account in post.disliked.all():
                 post.disliked.remove(account)
             return Response(status=status.HTTP_204_NO_CONTENT)
+
+class OutputLibrary(ListAPIView):
+    """Вывод библиотеки игр пользователя"""
+    def get(self, request, pk):
+        user = request.user
+        games = Game.objects.filter(players=pk)
+        serializer = GameSerializer(games, many=True)
+        return Response(serializer.data)
