@@ -26,7 +26,18 @@ export default {
     },
     data() {
         return {
-            isBtnClick: false
+            isBtnClick: false,
+            breadcrumbs: [
+                {
+                    to: {
+                        name: 'homePage'
+                    },
+                    title: 'Главная'
+                },
+                {
+                    title: data.name
+                }
+            ]
         }
     },
     methods: {
