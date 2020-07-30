@@ -111,6 +111,12 @@ class GameDetail(APIView):
 
 class GameRatingDetail(APIView):
 
+    def get_game(self, pk):
+        try:
+            return Game.objects.get(pk=pk)
+        except Game.DoesNotExist:
+            raise Http404
+
     def post(self, request, pk, format=None):
         user = request.user
         mark = request.POST.get('mark')
@@ -189,3 +195,5 @@ class BuyGameDetail(APIView):
                 return Response({"message": "bought"})
             except Account.DoesNotExist:
                 return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
+
+
