@@ -1,16 +1,14 @@
 from datetime import timedelta, date
-
 from django.http import Http404
 from rest_framework import status
 from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
-from .models import Game, Rating
+from .models import Game, Rating, Account, Posts
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
-from .models import Account, Posts
 from .permissions import IsOwnerProfileOrReadOnly
-from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, RatingSerializer
+from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
+    RatingSerializer
 
 
 class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -90,12 +88,6 @@ class GameDetail(APIView):
 
 class GameRatingDetail(APIView):
 
-    def get_game(self, pk):
-        try:
-            return Game.objects.get(pk=pk)
-        except Game.DoesNotExist:
-            raise Http404
-
     def post(self, request, pk, format=None):
         user = request.user
         mark = request.POST.get('mark')
@@ -124,7 +116,6 @@ class GameRatingDetail(APIView):
         return Response(data)
 
     def put(self, request, pk, format=None):
-        game = self.get_game(pk)
         mark = request.POST.get('mark')
         user = request.user
         if user.is_authenticated:
@@ -158,3 +149,19 @@ class OutputGames(ListAPIView):
             .order_by('-date_release')[:10]
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
+
+
+class BuyGameDetail(APIView):
+
+    def put(self, request, pk, format=None):
+        user = request.user
+        game = Game.objects.get(id=pk)
+        if user.is_authenticated:
+            try:
+                account = Account.objects.get(user=user)
+                if account not in game.players.all():
+                    game.players.add(account)
+                    return Response({"message": "success"}, status=status.HTTP_200_OK)
+                return Response({"message": "bought"})
+            except Account.DoesNotExist:
+                return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
