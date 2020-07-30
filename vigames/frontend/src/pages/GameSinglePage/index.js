@@ -1,6 +1,7 @@
 import ReviewsComponent from "../../components/ReviewsComponent/index.vue";
 import BreadcrumbsComponent from "../../components/BreadcrumbsComponent/index.vue"
 import FooterComponent from "../../components/FooterComponent/index.vue"
+import Checkout from "../../components/Pop-ups/Checkout/checkout"
 const data = {
     id: 1,
     name: 'Название игры',
@@ -20,7 +21,18 @@ export default {
     components: {
         ReviewsComponent,
         BreadcrumbsComponent,
-        FooterComponent
+        FooterComponent,
+        Checkout
+    },
+    data() {
+        return {
+            isBtnClick: false
+        }
+    },
+    methods: {
+        checkout() {
+            this.isBtnClick = true;
+        }
     },
     computed: {
         getGameData() {

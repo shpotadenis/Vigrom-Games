@@ -1,5 +1,6 @@
 <template>
     <div>
+        <checkout v-if="isBtnClick"></checkout>
     <div class="wrapper">
         <breadcrumbs-component></breadcrumbs-component>
         <div class="game-card">
@@ -12,7 +13,7 @@
                     От {{getGameData.dev}}
                 </p>
                 <div class="info-card__buy">
-                    <a href="#!" class="buy__btn">Купить</a>
+                    <button @click="checkout" class="buy__btn">Купить</button>
                     <span class="buy__price">{{getGameData.price}} Р</span>
                 </div>
             </div>

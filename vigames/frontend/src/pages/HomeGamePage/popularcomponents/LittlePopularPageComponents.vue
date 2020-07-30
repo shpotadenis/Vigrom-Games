@@ -38,7 +38,7 @@ props:{
   position:relative;
   display:inline-block;
   margin-top:25px;
-  margin-right:23px;
+  margin-right:30px;
 
 }
 .RatingAndTitle{
