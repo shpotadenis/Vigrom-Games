@@ -1,28 +1,25 @@
 <template>
-	<div class="wrappen">
-		<news-section-page></news-section-page>
-		<news-popular-page></news-popular-page>
-		<news-feed-page></news-feed-page>
-		<footer-component></footer-component>
+<div class="container">
+	<div class="col">
+		<div class="wrappen">
+			<footer-component></footer-component>
+		</div>
 	</div>
+</div>
 </template>
 
 
 <script>
 
 
-	import NewsSectionPage from "./Allcomponents/NewsSectionPage.vue"
-	import NewsPopularPage from "./Allcomponents/NewsPopularPage.vue"
-	import NewsFeedPage from "./Allcomponents/NewsFeedPage.vue"
+
 	import FooterComponent from "../../components/FooterComponent/index.vue"
-	
+
 
 	export default{
 		name:"NewsPage",
 		components:{
-			NewsSectionPage,
-			NewsPopularPage,
-			NewsFeedPage,
+
 			FooterComponent
 		},
 		props:{},
@@ -35,11 +32,9 @@
 </script>
 
 <style scoped>
-	.wrappen{
+.wrappen{
 	width:1000px;
 	margin:0 auto;
-	font-family:"Muller-Regular";
-    /*src: url(../fonts/Muller-Regular.otf) format("woff");*/
-	}
-	
+}
+
 </style>
