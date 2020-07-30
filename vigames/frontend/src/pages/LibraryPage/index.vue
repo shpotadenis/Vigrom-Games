@@ -12,32 +12,12 @@
                 </div>
             </div>
 
-            <div class="head-banner">
-                <div class="head-banner__desc">
-                    <h3 class="desc__header">
-                        Сегодня
-                    </h3>
-                    <div class="desc__content">
-                        <h2 class="content__header">
-                            Новые инди игры уже на главной
-                        </h2>
-                        <p class="content__text">
-                            Унитарное государство, однако, доказывает системный политический процесс в современной России
-                        </p>
-                        <div class="content__btn">
-                            <span>
-                                Подробнее
-                            </span>
-                            <span>
-                                <img src="@/assets/img/arrow-right.png" alt="" class="btn__arrow">
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="head-banner__image">
-                    <img src="@/assets/img/library_head-banner.png" alt="" class="head-banner__image-pic">
-                </div>
-            </div>
+            <banner-component day="Сегодня"
+                              header="Новые инди игры уже на главной"
+                              description="Унитарное государство, однако, доказывает системный политический процесс в современной России"
+                              btn-caption="Подробнее">
+            </banner-component>
+
             <div class="main-content">
                 <div class="main-content__header">
                     <h1 class="header__text">
