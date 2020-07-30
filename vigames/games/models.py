@@ -121,6 +121,14 @@ class Posts(models.Model):
     # Модель записи в блоге
     # author = models.ManyToManyField(User, default='admin')
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    liked = models.ManyToManyField(Account, blank=True, related_name="liked")
+    disliked = models.ManyToManyField(Account, blank=True, related_name="disliked")
+
+    #в принципе можно убрать счетчики и искать кол-во лайкнувших/дизлайкнувших людей,
+    #посмотреть, как удобнее
+    count_likes = models.PositiveIntegerField(default=0)
+    count_dislikes = models.PositiveIntegerField(default=0)
+
     title = models.CharField("Заголовок записи", max_length=150)
     url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()

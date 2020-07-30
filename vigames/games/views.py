@@ -231,3 +231,50 @@ class WishListDetail(APIView):
             except Account.DoesNotExist:
                 pass
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class AssessPostDetail(APIView):
+
+    def get_game(self, pk):
+        try:
+            return Game.objects.get(pk=pk)
+        except Game.DoesNotExist:
+            raise Http404
+
+    def post(self, request, pk, format=None):
+        user = request.user
+        post = Posts.objects.get(id=pk)
+        if user.is_authenticated:
+            try:
+                account = Account.objects.get(user=user)
+            except Account.DoesNotExist:
+                return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
+        if request.POST.get('like') == "True":
+            if account not in post.liked.all():
+                post.liked.add(account)
+                if account in post.disliked.all():
+                    post.disliked.remove(account)
+            return Response({"message": "success"}, status=status.HTTP_200_OK)
+        else:
+            if account not in post.disliked.all():
+                post.disliked.add(account)
+                if account in post.liked.all():
+                    post.liked.remove(account)
+            return Response({"message": "success"}, status=status.HTTP_200_OK)
+
+    def delete(self, request, pk, format=None):
+        user = request.user
+        post = Posts.objects.get(id=pk)
+        if user.is_authenticated:
+            try:
+                account = Account.objects.get(user=user)
+            except Account.DoesNotExist:
+                return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
+        if request.POST.get('like') == "True":
+            if account in post.liked.all():
+                post.liked.remove(account)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            if account in post.disliked.all():
+                post.disliked.remove(account)
+            return Response(status=status.HTTP_204_NO_CONTENT)
