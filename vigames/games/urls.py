@@ -3,8 +3,11 @@ from .views import UserProfileDetailView, OutputAllNewsView, GameDetail, OutputP
     GameRatingDetail, BuyGameDetail, WishListDetail
 
 urlpatterns = [
+    path('', OutputGames.as_view(), name="main"),
+
     path('profile/<int:pk>', UserProfileDetailView.as_view(), name="profile"),
     path('role/<int:pk>', UserProfileDetailView.as_view(), name="role"),
+
     path('games/add', GameDetail.as_view(), name="add_game"),
     path('games/<int:pk>/update', GameDetail.as_view(), name="update_game"),
     path('games/<int:pk>/delete', GameDetail.as_view(), name="delete_game"),
@@ -12,9 +15,10 @@ urlpatterns = [
     path('games/<int:pk>', GameDetail.as_view(), name="current_game"),
     path('games/<int:pk>/buy', BuyGameDetail.as_view(), name="buy_game"),
     path('games/<int:pk>/wishlist', WishListDetail.as_view(), name="wishlist"),
+
     path('news/', OutputAllNewsView.as_view()),
-    path(('news/<str:pk>/'), OutputPostView.as_view()),
-    path('', OutputGames.as_view(), name="main"),
+    path('news/<str:pk>/', OutputPostView.as_view()),
+    path('comment/', CommentCreateView.as_view()),
 ]
 
 #/api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)
