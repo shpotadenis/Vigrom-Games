@@ -16,11 +16,32 @@ class Media(models.Model):
         verbose_name = "Изображение"
         verbose_name_plural = "Изображения"
 
+class Genre(models.Model):
+    strategy = models.IntegerField(default=0)
+    rpg = models.IntegerField(default=0)
+    f2p = models.IntegerField(default=0)
+    shooter = models.IntegerField(default=0)
+    racing = models.IntegerField(default=0)
+    horror = models.IntegerField(default=0)
+    stealth = models.IntegerField(default=0)
+    survival_horror = models.IntegerField(default=0)
+    sports = models.IntegerField(default=0)
+    party = models.IntegerField(default=0)
+    platform = models.IntegerField(default=0)
+    puzzle = models.IntegerField(default=0)
+    god_game = models.IntegerField(default=0)
+    flight_simulation = models.IntegerField(default=0)
+    fighting = models.IntegerField(default=0)
+    beatemup = models.IntegerField(default=0)
+    adventure = models.IntegerField(default=0)
+    action = models.IntegerField(default=0)
+
 
 class Account(models.Model):
     # Аккаунт пользователя
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # Достаем из базы
     # данные регистрации
+    fav_genres = models.ManyToManyField(Genre, blank=True)
     date_joined = models.DateField(default=date.today)
     tel = models.CharField(max_length=12, null=True)  # Номер телефона
     '''Пока номер телефона вводится просто как строка без проверки. В будущем можно будет заменить на этот код:
@@ -40,24 +61,24 @@ class Account(models.Model):
     is_administrator = models.BooleanField(default=False, null=True)
     bank_cаrd = models.CharField("Номер карты", max_length=20, null=True)
     foto = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
-    strategy = models.IntegerField(default=0)
-    rpg = models.IntegerField(default=0)
-    f2p = models.IntegerField(default=0)
-    shooter = models.IntegerField(default=0)
-    racing = models.IntegerField(default=0)
-    horror = models.IntegerField(default=0)
-    stealth = models.IntegerField(default=0)
-    survival_horror = models.IntegerField(default=0)
-    sports = models.IntegerField(default=0)
-    party = models.IntegerField(default=0)
-    platform = models.IntegerField(default=0)
-    puzzle = models.IntegerField(default=0)
-    god_game = models.IntegerField(default=0)
-    flight_simulation = models.IntegerField(default=0)
-    fighting = models.IntegerField(default=0)
-    beatemup = models.IntegerField(default=0)
-    adventure = models.IntegerField(default=0)
-    action = models.IntegerField(default=0)
+    #strategy = models.IntegerField(default=0)
+    #rpg = models.IntegerField(default=0)
+    #f2p = models.IntegerField(default=0)
+    #shooter = models.IntegerField(default=0)
+    #racing = models.IntegerField(default=0)
+    #horror = models.IntegerField(default=0)
+    #stealth = models.IntegerField(default=0)
+    #survival_horror = models.IntegerField(default=0)
+    #sports = models.IntegerField(default=0)
+    #party = models.IntegerField(default=0)
+    #platform = models.IntegerField(default=0)
+    #puzzle = models.IntegerField(default=0)
+    #god_game = models.IntegerField(default=0)
+    #flight_simulation = models.IntegerField(default=0)
+    #fighting = models.IntegerField(default=0)
+    #beatemup = models.IntegerField(default=0)
+    #adventure = models.IntegerField(default=0)
+    #action = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.name)

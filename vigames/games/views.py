@@ -1,7 +1,6 @@
 from datetime import timedelta, date
 
 from django.http import Http404
-from djoser.conf import User
 from rest_framework import status
 from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
@@ -280,10 +279,27 @@ class AssessPostDetail(APIView):
                 post.disliked.remove(account)
             return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 class OutputLibrary(ListAPIView):
     """Вывод библиотеки игр пользователя"""
     def get(self, request, pk):
-        user = request.user
         games = Game.objects.filter(players=pk)
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
+
+
+class DownloadGame(ListAPIView):
+    """Скачивание игры"""
+    def get(self, request, pk):
+        user = request.user
+        game = Game.objects.get(id=pk)
+        if user.is_authenticated:
+            try:
+                account = Account.objects.get(user=user)
+                if account in game.players.all():
+                    # реализация скачивания
+                    return Response({"message": "success"})
+            except Account.DoesNotExist:
+                return Response({"message": "fail"})
+        return Response({"message": "fail"})
+
