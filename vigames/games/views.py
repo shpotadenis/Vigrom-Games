@@ -5,7 +5,7 @@ from djoser.conf import User
 from rest_framework import status
 from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
-from .models import Game, Rating
+from .models import Game, Rating, Account, Posts
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -180,3 +180,55 @@ class OutputGames(ListAPIView):
             .order_by('-date_release')[:10]
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
+
+
+class BuyGameDetail(APIView):
+
+    def put(self, request, pk, format=None):
+        user = request.user
+        game = Game.objects.get(id=pk)
+        if user.is_authenticated:
+            try:
+                account = Account.objects.get(user=user)
+                if account not in game.players.all():
+                    game.players.add(account)
+                    game.who_added_to_wishlist.remove(account)
+                    return Response({"message": "success"}, status=status.HTTP_200_OK)
+                return Response({"message": "bought"})
+            except Account.DoesNotExist:
+                return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class WishListDetail(APIView):
+
+    def get_game(self, pk):
+        try:
+            return Game.objects.get(pk=pk)
+        except Game.DoesNotExist:
+            raise Http404
+
+    def post(self, request, pk, format=None):
+        user = request.user
+        game = Game.objects.get(id=pk)
+        if user.is_authenticated:
+            try:
+                account = Account.objects.get(user=user)
+                if account not in game.who_added_to_wishlist.all():
+                    game.who_added_to_wishlist.add(account)
+                    return Response({"message": "success"}, status=status.HTTP_200_OK)
+                return Response({"message": "added"})
+            except Account.DoesNotExist:
+                return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def delete(self, request, pk, format=None):
+        user = request.user
+        game = Game.objects.get(id=pk)
+        if user.is_authenticated:
+            try:
+                account = Account.objects.get(user=user)
+                if account in game.who_added_to_wishlist.all():
+                    game.who_added_to_wishlist.remove(account)
+            except Account.DoesNotExist:
+                pass
+        return Response(status=status.HTTP_204_NO_CONTENT)

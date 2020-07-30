@@ -4,30 +4,6 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
-class Category(models.Model):
-    # Модель категорий
-    name = models.CharField("Категория", max_length=100)
-    descriptions = models.TextField("Описание")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
-
-
-# class Registration(models.Model): (можно использовать стандартный User, поле date_reg перенести в Account)
-# Регистрация пользователя
-# username = models.CharField(max_length=50, unique=True)
-# email = models.EmailField(unique=True)
-# password = models.CharField(max_length=50)
-# date_reg = models.DateField(date.today)
-
-# def __str__(self):
-#   return self.username
-
-
 class Media(models.Model):
     title = models.CharField('Заголовок изображения', max_length=50)
     img = models.ImageField("Изображение", upload_to="img/%Y/%m")
@@ -83,11 +59,6 @@ class Account(models.Model):
     adventure = models.IntegerField(default=0)
     action = models.IntegerField(default=0)
 
-    # developed_games = models.ForeignKey(Game, on_delete=models.PROTECT,
-    #                                   related_name="developed_games", null=True)
-    # bought_games = models.ManyToManyField(Game, related_name="bought_games", blank=True)
-    # Добавить список игр - скорее всего связь многие ко многим
-
     def __str__(self):
         return str(self.name)
 
@@ -96,10 +67,25 @@ class Account(models.Model):
         verbose_name_plural = "Аккаунты"
 
 
+class Category(models.Model):
+    # Модель категорий
+    name = models.CharField("Категория", max_length=100)
+    descriptions = models.TextField("Описание")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+
+
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
+    who_added_to_wishlist = models.ManyToManyField(Account, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(Account, on_delete=models.PROTECT,
                                         related_name="game_author", null=True)
+    categories = models.ManyToManyField(Category, blank=True, related_name="categories")
     title = models.CharField(max_length=32, default="")
     url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     short_description = models.CharField(max_length=250, default="")
@@ -113,7 +99,7 @@ class Game(models.Model):
     description = models.TextField(default="")
     genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
-    rait = models.FloatField(default=0)
+    rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
 
 
@@ -129,20 +115,6 @@ class Basket(models.Model):
 class Orders(models.Model):
     # Заказы
     pass
-
-
-# class Role(models.Model):
-# Роль на сайте. В базе прописываются 3 позиции Пользователь/разработчик/модератор.
-# При регистрации выбор между двумя Пользователь/разрабочик
-# user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-# role = models.CharField("Пользователь/разработчик", max_length=50)
-
-# def __str__(self):
-#    return self.role
-
-# class Meta:
-#    verbose_name = "Роль"
-#    verbose_name_plural = "Роли"
 
 
 class Posts(models.Model):
@@ -212,3 +184,4 @@ class Rating(models.Model):
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,
                                     related_name="game", null=True)
+
