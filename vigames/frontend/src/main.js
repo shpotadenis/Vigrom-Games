@@ -8,7 +8,6 @@ import GameSinglePage from "./pages/GameSinglePage/index.vue";
 import LoginPage from "./pages/LoginPage/index.vue";
 import NewsPage from "./pages/NewsGamePage/NewsPage";
 import HomePage from "./pages/HomeGamePage/HomePage";
-import SignInPage from "./pages/SignInPage/index.vue"
 
 Vue.use(Router);
 
@@ -19,8 +18,7 @@ const router = new Router({
     { path: '/login', name: 'loginPage', component: LoginPage },
     { path: '/shop', name: 'singlePage', component: GameSinglePage },
     { path: '/home', name: 'homePage', component: HomePage },
-    { path: '/news', name: 'newsPage', component: NewsPage },
-    { path: '/sign_in', name: 'signInPage', component: SignInPage }
+    { path: '/news', name: 'newsPage', component: NewsPage }
   ]
 })
 

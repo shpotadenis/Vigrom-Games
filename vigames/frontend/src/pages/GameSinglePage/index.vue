@@ -1,7 +1,8 @@
 <template>
     <div>
+        <checkout v-if="isBtnClick"></checkout>
     <div class="wrapper">
-        <breadcrumbs-component></breadcrumbs-component>
+        <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
         <div class="game-card">
             <img src="@/assets/img/top_banner.png" alt="Banner of game" class="full-banner">
             <div class="info-card">
@@ -12,7 +13,7 @@
                     От {{getGameData.dev}}
                 </p>
                 <div class="info-card__buy">
-                    <a href="#!" class="buy__btn">Купить</a>
+                    <button @click="checkout" class="buy__btn">Купить</button>
                     <span class="buy__price">{{getGameData.price}} Р</span>
                 </div>
             </div>

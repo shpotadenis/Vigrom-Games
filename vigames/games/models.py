@@ -4,30 +4,6 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
-class Category(models.Model):
-    # Модель категорий
-    name = models.CharField("Категория", max_length=100)
-    descriptions = models.TextField("Описание")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
-
-
-# class Registration(models.Model): (можно использовать стандартный User, поле date_reg перенести в Account)
-# Регистрация пользователя
-# username = models.CharField(max_length=50, unique=True)
-# email = models.EmailField(unique=True)
-# password = models.CharField(max_length=50)
-# date_reg = models.DateField(date.today)
-
-# def __str__(self):
-#   return self.username
-
-
 class Media(models.Model):
     title = models.CharField('Заголовок изображения', max_length=50)
     img = models.ImageField("Изображение", upload_to="img/%Y/%m")
@@ -40,11 +16,32 @@ class Media(models.Model):
         verbose_name = "Изображение"
         verbose_name_plural = "Изображения"
 
+class Genre(models.Model):
+    strategy = models.IntegerField(default=0)
+    rpg = models.IntegerField(default=0)
+    f2p = models.IntegerField(default=0)
+    shooter = models.IntegerField(default=0)
+    racing = models.IntegerField(default=0)
+    horror = models.IntegerField(default=0)
+    stealth = models.IntegerField(default=0)
+    survival_horror = models.IntegerField(default=0)
+    sports = models.IntegerField(default=0)
+    party = models.IntegerField(default=0)
+    platform = models.IntegerField(default=0)
+    puzzle = models.IntegerField(default=0)
+    god_game = models.IntegerField(default=0)
+    flight_simulation = models.IntegerField(default=0)
+    fighting = models.IntegerField(default=0)
+    beatemup = models.IntegerField(default=0)
+    adventure = models.IntegerField(default=0)
+    action = models.IntegerField(default=0)
+
 
 class Account(models.Model):
     # Аккаунт пользователя
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # Достаем из базы
     # данные регистрации
+    fav_genres = models.ManyToManyField(Genre, blank=True)
     date_joined = models.DateField(default=date.today)
     tel = models.CharField(max_length=12, null=True)  # Номер телефона
     '''Пока номер телефона вводится просто как строка без проверки. В будущем можно будет заменить на этот код:
@@ -64,29 +61,24 @@ class Account(models.Model):
     is_administrator = models.BooleanField(default=False, null=True)
     bank_cаrd = models.CharField("Номер карты", max_length=20, null=True)
     foto = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
-    strategy = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    rpg = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    f2p = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    shooter = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    racing = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    horror = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    stealth = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    survival_horror = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    sports = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    party = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    platform = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    puzzle = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    god_game = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    flight_simulation = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    fighting = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    beatemup = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    adventure = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-    action = models.CharField("Предпочтительный жанр", max_length=20, null=True)
-
-    # developed_games = models.ForeignKey(Game, on_delete=models.PROTECT,
-    #                                   related_name="developed_games", null=True)
-    # bought_games = models.ManyToManyField(Game, related_name="bought_games", blank=True)
-    # Добавить список игр - скорее всего связь многие ко многим
+    #strategy = models.IntegerField(default=0)
+    #rpg = models.IntegerField(default=0)
+    #f2p = models.IntegerField(default=0)
+    #shooter = models.IntegerField(default=0)
+    #racing = models.IntegerField(default=0)
+    #horror = models.IntegerField(default=0)
+    #stealth = models.IntegerField(default=0)
+    #survival_horror = models.IntegerField(default=0)
+    #sports = models.IntegerField(default=0)
+    #party = models.IntegerField(default=0)
+    #platform = models.IntegerField(default=0)
+    #puzzle = models.IntegerField(default=0)
+    #god_game = models.IntegerField(default=0)
+    #flight_simulation = models.IntegerField(default=0)
+    #fighting = models.IntegerField(default=0)
+    #beatemup = models.IntegerField(default=0)
+    #adventure = models.IntegerField(default=0)
+    #action = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.name)
@@ -96,10 +88,25 @@ class Account(models.Model):
         verbose_name_plural = "Аккаунты"
 
 
+class Category(models.Model):
+    # Модель категорий
+    name = models.CharField("Категория", max_length=100)
+    descriptions = models.TextField("Описание")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+
+
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
+    who_added_to_wishlist = models.ManyToManyField(Account, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(Account, on_delete=models.PROTECT,
                                         related_name="game_author", null=True)
+    categories = models.ManyToManyField(Category, blank=True, related_name="categories")
     title = models.CharField(max_length=32, default="")
     url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     short_description = models.CharField(max_length=250, default="")
@@ -113,6 +120,7 @@ class Game(models.Model):
     description = models.TextField(default="")
     genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
+    rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
 
 
@@ -130,24 +138,18 @@ class Orders(models.Model):
     pass
 
 
-# class Role(models.Model):
-# Роль на сайте. В базе прописываются 3 позиции Пользователь/разработчик/модератор.
-# При регистрации выбор между двумя Пользователь/разрабочик
-# user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-# role = models.CharField("Пользователь/разработчик", max_length=50)
-
-# def __str__(self):
-#    return self.role
-
-# class Meta:
-#    verbose_name = "Роль"
-#    verbose_name_plural = "Роли"
-
-
 class Posts(models.Model):
     # Модель записи в блоге
     # author = models.ManyToManyField(User, default='admin')
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    liked = models.ManyToManyField(Account, blank=True, related_name="liked")
+    disliked = models.ManyToManyField(Account, blank=True, related_name="disliked")
+
+    #в принципе можно убрать счетчики и искать кол-во лайкнувших/дизлайкнувших людей,
+    #посмотреть, как удобнее
+    count_likes = models.PositiveIntegerField(default=0)
+    count_dislikes = models.PositiveIntegerField(default=0)
+
     title = models.CharField("Заголовок записи", max_length=150)
     url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
@@ -156,6 +158,7 @@ class Posts(models.Model):
     img = models.ImageField('Изображение записи', upload_to='img/%Y/%m', null=True)    # Главная фотография записи
     num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
     draft = models.BooleanField("Черновик", default=False)
+    forthegame = models.IntegerField(default=0)
 
     # Вопрос по изображениям открыт. Делать для них отдельную модель или сделать загрузку сюда???
     # Вопрос с количеством просмотров тоже открыт
@@ -193,7 +196,7 @@ class Comments_Post(models.Model):
     page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
-    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True, related_name='children')
     date = models.DateTimeField(auto_now_add=True)
     moderation = models.BooleanField(default=True)
 
@@ -210,3 +213,4 @@ class Rating(models.Model):
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,
                                     related_name="game", null=True)
+

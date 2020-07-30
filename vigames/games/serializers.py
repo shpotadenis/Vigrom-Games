@@ -20,16 +20,35 @@ class OutputAllNews(serializers.ModelSerializer):
         fields = ('author', 'title', 'description', 'data', 'url', 'num_views', 'img')
 
 
+class FilterCommentSerializer(serializers.ListSerializer):
+    """Сериализатор, чтобы зависимые комментарии не дублировались в основном списке"""
+    def to_representation(self, data):
+        data = data.filter(parent=None)
+        print(data)
+        return super().to_representation(data)
+
+
+class RecursiveSerializer(serializers.Serializer):
+    """Сериализатор для вывода вложенных комментариев"""
+    def to_representation(self, value):
+        serializer = self.parent.parent.__class__(value, context=self.context)
+        return serializer.data
+
+
 class CommentsNewsSerializer(serializers.ModelSerializer):
-    """Вывод комментариев на странице новости"""
+    """Ввод/Вывод комментариев на странице новости"""
+    user = serializers.SlugRelatedField(slug_field='username', read_only=True)
+    children = RecursiveSerializer(many=True, read_only=True)
 
     class Meta:
+        list_serializer_class = FilterCommentSerializer
         model = Comments_Post
-        exclude = ('moderation', )
+        exclude = ('moderation', 'page')
 
 
 class CommentsGamesSerializer(serializers.ModelSerializer):
     """Вывод комментариев на странице игры"""
+    user = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
         model = Comments_Game

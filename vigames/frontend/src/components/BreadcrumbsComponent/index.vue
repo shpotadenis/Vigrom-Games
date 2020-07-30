@@ -1,18 +1,15 @@
 <template>
     <div class="wrapper">
         <ul class="breadcrumbs">
-            <li class="breadcrumb">
-                <a href="#!" class="breadcrumb__link">
-                    Главная
-                    <img src="@/assets/img/right.svg" alt=">" class="breadcrumb__right">
-                </a>
-                <a href="#!" class="breadcrumb__link">
-                    Магазин
-                    <img src="@/assets/img/right.svg" alt=">" class="breadcrumb__right">
-                </a>
-                <a class="breadcrumb__link">
-                    Название игры
-                </a>
+            <li class="breadcrumb" v-for="(item, idx) in items" :key="idx">
+                <router-link v-if="item.to !== undefined" :to="item.to" class="breadcrumb__link">
+                    {{item.title}}
+                    <img v-if="idx != items.length - 1" src="@/assets/img/chevron-right-icon.svg" alt=">" class="breadcrumb__right">
+                </router-link>
+                <span v-else class="breadcrumb__link">
+                    {{item.title}}
+                    <img v-if="idx != items.length - 1" src="@/assets/img/chevron-right-icon.svg" alt=">" class="breadcrumb__right">
+                </span>
             </li>
         </ul>
     </div>

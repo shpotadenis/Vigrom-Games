@@ -40,10 +40,24 @@
     line-height: 16px;
     color: #7A7A83;
     text-decoration: none;
+    padding-bottom: 30px;
 }
 
 .header__link:hover, .header__link:active, .header__link:focus {
     opacity: .75;
+}
+
+.header__logo .router-link-active {
+    border: none !important;
+}
+
+.router-link-active {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+    border-bottom: #CE6796 3px solid;
 }
 
 .header__nav {
