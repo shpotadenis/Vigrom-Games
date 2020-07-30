@@ -10,6 +10,7 @@
       <little-popular/>
       <new-game-page/>
       <bests-game-page/>
+      <categories-game-page/>
     </div>
   </div>
 </div>
@@ -22,6 +23,7 @@ import PopularGames from "./catalogscomponents/PopularGames"
 import LittlePopular from "./popularcomponents/LittlePopularPage.vue"
 import NewGamePage from "./newgamepage/NewGamePage"
 import BestsGamePage from "./bestsgamepage/BestsGamePage"
+import CategoriesGamePage from "./categoriesgamepage/CategoriesGamePage"
 
 export default {
   name: 'HomePage',
@@ -30,7 +32,8 @@ export default {
     PopularGames,
     LittlePopular,
     NewGamePage,
-    BestsGamePage
+    BestsGamePage,
+    CategoriesGamePage
   },
   data(){
   return{

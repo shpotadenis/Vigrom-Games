@@ -88,11 +88,11 @@ methods:{
 	position:absolute;
 	transform:rotate(180deg);
 	left:15%;
-	top:60%;
+	top:8%;
 }
 .strelka2{
 	position:absolute;
-	top:60%;
+	top:8%;
 	left:80%;
 }
 </style>
