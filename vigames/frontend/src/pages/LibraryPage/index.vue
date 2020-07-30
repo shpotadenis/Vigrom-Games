@@ -15,7 +15,8 @@
             <banner-component day="Сегодня"
                               header="Новые инди игры уже на главной"
                               description="Унитарное государство, однако, доказывает системный политический процесс в современной России"
-                              btn-caption="Подробнее">
+                              btn_caption="Подробнее"
+                              :btn_route="{ name: 'homePage' }">
             </banner-component>
 
             <div class="main-content">

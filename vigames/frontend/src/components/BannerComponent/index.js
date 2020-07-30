@@ -4,6 +4,7 @@ export default {
         day: String,
         header: String,
         description: String,
-        'btn-caption': String
+        btn_caption: String,
+        btn_route: Object
     }
 }

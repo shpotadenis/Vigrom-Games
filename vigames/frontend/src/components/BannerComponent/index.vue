@@ -11,18 +11,20 @@
                 <p class="content__text">
                     {{description}}
                 </p>
-                <div class="content__btn">
-                    <span>
-                        {{btn-caption}}
-                    </span>
-                    <span>
-                        <img src="@/assets/img/arrow-right.png" alt="" class="btn__arrow">
-                    </span>
-                </div>
+                <router-link :to="btn_route">
+                    <div class="content__btn">
+                        <span>
+                            {{btn_caption}}
+                        </span>
+                        <span>
+                            <img src="@/assets/img/arrow-right.png" alt="" class="btn__arrow">
+                        </span>
+                    </div>
+                </router-link>
             </div>
         </div>
         <div class="banner__image">
-            <img src="@/assets/img/library_banner.png" alt="" class="banner__image-pic">
+            <img src="@/assets/img/banner_pic.png" alt="" class="banner__image-pic">
         </div>
     </div>
 </template>
