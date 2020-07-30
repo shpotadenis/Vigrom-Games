@@ -113,11 +113,8 @@ class Game(models.Model):
     description = models.TextField(default="")
     genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
-<<<<<<< HEAD
     rait = models.FloatField(default=0)
-=======
     sale_percent = models.PositiveIntegerField(default=0)
->>>>>>> origin/master
 
 
 '''
@@ -198,7 +195,7 @@ class Comments_Post(models.Model):
     page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
-    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True, related_name='children')
     date = models.DateTimeField(auto_now_add=True)
     moderation = models.BooleanField(default=True)
 
