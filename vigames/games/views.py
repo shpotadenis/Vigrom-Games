@@ -11,7 +11,8 @@ from rest_framework.views import APIView
 
 from .models import Account, Posts
 from .permissions import IsOwnerProfileOrReadOnly
-from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, RatingSerializer, CommentsNewsSerializer
+from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, RatingSerializer, \
+    CommentsNewsSerializer, CommentsNewsCreateSerializer
 
 
 class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
