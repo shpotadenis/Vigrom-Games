@@ -1,14 +1,18 @@
 <template>
-  <div class="wrappen">
-    <categories/>
-    <popular-games
-      :Array_Slide="items"
-      :Interval="4000"
-    />
-    <little-popular/>
-    <new-game-page/>
-    <bests-game-page/>
+<div class="container">
+  <div class="col">
+    <div class="wrappen">
+      <categories/>
+      <popular-games
+        :Array_Slide="items"
+        :Interval="4000"
+      />
+      <little-popular/>
+      <new-game-page/>
+      <bests-game-page/>
+    </div>
   </div>
+</div>
 </template>
 
 <script>

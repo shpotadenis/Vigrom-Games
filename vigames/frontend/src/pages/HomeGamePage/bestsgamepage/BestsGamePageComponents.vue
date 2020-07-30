@@ -1,6 +1,6 @@
 <template>
   <div class="BestsGamePageComponents">
-    <img v-bind:src="require('@/assets/img/' + Bests_Game.image)" width="700">
+    <img v-bind:src="require('@/assets/img/' + Bests_Game.image)" width="700" height="320" class="ImageGameBests">
     <div class="InfoBestsGame">
         <p class="CategoriesBestsGame">{{Bests_Game.categoreis}}</p>
         <p class="NameBestsGame">{{Bests_Game.name}}</p>
@@ -30,6 +30,8 @@ export default {
 </script>
 <style>
 .BestsGamePageComponents{
+
+height:295px;
 display:flex;
 border-radius:10px;
   margin-top:17px;
@@ -39,6 +41,10 @@ border-radius:10px;
 .InfoBestsGame{
   margin-top:40px;
   margin-left:30px;
+}
+.ImageGameBests{
+position:relative;
+top:-12px;
 }
 .CategoriesBestsGame{
 font-style: normal;
