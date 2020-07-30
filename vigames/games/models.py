@@ -82,9 +82,10 @@ class Category(models.Model):
 
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
-    categories = models.ManyToManyField(Category, blank=True, related_name="categories")
+    who_added_to_wishlist = models.ManyToManyField(Account, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(Account, on_delete=models.PROTECT,
                                         related_name="game_author", null=True)
+    categories = models.ManyToManyField(Category, blank=True, related_name="categories")
     title = models.CharField(max_length=32, default="")
     url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     short_description = models.CharField(max_length=250, default="")
@@ -183,3 +184,4 @@ class Rating(models.Model):
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,
                                     related_name="game", null=True)
+

@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import UserProfileDetailView, OutputAllNewsView, GameDetail, OutputPostView, OutputGames, CommentCreateView, GameRatingDetail, BuyGameDetail
+from .views import UserProfileDetailView, OutputAllNewsView, GameDetail, OutputPostView, OutputGames, CommentCreateView, \
+    GameRatingDetail, BuyGameDetail, WishListDetail
 
 urlpatterns = [
     path('profile/<int:pk>', UserProfileDetailView.as_view(), name="profile"),
@@ -10,6 +11,7 @@ urlpatterns = [
     path('games/<int:pk>/rating', GameRatingDetail.as_view(), name="rating_game"),
     path('games/<int:pk>', GameDetail.as_view(), name="current_game"),
     path('games/<int:pk>/buy', BuyGameDetail.as_view(), name="buy_game"),
+    path('games/<int:pk>/wishlist', WishListDetail.as_view(), name="wishlist"),
     path('news/', OutputAllNewsView.as_view()),
     path(('news/<str:pk>/'), OutputPostView.as_view()),
     path('', OutputGames.as_view(), name="main"),
