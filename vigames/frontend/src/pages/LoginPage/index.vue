@@ -42,7 +42,9 @@
 
                 </form>
                     <div class="row justify-content-center">
-                        <button class="next-btn ">Далее</button>
+                        <router-link :to="{name:'signUpRolePage'}">
+                            <button class="next-btn ">Далее</button>
+                        </router-link>
                     </div>
                     <router-link :to="{name: 'signInPage'}" class="signin-link row justify-content-center">
                         Уже есть аккаунт?

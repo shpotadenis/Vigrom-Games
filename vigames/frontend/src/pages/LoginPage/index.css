@@ -1,3 +1,7 @@
+.loginPage{
+    font-family: Open Sans;
+}
+
 .login-form{
     background: #2D2D42;
     border-radius: 0px 10px 10px 0px;
@@ -39,10 +43,15 @@ p{
     position: relative;
     width: 100px;
     height: 40px;
+    color: #FFFFFF;
+    margin-top: 10px;
+    border: none;
+}
+
+.next-btn:hover{
     -moz-box-shadow:0 0 15px #CE6796;
     -webkit-box-shadow:0 0 15px #CE6796;
     box-shadow:0 0 15px #CE6796;
-    border: none;
 }
 .form-control{
     background: #29293D;
@@ -83,7 +92,7 @@ input{
 }
 
 .passEye{
-    top: 258px;
+    top: 257px;
 }
 
 .signin-link{
