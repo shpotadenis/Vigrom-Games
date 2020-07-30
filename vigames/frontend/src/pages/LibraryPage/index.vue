@@ -26,7 +26,9 @@
                     </h1>
                 </div>
                 <div class="main-content__games">
-                    <div class="game-card" v-for="i in 10" :key="i">test</div>
+                    <!--
+                        TODO: Добавить компонент карточки игры
+                    !-->
                 </div>
             </div>
         </div>
