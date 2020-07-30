@@ -3,19 +3,22 @@
     max-width: 1140px;
 }
 
-.breadcrumbs {
+.breadcrumb {
     display: inline-block;
 }
 
 .breadcrumb__link {
+    font-family: Roboto;
+    font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    color: #7A7A83;
+    color: #FFFFFF;
     opacity: 0.8;
     text-decoration: none;
 }
 
 .breadcrumb__right {
-    margin: 0 10px;
+    margin: 0 9px;
+    color: #fff;
 }

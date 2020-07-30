@@ -2,7 +2,7 @@
     <div>
         <checkout v-if="isBtnClick"></checkout>
     <div class="wrapper">
-        <breadcrumbs-component></breadcrumbs-component>
+        <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
         <div class="game-card">
             <img src="@/assets/img/top_banner.png" alt="Banner of game" class="full-banner">
             <div class="info-card">
