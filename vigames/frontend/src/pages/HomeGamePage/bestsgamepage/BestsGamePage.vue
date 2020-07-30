@@ -1,4 +1,5 @@
 <template>
+
   <div class="BestsGamePage">
     <div class="BestsGameTitle">
       <p class="Title">Бестселлеры</p>
@@ -16,7 +17,7 @@
       />
     </div>
 
-  </div>
+</div>
 </template>
 
 <script>

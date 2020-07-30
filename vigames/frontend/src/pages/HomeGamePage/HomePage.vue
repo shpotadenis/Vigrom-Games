@@ -1,14 +1,24 @@
 <template>
-  <div class="wrappen">
-    <categories/>
-    <popular-games
-      :Array_Slide="items"
-      :Interval="4000"
-    />
-    <little-popular/>
-    <new-game-page/>
-    <bests-game-page/>
+<div class="container">
+  <div class="col">
+    <div class="wrappen">
+      <categories/>
+      <popular-games
+        :Array_Slide="items"
+        :Interval="4000"
+      />
+      <little-popular/>
+      <new-game-page/>
+      <bests-game-page/>
+      <categories-game-page/>
+      <recommendation-game-page/>
+      <div class="Banner"></div>
+      <div class="foot">
+        <footer-components/>
+      </div>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -18,6 +28,9 @@ import PopularGames from "./catalogscomponents/PopularGames"
 import LittlePopular from "./popularcomponents/LittlePopularPage.vue"
 import NewGamePage from "./newgamepage/NewGamePage"
 import BestsGamePage from "./bestsgamepage/BestsGamePage"
+import CategoriesGamePage from "./categoriesgamepage/CategoriesGamePage"
+import RecommendationGamePage from "./recommendationgamepage/RecommendationGamePage"
+import FooterComponents from "../../components/FooterComponent/index.vue"
 
 export default {
   name: 'HomePage',
@@ -26,7 +39,10 @@ export default {
     PopularGames,
     LittlePopular,
     NewGamePage,
-    BestsGamePage
+    BestsGamePage,
+    CategoriesGamePage,
+    RecommendationGamePage,
+    FooterComponents
   },
   data(){
   return{
@@ -70,6 +86,17 @@ export default {
 <style>
 .wrappen{
   width:1000px;
-  margin:auto;
+  margin:0 auto;
+}
+.Banner{
+width:1000px;
+height:434px;
+margin-top:93px;
+background: #2D2D42;
+border-radius: 10px;
+}
+.foot{
+width:1100px;
+margin-top:100px;
 }
 </style>
