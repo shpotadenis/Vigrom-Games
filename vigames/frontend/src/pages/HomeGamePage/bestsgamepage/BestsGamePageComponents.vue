@@ -39,7 +39,7 @@ border-radius:10px;
 
 }
 .InfoBestsGame{
-  margin-top:40px;
+  margin-top:10px;
   margin-left:30px;
 }
 .ImageGameBests{
