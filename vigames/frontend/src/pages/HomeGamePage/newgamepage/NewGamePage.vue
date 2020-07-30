@@ -73,7 +73,7 @@ export default {
 }
 .NewGameTitle{
 position:relative;
-top:70px;
+top:60px;
 left:50px;
   display:flex;
   justify-content:space-between;
@@ -103,7 +103,7 @@ left:50px;
 position:relative;
 width: 1000px;
 height: 515px;
-margin-top:93px;
+margin-top:73px;
 background: #2D2D42;
 border-radius: 10px;
 }

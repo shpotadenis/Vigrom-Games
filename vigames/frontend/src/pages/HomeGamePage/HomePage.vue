@@ -1,13 +1,18 @@
 <template>
-  <div class="wrappen">
-    <categories/>
-    <popular-games
-      :Array_Slide="items"
-      :Interval="4000"
-    />
-    <little-popular/>
-    <new-game-page/>
+<div class="container">
+  <div class="col">
+    <div class="wrappen">
+      <categories/>
+      <popular-games
+        :Array_Slide="items"
+        :Interval="4000"
+      />
+      <little-popular/>
+      <new-game-page/>
+      <bests-game-page/>
+    </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -16,6 +21,7 @@ import Categories from "./startcomponents/Categories"
 import PopularGames from "./catalogscomponents/PopularGames"
 import LittlePopular from "./popularcomponents/LittlePopularPage.vue"
 import NewGamePage from "./newgamepage/NewGamePage"
+import BestsGamePage from "./bestsgamepage/BestsGamePage"
 
 export default {
   name: 'HomePage',
@@ -23,7 +29,8 @@ export default {
     Categories,
     PopularGames,
     LittlePopular,
-    NewGamePage
+    NewGamePage,
+    BestsGamePage
   },
   data(){
   return{

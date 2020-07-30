@@ -65,7 +65,7 @@ export default {
 		justify-content:space-between;
 	}
 	.CategoriesGame>ul{
-		margin-top:12px;
+		margin-top:15px;
 	}
 	.CategoriesGame>ul>li a{
 		color: #7A7A83;
