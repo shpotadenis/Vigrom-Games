@@ -113,11 +113,8 @@ class Game(models.Model):
     description = models.TextField(default="")
     genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
-<<<<<<< HEAD
     rait = models.FloatField(default=0)
-=======
     sale_percent = models.PositiveIntegerField(default=0)
->>>>>>> origin/master
 
 
 '''
