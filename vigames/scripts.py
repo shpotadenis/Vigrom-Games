@@ -4,12 +4,18 @@ import os.path
 
 
 class Search:  # первый аргумент - запрос юзера, второй - флаг games или news.
+    global spis_genre
+    spis_genre = ['strategy', 'rpg', 'f2p', 'shooter', 'racing', 'horror', 'stealth', 'sports', 'party',
+                  'platform', 'puzzle', 'god_game', 'flight_simulation', 'fighting', 'beatemup', 'adventure',
+                  'action']
+
     def search(self, reqst, games_or_news):
         end_spis = []  # словарь с рейтингом названий
         right_letters = 0
         games = []
         bull = 0
         rait = 0
+        genre = 0
         tochno_end = []
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         db_path = os.path.join(BASE_DIR, "db.sqlite3")
@@ -39,7 +45,12 @@ class Search:  # первый аргумент - запрос юзера, вто
             if games_or_news == 'news':
                 cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
             cursor.execute("SELECT rait FROM games_game WHERE id = ?", (int(str(cursor.fetchone())[1:-2]),))
-            spis_genre = ['strategy', 'rpg', 'f2p', 'shooter', 'racing', 'horror', 'stealth', 'sports', 'party', 'platform', 'puzzle', 'god_game', 'flight_simulation', 'fighting', 'beatemup', 'adventure', 'action']
+            if lelem[0] == bull and (int(str(cursor.fetchone())[1:-2])) > rait:
+                for word in spis_genre:
+                    cursor.execute("SELECT ? FROM games_user", (word,))
+                    if int(str(cursor.fetchone())[1:-2]) > genre:
+                        rait += 1
+                        end_spis[end_spis.index(lelem)], end_spis[0] = end_spis[0], end_spis[end_spis.index(lelem)]
             if lelem[0] == bull and (int(str(cursor.fetchone())[1:-2])) > rait:
                 rait = (int(str(cursor.fetchone())[1:-2]))
                 end_spis[end_spis.index(lelem)], end_spis[0] = end_spis[0], end_spis[end_spis.index(lelem)]
@@ -62,8 +73,16 @@ class Search:  # первый аргумент - запрос юзера, вто
     def news(self, rt, ):
         pass
 
+    def add_clmn(self, name_genre):
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        db_path = os.path.join(BASE_DIR, "db.sqlite3")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute("ALTER TABLE games_account ADD COLUMN '%s' integer" % name_genre)
+        spis_genre.append(name_genre)
+        conn.close()
+
 
 start_time = time.time()
-print(Search.search(Search(), 'xcom', 'games'))
+Search.add_clmn(Search(), 'fgjhgj')
 print("--- %s seconds ---" % (time.time() - start_time))
-

@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 from .models import Account, Posts
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, RatingSerializer
+from vigames.scripts import Search
 
 
 class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -57,8 +58,8 @@ class GameDetail(APIView):
             if user.is_authenticated:
                 account = Account.objects.get(user=user)
                 if account.is_developer:
-                        serializer.save(author=account)
-                        return Response(serializer.data)
+                    serializer.save(author=account)
+                    return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, pk, format=None):
@@ -109,8 +110,8 @@ class GameRatingDetail(APIView):
                         flag = False
                         break
                 if flag:
-                        rating_serializer.save()
-                        return Response(rating_serializer.data)
+                    rating_serializer.save()
+                    return Response(rating_serializer.data)
         return Response(rating_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, pk, format=None):
@@ -153,8 +154,12 @@ class GameRatingDetail(APIView):
 
 class OutputGames(ListAPIView):
     """Вывод списка игр за неделю"""
+
     def get(self, request):
-        games = Game.objects.filter(date_release__gte=date.today()-timedelta(days=7))\
-            .order_by('-date_release')[:10]
+        games = Game.objects.filter(date_release__gte=date.today() - timedelta(days=7)) \
+                    .order_by('-date_release')[:10]
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
+
+
+Search.add_clmn(Search(), 'fgjhgj')
