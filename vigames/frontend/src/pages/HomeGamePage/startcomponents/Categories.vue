@@ -15,16 +15,17 @@
 					<img src="@/assets/img/search-icon.png">
 				</div>
 				<div class="SearchText">
-					<input 
-						type="text" 
-						class="InputFilterGames" 
-						placeholder="Начните вводить текст..." 
+					<input
+						type="text"
+						class="InputFilterGames"
+						placeholder="Поиск..."
 					>
 				</div>
 			</div>
+			<div class="BorderTop"></div>
 		</div>
-		
-		
+
+
 	</div>
    <transition name="fade">
 		<categories-choose
@@ -64,7 +65,7 @@ export default {
 		justify-content:space-between;
 	}
 	.CategoriesGame>ul{
-		margin-top:12px;
+		margin-top:15px;
 	}
 	.CategoriesGame>ul>li a{
 		color: #7A7A83;
@@ -82,7 +83,7 @@ export default {
 		font-style: normal;
 		font-weight: normal;
 		line-height: 19px;
-		color: #7A7A83;
+		color: #7A7A83;;
 	}
 	.FilterGames{
 		margin-top:5px;
@@ -94,22 +95,33 @@ export default {
 	.InputFilterGames{
 		width: 300px;
 		height: 33px;
-		background:#9E9E9E;
+		background:#212130;
 		margin-left:9px;
 		border:none;
 	}
 	.InputFilterGames:active, :hover, :focus{
 		outline:none;
-	
+
 	}
 	.SpaceBetweenImageAndText{
-		background-color:#9E9E9E;
+		background-color:#212130;
+		margin-left:20px;
 	}
 	.SearchImage{
 		display:block;
-		margin-top:9px;
-		margin-left:9px;
-	
+		margin-top:0px;
+		margin-right:10px;
+
+	}
+	input[type=text]{
+		color:#fff;
+	}
+	.BorderTop{
+	position:relative;
+	top:7px;
+		width:350px;
+		height:1px;
+		background: #7A7A83;
 	}
 	input::placeholder{
 		color: rgba(255, 255, 255, 0.3);
@@ -121,5 +133,5 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
   opacity: 0;
 }
-	
+
 </style>
