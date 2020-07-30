@@ -302,4 +302,3 @@ class DownloadGame(ListAPIView):
             except Account.DoesNotExist:
                 return Response({"message": "fail"})
         return Response({"message": "fail"})
-
