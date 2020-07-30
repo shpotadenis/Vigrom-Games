@@ -1,0 +1,100 @@
+.signInPage{
+    font-family: Open Sans;
+}
+
+.login-form{
+    background: #2D2D42;
+    border-radius: 0px 10px 10px 0px;
+    padding: 0;
+    height: 450px;
+}
+.pic-form{
+    border-radius: 10px 0px 0px 10px;
+}
+.data{
+    margin-top: 30px;
+}
+.login-pic{
+    padding: 0;
+    position: absolute;
+    height: 420px;
+    width: 570px;
+    left: -80px;
+    bottom: 15px;
+}
+p{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+}
+
+.head_login{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.next-btn{
+    background: #CE6796;
+    border-radius: 6px;
+    position: relative;
+    width: 100px;
+    height: 40px;
+    color: #FFFFFF;
+    margin-top: 10px;
+    border: none;
+}
+
+.next-btn:hover{
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
+}
+.form-control{
+    background: #29293D;
+    border-radius: 6px;
+    width: 250px;
+    height: 33px;
+    color: #FFFFFF;
+}
+
+input{
+    padding: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: none;
+}
+#confirmPass{
+    position: relative;
+}
+.password-control {
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    right: 70px;
+    -webkit-text-security: disc;
+}
+
+
+.passEye{
+    top: 224px;
+}
+
+.signin-link{
+    font-style: normal;
+    font-weight: normal;
+    color: #F1F1F1;
+    text-decoration: none;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.signin-link:hover{
+    text-decoration: underline;
+}
+
+.btn_and_link{
+    margin-top: 96px;
+}
