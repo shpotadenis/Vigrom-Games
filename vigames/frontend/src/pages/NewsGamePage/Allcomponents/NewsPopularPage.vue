@@ -61,7 +61,6 @@
 
 <style scope>
 	.TopAllPopular{
-		position:absolute;
 		top:145px;
 		width:800px;
 		display:flex;
@@ -69,7 +68,6 @@
 		align-item:center;
 	}
 	.TextNewsPopular{
-		position:absolute;
 		top:100px;
 		width:900px;
 		font-family: 'Muller-Bold';

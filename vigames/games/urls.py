@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import UserProfileDetailView, OutputAllNewsView, GameDetail, OutputPostView, \
-    OutputGames, GameRatingDetail, BuyGameDetail
+from .views import UserProfileDetailView, OutputAllNewsView, GameDetail, OutputPostView, OutputGames, CommentCreateView, GameRatingDetail, BuyGameDetail
 
 urlpatterns = [
     path('profile/<int:pk>', UserProfileDetailView.as_view(), name="profile"),

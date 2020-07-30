@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Router from 'vue-router'
+import store from './store/store.js'
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import GameSinglePage from "./pages/GameSinglePage/index.vue";
@@ -23,5 +24,6 @@ const router = new Router({
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')
