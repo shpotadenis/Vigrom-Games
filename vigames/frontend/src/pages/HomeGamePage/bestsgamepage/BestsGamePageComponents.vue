@@ -54,7 +54,7 @@ line-height: 19px;
 color: #7A7A83;
 }
 .NameBestsGame{
-margin-top:35px;
+margin-top:45px;
 font-style: normal;
 font-weight: 800;
 font-size: 24px;
@@ -63,7 +63,7 @@ line-height: 33px;
 color: #FFFFFF;
 }
 .UnderNameBestsGame{
-width:230px;
+width:320px;
 margin-right:30px;
 font-style: normal;
 font-weight: normal;
@@ -74,7 +74,7 @@ color: #7A7A83;
 
 }
 .ButtonBestsGame{
-margin-top:20px;
+margin-top:35px;
 width: 139px;
 height: 38px;
 color:#fff;

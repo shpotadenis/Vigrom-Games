@@ -85,18 +85,18 @@ export default {
 </script>
 <style>
 .wrappen{
-  width:1000px;
+  width:1110px;
   margin:0 auto;
 }
 .Banner{
-width:1000px;
+width:1110px;
 height:434px;
 margin-top:93px;
 background: #2D2D42;
 border-radius: 10px;
 }
 .foot{
-width:1100px;
+width:1110px;
 margin-top:100px;
 }
 </style>

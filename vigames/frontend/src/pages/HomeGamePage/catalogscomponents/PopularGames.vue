@@ -76,7 +76,7 @@ methods:{
 
 <style>
 .wrapper{
-	max-width:1000px;
+	max-width:1110px;
 	overflow:hidden;
 	margin:0 auto;
 }

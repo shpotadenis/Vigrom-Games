@@ -3,7 +3,7 @@
 	<div class="AllItem">
 		<div class="ItemImage">
 
-			<img v-bind:src="require('@/assets/img/' + Game_Popular.image) " width="1000" height="390">
+			<img v-bind:src="require('@/assets/img/' + Game_Popular.image) " width="1110" height="434">
 
 		</div>
 		<div class="Info">
@@ -53,8 +53,8 @@ position:relative;
 
 .Info{
 	position:relative;
-	width:1000px;;
-	height:90px;
+	width:1110px;;
+	height:100px;
 	top:-3px;
 	background-color: #2D2D42;
 }
