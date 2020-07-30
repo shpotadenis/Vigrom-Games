@@ -12,11 +12,6 @@ export default {
 
         }
     },
-    methods: {
-        closeCheckout () {
-            this.$emit( event: 'closeCheckout')
-        },
-
 
     }
 }

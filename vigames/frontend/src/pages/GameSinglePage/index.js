@@ -32,9 +32,6 @@ export default {
     methods: {
         checkout() {
             this.isBtnClick = true;
-        },
-        closePopup() {
-            this.isBtnClick = false;
         }
     },
     computed: {

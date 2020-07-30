@@ -1,6 +1,6 @@
 <template>
     <div>
-        <checkout v-if="isBtnClick" @closeCheckout="closePopup"></checkout>
+        <checkout v-if="isBtnClick"></checkout>
     <div class="wrapper">
         <breadcrumbs-component></breadcrumbs-component>
         <div class="game-card">
