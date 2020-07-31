@@ -139,9 +139,11 @@ button {
     font-weight: 600;
     font-size: 18px;
     line-height: 25px;
-    color: #CECECE;
+    color: #FFFFFF;
 
     background: #29293D;
+
+    opacity: .65;
 }
 
 .btn-donate:hover {
@@ -156,8 +158,9 @@ button {
   -moz-box-shadow:0 0 15px #EDAF1F;
   -webkit-box-shadow:0 0 15px #EDAF1F;
   box-shadow:0 0 15px #EDAF1F;
-}
 
+  opacity: 100;
+}
 
 .info {
     height: 85px;
