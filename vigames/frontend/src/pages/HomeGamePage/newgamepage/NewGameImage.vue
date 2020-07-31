@@ -1,42 +1,30 @@
 <template>
   <div class="ComponentImage">
-    <img
-    src="@/assets/img/vessel-5.jpg"
-    class="ImageSlideBar"
-    width="200" height="200"
-    >
+    <swiper>
+      <swiper-slide v-for="(image,index) in images" :key="index">
+        <img v-bind:src="require('@/assets/img/' + image)" width="200" height="200">
+      </swiper-slide>
+    </swiper>
 
   </div>
 </template>
 
 <script>
-
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
 
 export default {
-name: 'NewGameImage',
-components: {
-
-},
-props:{
-  Game_Image:{
-    type:Object,
-    default(){
-      return{}
-    }
-  }
-
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  data() {
+      return {
+        images:['vessel-5.jpg','c97a9.jpg']
+      }
 }
 }
-
 </script>
-<style>
-.ComponentImage{
-display:flex;
-}
-.ImageSlideBar{
-margin-left:20px;
-width:200px;
-height:200px;
-}
-
+<style lang="scss" scoped>
+  @import '@/assets/style/base.scss';
 </style>

@@ -29,7 +29,7 @@
 import NewGameImage from "./NewGameImage"
 
 export default {
-name: 'LittlePopularPageComponents',
+name: 'NewGamePageComponent',
 components: {
 NewGameImage
 },
