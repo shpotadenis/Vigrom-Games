@@ -16,6 +16,7 @@ class Media(models.Model):
         verbose_name = "Изображение"
         verbose_name_plural = "Изображения"
 
+
 class Genre(models.Model):
     strategy = models.IntegerField(default=0)
     rpg = models.IntegerField(default=0)
@@ -61,24 +62,12 @@ class Account(models.Model):
     is_administrator = models.BooleanField(default=False, null=True)
     bank_cаrd = models.CharField("Номер карты", max_length=20, null=True)
     foto = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
-    #strategy = models.IntegerField(default=0)
-    #rpg = models.IntegerField(default=0)
-    #f2p = models.IntegerField(default=0)
-    #shooter = models.IntegerField(default=0)
-    #racing = models.IntegerField(default=0)
-    #horror = models.IntegerField(default=0)
-    #stealth = models.IntegerField(default=0)
-    #survival_horror = models.IntegerField(default=0)
-    #sports = models.IntegerField(default=0)
-    #party = models.IntegerField(default=0)
-    #platform = models.IntegerField(default=0)
-    #puzzle = models.IntegerField(default=0)
-    #god_game = models.IntegerField(default=0)
-    #flight_simulation = models.IntegerField(default=0)
-    #fighting = models.IntegerField(default=0)
-    #beatemup = models.IntegerField(default=0)
-    #adventure = models.IntegerField(default=0)
-    #action = models.IntegerField(default=0)
+    strategy = models.IntegerField(default=0)
+    simylate = models.IntegerField(default=0)
+    mmo = models.IntegerField(default=0)
+    shooter = models.IntegerField(default=0)
+    adventure = models.IntegerField(default=0)
+    horror = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.name)
@@ -105,7 +94,7 @@ class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
     who_added_to_wishlist = models.ManyToManyField(Account, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(Account, on_delete=models.PROTECT,
-                                        related_name="game_author", null=True)
+                               related_name="game_author", null=True)
     categories = models.ManyToManyField(Category, blank=True, related_name="categories")
     title = models.CharField(max_length=32, default="")
     url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
@@ -122,6 +111,10 @@ class Game(models.Model):
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
+    screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
+    screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
+    screenshots3 = models.ImageField(upload_to='img/%Y/%m', null=True)
+    screenshots4 = models.ImageField(upload_to='img/%Y/%m', null=True)
 
 
 '''
@@ -145,8 +138,8 @@ class Posts(models.Model):
     liked = models.ManyToManyField(Account, blank=True, related_name="liked")
     disliked = models.ManyToManyField(Account, blank=True, related_name="disliked")
 
-    #в принципе можно убрать счетчики и искать кол-во лайкнувших/дизлайкнувших людей,
-    #посмотреть, как удобнее
+    # в принципе можно убрать счетчики и искать кол-во лайкнувших/дизлайкнувших людей,
+    # посмотреть, как удобнее
     count_likes = models.PositiveIntegerField(default=0)
     count_dislikes = models.PositiveIntegerField(default=0)
 
@@ -155,7 +148,7 @@ class Posts(models.Model):
     text = models.TextField()
     description = models.TextField("Короткое описание", max_length=160)
     data = models.DateTimeField(auto_now_add=True)
-    img = models.ImageField('Изображение записи', upload_to='img/%Y/%m', null=True)    # Главная фотография записи
+    img = models.ImageField('Изображение записи', upload_to='img/%Y/%m', null=True)  # Главная фотография записи
     num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
     draft = models.BooleanField("Черновик", default=False)
     forthegame = models.IntegerField(default=0)
@@ -196,7 +189,8 @@ class Comments_Post(models.Model):
     page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
-    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True, related_name='children')
+    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,
+                               related_name='children')
     date = models.DateTimeField(auto_now_add=True)
     moderation = models.BooleanField(default=True)
 
@@ -212,5 +206,4 @@ class Rating(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_author", null=True)
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,
-                                    related_name="game", null=True)
-
+                             related_name="game", null=True)
