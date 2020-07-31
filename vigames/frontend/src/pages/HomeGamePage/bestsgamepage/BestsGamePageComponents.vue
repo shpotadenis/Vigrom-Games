@@ -84,6 +84,11 @@ background: #CE6796;
 border-radius: 8px;
 
 }
+.ButtonBestsGame:hover{
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
+}
 .ImageBests{
 margin-left:20px;
 }
