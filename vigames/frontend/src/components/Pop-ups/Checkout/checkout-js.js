@@ -3,8 +3,12 @@ export default {
     components: {},
     data() {
         return {
-
         }
     },
+    // methods:{
+    //     closeBtn(){
+    //         this.close = false
+    //     }
+    // }
 
 }

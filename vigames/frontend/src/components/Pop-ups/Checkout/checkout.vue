@@ -3,7 +3,11 @@
         <div class="checkout_header">
             <div class="head-block">
                 <div class="head-name">Оформление покупки</div>
-                <div class="closer"><button class="close-icon"><img src="@/assets/img/close-outline.svg" alt="Close"></button></div>
+                <div class="closer">
+                    <button @click=" $emit('close')" class="close-icon">
+                        <img src="@/assets/img/close-outline.svg" alt="Close">
+                    </button>
+                </div>
             </div>
         </div>
         <hr>
