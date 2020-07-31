@@ -21,7 +21,9 @@
                             </router-link>
                         </li>
                         <li class="header__item">
-                            <router-link :to="{name: 'libraryPage'}" class="header__link">Библиотека</router-link>
+                            <router-link :to="{name: 'libraryPage'}" class="header__link">
+                                Библиотека
+                            </router-link>
                         </li>
                         <li class="header__item">
                             <a href="#!" class="header__link">Комьюнити</a>
