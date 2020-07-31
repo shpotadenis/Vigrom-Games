@@ -1,5 +1,5 @@
 <template>
-    <div class="checkout">
+    <div class="checkout container">
         <div class="checkout_header">
             <div class="head-block">
                 <div class="head-name">Оформление покупки</div>
