@@ -133,6 +133,11 @@ font-size: 14px;
 line-height: 19px;
 color: #FFFFFF;
 }
+.ButtonBaner:hover{
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
+}
 .ImageBest{
 position:relative;
 top:28px;

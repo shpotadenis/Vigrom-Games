@@ -18,16 +18,16 @@
             </div>
 
             <div class="email-block">
-                <input type="text" value="useremail@gmail.com">
+                <input type="text" id="mail" placeholder="        useremail@gmail.com"/>
             </div>
         </div>
 
         <div class="donate">
             <div class="text-2">Поддержать разработчика</div>
             <div class="btns_donate">
-                <button class="btn-donate" id="btn-1">+ 0₽</button>
-                <button class="btn-donate" id="btn-2">+ 100₽</button>
-                <button class="btn-donate" id="btn-3">+ 200₽</button>
+                <button @click='isClick1' class="btn-donate" :class='{"yellow": isBtnDonate1Click}' id="btn-1">+ 0₽</button>
+                <button @click='isClick2' class="btn-donate" :class='{"yellow": isBtnDonate2Click}' id="btn-2">+ 100₽</button>
+                <button @click='isClick3' class="btn-donate" :class='{"yellow": isBtnDonate3Click}' id="btn-3">+ 200₽</button>
             </div>
         </div>
         <hr>
