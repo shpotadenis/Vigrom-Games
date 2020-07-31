@@ -44,7 +44,7 @@ left:38.75%;
 .TitleCategories{
   position:absolute;
   top:63%;
-  width:145px;
+  width:160px;
   text-align:center;
 }
 </style>
