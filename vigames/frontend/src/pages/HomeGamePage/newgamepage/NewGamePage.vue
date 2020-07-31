@@ -61,6 +61,7 @@ export default {
       price:"299.99"
       },
     ],
+    
 
 }
 },

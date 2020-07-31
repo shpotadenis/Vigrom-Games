@@ -11,6 +11,11 @@ import HomePage from "./pages/HomeGamePage/HomePage";
 import SignInPage from "./pages/SignInPage/index.vue"
 import SignUpRolePage from "./pages/SignUpRolePage/index.vue"
 import Checkout from "./components/Pop-ups/Checkout/checkout.vue"
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
+
+
+Vue.use(VueAwesomeSwiper);
 
 Vue.use(Router);
 
