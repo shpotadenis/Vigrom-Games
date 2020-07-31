@@ -186,7 +186,7 @@ class Comments_Game(models.Model):
 
 class Comments_Post(models.Model):
     # Комментарий к записи
-    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments')
+    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,

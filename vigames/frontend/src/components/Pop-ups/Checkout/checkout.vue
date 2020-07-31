@@ -18,16 +18,16 @@
             </div>
 
             <div class="email-block">
-                <input type="text" id="mail" placeholder="        useremail@gmail.com"/>
+                <input type="text" id="mail" placeholder="useremail@gmail.com"/>
             </div>
         </div>
 
         <div class="donate">
             <div class="text-2">Поддержать разработчика</div>
             <div class="btns_donate">
-                <button @click='isClick1' class="btn-donate" :class='{"yellow": isBtnDonate1Click}' id="btn-1">+ 0₽</button>
-                <button @click='isClick2' class="btn-donate" :class='{"yellow": isBtnDonate2Click}' id="btn-2">+ 100₽</button>
-                <button @click='isClick3' class="btn-donate" :class='{"yellow": isBtnDonate3Click}' id="btn-3">+ 200₽</button>
+                <button @click='isClick1' class="btn-donate" :class='{"yellow": isBtnDonate1Click}' id="btn-1"><img src="@/assets/img/plus-outline-white.svg" alt="Plus"> 0<img src="@/assets/img/ruble-white.svg" alt="Ruble"></button>
+                <button @click='isClick2' class="btn-donate" :class='{"yellow": isBtnDonate2Click}' id="btn-2"><img src="@/assets/img/plus-outline-white.svg" alt="Plus"> 100<img src="@/assets/img/ruble-white.svg" alt="Ruble"></button>
+                <button @click='isClick3' class="btn-donate" :class='{"yellow": isBtnDonate3Click}' id="btn-3"><img src="@/assets/img/plus-outline-white.svg" alt="Plus"> 200<img src="@/assets/img/ruble-white.svg" alt="Ruble"></button>
             </div>
         </div>
         <hr>
@@ -35,11 +35,11 @@
         <div class="info">
             <div class="info-game">
                 <div class="game-name">Название игры***</div>
-                <div class="game-price">100₽***</div>
+                <div class="game-price">100р***</div>
             </div>
             <div class="info-donate">
                 <div>Бонус Разработчику</div>
-                <div class="donate-sum">150₽***</div>
+                <div class="donate-sum">150р***</div>
             </div>
         </div>
         <hr>
@@ -47,7 +47,7 @@
         <div class="footer">
             <div class="price">
                 <div class="price-text">Всего:</div>
-                <div class="price-sum">250₽***</div>
+                <div class="price-sum">250<img src="@/assets/img/ruble-white.svg" alt="Ruble">***</div>
             </div>
             <button class="payment">Перейти к оплате</button>
         </div>
