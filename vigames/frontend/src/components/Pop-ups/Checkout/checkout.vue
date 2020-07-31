@@ -1,4 +1,5 @@
 <template>
+  <div class="popup-wrapper">
     <div class="checkout container">
         <div class="checkout_header">
             <div class="head-block">
@@ -25,9 +26,9 @@
         <div class="donate">
             <div class="text-2">Поддержать разработчика</div>
             <div class="btns_donate">
-                <button @click='isClick1' class="btn-donate" :class='{"yellow": isBtnDonate1Click}' id="btn-1"><img src="@/assets/img/plus-outline-white.svg" alt="Plus"> 0<img src="@/assets/img/ruble-white.svg" alt="Ruble"></button>
-                <button @click='isClick2' class="btn-donate" :class='{"yellow": isBtnDonate2Click}' id="btn-2"><img src="@/assets/img/plus-outline-white.svg" alt="Plus"> 100<img src="@/assets/img/ruble-white.svg" alt="Ruble"></button>
-                <button @click='isClick3' class="btn-donate" :class='{"yellow": isBtnDonate3Click}' id="btn-3"><img src="@/assets/img/plus-outline-white.svg" alt="Plus"> 200<img src="@/assets/img/ruble-white.svg" alt="Ruble"></button>
+                <button @click='isClick1' class="btn-donate" :class='{"yellow": isBtnDonate1Click}' id="btn-1"><img src="@/assets/img/plus-outline-white.svg" alt="Plus">0 <img src="@/assets/img/ruble-white.svg" alt="Ruble"></button>
+                <button @click='isClick2' class="btn-donate" :class='{"yellow": isBtnDonate2Click}' id="btn-2"><img src="@/assets/img/plus-outline-white.svg" alt="Plus">100 <img src="@/assets/img/ruble-white.svg" alt="Ruble"></button>
+                <button @click='isClick3' class="btn-donate" :class='{"yellow": isBtnDonate3Click}' id="btn-3"><img src="@/assets/img/plus-outline-white.svg" alt="Plus">200 <img src="@/assets/img/ruble-white.svg" alt="Ruble"></button>
             </div>
         </div>
         <hr>
@@ -52,6 +53,7 @@
             <button class="payment">Перейти к оплате</button>
         </div>
     </div>
+  </div>
 
 </template>
 

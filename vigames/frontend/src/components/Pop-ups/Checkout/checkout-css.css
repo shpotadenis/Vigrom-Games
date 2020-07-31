@@ -1,9 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
+.popup-wrapper {
+  background: rgba(0,0,0, .65) ;
+  display: flex;
+  position: absolute;
+  height: 6000px;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+}
+
 .checkout {
     overflow:hidden;
     font-family: Open Sans;
     font-style: normal;
+
     position: fixed;
     padding: 30px;
     width: 590px;
@@ -17,7 +30,7 @@
     z-index: 10;
     border-radius: 10px;
     background: #2D2D42;
-    box-shadow: 0 0 17px 0 #e7e7e7;
+    box-shadow: 0 0 25px 0 #b6b6b6;
 }
 
 .checkout_header {
@@ -152,7 +165,6 @@ button {
   -moz-box-shadow:0 0 15px #EDAF1F;
   -webkit-box-shadow:0 0 15px #EDAF1F;
   box-shadow:0 0 15px #EDAF1F;
-
 
   opacity: 100;
 }

@@ -2,6 +2,7 @@
     <div>
     <div class="wrapper">
         <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
+        <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>
         <div class="game-card">
             <img src="@/assets/img/top_banner.png" alt="Banner of game" class="full-banner">
             <div class="info-card">
@@ -13,7 +14,7 @@
                 </p>
                 <div class="info-card__buy">
                     <button @click="isBtnClick = true" class="buy__btn">Купить</button>
-                    <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>
+
                     <span class="buy__price">{{getGameData.price}}Р</span>
                 </div>
             </div>
