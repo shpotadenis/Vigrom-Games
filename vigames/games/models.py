@@ -100,7 +100,7 @@ class Category(models.Model):
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
 
-
+#в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
     who_added_to_wishlist = models.ManyToManyField(Account, blank=True, related_name="who_added_to_wishlist")
@@ -108,14 +108,15 @@ class Game(models.Model):
                                         related_name="game_author", null=True)
     categories = models.ManyToManyField(Category, blank=True, related_name="categories")
     title = models.CharField(max_length=32, default="")
-    url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
+    #url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
+    file = models.FileField(null=True, upload_to='file/%Y/%m', default=None)
     short_description = models.CharField(max_length=250, default="")
-    image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True)
-    gameplay_video_link = models.CharField(max_length=250, null=True)
+    image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
+    gameplay_video_link = models.CharField(max_length=250, null=True, default=None)
     release_status = models.BooleanField(default=False)
     date_release = models.DateField(default=date.today)
     price = models.IntegerField(default=0)
-    screenshots = models.ImageField(upload_to='img/%Y/%m', null=True)
+    screenshots = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
     # uploads
     description = models.TextField(default="")
     genre = models.CharField(max_length=50, default="")
@@ -123,6 +124,7 @@ class Game(models.Model):
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
 
+    
 
 '''
 class Basket(models.Model):

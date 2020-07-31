@@ -13,7 +13,6 @@ from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, RatingSerializer, \
     CommentsNewsSerializer
 
-
 class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
@@ -74,8 +73,7 @@ class GameDetail(APIView):
     def post(self, request, format=None):
         user = request.user
         serializer = GameSerializer(data=request.data)
-        if serializer.is_valid():
-            if user.is_authenticated:
+        if serializer.is_valid() and user.is_authenticated:
                 account = Account.objects.get(user=user)
                 if account.is_developer:
                     serializer.save(author=account)
@@ -91,11 +89,9 @@ class GameDetail(APIView):
         game = self.get_game(pk)
         serializer = GameSerializer(game, data=request.data)
         user = request.user
-        if serializer.is_valid():
-            if user.is_authenticated:
+        if serializer.is_valid() and user.is_authenticated:
                 account = Account.objects.get(user=user)
-                if account.is_developer:
-                    if game.author == account:
+                if account.is_developer and game.author == account:
                         serializer.save()
                         return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -103,8 +99,7 @@ class GameDetail(APIView):
     def delete(self, request, pk, format=None):
         game = self.get_game(pk)
         account = Account.objects.get(user=request.user)
-        if account.is_developer:
-            if game.author == account:
+        if account.is_developer and game.author == account:
                 game.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -121,8 +116,7 @@ class GameRatingDetail(APIView):
         user = request.user
         mark = request.POST.get('mark')
         rating_serializer = RatingSerializer(data={'author': user.id, 'mark': mark, 'game': pk})
-        if rating_serializer.is_valid():
-            if user.is_authenticated:
+        if rating_serializer.is_valid() and user.is_authenticated:
                 user_ratings = Rating.objects.filter(author=user.id)
                 flag = True
                 for rating in user_ratings:
@@ -297,8 +291,9 @@ class DownloadGame(ListAPIView):
             try:
                 account = Account.objects.get(user=user)
                 if account in game.players.all():
-                    # реализация скачивания
-                    return Response({"message": "success"})
+                    if game.file:
+                        #чекнуть на остальных компах ошибку с кодировкой
+                        return Response({"message": "success", "file": game.file})
             except Account.DoesNotExist:
                 return Response({"message": "fail"})
         return Response({"message": "fail"})

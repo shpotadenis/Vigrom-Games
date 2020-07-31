@@ -140,3 +140,9 @@ MEDIA_URL = '/media/'
 
 # Путь хранения картинок
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+#FILE_CHARSET = "shift_jisx0213"
+
+#FILE_CHARSET='utf-8'
+
+#DEFAULT_CHARSET='utf-8'
