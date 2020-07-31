@@ -14,7 +14,7 @@
             </div>
 
             <div class="email-block">
-                <input type="text" value="useremail@gmail.com">
+                <input type="text" id="mail" placeholder="useremail@gmail.com"/>
             </div>
         </div>
 
