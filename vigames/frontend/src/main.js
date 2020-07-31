@@ -10,6 +10,7 @@ import NewsPage from "./pages/NewsGamePage/NewsPage";
 import HomePage from "./pages/HomeGamePage/HomePage";
 import SignInPage from "./pages/SignInPage/index.vue"
 import SignUpRolePage from "./pages/SignUpRolePage/index.vue"
+import Checkout from "./components/Pop-ups/Checkout/checkout.vue"
 
 Vue.use(Router);
 
@@ -22,7 +23,8 @@ const router = new Router({
     { path: '/home', name: 'homePage', component: HomePage },
     { path: '/news', name: 'newsPage', component: NewsPage },
     { path: '/sign_in', name: 'signInPage', component: SignInPage },
-    { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage }
+    { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage },
+    { path: '/checkout', name: 'checkout', component: Checkout }
 
   ]
 })

@@ -40,11 +40,6 @@ export default {
             ]
         }
     },
-    methods: {
-        checkout() {
-            this.isBtnClick = true;
-        }
-    },
     computed: {
         getGameData() {
             return data;
