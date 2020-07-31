@@ -40,7 +40,6 @@
 
 .info-card__buy {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .buy__price {

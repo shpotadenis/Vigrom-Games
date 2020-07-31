@@ -11,15 +11,6 @@ class AccountSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class OutputAllNews(serializers.ModelSerializer):
-    """Вывод последних новостей на страницу news"""
-    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
-
-    class Meta:
-        model = Posts
-        fields = ('author', 'title', 'description', 'data', 'url', 'num_views', 'img')
-
-
 class FilterCommentSerializer(serializers.ListSerializer):
     """Сериализатор, чтобы зависимые комментарии не дублировались в основном списке"""
     def to_representation(self, data):
@@ -55,14 +46,27 @@ class CommentsGamesSerializer(serializers.ModelSerializer):
         exclude = ('moderation', )
 
 
-class OutputPost(serializers.ModelSerializer):
-    """Вывод отдельного поста по url"""
+class OutputAllNews(serializers.ModelSerializer):
+    """Вывод последних новостей на страницу news"""
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
-    comments = CommentsNewsSerializer(many=True)
 
     class Meta:
         model = Posts
-        exclude = ('draft', )
+        fields = ('author', 'title', 'description', 'data', 'url', 'num_views', 'img')
+
+
+class PostSerializer(serializers.ModelSerializer):
+    """Сериализатор отдельного поста"""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+
+    class Meta:
+        model = Posts
+        fields = '__all__'
+
+
+class OutputPost(PostSerializer):
+    """Вывод отдельного поста по url"""
+    comments = CommentsNewsSerializer(many=True)
 
 
 #Сериализатор игры
