@@ -38,7 +38,7 @@ p{
     background: #CE6796;
     border-radius: 6px;
     position: relative;
-    width: 100px;
+    width: 110px;
     height: 40px;
     color: #FFFFFF;
     margin-top: 10px;
@@ -53,12 +53,7 @@ p{
 .form-group{
     display: inline-block;
 }
-.form-control{
-    background: #29293D;
-    border-radius: 6px;
-    color: #FFFFFF;
-    padding: 10px;
-}
+
 .words{
     font-style: normal;
     font-weight: 600;
@@ -90,5 +85,5 @@ input{
 }
 
 .btn_and_link{
-    margin-top: 96px;
+    margin-top: 150px;
 }
