@@ -6,6 +6,7 @@
       <popular-games
         :Array_Slide="items"
         :Interval="4000"
+        :Interval2="1000"
       />
       <little-popular/>
       <new-game-page/>
@@ -78,8 +79,9 @@ export default {
       id:"5"
       },
 
-    ]
-  }
+    ],
+
+}
 }
 }
 </script>

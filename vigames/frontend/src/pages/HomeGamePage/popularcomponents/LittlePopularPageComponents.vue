@@ -1,7 +1,9 @@
 <template>
   <div class="wrappen">
       <div class="GameComponent">
+      <div class="ImagePopular">
         <img v-bind:src="require('@/assets/img/' + Game.image)" wigth="255" height="324">
+      </div>
         <div class="RatingAndTitle">
           <p class="NameGame">{{Game.name}}</p>
           <div class="RatingGame">{{Game.rating}}</div>
@@ -47,6 +49,22 @@ props:{
   padding-top:24px;
 
 }
+.ImagePopular{
+overflow:hidden;
+wigth:255px;
+height:324px;
+}
+.ImagePopular img {
+ -moz-transition: all 1s ease-out;
+ -o-transition: all 1s ease-out;
+ -webkit-transition: all 1s ease-out;
+ }
+
+.ImagePopular img:hover{
+ -webkit-transform: scale(1.1);
+ -moz-transform: scale(1.1);
+ -o-transform: scale(1.1);
+ }
 .NameGame{
 position:relative;
 left:0;font-style: normal;
