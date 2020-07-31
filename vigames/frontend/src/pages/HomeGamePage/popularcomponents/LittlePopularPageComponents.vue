@@ -1,7 +1,7 @@
 <template>
   <div class="wrappen">
       <div class="GameComponent">
-        <img v-bind:src="require('@/assets/img/' + Game.image)" wigth="228" height="289">
+        <img v-bind:src="require('@/assets/img/' + Game.image)" wigth="255" height="324">
         <div class="RatingAndTitle">
           <p class="NameGame">{{Game.name}}</p>
           <div class="RatingGame">{{Game.rating}}</div>

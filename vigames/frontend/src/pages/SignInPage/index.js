@@ -3,13 +3,11 @@ const data = {
 }
 
 export default {
-    name: "LoginPage",
+    name: "SignInPage",
     data() {
         return{
-        nonEye: false,
-            nonEyeconf: false,
-        type: 'password',
-            typeconf: 'password'
+            nonEye: false,
+            type: 'password'
         }
     },
     methods: {
@@ -22,20 +20,7 @@ export default {
                 this.nonEye = false;
                 this.type = 'password';
             }
-        },
-        hideconf(){
-            if (!this.nonEyeconf){
-                this.nonEyeconf = true;
-                this.typeconf = 'text';
-            }
-            else{
-                this.nonEyeconf = false;
-                this.typeconf = 'password';
-            }
         }
-    },
-    components: {
-
     },
     computed: {
         getGameData() {

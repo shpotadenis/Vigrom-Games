@@ -67,17 +67,13 @@ export default {
 }
 </script>
 <style>
-.wrappen{
-  width:1000px;
-  margin:auto;
-}
 .NewGameTitle{
 position:relative;
-top:60px;
-left:50px;
+top:40px;
+left:40px;
   display:flex;
   justify-content:space-between;
-  width:900px;
+  width:1035px;
   margin-top:100px;
 }
 .Title{
@@ -101,7 +97,7 @@ left:50px;
 }
 .NewGamePageComponent{
 position:relative;
-width: 1000px;
+width: 1110px;
 height: 515px;
 margin-top:73px;
 background: #2D2D42;
@@ -109,12 +105,11 @@ border-radius: 10px;
 }
 .NewsGamePage{
 display:flex;
-justify-content: space-around;
 position:relative;
-top:84px;
-width:920px;
-margin-left:50px;
-margin-right:40px;
+top:40px;
+left:40px;
+margin-right:25px;
+width:1110px;
 
 }
 </style>

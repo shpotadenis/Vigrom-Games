@@ -1,17 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
 .checkout {
+    overflow:hidden;
+    font-family: Open Sans;
+    font-style: normal;
     position: fixed;
     padding: 30px;
-    width: 600px;
-    height: 675px;
+    width: 590px;
+    height: 630px;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    margin: auto;
-
+    margin-top: 25px;
+    margin-bottom: 30px;
     z-index: 10;
+    border-radius: 10px;
     background: #2D2D42;
     box-shadow: 0 0 17px 0 #e7e7e7;
 }
@@ -32,8 +36,6 @@
     width: 256px;
     height: 30px;
 
-    font-family: Open Sans;
-    font-style: normal;
     font-weight: bold;
     font-size: 22px;
     line-height: 30px;
@@ -54,7 +56,7 @@
 hr {
     width: 540px;
     height: 1px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-top: 0px;
     border: 0px;
 
@@ -72,8 +74,6 @@ hr {
 
     text-align:left;
 
-    font-family: Open Sans;
-    font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
@@ -82,8 +82,6 @@ hr {
 }
 
 .email-block {
-    font-family: Open Sans;
-    font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
@@ -91,12 +89,13 @@ hr {
 }
 
 input {
-    width: 540px;
+    width: 530px;
     height: 50px;
-
     border: 0px;
     color: #535353;
     background: #29293D;
+    border-radius: 6px;
+    padding-left: 17px;
 }
 
 .donate {
@@ -110,8 +109,6 @@ input {
 
     margin-bottom: 30px;
 
-    font-family: Open Sans;
-    font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 25px;
@@ -132,9 +129,6 @@ button {
     width: 160px;
     height: 40px;
     border-radius: 6px;
-
-    font-family: Open Sans;
-    font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 25px;
@@ -143,12 +137,27 @@ button {
     background: #29293D;
 }
 
+.btn-donate:hover {
+  box-shadow: 0px 4px 20px
+  rgba(0, 0, 0, 0.25);
+}
+
+.yellow {
+  color: #FFFFFF;
+  background: #EDAF1F;
+}
+
+.yellow:hover{
+    -moz-box-shadow:0 0 15px #EDAF1F;
+    -webkit-box-shadow:0 0 15px #EDAF1F;
+    box-shadow:0 0 15px #EDAF1F;
+}
+
+
 .info {
     height: 85px;
     width: 240px;
 
-    font-family: Open Sans;
-    font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
@@ -189,12 +198,10 @@ button {
     display: flex;
     justify-content: space-between;
 
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .price-text {
-    font-family: Open Sans;
-    font-style: normal;
     font-weight: bold;
     font-size: 22px;
     line-height: 30px;
@@ -202,8 +209,6 @@ button {
 }
 
 .price-sum {
-    font-family: Open Sans;
-    font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 25px;
@@ -214,13 +219,17 @@ button {
     width: 160px;
     height: 44px;
     border-radius: 6px;
-
-    font-family: Open Sans;
-    font-style: normal;
+    margin-bottom: 20px;
     font-weight: 800;
     font-size: 14px;
     line-height: 19px;
 
     color: #FFFFFF;
     background: #CE6796;
+}
+
+.payment:hover {
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
 }

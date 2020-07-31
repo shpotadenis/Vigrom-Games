@@ -10,25 +10,22 @@
 }
 .pic-form{
     border-radius: 10px 0px 0px 10px;
+}.data{
+    margin-top: 30px;
 }
-/*.data{*/
-/*    position: absolute;*/
-/*}*/
 .login-pic{
     padding: 0;
     position: absolute;
-    height: 490px;
-    width: 550px;
-    bottom: 5px;
+    height: 420px;
+    width: 570px;
+    left: -50px;
+    bottom: 15px;
 }
 p{
-    font-family: Open Sans;
     font-style: normal;
     font-weight: 800;
     font-size: 14px;
     line-height: 19px;
-    /* identical to box height */
-
     text-align: center;
 }
 
@@ -53,52 +50,36 @@ p{
     -webkit-box-shadow:0 0 15px #CE6796;
     box-shadow:0 0 15px #CE6796;
 }
+.form-group{
+    display: inline-block;
+}
 .form-control{
     background: #29293D;
     border-radius: 6px;
-    width: 250px;
-    height: 33px;
     color: #FFFFFF;
+    padding: 10px;
 }
-
+.words{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    padding-left: 12px;
+}
 input{
     padding: 5px;
     margin-top: 8px;
     margin-bottom: 8px;
     border: none;
-}
-#confirmPass{
-    position: relative;
-}
-.password-control {
-    position: absolute;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    right: 70px;
-    -webkit-text-security: disc;
-}
-
-.confirmPass{
-    width: 235px;
-    display: inline-block;
-    top: 0;
-}
-
-.confirmEye{
-    top: 323px;
-    color: #2D2D42;
-
-}
-
-.passEye{
-    top: 257px;
+    color: #FFFFFF;
+    height: 22px;
+    width: 22px;
 }
 
 .signin-link{
     font-style: normal;
     font-weight: normal;
-    color: #F1F1F1;
+    color: #7A7A83;
     text-decoration: none;
     padding: 12px;
     font-size: 14px;
@@ -106,4 +87,8 @@ input{
 
 .signin-link:hover{
     text-decoration: underline;
+}
+
+.btn_and_link{
+    margin-top: 96px;
 }

@@ -1,9 +1,13 @@
 <template>
-    <div class="checkout">
+    <div class="checkout container">
         <div class="checkout_header">
             <div class="head-block">
                 <div class="head-name">Оформление покупки</div>
-                <div class="closer"><button class="close-icon"><img src="@/assets/img/close-outline.svg" alt="Close"></button></div>
+                <div class="closer">
+                    <button @click=" $emit('close')" class="close-icon">
+                        <img src="@/assets/img/close-outline.svg" alt="Close">
+                    </button>
+                </div>
             </div>
         </div>
         <hr>
@@ -14,16 +18,16 @@
             </div>
 
             <div class="email-block">
-                <input type="text" value="useremail@gmail.com">
+                <input type="text" id="mail" placeholder="        useremail@gmail.com"/>
             </div>
         </div>
 
         <div class="donate">
             <div class="text-2">Поддержать разработчика</div>
             <div class="btns_donate">
-                <button class="btn-donate" id="btn-1">+ 0₽</button>
-                <button class="btn-donate" id="btn-2">+ 100₽</button>
-                <button class="btn-donate" id="btn-3">+ 200₽</button>
+                <button @click='isClick1' class="btn-donate" :class='{"yellow": isBtnDonate1Click}' id="btn-1">+ 0₽</button>
+                <button @click='isClick2' class="btn-donate" :class='{"yellow": isBtnDonate2Click}' id="btn-2">+ 100₽</button>
+                <button @click='isClick3' class="btn-donate" :class='{"yellow": isBtnDonate3Click}' id="btn-3">+ 200₽</button>
             </div>
         </div>
         <hr>

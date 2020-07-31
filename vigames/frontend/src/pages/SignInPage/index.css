@@ -1,4 +1,4 @@
-.loginPage{
+.signInPage{
     font-family: Open Sans;
 }
 
@@ -11,24 +11,22 @@
 .pic-form{
     border-radius: 10px 0px 0px 10px;
 }
-/*.data{*/
-/*    position: absolute;*/
-/*}*/
+.data{
+    margin-top: 30px;
+}
 .login-pic{
     padding: 0;
     position: absolute;
-    height: 490px;
-    width: 550px;
-    bottom: 5px;
+    height: 420px;
+    width: 570px;
+    left: -80px;
+    bottom: 15px;
 }
 p{
-    font-family: Open Sans;
     font-style: normal;
     font-weight: 800;
     font-size: 14px;
     line-height: 19px;
-    /* identical to box height */
-
     text-align: center;
 }
 
@@ -79,20 +77,9 @@ input{
     -webkit-text-security: disc;
 }
 
-.confirmPass{
-    width: 235px;
-    display: inline-block;
-    top: 0;
-}
-
-.confirmEye{
-    top: 323px;
-    color: #2D2D42;
-
-}
 
 .passEye{
-    top: 257px;
+    top: 224px;
 }
 
 .signin-link{
@@ -106,4 +93,8 @@ input{
 
 .signin-link:hover{
     text-decoration: underline;
+}
+
+.btn_and_link{
+    margin-top: 96px;
 }

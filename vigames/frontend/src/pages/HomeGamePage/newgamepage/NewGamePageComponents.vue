@@ -1,7 +1,7 @@
 <template>
-  <div class="wrappen">
+
         <div class="GameComponent">
-          <img v-bind:src="require('@/assets/img/' + Game.image)" wigth="208" height="263">
+          <img v-bind:src="require('@/assets/img/' + Game.image)" wigth="240" height="300">
           <div class="RatingAndTitle">
             <p class="NameGame">{{Game.name}}</p>
             <div class="RatingGame">{{Game.rating}}</div>
@@ -10,7 +10,7 @@
           <p class="Price">{{Game.price}}</p>
         </div>
 
-  </div>
+
 </template>
 
 <script>

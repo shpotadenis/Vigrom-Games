@@ -25,8 +25,8 @@ export default {
 <style>
 .CategoriesGamePageComponent{
 position:relative;
-width: 145px;
-height: 170px;
+width: 160px;
+height: 180px;
 background: #2D2D42;
 border-radius: 10px;
 margin-top:25px;
@@ -44,7 +44,7 @@ left:38.75%;
 .TitleCategories{
   position:absolute;
   top:63%;
-  width:145px;
+  width:160px;
   text-align:center;
 }
 </style>
