@@ -11,15 +11,9 @@ import HomePage from "./pages/HomeGamePage/HomePage";
 import SignInPage from "./pages/SignInPage/index.vue"
 import SignUpRolePage from "./pages/SignUpRolePage/index.vue"
 import Checkout from "./components/Pop-ups/Checkout/checkout.vue"
-<<<<<<< HEAD
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
-
-
 Vue.use(VueAwesomeSwiper);
-=======
-import LibraryPage from "./pages/LibraryPage/index.vue"
->>>>>>> d59c754fa658c92a01f3b905c66b76ea2adef2a9
 
 Vue.use(Router);
 
@@ -33,8 +27,7 @@ const router = new Router({
     { path: '/news', name: 'newsPage', component: NewsPage },
     { path: '/sign_in', name: 'signInPage', component: SignInPage },
     { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage },
-    { path: '/checkout', name: 'checkout', component: Checkout },
-    { path: '/library', name: 'libraryPage', component: LibraryPage }
+    { path: '/checkout', name: 'checkout', component: Checkout }
 
   ]
 })
