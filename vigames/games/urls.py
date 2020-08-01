@@ -26,7 +26,7 @@ urlpatterns = [
     path('news/<int:pk>/delete', PostView.as_view(), name='delete_post'),
     path('news/', OutputAllNewsView.as_view()),
 
-path('categories/<int:pk>', GameCategoryDetail.as_view(), name="assess"),
+    path('categories/<int:pk>', GameCategoryDetail.as_view(), name="assess"),
 ]
 
 #/api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)

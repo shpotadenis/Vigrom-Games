@@ -36,6 +36,8 @@ class Genre(models.Model):
     beatemup = models.IntegerField(default=0)
     adventure = models.IntegerField(default=0)
     action = models.IntegerField(default=0)
+    simylate = models.IntegerField(default=0)
+    mmo = models.IntegerField(default=0)
 
 
 class Account(models.Model):
@@ -62,12 +64,12 @@ class Account(models.Model):
     is_administrator = models.BooleanField(default=False, null=True)
     bank_cаrd = models.CharField("Номер карты", max_length=20, null=True)
     foto = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
-    strategy = models.IntegerField(default=0)
-    simylate = models.IntegerField(default=0)
-    mmo = models.IntegerField(default=0)
-    shooter = models.IntegerField(default=0)
-    adventure = models.IntegerField(default=0)
-    horror = models.IntegerField(default=0)
+    #strategy = models.IntegerField(default=0)
+    #simylate = models.IntegerField(default=0)
+    #mmo = models.IntegerField(default=0)
+    #shooter = models.IntegerField(default=0)
+    #adventure = models.IntegerField(default=0)
+    #horror = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.name)

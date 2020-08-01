@@ -1,22 +1,16 @@
-import codecs
-import os
 from datetime import timedelta, date
-from sys import path
-from wsgiref.util import FileWrapper
 
-from django.http import Http404, FileResponse, HttpResponse
-from pytz import unicode
+from django.http import Http404, HttpResponse
 from rest_framework import status
 from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
-from .models import Game, Rating, Account, Posts
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Account, Posts
+from .models import Account, Posts, Game, Rating
 from .permissions import IsOwnerProfileOrReadOnly
-from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, RatingSerializer, \
-    CommentsNewsSerializer
+from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost,\
+    RatingSerializer, CommentsNewsSerializer, PostSerializer
 
 
 class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -327,16 +321,10 @@ class DownloadGame(ListAPIView):
                 account = Account.objects.get(user=user)
                 if account in game.players.all():
                     if game.file:
-                        return FileResponse(game.file)
-
-                        #response = FileResponse(open(game.file, 'rb'))
-                        #return response
-
-                        #response = HttpResponse(FileWrapper(game.file))
-                        #response['Content-Disposition'] = 'attachment; filename=%s' % (
-                        #    game.file.encode('utf-8') if isinstance(game.file, unicode) else game.file,
-                        #)
-                        #return response
+                        response = HttpResponse(game.file)
+                        #надо заставлять разрабов загружать только зипы? сохранять имя и тип файла?
+                        response['Content-Disposition'] = 'attachment; filename=' + game.title + '.zip'
+                        return response
             except Account.DoesNotExist:
                 return Response({"message": "fail"})
         return Response({"message": "fail"})
