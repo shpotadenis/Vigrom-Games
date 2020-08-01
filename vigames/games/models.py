@@ -109,7 +109,7 @@ class Game(models.Model):
     categories = models.ManyToManyField(Category, blank=True, related_name="categories")
     title = models.CharField(max_length=32, default="")
     #url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
-    file = models.FileField(null=True, upload_to='file/%Y/%m', default=None)
+    file = models.FileField(null=True, upload_to=u'file/%Y/%m', default=None)
     short_description = models.CharField(max_length=250, default="")
     image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
     gameplay_video_link = models.CharField(max_length=250, null=True, default=None)

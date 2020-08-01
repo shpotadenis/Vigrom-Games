@@ -1,6 +1,11 @@
+import codecs
+import os
 from datetime import timedelta, date
+from sys import path
+from wsgiref.util import FileWrapper
 
-from django.http import Http404
+from django.http import Http404, FileResponse, HttpResponse
+from pytz import unicode
 from rest_framework import status
 from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
@@ -292,8 +297,24 @@ class DownloadGame(ListAPIView):
                 account = Account.objects.get(user=user)
                 if account in game.players.all():
                     if game.file:
-                        #чекнуть на остальных компах ошибку с кодировкой
-                        return Response({"message": "success", "file": game.file})
+                        return FileResponse(game.file)
+
+                        #response = FileResponse(open(game.file, 'rb'))
+                        #return response
+
+                        #response = HttpResponse(FileWrapper(game.file))
+                        #response['Content-Disposition'] = 'attachment; filename=%s' % (
+                        #    game.file.encode('utf-8') if isinstance(game.file, unicode) else game.file,
+                        #)
+                        #return response
             except Account.DoesNotExist:
                 return Response({"message": "fail"})
         return Response({"message": "fail"})
+
+
+class GameCategoryDetail(ListAPIView):
+    """Вывод игр соответствующей категории"""
+    def get(self, request, pk):
+        games = Game.objects.filter(categories=pk)
+        serializer = GameSerializer(games, many=True)
+        return Response(serializer.data)
