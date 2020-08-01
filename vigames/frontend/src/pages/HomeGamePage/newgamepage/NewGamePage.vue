@@ -60,9 +60,17 @@ export default {
       undername:"Ubisoft Nadeo | Ubisoft",
       price:"299.99"
       },
-    ]
-  }
-  }
+    ],
+    
+
+}
+},
+  props:{
+
+  },
+  methods:{
+
+}
 
 }
 </script>
@@ -74,7 +82,6 @@ left:40px;
   display:flex;
   justify-content:space-between;
   width:1035px;
-  margin-top:100px;
 }
 .Title{
   color:#fff;
@@ -110,6 +117,7 @@ top:40px;
 left:40px;
 margin-right:25px;
 width:1110px;
+z-index:99999;
 
 }
 </style>

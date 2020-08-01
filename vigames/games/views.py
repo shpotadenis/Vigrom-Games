@@ -18,6 +18,7 @@ from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, RatingSerializer, \
     CommentsNewsSerializer
 
+
 class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
@@ -32,13 +33,42 @@ class OutputAllNewsView(APIView):
         serializer = OutputAllNews(news, many=True)
         return Response(serializer.data)
 
-class OutputPostView(APIView):
+class PostView(APIView):
     """ Вывод страницы записи"""
 
     def get(self, request, pk):
-        news = Posts.objects.get(url=pk, draft=False)
-        serializer = OutputPost(news)
-        return Response(serializer.data)
+        try:
+            news = Posts.objects.get(url=pk, draft=False)
+            serializer = OutputPost(news)
+            return Response(serializer.data)
+        except:
+            raise Http404
+
+    def post(self, request, format=None):
+        user = request.user
+        serializer = PostSerializer(data=request.data)
+        account = Account.objects.get(user=user)
+        if serializer.is_valid() and user.is_authenticated and account.is_developer:
+            serializer.save(author=user)
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request, pk):
+        posts = Posts.objects.get(id=pk)
+        serializer = PostSerializer(posts, data=request.data)
+        user = request.user
+        account = Account.objects.get(user=user)
+        if serializer.is_valid() and user.is_authenticated and account.is_developer and posts.author == user:
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        posts = Posts.objects.get(id=pk)
+        account = Account.objects.get(user=request.user)
+        if account.is_developer and posts.author == request.user:
+            posts.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class CommentCreateView(APIView):

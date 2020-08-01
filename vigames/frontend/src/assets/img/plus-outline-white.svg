@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com">
+ <g class="layer">
+  <title>Layer 1</title>
+  <g data-name="Layer 2" id="svg_1">
+   <g data-name="plus" id="svg_2">
+    <rect fill="#ffffff" height="24" id="svg_3" opacity="0" transform="rotate(180 12 12)" width="24"/>
+    <path d="m19,11l-6,0l0,-6a1,1 0 0 0 -2,0l0,6l-6,0a1,1 0 0 0 0,2l6,0l0,6a1,1 0 0 0 2,0l0,-6l6,0a1,1 0 0 0 0,-2z" fill="#ffffff" id="svg_4"/>
+   </g>
+  </g>
+ </g>
+</svg>

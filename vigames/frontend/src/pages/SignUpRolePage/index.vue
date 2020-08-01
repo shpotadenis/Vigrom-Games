@@ -9,17 +9,19 @@
                     <p class="head_login">РЕГИСТРАЦИЯ</p>
                     <div class="container">
                         <form class="data">
-                                <div class="form-group container">
-                                    <input type="radio" class="form-control" name="role" /> <span class="words">Я игрок</span>
-                                </div>
-                                <div class="form-group container">
-                                    <input type="radio" class="form-control" name="role" /><span class="words"> Я разработчик</span>
-                                </div>
+                            <div class="form-group container">
+                                <input type="radio" class="form-control" name="role" id="gamer"/>
+                                <label class="words" for="gamer">Я игрок</label>
+                            </div>
+                            <div class="form-group container">
+                                <input type="radio" class="form-control" name="role" id="developer"/>
+                                <label class="words" for="developer"> Я разработчик</label>
+                            </div>
 
                         </form>
                         <div class="btn_and_link">
                             <div class="row justify-content-center">
-                                <button class="next-btn ">Далее</button>
+                                <button class="next-btn ">Регистрация</button>
                             </div>
                             <router-link :to="{name: 'loginPage'}" class="signin-link row justify-content-center">
                                 Вернуться на предыдущую страницу
