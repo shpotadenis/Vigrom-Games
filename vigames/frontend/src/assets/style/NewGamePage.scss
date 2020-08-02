@@ -1,0 +1,45 @@
+.NewGameTitle{
+position:relative;
+top:40px;
+left:40px;
+  display:flex;
+  justify-content:space-between;
+  width:1035px;
+}
+.Title{
+  color:#fff;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  text-transform:uppercase;
+  line-height: 19px;
+}
+.Link{
+  display:flex;
+  justify-content:space-between;
+  width:100px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 19px;
+  color: #7A7A83;
+
+}
+.NewGamePageComponent{
+position:relative;
+width: 1110px;
+height: 515px;
+margin-top:73px;
+background: #2D2D42;
+border-radius: 10px;
+}
+.NewsGamePage{
+display:flex;
+position:relative;
+top:40px;
+left:40px;
+margin-right:25px;
+width:1110px;
+z-index:99999;
+
+}

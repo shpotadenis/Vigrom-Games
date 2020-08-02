@@ -5,46 +5,9 @@
   </div>
 </template>
 
-<script>
+<script src="./CategoriesGamePageComponents.js">
 
-export default {
-  name: 'CategoriesGamePageComponent',
-  components: {
-  },
-  props:{
-    Categories_Game:{
-      type:Object,
-      default(){
-        return{}
-      }
-    }
-  }
-
-}
 </script>
-<style>
-.CategoriesGamePageComponent{
-position:relative;
-width: 160px;
-height: 180px;
-background: #2D2D42;
-border-radius: 10px;
-margin-top:25px;
-transition:all ease 0.3s;
-}
-.CategoriesGamePageComponent:hover{
-background:#CE6796;
-
-}
-.ImageCategories{
-position:absolute;
-top:28%;
-left:38.75%;
-}
-.TitleCategories{
-  position:absolute;
-  top:63%;
-  width:160px;
-  text-align:center;
-}
+<style lang="scss">
+@import '@/assets/style/CategoriesGamePageComponents.scss'
 </style>

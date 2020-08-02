@@ -14,65 +14,8 @@
 </div>
 </template>
 
-<script>
-
-import LittlePopularPageComponents  from "../popularcomponents/LittlePopularPageComponents"
-
-export default {
-  name: 'RecommendationGamePage',
-  components: {
-    LittlePopularPageComponents
-  },
-  data(){
-  return{
-    recommendation:[
-      {
-      id:"1",
-      image:"MaskGroup.svg",
-      name:"DANGER CREW",
-      rating:"4.9",
-      undername:"Ubisoft Nadeo | Ubisoft",
-      price:"299.99"
-      },
-      {
-      id:"2",
-      image:"MaskGroup.svg",
-      name:"DANGER CREW",
-      rating:"4.9",
-      undername:"Ubisoft Nadeo | Ubisoft",
-      price:"299.99"
-      },
-      {
-      id:"3",
-      image:"MaskGroup.svg",
-      name:"DANGER CREW",
-      rating:"4.9",
-      undername:"Ubisoft Nadeo | Ubisoft",
-      price:"299.99"
-      },
-      {
-      id:"4",
-      image:"MaskGroup.svg",
-      name:"DANGER CREW",
-      rating:"4.9",
-      undername:"Ubisoft Nadeo | Ubisoft",
-      price:"299.99"
-      },
-    ]
-  }
-  }
-}
+<script src="./RecommendationGamePage.js">
 </script>
-<style>
-.RecommendationGamePage{
-margin-top:72px;
-}
-.RecommedationGameTitle{
-display:flex;
-justify-content:space-between;
-}
-.RecommendationComponents{
-display:flex;
-justify-content:space-between;
-}
+<style lang='scss'>
+@import '@/assets/style/RecommendationGamePage.scss'
 </style>
