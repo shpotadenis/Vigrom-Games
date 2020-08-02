@@ -10,36 +10,43 @@ SwiperSlide
 },
 data(){
   return{
-    SlideNumber:0
+    SlideNumber:0,
+    isShow:false
 }
 },
 methods:{
 	rightFunc(){
 		if(this.SlideNumber >= 3){
 			this.SlideNumber=0
-			console.log(this.SlideNumber)
+
 		}else{
 			this.SlideNumber++
-			console.log(this.SlideNumber)
+
 		}
 	},
   leftFunc(){
     if(this.SlideNumber<=0){
       this.SlideNumber=3
-      console.log(this.SlideNumber)
+
     }else{
       this.SlideNumber--
-      console.log(this.SlideNumber)
+
     }
   },
-
-	},
+  showScrin(){
+    this.isShow=true;
+  },
+  closeScrin(){
+    this.isShow=false;
+  }
+  },
 props:{
   Game:{
   type:Object,
   default(){
     return{}
   }
-}
+},
+
 }
 }

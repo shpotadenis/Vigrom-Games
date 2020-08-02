@@ -1,29 +1,76 @@
 <template>
 
-        <div class="GameComponent">
+        <div class="GameComponent" >
+            <div class="AllScrin" v-if="isShow" @click="closeScrin">
+                <img
+                  v-bind:src="require('@/assets/img/' +   Game.scrin)"
+                   width="1000"
+                   height="500"
+                   class="ImageScrin"
+                   >
+                <img
+                  v-bind:src="require('@/assets/img/' +   Game.scrin1)"
+                  width="1000"
+                  height="500"
+                  class="ImageScrin"
+                  >
+                <img
+                  v-bind:src="require('@/assets/img/' +   Game.scrin2)"
+                  width="1000"
+                  height="500"
+                  class="ImageScrin"
+                  >
+                <img
+                  v-bind:src="require('@/assets/img/' +   Game.scrin3)"
+                  width="1000"
+                  height="500"
+                  class="ImageScrin"
+                  >
+            </div>
           <div class="ImageNewGame">
               <div class="rotate">
                 <img class="ImageComponent" v-bind:src="require('@/assets/img/' + Game.image)">
                 <div class="TextNewGame">
                 <div class="ComponentImage">
-                <div class="ButtonArrow">
-                  <img src="@/assets/img/arrow3.png" class="strelka1" @click="leftFunc" width="40" height="40">
-                  <img src="@/assets/img/arrow3.png" class="strelka2" @click="rightFunc" width="40" height="40">
-                </div>
-                  <swiper>
-                    <swiper-slide  :style="{'margin-left': '-' + (100 * SlideNumber) + '%' }">
-                      <img v-bind:src="require('@/assets/img/' + Game.scrin)" width="200" height="200">
+
+                  <img src="@/assets/img/arrow3.png" class="strelk1" @click="leftFunc" width="40" height="40">
+                  <img src="@/assets/img/arrow3.png" class="strelk2" @click="rightFunc" width="40" height="40">
+
+                  <swiper class="AllSlide">
+                    <swiper-slide
+                       :style="{'margin-left': '-' + (100 * SlideNumber) + '%' }"
+                       class="AnimationSlider"
+                     >
+                      <img
+                        v-bind:src="require('@/assets/img/' + Game.scrin)"
+                        width="200"
+                        height="200"
+                        >
                     </swiper-slide>
                     <swiper-slide>
-                      <img v-bind:src="require('@/assets/img/' + Game.scrin1)" width="200" height="200">
+                      <img
+                        v-bind:src="require('@/assets/img/' + Game.scrin1)"
+                        width="200"
+                        height="200"
+                      >
                     </swiper-slide>
                     <swiper-slide>
-                      <img v-bind:src="require('@/assets/img/' + Game.scrin2)" width="200" height="200">
+                      <img
+                        v-bind:src="require('@/assets/img/' + Game.scrin2)"
+                        width="200"
+                        height="200"
+                      >
                     </swiper-slide>
                     <swiper-slide>
-                      <img v-bind:src="require('@/assets/img/' + Game.scrin3)" width="200" height="200">
+                      <img
+                        v-bind:src="require('@/assets/img/' + Game.scrin3)"
+                        width="200"
+                        height="200"
+                      >
                     </swiper-slide>
                   </swiper>
+
+                    <img v-bind:src="require('@/assets/img/' + Game.icon)" class="BigScrin" @click="showScrin()">
 
                 </div>
                   <p class="TextComponent">vnevnjehvnjiehv kjadb uib jab s sH YU</p>

@@ -19,7 +19,8 @@ export default {
       scrin:'vessel-5.jpg',
       scrin1:'c97a9.jpg',
       scrin2:'Pic1.jpg',
-      scrin3:'c97a9.jpg'
+      scrin3:'c97a9.jpg',
+      icon:'cart-icon.png'
       },
       {
       id:"2",
@@ -31,7 +32,8 @@ export default {
       scrin:'c97a9.jpg',
       scrin1:'vessel-5.jpg',
       scrin2:'vessel-5.jpg',
-      scrin3:'c97a9.jpg'
+      scrin3:'c97a9.jpg',
+      icon:'cart-icon.png'
       },
       {
       id:"3",
@@ -43,7 +45,8 @@ export default {
       scrin:'vessel-5.jpg',
       scrin1:'vessel-5.jpg',
       scrin2:'vessel-5.jpg',
-      scrin3:'c97a9.jpg'
+      scrin3:'c97a9.jpg',
+      icon:'cart-icon.png'
       },
       {
       id:"4",
@@ -55,12 +58,15 @@ export default {
       scrin:'vessel-5.jpg',
       scrin1:'vessel-5.jpg',
       scrin2:'c97a9.jpg',
-      scrin3:'c97a9.jpg'
+      scrin3:'c97a9.jpg',
+      icon:'cart-icon.png'
       },
     ],
 
 
 }
 },
+props:{
 
+}
 }

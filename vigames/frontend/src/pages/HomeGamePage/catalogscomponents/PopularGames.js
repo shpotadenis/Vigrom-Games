@@ -28,19 +28,19 @@ methods:{
 	leftFunc(){
 		if(this.currentsSlideIndex<=0){
 			this.currentsSlideIndex=4
-			console.log(this.currentsSlideIndex)
+
 		}else{
 			this.currentsSlideIndex--
-			console.log(this.currentsSlideIndex)
+
 		}
 	},
 	rightFunc(){
 		if(this.currentsSlideIndex >= 4){
 			this.currentsSlideIndex=0
-			console.log(this.currentsSlideIndex)
+
 		}else{
 			this.currentsSlideIndex++
-			console.log(this.currentsSlideIndex)
+		
 		}
 	}
 
