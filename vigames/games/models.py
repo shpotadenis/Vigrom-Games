@@ -161,10 +161,11 @@ class Posts(models.Model):
 
 class Comments_Game(models.Model):
     # Комментарий к игре
-    page = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='comments')
+    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments_game', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
-    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,
+                               related_name='children_game')
     date = models.DateTimeField(auto_now_add=True)
     moderation = models.BooleanField(default=True)
 
@@ -178,11 +179,11 @@ class Comments_Game(models.Model):
 
 class Comments_Post(models.Model):
     # Комментарий к записи
-    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments', null=True)
+    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments_post', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,
-                               related_name='children')
+                               related_name='children_post')
     date = models.DateTimeField(auto_now_add=True)
     moderation = models.BooleanField(default=True)
 

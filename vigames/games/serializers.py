@@ -29,7 +29,7 @@ class RecursiveSerializer(serializers.Serializer):
 class CommentsNewsSerializer(serializers.ModelSerializer):
     """Ввод/Вывод комментариев на странице новости"""
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
-    children = RecursiveSerializer(many=True, read_only=True)
+    children_post = RecursiveSerializer(many=True, read_only=True)
 
     class Meta:
         list_serializer_class = FilterCommentSerializer
@@ -37,13 +37,15 @@ class CommentsNewsSerializer(serializers.ModelSerializer):
         exclude = ('moderation', 'page')
 
 
-class CommentsGamesSerializer(serializers.ModelSerializer):
-    """Вывод комментариев на странице игры"""
+class CommentsGameSerializer(serializers.ModelSerializer):
+    """Ввод/Вывод комментариев на странице новости"""
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
+    children_game = RecursiveSerializer(many=True, read_only=True)
 
     class Meta:
+        list_serializer_class = FilterCommentSerializer
         model = Comments_Game
-        exclude = ('moderation', )
+        exclude = ('moderation', 'page')
 
 
 class OutputAllNews(serializers.ModelSerializer):
