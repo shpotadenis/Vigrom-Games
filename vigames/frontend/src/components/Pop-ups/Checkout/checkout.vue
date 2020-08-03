@@ -37,11 +37,11 @@
         <div class="info">
             <div class="info-game">
                 <div class="game-name">Название игры***</div>
-                <div class="game-price">100р***</div>
+                <div class="game-price">100 <img src="@/assets/img/ruble-gray.svg" alt="Ruble">***</div>
             </div>
             <div class="info-donate">
                 <div>Бонус Разработчику</div>
-                <div class="donate-sum">150р***</div>
+                <div class="donate-sum">150 <img src="@/assets/img/ruble-gray.svg" alt="Ruble">***</div>
             </div>
         </div>
         <hr>
