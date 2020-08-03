@@ -78,28 +78,28 @@
             </div>
         </div>
         <div class="wrapper_2">
-            <img src="@/assets/img/pic1.png" alt="" class="full-banner">
+            <img src="@/assets/img/game-pic2.png" alt="" class="full-banner">
             <div class="desc__text">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae quam consectetur, auctor ligula a, rutrum nisl. Aenean eget hendrerit arcu. Pellentesque sodales ligula eget commodo pellentesque. Curabitur bibendum nisi at velit vulputate efficitur. Ut tempus massa erat, nec ultrices mi pellentesque sit amet. Donec hendrerit id diam nec consequat. Praesent sit amet dui cursus, euismod est id, elementum nunc. Integer ut justo urna.
                 </p>
             </div>
-            <img src="@/assets/img/pic2.png" alt="" class="full-banner">
+            <img src="@/assets/img/game-pic3.png" alt="" class="full-banner">
             <div class="desc__text">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae quam consectetur, auctor ligula a, rutrum nisl. Aenean eget hendrerit arcu. Pellentesque sodales ligula eget commodo pellentesque. Curabitur bibendum nisi at velit vulputate efficitur. Ut tempus massa erat, nec ultrices mi pellentesque sit amet. Donec hendrerit id diam nec consequat. Praesent sit amet dui cursus, euismod est id, elementum nunc. Integer ut justo urna.
                 </p>
             </div>
             <div class="grid-images">
-                <img src="@/assets/img/pic3.png" alt="" class="full-banner">
-                <img src="@/assets/img/pic4.png" alt="" class="full-banner">
+                <img src="@/assets/img/game-pic4.png" alt="" class="full-banner">
+                <img src="@/assets/img/game-pic5.png" alt="" class="full-banner">
             </div>
             <div class="desc__text">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae quam consectetur, auctor ligula a, rutrum nisl. Aenean eget hendrerit arcu. Pellentesque sodales ligula eget commodo pellentesque. Curabitur bibendum nisi at velit vulputate efficitur. Ut tempus massa erat, nec ultrices mi pellentesque sit amet. Donec hendrerit id diam nec consequat. Praesent sit amet dui cursus, euismod est id, elementum nunc. Integer ut justo urna.
                 </p>
             </div>
-            <img src="@/assets/img/pic2.png" alt="" class="full-banner">
+            <img src="@/assets/img/game-pic6.png" alt="" class="full-banner">
         </div>
         <reviews-component></reviews-component>
         <div class="wrapper_2">

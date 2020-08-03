@@ -24,7 +24,7 @@
     font-weight: bold;
     font-size: 18px;
     line-height: 21px;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 15px;
 }
 
@@ -35,7 +35,7 @@
 .info-card p, .info-card span {
     font-size: 14px;
     line-height: 16px;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .info-card__buy {
@@ -55,7 +55,7 @@
     font-size: 14px;
     line-height: 16px;
     font-weight: bold;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .about-game {
@@ -84,13 +84,13 @@
     font-weight: bold;
     font-size: 18px;
     line-height: 21px;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 30px;
 }
 
 .about-game p, li {
     line-height: 16px;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .full-banner {
@@ -108,7 +108,7 @@
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .grid-images {
@@ -126,5 +126,5 @@
     text-decoration: none;
     font-size: 14px;
     line-height: 16px;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
