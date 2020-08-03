@@ -56,7 +56,7 @@ const data =  [
 
 
 export default {
-    name: 'LibraryPage',
+    name: 'FeaturedPage',
     components: {
         FooterComponent,
         SearchComponent,
