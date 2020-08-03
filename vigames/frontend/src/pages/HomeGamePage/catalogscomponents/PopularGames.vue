@@ -6,8 +6,12 @@
     :key="item.id"
 	:Game_Popular="item"
     />
-    <img src="@/assets/img/arrow3.png" class="strelka1" @click="leftFunc">
-    <img src="@/assets/img/arrow3.png" class="strelka2" @click="rightFunc">
+    <div class="ImageVector1" @click="leftFunc">
+      <img src="@/assets/img/Vector.svg" class="strelka1" @click="leftFunc" width="50" height="50">
+    </div>
+    <div class="ImageVector2" @click="rightFunc">
+      <img src="@/assets/img/Vector.svg" class="strelka2" @click="rightFunc" width="50" height="50">
+    </div>
   </div>
 
   </div>
