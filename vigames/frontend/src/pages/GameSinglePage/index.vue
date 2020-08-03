@@ -6,16 +6,22 @@
         <div class="game-card">
             <img src="@/assets/img/top_banner.png" alt="Banner of game" class="full-banner">
             <div class="info-card">
-                <h2 class="info-card__title">
-                    {{getGameData.name}}
-                </h2>
-                <p class="info-card__author">
-                    От {{getGameData.dev}}
-                </p>
+                <div class="info-card__about">
+                    <h2 class="info-card__title">
+                        {{getGameData.name}}
+                    </h2>
+                    <p class="info-card__author">
+                        От {{getGameData.dev}}
+                    </p>
+                </div>
                 <div class="info-card__buy">
-                    <button @click="isBtnClick = true" class="buy__btn">Купить</button>
-
-                    <span class="buy__price">{{getGameData.price}}Р</span>
+                    <button @click="isBtnClick = true" class="buy__btn">
+                        Купить
+                        <span class="buy__price">
+                            {{getGameData.price}}
+                            <img src="@/assets/img/ruble-white.svg" alt="" class="buy__btn-ruble">
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -27,9 +33,12 @@
 
             <div class="game-info">
                 <div class="game-info__desc">
-                    <div>
-                        <p>{{getGameData.desc}}</p>
-                    </div>
+                    <p>
+                        {{getGameData.desc}}
+                    </p>
+                    <a v-scroll-to="'#reviews'" class="desc__show-reviews">
+                        Посмотреть отзывы
+                    </a>
                 </div>
                 <div class="game__categories">
                     <ul class="category__titles">
@@ -101,7 +110,7 @@
             </div>
             <img src="@/assets/img/game-pic6.png" alt="" class="full-banner">
         </div>
-        <reviews-component></reviews-component>
+        <reviews-component id="reviews"></reviews-component>
         <div class="wrapper_2">
             <img src="@/assets/img/top_banner.png" alt="" class="full-banner">
             <div class="privacy-policy">
