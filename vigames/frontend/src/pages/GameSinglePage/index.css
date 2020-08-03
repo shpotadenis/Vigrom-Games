@@ -153,3 +153,32 @@
     color: #EDAF1F;
     cursor: pointer;
 }
+
+.banner {
+    position: relative;
+}
+
+.banner__right {
+    position: absolute;
+    right: 10px;
+    top: 196px;
+}
+
+.banner__right-pic {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.banner__left {
+    position: absolute;
+    left: 10px;
+    top: 196px;
+}
+
+.banner__left-pic {
+    height: 50px;
+    width: 50px;
+    transform: rotate(180deg);
+    cursor: pointer;
+}

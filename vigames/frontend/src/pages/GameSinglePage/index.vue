@@ -4,7 +4,15 @@
         <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
         <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>
         <div class="game-card">
-            <img src="@/assets/img/top_banner.png" alt="Banner of game" class="full-banner">
+            <div class="game-card__banner banner">
+                <img src="@/assets/img/top_banner.png" alt="Banner of game" class="full-banner">
+                <div class="banner__right">
+                    <img src="@/assets/img/chevron-right-icon.svg" alt="" class="banner__right-pic">
+                </div>
+                <div class="banner__left">
+                    <img src="@/assets/img/chevron-right-icon.svg" alt="" class="banner__left-pic">
+                </div>
+            </div>
             <div class="info-card">
                 <div class="info-card__about">
                     <h2 class="info-card__title">
