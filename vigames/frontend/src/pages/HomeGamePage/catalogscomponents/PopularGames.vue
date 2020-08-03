@@ -13,86 +13,9 @@
   </div>
 </template>
 
-<script>
-
-import PopularGamesComponents from "./PopularGamesComponents"
-
-export default {
-name: 'PopularGames',
-components: {
-   PopularGamesComponents
-},
-props:{
-	Array_Slide:{
-		type:Array,
-		default(){
-			return[]
-		}
-	},
-	Interval:{
-		type: Number,
-		default: 0
-	}
-
-},
-data(){
-	return{
-		currentsSlideIndex:0
-
-	}
-},
-methods:{
-	leftFunc(){
-		if(this.currentsSlideIndex<=0){
-			this.currentsSlideIndex=4
-			console.log(this.currentsSlideIndex)
-		}else{
-			this.currentsSlideIndex--
-			console.log(this.currentsSlideIndex)
-		}
-	},
-	rightFunc(){
-		if(this.currentsSlideIndex >= 4){
-			this.currentsSlideIndex=0
-			console.log(this.currentsSlideIndex)
-		}else{
-			this.currentsSlideIndex++
-			console.log(this.currentsSlideIndex)
-		}
-	}
-
-	},
-	mounted(){
-		if(this.Interval>0){
-			let vm = this;
-			setInterval(function(){
-				vm.rightFunc()
-			},vm.Interval)
-		}
-}
-
-}
+<script src="./PopularGames.js">
 </script>
 
-<style>
-.wrapper{
-	max-width:1110px;
-	overflow:hidden;
-	margin:0 auto;
-}
-.Slider{
-	display:flex;
-	transition: all ease 1s;
-}
-.strelka1{
-	position:absolute;
-	transform:rotate(180deg);
-	left:10%;
-	top:6%;
-}
-.strelka2{
-	position:absolute;
-	top:6%;
-	left:85%;
-}
+<style lang='scss'>
+@import "@/assets/style/PopularGames.scss"
 </style>

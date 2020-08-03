@@ -1,0 +1,27 @@
+.PopularGameTitle{
+  display:flex;
+  justify-content:space-between;
+  margin-top:100px;
+}
+.Title{
+  color:#fff;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  text-transform:uppercase;
+  line-height: 19px;
+}
+.Link{
+  display:flex;
+  justify-content:space-between;
+  width:100px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 19px;
+  color: #7A7A83;
+
+}
+.IndiPopularGame{
+  display:flex;
+}

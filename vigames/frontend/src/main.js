@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import GameSinglePage from "./pages/GameSinglePage/index.vue";
 import LoginPage from "./pages/LoginPage/index.vue";
 import NewsPage from "./pages/NewsGamePage/NewsPage";
-import HomePage from "./pages/HomeGamePage/HomePage";
+import HomePage from "./pages/HomeGamePage/HomePage.vue";
 import SignInPage from "./pages/SignInPage/index.vue"
 import SignUpRolePage from "./pages/SignUpRolePage/index.vue"
 import Checkout from "./components/Pop-ups/Checkout/checkout.vue"
