@@ -63,6 +63,8 @@ class PostView(APIView):
         try:
             news = Posts.objects.get(url=pk, draft=False)
             serializer = OutputPost(news)
+            print('print')
+            print('print', serializer)
             return Response(serializer.data)
         except:
             raise Http404
