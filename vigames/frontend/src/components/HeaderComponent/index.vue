@@ -1,6 +1,7 @@
 <template>
     <header class="header">
         <div class="wrapper">
+          <Support v-if="isBtnClick" @close="isBtnClick = false"> </Support>
             <div class="header__wrapper">
                 <div class="header__logo">
                     <router-link :to="{name: 'homePage'}">
@@ -29,7 +30,7 @@
                             <a href="#!" class="header__link">Комьюнити</a>
                         </li>
                         <li class="header__item">
-                            <a href="#!" class="header__link">Поддержка</a>
+                            <a @click="isBtnClick = true" class="header__link">Поддержка</a>
                         </li>
                     </ul>
                 </nav>

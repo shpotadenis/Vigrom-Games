@@ -7,7 +7,12 @@ export default {
     data() {
         return{
             nonEye: false,
-            type: 'password'
+            type: 'password',
+            pass: null,
+            name: null,
+            error_name: [],
+            error_pass: [],
+            errors: 0
         }
     },
     methods: {
@@ -20,6 +25,22 @@ export default {
                 this.nonEye = false;
                 this.type = 'password';
             }
+        },
+        checkForm(e) {
+            if (this.name && this.pass) {
+                return true;
+            }
+            this.error_name = []
+            this.error_pass = []
+
+            if (!this.name) {
+                this.error_name.push('Пустое поле');
+            }
+            if (!this.pass) {
+                this.error_pass.push('Пустое поле');
+            }
+            this.errors++;
+            e.preventDefault();
         }
     },
     computed: {
