@@ -68,7 +68,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 class OutputPost(PostSerializer):
     """Вывод отдельного поста по url"""
-    comments = CommentsNewsSerializer(many=True)
+    comments_post = CommentsNewsSerializer(many=True)
 
 
 #Сериализатор игры

@@ -128,11 +128,13 @@ class Game(models.Model):
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
+    image = models.ManyToManyField(Media, blank=True, related_name='media')
+    '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots3 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots4 = models.ImageField(upload_to='img/%Y/%m', null=True)
-
+    '''
     
 
 '''
@@ -173,6 +175,7 @@ class Posts(models.Model):
     num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
     draft = models.BooleanField("Черновик", default=False)
     forthegame = models.IntegerField(default=0)
+    image = models.ManyToManyField(Media, blank=True, related_name='image')
 
     # Вопрос по изображениям открыт. Делать для них отдельную модель или сделать загрузку сюда???
     # Вопрос с количеством просмотров тоже открыт
