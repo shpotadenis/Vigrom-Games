@@ -1,5 +1,4 @@
 from datetime import timedelta, date
-
 from django.http import Http404, HttpResponse
 from rest_framework import status
 from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
@@ -25,6 +24,7 @@ class OutputAllNewsView(APIView):
         news = Posts.objects.filter(draft=False)
         serializer = OutputAllNews(news, many=True)
         return Response(serializer.data)
+
 
 class AccountDetail(APIView):
 
@@ -54,6 +54,7 @@ class AccountDetail(APIView):
         if user.is_authenticated and user.username == pk:
                 user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class PostView(APIView):
     """ Вывод страницы записи"""
@@ -333,10 +334,17 @@ class AssessPostDetail(APIView):
 
 class OutputLibrary(ListAPIView):
     """Вывод библиотеки игр пользователя"""
+
     def get(self, request, pk):
-        games = Game.objects.filter(players=pk)
-        serializer = GameSerializer(games, many=True)
-        return Response(serializer.data)
+        user = request.user
+        account = Account.objects.get(user=user)
+        if user.username == pk:
+            games = Game.objects.filter(players=account)
+            serializer = GameSerializer(games, many=True)
+            return Response(serializer.data)
+        #else:
+        #выводить другие данные игры
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class DownloadGame(ListAPIView):

@@ -7,7 +7,7 @@ urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
 
     path('profile/<str:pk>', AccountDetail.as_view(), name="profile"),
-    path('profile/<int:pk>/library', OutputLibrary.as_view(), name="library"),
+    path('profile/<str:pk>/library', OutputLibrary.as_view(), name="library"),
 
     #path('role/<int:pk>', UserProfileDetailView.as_view(), name="role"),
 
