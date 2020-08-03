@@ -18,6 +18,7 @@
     line-height: 19px;
     color: #FFFFFF;
 }
+
 .card__subtitle-text {
     font-family: Open Sans;
     font-style: normal;
@@ -25,4 +26,23 @@
     font-size: 14px;
     line-height: 19px;
     color: #D3D3D6;
+}
+
+.card-body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.card-body__price {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+}
+
+.card-body__price-pic {
+    margin-bottom: 3px;
 }
