@@ -107,9 +107,7 @@ hr {
   background: #29293D;
   padding-left: 17px;
 
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: 600;
+  font-weight: normal;
   font-size: 14px;
   line-height: 19px;
 
@@ -117,8 +115,18 @@ hr {
 }
 
 .email-form::-webkit-input-placeholder {
-   color: #464668;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #464668;
  }
+
+ .email-form::-moz-placeholder {
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 19px;
+   color: #464668;
+  }
 
 .message {
   height: 150px;
@@ -140,7 +148,7 @@ hr {
   border: 0;
   resize: none;
 
-  font-weight: 600;
+  font-weight: normal;
   font-size: 14px;
   line-height: 19px;
 
@@ -150,10 +158,18 @@ hr {
 }
 
 .message-form::-webkit-input-placeholder {
-   color: #464668;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #464668;
  }
 
-
+ .message-form::-moz-placeholder {
+   font-weight: 600;
+   font-size: 14px;
+   line-height: 19px;
+   color: #464668;
+  }
 
 .form_Footer {
 
