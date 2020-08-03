@@ -38,7 +38,7 @@ class CommentsNewsSerializer(serializers.ModelSerializer):
 
 
 class CommentsGameSerializer(serializers.ModelSerializer):
-    """Ввод/Вывод комментариев на странице новости"""
+    """Ввод/Вывод комментариев на странице игры"""
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
     children_game = RecursiveSerializer(many=True, read_only=True)
 

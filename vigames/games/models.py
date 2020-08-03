@@ -5,6 +5,18 @@ from django.contrib.auth.models import User
 
 
 class Genre(models.Model):
+    name = models.CharField('Жанр', max_length=20, unique=True)
+    description = models.TextField('Описание', max_length=150)
+    url = models.CharField("Cсылка", max_length=20, unique=True)
+    img = models.ImageField("Иконка жанра", upload_to="genre")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Жанр"
+        verbose_name_plural = "Жанры"
+    """
     strategy = models.IntegerField(default=0)
     rpg = models.IntegerField(default=0)
     f2p = models.IntegerField(default=0)
@@ -25,6 +37,7 @@ class Genre(models.Model):
     action = models.IntegerField(default=0)
     simylate = models.IntegerField(default=0)
     mmo = models.IntegerField(default=0)
+    """
 
 
 class Account(models.Model):
@@ -79,6 +92,19 @@ class Category(models.Model):
         verbose_name_plural = "Категории"
 
 
+class Media(models.Model):
+    title = models.CharField('Заголовок изображения', max_length=50)
+    img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Изображение"
+        verbose_name_plural = "Изображения"
+
+
 #в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
@@ -98,7 +124,7 @@ class Game(models.Model):
     screenshots = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
     # uploads
     description = models.TextField(default="")
-    genre = models.CharField(max_length=50, default="")
+    genre = models.ManyToManyField(Genre, blank=True, related_name='genre', null=True)
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
@@ -210,16 +236,3 @@ class FAQ(models.Model):
     answer = models.TextField()
 
 
-class Media(models.Model):
-    title = models.CharField('Заголовок изображения', max_length=50)
-    img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
-    post = models.ForeignKey(Posts, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = "Изображение"
-        verbose_name_plural = "Изображения"
