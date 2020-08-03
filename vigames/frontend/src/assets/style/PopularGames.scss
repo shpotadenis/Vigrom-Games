@@ -7,14 +7,24 @@
 	display:flex;
 	transition: all ease 1s;
 }
-.strelka1{
+.ImageVector1{
 	position:absolute;
+	width:100px;
+	height: 434px;
 	transform:rotate(180deg);
-	left:10%;
-	top:6%;
+	top:2%;
+	left:1%;
+}
+.ImageVector2{
+	position:absolute;
+	width:100px;
+	height: 434px;
+	top:2%;
+	left:93%;
+}
+.strelka1{
+	margin-top:200px;
 }
 .strelka2{
-	position:absolute;
-	top:6%;
-	left:85%;
+margin-top: 180px;
 }
