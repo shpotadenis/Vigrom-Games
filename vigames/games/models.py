@@ -81,7 +81,7 @@ class Account(models.Model):
 
 class Category(models.Model):
     # Модель категорий
-    name = models.CharField("Категория", max_length=100)
+    name = models.CharField("Категория", max_length=100, unique=True)
     descriptions = models.TextField("Описание")
 
     def __str__(self):

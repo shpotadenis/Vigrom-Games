@@ -5,7 +5,7 @@ from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Account, Posts, Game, Rating
+from .models import Account, Posts, Game, Rating, Category
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost,\
     RatingSerializer, CommentsNewsSerializer, PostSerializer
@@ -369,6 +369,7 @@ class DownloadGame(ListAPIView):
 class GameCategoryDetail(ListAPIView):
     """Вывод игр соответствующей категории"""
     def get(self, request, pk):
-        games = Game.objects.filter(categories=pk)
+        category = Category.objects.get(name=pk) #при прикручивании заюзать скрипт перевода в транслит(?)
+        games = Game.objects.filter(categories=category)
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
