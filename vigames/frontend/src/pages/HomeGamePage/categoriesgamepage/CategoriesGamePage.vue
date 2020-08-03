@@ -14,60 +14,9 @@
 </div>
 </template>
 
-<script>
+<script src="./CategoriesGamePage.js">
 
-import CategoriesGamePageComponents from "./CategoriesGamePageComponents"
-
-export default {
-  name: 'CategoriesGamePage',
-  components: {
-    CategoriesGamePageComponents
-  },
-  data(){
-    return{
-      categories:[
-      {
-        name:"Экшен",
-        image:"flash-icon.svg"
-      },
-      {
-        name:"Симуляторы",
-        image:"cube-icon.svg"
-      },
-      {
-        name:"Стратегии",
-        image:"map-icon.svg"
-      },
-      {
-        name:"Инди",
-        image:"smiling-face-outline.svg"
-      },
-      {
-        name:"Приключения",
-        image:"globe-icon.svg"
-      },
-      {
-        name:"ММО",
-        image:"shield-icon.svg"
-      }
-      ]
-    }
-  }
-}
 </script>
-<style>
-.LinkCategories{
-display:flex;
-justify-content:space-between;
-width:120px;
-font-style: normal;
-font-weight: 800;
-font-size: 14px;
-line-height: 19px;
-color: #7A7A83;
-}
-.AllComponentsCategories{
-  display:flex;
-  justify-content:space-between;
-}
+<style lang="scss">
+@import '@/assets/style/CategoriesGamePage.scss'
 </style>

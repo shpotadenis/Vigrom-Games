@@ -16,6 +16,7 @@
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
   #app {
     font-family: Roboto;
     -webkit-font-smoothing: antialiased;
@@ -24,6 +25,7 @@
     font-style: normal;
     font-size: 16px;
     font-weight: normal;
+    padding: 10px;
   }
   body {
     margin: 0;

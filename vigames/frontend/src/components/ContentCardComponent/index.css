@@ -1,0 +1,28 @@
+.card {
+    margin-bottom: 55px;
+}
+
+.card:last-child {
+    margin: 0;
+}
+
+.card__image {
+    margin-bottom: 20px;
+}
+
+.card__title-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+.card__subtitle-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #D3D3D6;
+}

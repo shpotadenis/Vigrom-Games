@@ -1,0 +1,30 @@
+.wrapper{
+	max-width:1110px;
+	overflow:hidden;
+	margin:0 auto;
+}
+.Slider{
+	display:flex;
+	transition: all ease 1s;
+}
+.ImageVector1{
+	position:absolute;
+	width:100px;
+	height: 434px;
+	transform:rotate(180deg);
+	top:2%;
+	left:1%;
+}
+.ImageVector2{
+	position:absolute;
+	width:100px;
+	height: 434px;
+	top:2%;
+	left:93%;
+}
+.strelka1{
+	margin-top:200px;
+}
+.strelka2{
+margin-top: 180px;
+}

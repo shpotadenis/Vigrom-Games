@@ -1,28 +1,56 @@
 import FooterComponent from '../../components/FooterComponent/index.vue'
 import SearchComponent from '../../components/SearchComponent/index.vue'
 import BannerComponent from '../../components/BannerComponent/index.vue'
-
+import ContentCardComponent from '../../components/ContentCardComponent/index.vue'
 
 const data =  [
     {
-        header: 'FARCRY5',
-        sub_header: 'Ubisoft Nadeo | Ubisoft'
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
     },
     {
-        header: 'FARCRY5',
-        sub_header: 'Ubisoft Nadeo | Ubisoft'
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
     },
     {
-        header: 'FARCRY5',
-        sub_header: 'Ubisoft Nadeo | Ubisoft'
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
     },
     {
-        header: 'FARCRY5',
-        sub_header: 'Ubisoft Nadeo | Ubisoft'
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
     },
     {
-        header: 'FARCRY5',
-        sub_header: 'Ubisoft Nadeo | Ubisoft'
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
+    },
+    {
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
+    },
+    {
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
+    },
+    {
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
+    },
+    {
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
+    },
+    {
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
+    },
+    {
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
+    },
+    {
+        title: 'FARCRY5',
+        subtitle: 'Ubisoft Nadeo | Ubisoft'
     }
 ]
 
@@ -32,7 +60,8 @@ export default {
     components: {
         FooterComponent,
         SearchComponent,
-        BannerComponent
+        BannerComponent,
+        ContentCardComponent
     },
     data() {
         return {

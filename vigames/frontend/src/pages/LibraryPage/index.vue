@@ -26,9 +26,7 @@
                     </h1>
                 </div>
                 <div class="main-content__games">
-                    <!--
-                        TODO: Добавить компонент карточки игры
-                    !-->
+                    <content-card-component v-for="(card, idx) in cards" :card="card" :key="'card' + idx"></content-card-component>
                 </div>
             </div>
         </div>
