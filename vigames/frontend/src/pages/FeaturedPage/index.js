@@ -6,51 +6,63 @@ import ContentCardComponent from '../../components/ContentCardComponent/index.vu
 const data =  [
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 199.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     },
     {
         title: 'FARCRY5',
-        subtitle: 'Ubisoft Nadeo | Ubisoft'
+        subtitle: 'Ubisoft Nadeo | Ubisoft',
+        price: 1999.00
     }
 ]
 
