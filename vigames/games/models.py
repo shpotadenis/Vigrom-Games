@@ -4,19 +4,6 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
-class Media(models.Model):
-    title = models.CharField('Заголовок изображения', max_length=50)
-    img = models.ImageField("Изображение", upload_to="img/%Y/%m")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = "Изображение"
-        verbose_name_plural = "Изображения"
-
-
 class Genre(models.Model):
     strategy = models.IntegerField(default=0)
     rpg = models.IntegerField(default=0)
@@ -91,6 +78,7 @@ class Category(models.Model):
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
 
+
 #в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
@@ -102,7 +90,7 @@ class Game(models.Model):
     #url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     file = models.FileField(null=True, upload_to=u'file/%Y/%m', default=None)
     short_description = models.CharField(max_length=250, default="")
-    image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
+    #image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
     gameplay_video_link = models.CharField(max_length=250, null=True, default=None)
     release_status = models.BooleanField(default=False)
     date_release = models.DateField(default=date.today)
@@ -173,10 +161,11 @@ class Posts(models.Model):
 
 class Comments_Game(models.Model):
     # Комментарий к игре
-    page = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='comments')
+    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments_game', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
-    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,
+                               related_name='children_game')
     date = models.DateTimeField(auto_now_add=True)
     moderation = models.BooleanField(default=True)
 
@@ -190,11 +179,11 @@ class Comments_Game(models.Model):
 
 class Comments_Post(models.Model):
     # Комментарий к записи
-    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments', null=True)
+    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments_post', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,
-                               related_name='children')
+                               related_name='children_post')
     date = models.DateTimeField(auto_now_add=True)
     moderation = models.BooleanField(default=True)
 
@@ -216,3 +205,18 @@ class Rating(models.Model):
 class FAQ(models.Model):
     question = models.CharField(max_length=150)
     answer = models.TextField()
+
+
+class Media(models.Model):
+    title = models.CharField('Заголовок изображения', max_length=50)
+    img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
+    post = models.ForeignKey(Posts, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Изображение"
+        verbose_name_plural = "Изображения"
