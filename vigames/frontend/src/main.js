@@ -13,7 +13,7 @@ import SignUpRolePage from "./pages/SignUpRolePage/index.vue"
 import Checkout from "./components/Pop-ups/Checkout/checkout.vue"
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
-import Library from "./pages/LibraryPage/index.vue"
+import LibraryPage from "./pages/LibraryPage/index.vue"
 Vue.use(VueAwesomeSwiper);
 
 Vue.use(Router);
