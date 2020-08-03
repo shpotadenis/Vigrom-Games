@@ -1,14 +1,15 @@
 from django.urls import path
-from .views import UserProfileDetailView, OutputAllNewsView, GameDetail, OutputGames, \
-    GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame, PostView, GameCategoryDetail
+from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
+    GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame, \
+    PostView, GameCategoryDetail
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
 
-    path('profile/<int:pk>', UserProfileDetailView.as_view(), name="profile"),
-    path('profile/<int:pk>/library', OutputLibrary.as_view(), name="library"),
+    path('profile/<str:pk>', AccountDetail.as_view(), name="profile"),
+    path('profile/<str:pk>/library', OutputLibrary.as_view(), name="library"),
 
-    path('role/<int:pk>', UserProfileDetailView.as_view(), name="role"),
+    #path('role/<int:pk>', UserProfileDetailView.as_view(), name="role"),
 
     path('games/add', GameDetail.as_view(), name="add_game"),
     path('games/<int:pk>', GameDetail.as_view(), name="current_game"),
@@ -26,7 +27,7 @@ urlpatterns = [
     path('news/<int:pk>/delete', PostView.as_view(), name='delete_post'),
     path('news/', OutputAllNewsView.as_view()),
 
-    path('categories/<int:pk>', GameCategoryDetail.as_view(), name="assess"),
+    path('categories/<str:pk>', GameCategoryDetail.as_view(), name="assess"),
 ]
 
 #/api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)
