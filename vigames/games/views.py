@@ -5,10 +5,10 @@ from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Account, Posts, Game, Rating, Category
+from .models import Account, Posts, Game, Rating, Category, FAQ
 from .permissions import IsOwnerProfileOrReadOnly
-from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost,\
-    RatingSerializer, CommentsNewsSerializer, PostSerializer
+from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
+    RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer
 from django.contrib.auth.models import User
 
 #class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -372,4 +372,13 @@ class GameCategoryDetail(ListAPIView):
         category = Category.objects.get(name=pk) #при прикручивании заюзать скрипт перевода в транслит(?)
         games = Game.objects.filter(categories=category)
         serializer = GameSerializer(games, many=True)
+        return Response(serializer.data)
+
+
+class FaqDetail(ListAPIView):
+    """Вывод вопросов и ответов"""
+
+    def get(self, request):
+        faq = FAQ.objects.all()
+        serializer = FaqSerializer(faq, many=True)
         return Response(serializer.data)

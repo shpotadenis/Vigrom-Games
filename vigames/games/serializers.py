@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account, Posts, Game, Comments_Post, Comments_Game, Rating
+from .models import Account, Posts, Game, Comments_Post, Comments_Game, Rating, FAQ
 
 
 #Сериализатор пользователя
@@ -77,8 +77,16 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = '__all__'
 
+
 class RatingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Rating
+        fields = '__all__'
+
+
+class FaqSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FAQ
         fields = '__all__'
