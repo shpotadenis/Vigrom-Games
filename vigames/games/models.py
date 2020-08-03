@@ -81,7 +81,7 @@ class Account(models.Model):
 
 class Category(models.Model):
     # Модель категорий
-    name = models.CharField("Категория", max_length=100)
+    name = models.CharField("Категория", max_length=100, unique=True)
     descriptions = models.TextField("Описание")
 
     def __str__(self):
@@ -212,3 +212,8 @@ class Rating(models.Model):
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,
                              related_name="game", null=True)
+
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=150)
+    answer = models.TextField()

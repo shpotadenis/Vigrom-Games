@@ -6,25 +6,24 @@
 .game-card {
     width: 100%;
     height: auto;
-    position: relative;
     margin-top: 30px;
     margin-bottom: 200px;
 }
 
 .info-card {
-    max-width: 322px;
-    background: #fff;
-    position: absolute;
-    bottom: 0;
-    left: 67px;
-    padding: 30px 86px 30px 30px;
+    padding: 30px 100px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
 }
 
 .info-card__title {
+    font-family: Roboto;
+    font-style: normal;
     font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
-    color: #000000;
+    font-size: 22px;
+    line-height: 26px;
+    color: #FFFFFF;
     margin-bottom: 15px;
 }
 
@@ -33,29 +32,45 @@
 }
 
 .info-card p, .info-card span {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    color: #000000;
+    color: #FFFFFF;
 }
 
 .info-card__buy {
     display: flex;
+    margin-bottom: 25px;
 }
 
 .buy__price {
     font-weight: bold;
-    margin-left: 30px;
-    margin-top: 11px;
+    padding-left: 4px;
 }
 
-.buy__btn {
-    padding: 11px 46px;
-    text-decoration: none;
-    background-color: #828282;
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: bold;
-    color: #000000;
+.buy__btn{
+    display: flex;
+    align-items: baseline;
+    background: #CE6796;
+    border-radius: 6px;
+    position: relative;
+    padding: 10px 25px;
+    color: #FFFFFF;
+    margin-top: 10px;
+    border: none;
+}
+
+.buy__btn:hover{
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
+}
+
+.buy__btn-ruble {
+    display: inline-block;
+    height: 12px;
 }
 
 .about-game {
@@ -84,13 +99,13 @@
     font-weight: bold;
     font-size: 18px;
     line-height: 21px;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 30px;
 }
 
 .about-game p, li {
     line-height: 16px;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .full-banner {
@@ -108,7 +123,7 @@
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .grid-images {
@@ -126,5 +141,44 @@
     text-decoration: none;
     font-size: 14px;
     line-height: 16px;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.desc__show-reviews {
+    display: block;
+    padding-top: 20px;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration-line: underline;
+    color: #EDAF1F;
+    cursor: pointer;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner__right {
+    position: absolute;
+    right: 10px;
+    top: 196px;
+}
+
+.banner__right-pic {
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.banner__left {
+    position: absolute;
+    left: 10px;
+    top: 196px;
+}
+
+.banner__left-pic {
+    height: 50px;
+    width: 50px;
+    transform: rotate(180deg);
+    cursor: pointer;
 }

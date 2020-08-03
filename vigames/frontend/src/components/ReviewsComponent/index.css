@@ -14,13 +14,13 @@
     font-weight: bold;
     font-size: 18px;
     line-height: 21px;
-    color: #000000;
+    color: #fff;
 }
 
 .filter__text {
     font-size: 14px;
     line-height: 16px;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .filter__icon {
@@ -39,7 +39,7 @@
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .replay__icon {
@@ -73,7 +73,7 @@
     margin-top: 17px;
     font-size: 14px;
     line-height: 16px;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 
 }
 
@@ -82,12 +82,12 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .review__username {
     font-size: 14px;
     line-height: 16px;
-    color: #000000;
+    color: rgba(255, 255, 255, 0.8);
     margin-top: 10px;
 }
