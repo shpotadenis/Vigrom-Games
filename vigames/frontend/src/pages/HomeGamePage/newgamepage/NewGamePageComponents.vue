@@ -1,5 +1,5 @@
 <template>
-
+  <div class="wrappen">
         <div class="GameComponent" >
             <div class="AllScrin" v-if="isShow">
               <div class="Arrow">
@@ -54,6 +54,7 @@
                         v-bind:src="require('@/assets/img/' + Game.scrin)"
                         width="200"
                         height="200"
+                        class="AnimationSlider"
                         >
                     </swiper-slide>
                     <swiper-slide>
@@ -61,6 +62,7 @@
                         v-bind:src="require('@/assets/img/' + Game.scrin1)"
                         width="200"
                         height="200"
+                        class="AnimationSlider"
                       >
                     </swiper-slide>
                     <swiper-slide>
@@ -68,6 +70,7 @@
                         v-bind:src="require('@/assets/img/' + Game.scrin2)"
                         width="200"
                         height="200"
+                        class="AnimationSlider"
                       >
                     </swiper-slide>
                     <swiper-slide>
@@ -94,7 +97,7 @@
           <p class="Price">{{Game.price}}</p>
         </div>
 
-
+</div>
 </template>
 
 <script src="./NewGamePageComponents.js">
