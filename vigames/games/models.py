@@ -211,3 +211,8 @@ class Rating(models.Model):
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,
                              related_name="game", null=True)
+
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=150)
+    answer = models.TextField()
