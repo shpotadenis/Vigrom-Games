@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
 
 .popup-wrapper {
-
+  background: rgba(0,0,0, .65) ;
+  display: flex;
+  position: absolute;
+  height: 6000px;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
 }
 
 .container {
