@@ -4,7 +4,7 @@
             <div class="head">
                 <div class="head__header">
                     <h1 class="header__text">
-                        Библиотека
+                        Избранное
                     </h1>
                 </div>
                 <div class="head__search">
@@ -22,7 +22,7 @@
             <div class="main-content">
                 <div class="main-content__header">
                     <h1 class="header__text">
-                        Ваши игры
+                        Избранные игры
                     </h1>
                 </div>
                 <div class="main-content__games">
