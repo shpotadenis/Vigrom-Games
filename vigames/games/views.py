@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, Comments_Game
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
-    RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer
+    RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, OrderSerializer
 from django.contrib.auth.models import User
 
 #class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -294,6 +294,10 @@ class BuyGameDetail(APIView):
                 if account not in game.players.all():
                     game.players.add(account)
                     game.who_added_to_wishlist.remove(account)
+                    price = game.price * game.sale_percent / 100
+                    serializer = OrderSerializer(data={'user': user.id, 'game': pk, 'price': price, 'date': date.today()})
+                    if serializer.is_valid():
+                        serializer.save()
                     return Response({"message": "success"}, status=status.HTTP_200_OK)
                 return Response({"message": "bought"})
             except Account.DoesNotExist:

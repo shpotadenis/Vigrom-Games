@@ -145,7 +145,10 @@ class Basket(models.Model):
 
 
 class Orders(models.Model):
-    # Заказы
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    game = models.ForeignKey(Game, null=True, on_delete=models.SET_NULL)
+    price = models.IntegerField(null=True)
+    date = models.DateField(default=date.today)
     pass
 
 

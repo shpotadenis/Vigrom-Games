@@ -156,12 +156,17 @@
 
 .banner {
     position: relative;
+    transition: .2s;
 }
 
 .banner__right {
     position: absolute;
     right: 10px;
     top: 196px;
+}
+
+.banner__right:hover {
+    opacity: 0.6;
 }
 
 .banner__right-pic {
@@ -174,6 +179,10 @@
     position: absolute;
     left: 10px;
     top: 196px;
+}
+
+.banner__left:hover {
+    opacity: 0.6;
 }
 
 .banner__left-pic {
