@@ -1,9 +1,17 @@
 <template>
 
         <div class="GameComponent" >
-            <div class="AllScrin" v-if="isShow" @click="closeScrin">
+            <div class="AllScrin" v-if="isShow">
+              <div class="Arrow">
+                <img src="@/assets/img/arrow3.png" class="Arrow1" @click="leftFunc" width="100" height="100">
+              </div>
+              <div class="Arrow">
+                <img src="@/assets/img/arrow3.png" class="Arrow2" @click="rightFunc" width="100" height="100">
+              </div>
+              <div class="AllScrinImage" @click="closeScrin" >
                 <img
                   v-bind:src="require('@/assets/img/' +   Game.scrin)"
+                   :style="{'margin-left': '-' + (100 * SlideNumber) + '%'}"
                    width="1000"
                    height="500"
                    class="ImageScrin"
@@ -26,6 +34,7 @@
                   height="500"
                   class="ImageScrin"
                   >
+                </div>
             </div>
           <div class="ImageNewGame">
               <div class="rotate">
