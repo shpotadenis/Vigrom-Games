@@ -1,6 +1,7 @@
 <template>
 <div class="popup-wrapper">
   <div class="container">
+    <messageSent v-if="isBtnClick" @close="isBtnClick = false"> </messageSent>
     <div class="picture">
       <div class="pic"><img src="@/assets/img/newsletter.svg" alt="newsletter"></div>
     </div>
@@ -31,7 +32,7 @@
         </div>
       </div>
       <div class="form_Footer">
-        <button class="send">Отправить</button>
+        <button @click="isBtnClick = true" class="send">Отправить</button>
       </div>
   </div>
 </div>
