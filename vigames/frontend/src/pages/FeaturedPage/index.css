@@ -1,0 +1,33 @@
+.wrapper {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.header__text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.main-content__header {
+    margin-bottom: 61px;
+}
+
+.main-content__games {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    grid-gap: 30px;
+}
+
