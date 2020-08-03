@@ -1,18 +1,27 @@
 <template>
   <div class="wrappen">
-      <div class="GameComponent">
+      <div class="GameComponentPopular">
       <div class="ImagePopular">
-        <img v-bind:src="require('@/assets/img/' + Game.image)" wigth="255" height="324">
-      </div>
-        <div class="RatingAndTitle">
-          <p class="NameGame">{{Game.name}}</p>
-          <div class="RatingGame">{{Game.rating}}</div>
+        <div class="rotatePopular">
+              <img class="ImageComponentPopular" v-bind:src="require('@/assets/img/' + Game.image)" wigth="255" height="324">
+          <div class="TextNewGamePopular">
+          <div class="ComponentImagePopular">
+              <div>
+                <p class="TextComponentPopular">vnevnjehvnjiehv kjadb uib jab s sH YU</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="UnderName">{{Game.undername}}</p>
-        <p class="Price">{{Game.price}}</p>
+      </div>
+        <div class="RatingAndTitlePopular">
+          <p class="NameGamePopular">{{Game.name}}</p>
+          <div class="RatingGamePopular">{{Game.rating}}</div>
+        </div>
+        <p class="UnderNamePopular">{{Game.undername}}</p>
+        <p class="PricePopular">{{Game.price}}</p>
       </div>
 
-  </div>
+</div>
 </template>
 
 <script src='./LittlePopularPageComponents.js'>
