@@ -10,18 +10,30 @@
                     <div class="container">
                         <form class="data">
                             <div class="form-group container">
-                                <input type="radio" class="form-control" name="role" id="gamer"/>
+                                <input type="radio"
+                                       class="form-control"
+                                       name="role"
+                                       id="gamer"
+                                       value="gamer"
+                                       v-model="user"/>
                                 <label class="words" for="gamer">Я игрок</label>
                             </div>
                             <div class="form-group container">
-                                <input type="radio" class="form-control" name="role" id="developer"/>
+                                <input type="radio"
+                                       class="form-control"
+                                       name="role"
+                                       id="developer"
+                                       value="dev"
+                                       v-model="user"/>
                                 <label class="words" for="developer"> Я разработчик</label>
                             </div>
-
+                            <div class="errors" v-if="error">
+                                Роль не выбрана
+                            </div>
                         </form>
                         <div class="btn_and_link">
                             <div class="row justify-content-center">
-                                <button class="next-btn ">Регистрация</button>
+                                <button class="next-btn " @click="check">Регистрация</button>
                             </div>
                             <router-link :to="{name: 'loginPage'}" class="signin-link row justify-content-center">
                                 Вернуться на предыдущую страницу
