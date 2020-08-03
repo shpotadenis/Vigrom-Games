@@ -42,7 +42,7 @@ export default {
       rating:"4.9",
       undername:"Ubisoft Nadeo | Ubisoft",
       price:"299.99",
-      scrin:'vessel-5.jpg',
+      scrin:'Pic1.jpg',
       scrin1:'vessel-5.jpg',
       scrin2:'vessel-5.jpg',
       scrin3:'c97a9.jpg',

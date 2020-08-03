@@ -126,6 +126,23 @@ color: #FFFFFF;
   top:100px;
   left:170px;
 }
+.Arrow{
+  width:100px;
+  height: 100px;
+  z-index: 99999;
+}
+.Arrow1{
+  position: absolute;
+  transform: rotate(180deg);
+  top:200px;
+  left:20px;
+}
+.Arrow2{
+  position: absolute;
+  z-index: 99999;
+  top:200px;
+  left:800px;
+}
 .BigScrin{
   position:absolute;
   top: 63%;
