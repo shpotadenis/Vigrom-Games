@@ -5,6 +5,9 @@
 }
 
 .container {
+  font-family: Open Sans;
+  font-style: normal;
+
   position: fixed;
   padding: 30px;
   width: 600px;
@@ -28,8 +31,6 @@
 }
 
 .head-name {
-  font-family: Open Sans;
-  font-style: normal;
   font-weight: bold;
   font-size: 22px;
   line-height: 30px;
@@ -65,8 +66,6 @@ button {
   width: 538px;
   height: 59px;
 
-  font-family: Open Sans;
-  font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 19px;
@@ -82,8 +81,6 @@ button {
   height: 44px;
   border-radius: 6px;
 
-  font-family: Open Sans;
-  font-style: normal;
   font-weight: 800;
   font-size: 14px;
   line-height: 19px;
