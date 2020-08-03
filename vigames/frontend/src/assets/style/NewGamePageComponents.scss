@@ -3,6 +3,7 @@
   position:relative;
   display:inline-block;
   padding-top:25px;
+  margin-right: 25px;
 
 }
 .RatingAndTitle{
@@ -109,7 +110,9 @@ color: #FFFFFF;
   margin-top: 20px;
   transition: all ease 0.5s;
 }
-
+.ImageScrin{
+transition: all ease .5s;
+}
 .AnimationSlider{
   transition: all ease .5s;
 }
@@ -141,7 +144,7 @@ color: #FFFFFF;
   position: absolute;
   z-index: 99999;
   top:200px;
-  left:800px;
+  left:880px;
 }
 .BigScrin{
   position:absolute;
@@ -159,7 +162,6 @@ top:10%;
 left:10%;
 width: 1000px;
 height: 500px;
-background: #fff;
 display: flex;
 overflow:hidden;
 z-index: 999999999;

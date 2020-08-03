@@ -14,6 +14,10 @@ import Checkout from "./components/Pop-ups/Checkout/checkout.vue"
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 import LibraryPage from "./pages/LibraryPage/index.vue"
+import VueScrollTo from 'vue-scrollto'
+
+Vue.use(VueScrollTo)
+
 Vue.use(VueAwesomeSwiper);
 
 Vue.use(Router);

@@ -4,20 +4,19 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 
-class Media(models.Model):
-    title = models.CharField('Заголовок изображения', max_length=50)
-    img = models.ImageField("Изображение", upload_to="img/%Y/%m")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+class Genre(models.Model):
+    name = models.CharField('Жанр', max_length=20, unique=True)
+    description = models.TextField('Описание', max_length=150)
+    url = models.CharField("Cсылка", max_length=20, unique=True)
+    img = models.ImageField("Иконка жанра", upload_to="genre")
 
     def __str__(self):
-        return self.title
+        return self.name
 
     class Meta:
-        verbose_name = "Изображение"
-        verbose_name_plural = "Изображения"
-
-
-class Genre(models.Model):
+        verbose_name = "Жанр"
+        verbose_name_plural = "Жанры"
+    """
     strategy = models.IntegerField(default=0)
     rpg = models.IntegerField(default=0)
     f2p = models.IntegerField(default=0)
@@ -38,6 +37,7 @@ class Genre(models.Model):
     action = models.IntegerField(default=0)
     simylate = models.IntegerField(default=0)
     mmo = models.IntegerField(default=0)
+    """
 
 
 class Account(models.Model):
@@ -81,7 +81,7 @@ class Account(models.Model):
 
 class Category(models.Model):
     # Модель категорий
-    name = models.CharField("Категория", max_length=100)
+    name = models.CharField("Категория", max_length=100, unique=True)
     descriptions = models.TextField("Описание")
 
     def __str__(self):
@@ -90,6 +90,20 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
+
+
+class Media(models.Model):
+    title = models.CharField('Заголовок изображения', max_length=50)
+    img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Изображение"
+        verbose_name_plural = "Изображения"
+
 
 #в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
 class Game(models.Model):
@@ -102,7 +116,7 @@ class Game(models.Model):
     #url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     file = models.FileField(null=True, upload_to=u'file/%Y/%m', default=None)
     short_description = models.CharField(max_length=250, default="")
-    image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
+    #image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
     gameplay_video_link = models.CharField(max_length=250, null=True, default=None)
     release_status = models.BooleanField(default=False)
     date_release = models.DateField(default=date.today)
@@ -110,7 +124,7 @@ class Game(models.Model):
     screenshots = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
     # uploads
     description = models.TextField(default="")
-    genre = models.CharField(max_length=50, default="")
+    genre = models.ManyToManyField(Genre, blank=True, related_name='genre', null=True)
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
@@ -131,7 +145,10 @@ class Basket(models.Model):
 
 
 class Orders(models.Model):
-    # Заказы
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    game = models.ForeignKey(Game, null=True, on_delete=models.SET_NULL)
+    price = models.IntegerField(null=True)
+    date = models.DateField(default=date.today)
     pass
 
 
@@ -173,10 +190,11 @@ class Posts(models.Model):
 
 class Comments_Game(models.Model):
     # Комментарий к игре
-    page = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='comments')
+    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments_game', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
-    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,
+                               related_name='children_game')
     date = models.DateTimeField(auto_now_add=True)
     moderation = models.BooleanField(default=True)
 
@@ -190,11 +208,11 @@ class Comments_Game(models.Model):
 
 class Comments_Post(models.Model):
     # Комментарий к записи
-    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments', null=True)
+    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments_post', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,
-                               related_name='children')
+                               related_name='children_post')
     date = models.DateTimeField(auto_now_add=True)
     moderation = models.BooleanField(default=True)
 
@@ -211,3 +229,10 @@ class Rating(models.Model):
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,
                              related_name="game", null=True)
+
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=150)
+    answer = models.TextField()
+
+

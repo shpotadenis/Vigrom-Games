@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account, Posts, Game, Comments_Post, Comments_Game, Rating
+from .models import Account, Posts, Game, Comments_Post, Comments_Game, Rating, FAQ, Orders
 
 
 #Сериализатор пользователя
@@ -29,7 +29,7 @@ class RecursiveSerializer(serializers.Serializer):
 class CommentsNewsSerializer(serializers.ModelSerializer):
     """Ввод/Вывод комментариев на странице новости"""
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
-    children = RecursiveSerializer(many=True, read_only=True)
+    children_post = RecursiveSerializer(many=True, read_only=True)
 
     class Meta:
         list_serializer_class = FilterCommentSerializer
@@ -37,13 +37,15 @@ class CommentsNewsSerializer(serializers.ModelSerializer):
         exclude = ('moderation', 'page')
 
 
-class CommentsGamesSerializer(serializers.ModelSerializer):
-    """Вывод комментариев на странице игры"""
+class CommentsGameSerializer(serializers.ModelSerializer):
+    """Ввод/Вывод комментариев на странице игры"""
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
+    children_game = RecursiveSerializer(many=True, read_only=True)
 
     class Meta:
+        list_serializer_class = FilterCommentSerializer
         model = Comments_Game
-        exclude = ('moderation', )
+        exclude = ('moderation', 'page')
 
 
 class OutputAllNews(serializers.ModelSerializer):
@@ -77,8 +79,23 @@ class GameSerializer(serializers.ModelSerializer):
         model = Game
         fields = '__all__'
 
+
 class RatingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Rating
+        fields = '__all__'
+
+
+class FaqSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FAQ
+        fields = '__all__'
+
+
+class OrderSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Orders
         fields = '__all__'

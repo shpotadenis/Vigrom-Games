@@ -16,7 +16,12 @@ return{
     name:"DANGER CREW",
     rating:"4.9",
     undername:"Ubisoft Nadeo | Ubisoft",
-    price:"299.99"
+    price:"299.99",
+    scrin:'vessel-5.jpg',
+    scrin1:'c97a9.jpg',
+    scrin2:'Pic1.jpg',
+    scrin3:'c97a9.jpg',
+    icon:'cart-icon.png'
     },
     {
     id:"2",
@@ -24,7 +29,12 @@ return{
     name:"DANGER CREW",
     rating:"4.9",
     undername:"Ubisoft Nadeo | Ubisoft",
-    price:"299.99"
+    price:"299.99",
+    scrin:'vessel-5.jpg',
+    scrin1:'c97a9.jpg',
+    scrin2:'Pic1.jpg',
+    scrin3:'c97a9.jpg',
+    icon:'cart-icon.png'
     },
     {
     id:"3",
@@ -32,7 +42,12 @@ return{
     name:"DANGER CREW",
     rating:"4.9",
     undername:"Ubisoft Nadeo | Ubisoft",
-    price:"299.99"
+    price:"299.99",
+    scrin:'vessel-5.jpg',
+    scrin1:'c97a9.jpg',
+    scrin2:'Pic1.jpg',
+    scrin3:'c97a9.jpg',
+    icon:'cart-icon.png'
     },
     {
     id:"4",
@@ -40,7 +55,12 @@ return{
     name:"DANGER CREW",
     rating:"4.9",
     undername:"Ubisoft Nadeo | Ubisoft",
-    price:"299.99"
+    price:"299.99",
+    scrin:'vessel-5.jpg',
+    scrin1:'c97a9.jpg',
+    scrin2:'Pic1.jpg',
+    scrin3:'c97a9.jpg',
+    icon:'cart-icon.png'
     },
   ]
 }

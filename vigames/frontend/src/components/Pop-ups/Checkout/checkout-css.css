@@ -139,7 +139,7 @@ button {
 }
 
 .btn-donate {
-    width: 160px;
+    width: 140px;
     height: 40px;
     border-radius: 6px;
     font-family: Open Sans;
@@ -162,6 +162,10 @@ button {
 .yellow {
   color: #FFFFFF;
   background: #EDAF1F;
+
+  -moz-box-shadow:0 0 15px #EDAF1F;
+  -webkit-box-shadow:0 0 15px #EDAF1F;
+  box-shadow:0 0 15px #EDAF1F;
 
 
   opacity: 100;
@@ -238,7 +242,6 @@ button {
     width: 160px;
     height: 44px;
     border-radius: 6px;
-    margin-bottom: 20px;
     font-weight: 800;
     font-size: 14px;
     line-height: 19px;
@@ -251,4 +254,9 @@ button {
     -moz-box-shadow:0 0 15px #CE6796;
     -webkit-box-shadow:0 0 15px #CE6796;
     box-shadow:0 0 15px #CE6796;
+}
+
+.btns-footer {
+    display: flex;
+    justify-content: space-between;
 }

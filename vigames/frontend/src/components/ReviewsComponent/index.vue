@@ -34,7 +34,7 @@
                     <div class="review__header">
                         <h4 class="review__title">{{review.title}}</h4>
                         <div class="review__rating">
-                            <img src="@/assets/img/star.png" alt="" class="review__star" v-for="i in review.rating" :key="i">
+                            <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in review.rating" :key="'r' + i + review.id">
                         </div>
                     </div>
                     <div class="review__text">

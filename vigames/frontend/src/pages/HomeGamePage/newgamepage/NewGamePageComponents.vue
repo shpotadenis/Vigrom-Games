@@ -1,12 +1,12 @@
 <template>
-
+  <div class="wrappen">
         <div class="GameComponent" >
             <div class="AllScrin" v-if="isShow">
               <div class="Arrow">
-                <img src="@/assets/img/arrow3.png" class="Arrow1" @click="leftFunc" width="100" height="100">
+                <img src="@/assets/img/Vector.svg" class="Arrow1" @click="leftFunc" width="100" height="100">
               </div>
               <div class="Arrow">
-                <img src="@/assets/img/arrow3.png" class="Arrow2" @click="rightFunc" width="100" height="100">
+                <img src="@/assets/img/Vector.svg" class="Arrow2" @click="rightFunc" width="100" height="100">
               </div>
               <div class="AllScrinImage" @click="closeScrin" >
                 <img
@@ -42,8 +42,8 @@
                 <div class="TextNewGame">
                 <div class="ComponentImage">
 
-                  <img src="@/assets/img/arrow3.png" class="strelk1" @click="leftFunc" width="40" height="40">
-                  <img src="@/assets/img/arrow3.png" class="strelk2" @click="rightFunc" width="40" height="40">
+                  <img src="@/assets/img/Vector.svg" class="strelk1" @click="leftFunc" width="40" height="40">
+                  <img src="@/assets/img/Vector.svg" class="strelk2" @click="rightFunc" width="40" height="40">
 
                   <swiper class="AllSlide">
                     <swiper-slide
@@ -54,6 +54,7 @@
                         v-bind:src="require('@/assets/img/' + Game.scrin)"
                         width="200"
                         height="200"
+                        class="AnimationSlider"
                         >
                     </swiper-slide>
                     <swiper-slide>
@@ -61,6 +62,7 @@
                         v-bind:src="require('@/assets/img/' + Game.scrin1)"
                         width="200"
                         height="200"
+                        class="AnimationSlider"
                       >
                     </swiper-slide>
                     <swiper-slide>
@@ -68,6 +70,7 @@
                         v-bind:src="require('@/assets/img/' + Game.scrin2)"
                         width="200"
                         height="200"
+                        class="AnimationSlider"
                       >
                     </swiper-slide>
                     <swiper-slide>
@@ -94,7 +97,7 @@
           <p class="Price">{{Game.price}}</p>
         </div>
 
-
+</div>
 </template>
 
 <script src="./NewGamePageComponents.js">
