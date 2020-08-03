@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="card-body__price">
-                199,00
+                {{card.price}}
                 <img src="@/assets/img/ruble-white.svg" alt="" class="card-body__price-pic">
             </div>
         </div>
