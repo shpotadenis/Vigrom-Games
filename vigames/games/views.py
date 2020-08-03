@@ -6,17 +6,16 @@ from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from .models import Account, Posts, Game, Rating
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost,\
     RatingSerializer, CommentsNewsSerializer, PostSerializer
+from django.contrib.auth.models import User
 
-
-class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = Account.objects.all()
-    serializer_class = AccountSerializer
-    permission_classes = [IsOwnerProfileOrReadOnly, IsAuthenticated]
+#class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
+    #queryset = Account.objects.all()
+    #serializer_class = AccountSerializer
+    #permission_classes = [IsOwnerProfileOrReadOnly, IsAuthenticated]
 
 
 class OutputAllNewsView(APIView):
@@ -26,6 +25,35 @@ class OutputAllNewsView(APIView):
         news = Posts.objects.filter(draft=False)
         serializer = OutputAllNews(news, many=True)
         return Response(serializer.data)
+
+class AccountDetail(APIView):
+
+    def get_user(self, pk):
+        try:
+            return User.objects.get(username=pk)
+        except User.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None): #отдавать не все параметры
+        user = self.get_user(pk)
+        account = Account.objects.get(user=user)
+        serializer = AccountSerializer(account)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        user = request.user
+        account = Account.objects.get(user=user)
+        serializer = AccountSerializer(account, data=request.data)
+        if serializer.is_valid() and user.is_authenticated and user.username == pk:
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        user = request.user
+        if user.is_authenticated and user.username == pk:
+                user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class PostView(APIView):
     """ Вывод страницы записи"""
