@@ -36,8 +36,8 @@ const router = new Router({
     { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage },
     { path: '/checkout', name: 'checkout', component: Checkout },
     { path: '/library', name: 'libraryPage', component: LibraryPage },
-    { path: '/featured', name: 'featuredPage', component: FeaturedPage }
-    { path: '/separate news', name: 'newsSinglePage', component: NewsSinglePage }
+    { path: '/featured', name: 'featuredPage', component: FeaturedPage },
+    { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage }
 
   ]
 })
