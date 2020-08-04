@@ -3,7 +3,7 @@
 	<div class="AllCategories">
 		<div class="CategoriesGame">
 			<ul class="AllChooseUL">
-				<li class="AllChooseLi" @click="toggleElement">Категории <img src="@/assets/img/VectorBottom.svg"></li>
+				<li class="AllChooseLi" @click="toggleElement"><a href="#!">Категории <img src="@/assets/img/VectorBottom.svg"></a> </li>
 				<li class="AllChooseLi"><a href="#!">Скидки</a></li>
 				<li class="AllChooseLi"><a href="#!">Бесплатные игры</a></li>
 				<li class="AllChooseLi"><a href="#!">Ранний доступ</a></li>
