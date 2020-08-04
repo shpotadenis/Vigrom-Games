@@ -91,10 +91,9 @@
       </div>
         <div class="RatingAndTitlePopular">
           <p class="NameGamePopular">{{Game.name}}</p>
-          <div class="RatingGamePopular">{{Game.rating}}</div>
+            <p class="PricePopular">{{Game.price}}</p>
         </div>
         <p class="UnderNamePopular">{{Game.undername}}</p>
-        <p class="PricePopular">{{Game.price}}</p>
       </div>
 
 </div>
