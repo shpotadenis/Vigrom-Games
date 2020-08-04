@@ -71,13 +71,18 @@ class OutputPost(PostSerializer):
     comments_post = CommentsNewsSerializer(many=True)
 
 
-#Сериализатор игры
 class GameSerializer(serializers.ModelSerializer):
-    #comments = CommentsGamesSerializer(many=True)
+    """Сериализатор игры (нужен для добавления)"""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
         model = Game
         fields = '__all__'
+
+
+class OutputGameSerializer(GameSerializer):
+    """Сериализатор вывода поста на страницу"""
+    comments_game = CommentsGameSerializer(many=True)
 
 
 class RatingSerializer(serializers.ModelSerializer):

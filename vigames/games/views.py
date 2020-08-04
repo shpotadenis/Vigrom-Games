@@ -8,7 +8,8 @@ from rest_framework.views import APIView
 from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, Comments_Game
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
-    RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, OrderSerializer
+    RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, OrderSerializer, \
+    OutputGameSerializer
 from django.contrib.auth.models import User
 
 #class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -63,8 +64,6 @@ class PostView(APIView):
         try:
             news = Posts.objects.get(url=pk, draft=False)
             serializer = OutputPost(news)
-            print('print')
-            print('print', serializer)
             return Response(serializer.data)
         except:
             raise Http404
@@ -144,8 +143,10 @@ class CommentGameCreateView(APIView):
     def post(self, request):
         user = request.user
         comment = CommentsGameSerializer(data=request.data)
+        print(request.data["page"])
         game = Game.objects.get(url=request.data["page"])    # Ищем пост, к которому был оставлен коммент. По урлу.
         if comment.is_valid() and user.is_authenticated:
+            print(game)
             comment.save(user=user, page=game)
             return Response(comment.data)
         return Response(comment.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -154,14 +155,14 @@ class CommentGameCreateView(APIView):
         comment = Comments_Game.objects.get(id=pk)
         serializer = CommentsGameSerializer(comment, data=request.data)
         user = request.user
-        if serializer.is_valid() and user.is_authenticated and comment.author == user:
+        if serializer.is_valid() and user.is_authenticated and comment.user == user:
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
         comment = Comments_Game.objects.get(id=pk)
-        if comment.author == request.user:
+        if comment.user == request.user:
             comment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -183,33 +184,31 @@ class GameDetail(APIView):
     def post(self, request, format=None):
         user = request.user
         serializer = GameSerializer(data=request.data)
-        if serializer.is_valid() and user.is_authenticated:
-                account = Account.objects.get(user=user)
-                if account.is_developer:
-                    serializer.save(author=account)
-                    return Response(serializer.data)
+        account = Account.objects.get(user=user)
+        if serializer.is_valid() and user.is_authenticated and account.is_developer:
+            serializer.save(author=user)
+            return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, pk, format=None):
         game = self.get_game(pk)
-        serializer = GameSerializer(game)
+        serializer = OutputGameSerializer(game)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
         game = self.get_game(pk)
         serializer = GameSerializer(game, data=request.data)
         user = request.user
-        if serializer.is_valid() and user.is_authenticated:
-                account = Account.objects.get(user=user)
-                if account.is_developer and game.author == account:
-                        serializer.save()
-                        return Response(serializer.data)
+        account = Account.objects.get(user=user)
+        if serializer.is_valid() and user.is_authenticated and account.is_developer and game.author == user:
+            serializer.save()
+            return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
         game = self.get_game(pk)
         account = Account.objects.get(user=request.user)
-        if account.is_developer and game.author == account:
+        if account.is_developer and game.author == request.user:
                 game.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -292,10 +291,10 @@ class BuyGameDetail(APIView):
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
             try:
-                account = Account.objects.get(user=user)
-                if account not in game.players.all():
-                    game.players.add(account)
-                    game.who_added_to_wishlist.remove(account)
+                #account = Account.objects.get(user=user)
+                if user not in game.players.all():
+                    game.players.add(user)
+                    game.who_added_to_wishlist.remove(user)
                     price = game.price * game.sale_percent / 100
                     serializer = OrderSerializer(data={'user': user.id, 'game': pk, 'price': price, 'date': date.today()})
                     if serializer.is_valid():
@@ -319,9 +318,9 @@ class WishListDetail(APIView):
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
             try:
-                account = Account.objects.get(user=user)
-                if account not in game.who_added_to_wishlist.all():
-                    game.who_added_to_wishlist.add(account)
+                #account = Account.objects.get(user=user)
+                if user not in game.who_added_to_wishlist.all():
+                    game.who_added_to_wishlist.add(user)
                     return Response({"message": "success"}, status=status.HTTP_200_OK)
                 return Response({"message": "added"})
             except Account.DoesNotExist:
@@ -333,9 +332,9 @@ class WishListDetail(APIView):
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
             try:
-                account = Account.objects.get(user=user)
-                if account in game.who_added_to_wishlist.all():
-                    game.who_added_to_wishlist.remove(account)
+                #account = Account.objects.get(user=user)
+                if user in game.who_added_to_wishlist.all():
+                    game.who_added_to_wishlist.remove(user)
             except Account.DoesNotExist:
                 pass
         return Response(status=status.HTTP_204_NO_CONTENT)

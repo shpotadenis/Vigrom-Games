@@ -23,7 +23,7 @@ urlpatterns = [
     path('news/add', PostView.as_view(), name="add_new_post"),
     path('news/<int:pk>/assess', AssessPostDetail.as_view(), name="assess"),
     path('news/<str:pk>/', PostView.as_view(), name='view_post'),
-    path('news/<int:pk>/put', PostView.as_view(), name='update_post'),
+    path('news/<int:pk>/update', PostView.as_view(), name='update_post'),
     path('news/<int:pk>/delete', PostView.as_view(), name='delete_post'),
     path('news/', OutputAllNewsView.as_view()),
 
@@ -32,11 +32,11 @@ urlpatterns = [
     path('faq', FaqDetail.as_view(), name="faq"),
 
     path('commentnews/add', CommentNewsCreateView.as_view(), name="add_new_comment_news"),
-    path('commentnews/<int:pk>/put', CommentNewsCreateView.as_view(), name="update_new_comment_news"),
+    path('commentnews/<int:pk>/update', CommentNewsCreateView.as_view(), name="update_new_comment_news"),
     path('commentnews/<int:pk>/delete', CommentNewsCreateView.as_view(), name="delete_new_comment_news"),
 
     path('commentgame/add', CommentGameCreateView.as_view(), name="add_new_comment_game"),
-    path('commentgame/<int:pk>/put', CommentGameCreateView.as_view(), name="update_new_comment_game"),
+    path('commentgame/<int:pk>/update', CommentGameCreateView.as_view(), name="update_new_comment_game"),
     path('commentgame/<int:pk>/delete', CommentGameCreateView.as_view(), name="delete_new_comment_game"),
 ]
 
