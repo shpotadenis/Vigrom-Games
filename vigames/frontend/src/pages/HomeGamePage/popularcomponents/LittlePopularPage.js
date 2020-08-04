@@ -1,10 +1,10 @@
 
-import LittlePopularPageComponents from "./LittlePopularPageComponents.vue"
+import GameCard from "@/components/GameCard/GameCard.vue"
 
 export default {
 name: 'LittlePopularPage',
 components: {
-  LittlePopularPageComponents
+  GameCard
 
 },
 data(){

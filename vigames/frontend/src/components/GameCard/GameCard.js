@@ -3,7 +3,7 @@ import 'swiper/swiper-bundle.css'
 
 
 export default {
-name: 'LittlePopularPageComponents',
+name: 'GameCard',
 components: {
 Swiper,
 SwiperSlide

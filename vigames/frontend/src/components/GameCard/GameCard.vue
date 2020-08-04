@@ -100,9 +100,9 @@
 </div>
 </template>
 
-<script src='./LittlePopularPageComponents.js'>
+<script src='./GameCard.js'>
 </script>
 
 <style lang='scss'>
-@import '@/assets/style/LittlePopularPageComponents.scss'
+@import '@/assets/style/GameCard.scss'
 </style>
