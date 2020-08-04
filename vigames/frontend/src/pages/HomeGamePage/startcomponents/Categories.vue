@@ -1,48 +1,28 @@
 ﻿<template>
 <div>
 	<div class="AllCategories">
-		<div class="CategoriesGame">
-			<ul class="AllChooseUL">
-				<li class="AllChooseLi" @click="toggleElement"><a href="#!">Категории <img src="@/assets/img/VectorBottom.svg"></a> </li>
-				<li class="AllChooseLi"><a href="#!">Скидки</a></li>
-				<router-link :to="{name: 'freeGames'}">
-					<li class="AllChooseLi"><a href="#!">Бесплатные игры</a></li>
-				</router-link>
-				<li class="AllChooseLi"><a href="#!">Ранний доступ</a></li>
-			</ul>
-		</div>
-		<div class="FilterGames">
-			<div class="SpaceBetweenImageAndText">
-				<div class="SearchImage">
-					<img src="@/assets/img/search-icon.png">
-				</div>
-				<div class="SearchText">
-					<input
-						type="text"
-						class="InputFilterGames"
-						placeholder="Поиск..."
-					>
-				</div>
-			</div>
-			<div class="BorderTop"></div>
-		</div>
-
-
-	</div>
-   <transition name="fade">
-		<categories-choose
-			v-show="isVisible"
+		<internal-menu
 		/>
-	</transition>
+		<div class="FilterGames">
+				<search-component/>
+		</div>
+	</div>
+
 </div>
 </template>
 
 <script>
 
-import CategoriesChoose from "./CategoriesChoose"
+import SearchComponent from "@/components/SearchComponent/index.vue"
+import InternalMenu from "@/components/InternalMenu/InternalMenu.vue"
+
 
 export default {
 	name: 'Categories',
+	components:{
+		SearchComponent,
+		InternalMenu
+	},
 	data(){
 		return{
 			isVisible: false
@@ -51,12 +31,8 @@ export default {
 	methods:{
 		toggleElement(){
 			this.isVisible = !this.isVisible
+			}
 		}
-	},
-	components:{
-		CategoriesChoose
-	}
-
 }
 </script>
 
@@ -66,27 +42,23 @@ export default {
 		display:flex;
 		justify-content:space-between;
 	}
-	.CategoriesGame>ul{
-		margin-top:15px;
-	}
-	.CategoriesGame>ul>li a{
-		color: #7A7A83;
-		text-decoration:none;
 
-	}
 	.AllChooseUL{
 		display:flex;
 	}
 	.AllChooseLi{
 		display:block;
+		cursor: pointer;
+		text-decoration: none;
 		font-size: 14px;
 		margin-right:30px;
 		list-style:none;
 		font-style: normal;
 		font-weight: normal;
 		line-height: 19px;
-		color: #7A7A83;;
+		color: #7A7A83;
 	}
+
 	.FilterGames{
 		margin-top:5px;
 		margin-bottom:5px;
@@ -129,11 +101,6 @@ export default {
 		color: rgba(255, 255, 255, 0.3);
 
 	}
-	.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
+
 
 </style>

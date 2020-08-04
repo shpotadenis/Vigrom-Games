@@ -1,11 +1,17 @@
-import GameCard from "@/components/GameCard/GameCard.vue"
-import HeaderComponents from "@/components/HeaderComponent/index.vue"
+
+import InternalMenu from '../../components/InternalMenu/InternalMenu.vue'
+import SearchComponent from "../../components/SearchComponent/index.vue"
 
 export default{
 
   name:"FreeGames",
   component:{
-    HeaderComponents,
-    GameCard
+    InternalMenu,
+    SearchComponent
+  },
+  data(){
+    return{
+      isVisible:false
+    }
   }
 }
