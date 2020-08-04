@@ -1,7 +1,9 @@
 from django.urls import path
 from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame,\
-    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail
+    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView,\
+    QuestionDetail, DownloadMedia
+
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
@@ -9,6 +11,7 @@ urlpatterns = [
     path('profile/<str:pk>', AccountDetail.as_view(), name="profile"),
     path('profile/<str:pk>/library', OutputLibrary.as_view(), name="library"),
 
+    path('role', RoleView.as_view(), name="role"),
     #path('role/<int:pk>', UserProfileDetailView.as_view(), name="role"),
 
     path('games/add', GameDetail.as_view(), name="add_game"),
@@ -31,6 +34,8 @@ urlpatterns = [
 
     path('faq', FaqDetail.as_view(), name="faq"),
 
+    path('question', QuestionDetail.as_view(), name="question"),
+
     path('commentnews/add', CommentNewsCreateView.as_view(), name="add_new_comment_news"),
     path('commentnews/<int:pk>/update', CommentNewsCreateView.as_view(), name="update_new_comment_news"),
     path('commentnews/<int:pk>/delete', CommentNewsCreateView.as_view(), name="delete_new_comment_news"),
@@ -38,6 +43,9 @@ urlpatterns = [
     path('commentgame/add', CommentGameCreateView.as_view(), name="add_new_comment_game"),
     path('commentgame/<int:pk>/update', CommentGameCreateView.as_view(), name="update_new_comment_game"),
     path('commentgame/<int:pk>/delete', CommentGameCreateView.as_view(), name="delete_new_comment_game"),
+
+    path('uploads/add', DownloadMedia.as_view(), name='download_media'),
+    path('uploads/<int:pk>/delete', DownloadMedia.as_view(), name='delete_media'),
 ]
 
 #/api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)

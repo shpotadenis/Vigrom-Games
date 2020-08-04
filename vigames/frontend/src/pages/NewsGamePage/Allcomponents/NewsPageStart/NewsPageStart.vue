@@ -14,26 +14,24 @@
       <img src="@/assets/img/block.svg" class="SearchImage">
     </div>
     </div>
-    <div class="BlockBaner">
-      <div class="TextBaner">
-        <p class="DateBaner">Сегодня</p>
-        <p class="NameBaner">МЫ ОПУСКАЕМ ПЛАНКУ ВХОДА</p>
-        <p class="UnderNameBaner">Унитарное государство, однако, доказывает системный политический процесс в современной России</p>
-        <button class="ButtonBaner">Подробнее <img src="@/assets/img/Vector.png"></button>
-      </div>
-      <div>
-        <img src="@/assets/img/902d1.svg" class="ImageBest">
-      </div>
-    </div>
+    <banner-component day="Сегодня"
+                      header="НОВЫЕ ИНДИ ИГРЫ УЖЕ НА ГЛАВНОЙ"
+                      description="Унитарное государство, однако, доказывает системный политический процесс в современной России"
+                      btn_caption="Подробнее"
+                      :btn_route="{ name: 'newsSinglePage' }">
+    </banner-component>
 </div>
 </template>
 
 
 <script>
+
+import BannerComponent from "@/components/BannerComponent/index.vue"
+
 export default{
   name:"NewsPageStart",
   components:{
-
+    BannerComponent
   },
   props:{},
   data(){
@@ -45,9 +43,11 @@ export default{
 </script>
 
 <style scoped>
+
 .NewsSectionAndSearch{
 display:flex;
 justify-content:space-between;
+margin-bottom:60px;
 }
 .NewsSection{
 position:relative;
@@ -77,70 +77,5 @@ top:9px;
 
 
 }
-.BlockBaner{
-display:flex;
-justify-content:space-between;
-margin-top:61px;
-width:1110px;
-height:294px;
-background: #2D2D42;
-border-radius: 10px;
-}
-.DateBaner{
-position:relative;
-top:40px;
-left:40px;
-text-transform:uppercase;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 19px;
-color: #7A7A83;
-}
-.NameBaner{
-position:relative;
-top:104px;
-left:40px;
-font-style: normal;
-font-weight: bold;
-font-size: 24px;
-line-height: 28px;
-color: #FFFFFF;
-}
-.UnderNameBaner{
-position:relative;
-top:110px;
-left:40px;
-width:411px;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 19px;
-color: #7A7A83;
-}
-.ButtonBaner{
-position:relative;
-top:136px;
-left:40px;
-width: 139px;
-height: 38px;
-background: #CE6796;
-border-radius: 6px;
-border:none;
-font-style: normal;
-font-weight: 800;
-font-size: 14px;
-line-height: 19px;
-color: #FFFFFF;
-}
-.ButtonBaner:hover{
-    -moz-box-shadow:0 0 15px #CE6796;
-    -webkit-box-shadow:0 0 15px #CE6796;
-    box-shadow:0 0 15px #CE6796;
-}
-.ImageBest{
-position:relative;
-top:28px;
-right:95px;
-}
+
 </style>

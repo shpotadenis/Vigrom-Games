@@ -91,18 +91,17 @@
       </div>
         <div class="RatingAndTitlePopular">
           <p class="NameGamePopular">{{Game.name}}</p>
-          <div class="RatingGamePopular">{{Game.rating}}</div>
+            <p class="PricePopular">{{Game.price}}</p>
         </div>
         <p class="UnderNamePopular">{{Game.undername}}</p>
-        <p class="PricePopular">{{Game.price}}</p>
       </div>
 
 </div>
 </template>
 
-<script src='./LittlePopularPageComponents.js'>
+<script src='./GameCard.js'>
 </script>
 
 <style lang='scss'>
-@import '@/assets/style/LittlePopularPageComponents.scss'
+@import '@/assets/style/GameCard.scss'
 </style>

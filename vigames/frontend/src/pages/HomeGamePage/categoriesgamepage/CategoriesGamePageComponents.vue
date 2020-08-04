@@ -1,8 +1,12 @@
 <template>
-  <div class="CategoriesGamePageComponent">
-    <img v-bind:src="require('@/assets/img/' + Categories_Game.image)" class="ImageCategories">
-    <p class="TitleCategories">{{Categories_Game.name}}</p>
-  </div>
+<div>
+  <a href="#!">
+    <div class="CategoriesGamePageComponent">
+      <img v-bind:src="require('@/assets/img/' + Categories_Game.image)" class="ImageCategories">
+      <p class="TitleCategories">{{Categories_Game.name}}</p>
+    </div>
+  </a>
+</div>
 </template>
 
 <script src="./CategoriesGamePageComponents.js">

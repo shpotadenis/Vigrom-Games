@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account, Posts, Game, Comments_Post, Comments_Game, Rating, FAQ, Orders
+from .models import Account, Posts, Game, Comments_Post, Comments_Game, Rating, FAQ, Orders, Media, Question
 
 
 #Сериализатор пользователя
@@ -71,6 +71,14 @@ class OutputPost(PostSerializer):
     comments_post = CommentsNewsSerializer(many=True)
 
 
+class SerializerMedia(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+
+    class Meta:
+        model = Media
+        fields = ('img', 'author')
+
+
 class GameSerializer(serializers.ModelSerializer):
     """Сериализатор игры (нужен для добавления)"""
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
@@ -81,8 +89,13 @@ class GameSerializer(serializers.ModelSerializer):
 
 
 class OutputGameSerializer(GameSerializer):
-    """Сериализатор вывода поста на страницу"""
+    """Сериализатор вывода игры на страницу"""
     comments_game = CommentsGameSerializer(many=True)
+    players = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
+    who_added_to_wishlist = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
+    categories = serializers.SlugRelatedField(slug_field='name', read_only=True, many=True)
+    genre = serializers.SlugRelatedField(slug_field='name', read_only=True, many=True)
+    image = SerializerMedia(many=True)
 
 
 class RatingSerializer(serializers.ModelSerializer):
@@ -103,4 +116,11 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Orders
+        fields = '__all__'
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Question
         fields = '__all__'

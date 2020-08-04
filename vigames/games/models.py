@@ -93,12 +93,12 @@ class Category(models.Model):
 
 
 class Media(models.Model):
-    title = models.CharField('Заголовок изображения', max_length=50)
+    #title = models.CharField('Заголовок изображения', max_length=50)
     img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.img
 
     class Meta:
         verbose_name = "Изображение"
@@ -107,8 +107,8 @@ class Media(models.Model):
 
 #в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
 class Game(models.Model):
-    players = models.ManyToManyField(Account, blank=True, related_name="players")
-    who_added_to_wishlist = models.ManyToManyField(Account, blank=True, related_name="who_added_to_wishlist")
+    players = models.ManyToManyField(User, blank=True, related_name="players")
+    who_added_to_wishlist = models.ManyToManyField(User, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(User, on_delete=models.PROTECT,
                                related_name="game_author", null=True)
     categories = models.ManyToManyField(Category, blank=True, related_name="categories")
@@ -128,7 +128,7 @@ class Game(models.Model):
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
-    image = models.ManyToManyField(Media, blank=True, related_name='media')
+    image = models.ManyToManyField(Media, blank=True, related_name='game')
     '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
@@ -244,3 +244,6 @@ class FAQ(models.Model):
     answer = models.TextField()
 
 
+class Question(models.Model):
+    email = models.EmailField()
+    question = models.CharField(max_length=500)

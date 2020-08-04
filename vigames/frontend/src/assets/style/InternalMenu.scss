@@ -1,0 +1,32 @@
+.CategoriesGame>ul{
+  margin-top:15px;
+}
+.CategoriesGame>ul>li a{
+  color: #7A7A83;
+  text-decoration:none;
+
+}
+.AllChooseUL{
+  display:flex;
+}
+.AllChooseLi{
+  display:block;
+  font-size: 14px;
+  margin-right:30px;
+  list-style:none;
+  text-decoration: none;
+  text-transform: none;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 19px;
+  color: #7A7A83;;
+}
+.AllChooseLi:hover{
+  text-decoration: none;
+}
+.fade-enter-active, .fade-leave-active {
+transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+opacity: 0;
+}
