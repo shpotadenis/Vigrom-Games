@@ -16,7 +16,7 @@ import 'swiper/swiper-bundle.css'
 import LibraryPage from "./pages/LibraryPage/index.vue"
 import VueScrollTo from 'vue-scrollto'
 import FeaturedPage from './pages/FeaturedPage/index.vue'
-import NewsSinglePage from "./pages/newsSinglePage/index.vue"
+import NewsSinglePage from "./pages/NewsSinglePage/index.vue"
 
 Vue.use(VueScrollTo)
 
