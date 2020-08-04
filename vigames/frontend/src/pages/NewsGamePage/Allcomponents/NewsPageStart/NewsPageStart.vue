@@ -5,13 +5,7 @@
       <p class="NewsSection">Новостной раздел</p>
     </div>
     <div class="Block2">
-      <img src="@/assets/img/search-icon.png" class="ImageSeach">
-      <input
-      type="text"
-      placeholder="Поиск..."
-      class="SearchNews"
-      >
-      <img src="@/assets/img/block.svg" class="SearchImage">
+      <search-component/>
     </div>
     </div>
     <banner-component day="Сегодня"
@@ -27,11 +21,13 @@
 <script>
 
 import BannerComponent from "@/components/BannerComponent/index.vue"
+import SearchComponent from "@/components/SearchComponent/index.vue"
 
 export default{
   name:"NewsPageStart",
   components:{
-    BannerComponent
+    BannerComponent,
+    SearchComponent
   },
   props:{},
   data(){

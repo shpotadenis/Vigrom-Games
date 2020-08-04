@@ -7,10 +7,10 @@
 	:Game_Popular="item"
     />
     <div class="ImageVector1" @click="leftFunc">
-      <img src="@/assets/img/Vector.svg" class="strelka1"  width="50" height="50">
+      <img src="@/assets/img/Vector.svg" class="strelka1"  width="12" height="20">
     </div>
     <div class="ImageVector2" @click="rightFunc">
-      <img src="@/assets/img/Vector.svg" class="strelka2"  width="50" height="50">
+      <img src="@/assets/img/Vector.svg" class="strelka2"  width="12" height="20">
     </div>
   </div>
 
