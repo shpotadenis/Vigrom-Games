@@ -1,11 +1,11 @@
 import BestsGamePageComponents from "./BestsGamePageComponents.vue"
-import LittlePopularPageComponents from "../popularcomponents/LittlePopularPageComponents.vue"
+import GameCard from "@/components/GameCard/GameCard.vue"
 
 export default {
   name: 'BestsGamePage',
   components: {
     BestsGamePageComponents,
-    LittlePopularPageComponents
+    GameCard
   },
   data(){
     return{
