@@ -3,12 +3,19 @@
 	<div class="AllCategories">
 		<div class="CategoriesGame">
 			<ul class="AllChooseUL">
-				<li class="AllChooseLi" @click="toggleElement"><a href="#!">Категории <img src="@/assets/img/VectorBottom.svg"></a> </li>
-				<li class="AllChooseLi"><a href="#!">Скидки</a></li>
-				<router-link :to="{name: 'freeGames'}">
-					<li class="AllChooseLi"><a href="#!">Бесплатные игры</a></li>
+				<a class="AllChooseLi" @click="toggleElement">
+					Категории
+					<img src="@/assets/img/VectorBottom.svg">
+				</a>
+				<li class="AllChooseLi">
+					Скидки
+				</li>
+				<router-link :to="{name: 'freeGames'}" class="AllChooseLi">
+					Бесплатные игры
 				</router-link>
-				<li class="AllChooseLi"><a href="#!">Ранний доступ</a></li>
+				<li class="AllChooseLi">
+					Ранний доступ
+				</li>
 			</ul>
 		</div>
 		<div class="FilterGames">
@@ -79,13 +86,15 @@ export default {
 	}
 	.AllChooseLi{
 		display:block;
+		cursor: pointer;
+		text-decoration: none;
 		font-size: 14px;
 		margin-right:30px;
 		list-style:none;
 		font-style: normal;
 		font-weight: normal;
 		line-height: 19px;
-		color: #7A7A83;;
+		color: #7A7A83;
 	}
 	.FilterGames{
 		margin-top:5px;
