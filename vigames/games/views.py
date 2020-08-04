@@ -9,7 +9,7 @@ from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, 
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, OrderSerializer, \
-    OutputGameSerializer
+    OutputGameSerializer, QuestionSerializer
 from django.contrib.auth.models import User
 
 #class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -458,3 +458,13 @@ class RoleView(APIView):
             return Response({"message": "success"}, status=status.HTTP_200_OK)
         except Account.DoesNotExist:
             return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class QuestionDetail(APIView):
+
+    def post(self, request):
+        serializer = QuestionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -244,3 +244,6 @@ class FAQ(models.Model):
     answer = models.TextField()
 
 
+class Question(models.Model):
+    email = models.EmailField()
+    question = models.CharField(max_length=500)

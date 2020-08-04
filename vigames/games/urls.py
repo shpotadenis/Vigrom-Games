@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame,\
-    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView
+    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView,\
+    QuestionDetail
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
@@ -31,6 +32,8 @@ urlpatterns = [
     path('categories/<str:pk>', GameCategoryDetail.as_view(), name="assess"),
 
     path('faq', FaqDetail.as_view(), name="faq"),
+
+    path('question', QuestionDetail.as_view(), name="question"),
 
     path('commentnews/add', CommentNewsCreateView.as_view(), name="add_new_comment_news"),
     path('commentnews/<int:pk>/update', CommentNewsCreateView.as_view(), name="update_new_comment_news"),
