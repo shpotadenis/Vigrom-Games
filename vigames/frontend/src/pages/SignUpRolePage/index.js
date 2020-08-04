@@ -16,8 +16,14 @@ export default {
                 this.$store.dispatch("user/changeRole", {
                     isDev: this.user == "dev"
                 }).then(response => {
-                    console.log(response)
+                    if (response) {
+                        this.$router.push({
+                            name: 'homePage'
+                        })
+                    }
                 }).catch(e => {
+                    alert('Упс... Что-то пошло не так.')
+                    console.log("Ошибка:")
                     console.log(e)
                 })
                 return true

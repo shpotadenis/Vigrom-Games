@@ -36,14 +36,13 @@
                                     <!--Глаз может поехать-->
                                 </div>
                             </div>
+                            <span>{{errorMessage}}</span>
                         </div>
                     </form>
                     <div class="btn_and_link">
                         <div class="row justify-content-center">
-<!--                            Здесь будет ссылка на личный кабинет-->
-<!--                            <router-link :disabled="errors > 0">-->
+<!--                            Перенаправление в личный кабинет через программную навигацию в методе checkForm-->
                                 <button class="next-btn" @click="checkForm">Войти</button>
-<!--                            </router-link>-->
                         </div>
                         <router-link :to="{name: 'loginPage'}" class="signin-link row justify-content-center">
                             Создать аккаунт

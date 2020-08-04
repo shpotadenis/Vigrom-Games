@@ -66,11 +66,7 @@
 
                 </form>
                     <div class="row justify-content-center">
-
-                            <router-link :to="{name:'signUpRolePage'}" :disabled="errors > 0">
-                                <button class="next-btn" @click="checkForm" >Далее</button>
-                            </router-link>
-
+                        <button class="next-btn" @click="checkForm">Далее</button>
                     </div>
                     <router-link :to="{name: 'signInPage'}" class="signin-link row justify-content-center">
                         Уже есть аккаунт?

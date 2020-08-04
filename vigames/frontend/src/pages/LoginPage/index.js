@@ -1,7 +1,3 @@
-const data = {
-
-}
-
 export default {
     name: "LoginPage",
     data() {
@@ -17,8 +13,7 @@ export default {
             error_name: [],
             error_mail: [],
             error_pass: [],
-            error_confirm: [],
-            errors: 0
+            error_confirm: []
         }
     },
     methods: {
@@ -49,16 +44,34 @@ export default {
                     password: this.pass,
                     email: this.email
                 }).then(response => {
-                    console.log(response)
+                    // Пользователь прошел первый этап регистрации, перенаправление ко второму
+                      if (response) {
+                        this.$router.push({
+                            name: 'signUpRolePage'
+                        })
+                      }
+
                 }).catch(e => {
-                    alert(e.data)
+                    if (e.username) { // Есть ошибки к полю имени
+                        this.error_name = [...e.username] // Конкатенация массива error_name и username
+                    }
+
+                    if (e.email) {
+                        this.error_mail = [...e.email]
+                    }
+
+                    if (e.password) {
+                        this.error_pass = [...e.password]
+                    }
+
+                    this.errors++;
                 })
-                return true;
             }
+
             this.error_name = []
-                this.error_mail = []
-                this.error_pass = []
-                this.error_confirm = []
+            this.error_mail = []
+            this.error_pass = []
+            this.error_confirm = []
 
             if (!this.name) {
                 this.error_name.push('Пустое поле');
@@ -76,18 +89,30 @@ export default {
                     this.error_confirm.push('Пароли не совпадают')
                 }
             }
-            this.errors++;
             e.preventDefault();
         }
-        },
+    },
     components: {
 
     },
     computed: {
-        getGameData() {
-            return data;
+    },
+
+    mounted() {
+        // TODO: Изменить редирект с главной на личный кабинет
+        // Пользователь уже авторизован -> редирект на главную
+        if (this.$store.getters['user/isLoggedIn'] == true) {
+            this.$router.push({
+                name: 'homePage'
+            })
         }
 
+        // Пользователь ввел основные данные, но не выбрал роль
+        if (this.$store.state.user.userLogin !== null && this.$store.state.user.isRoleSelected == false) {
+            this.$router.push({
+                name: 'signUpRolePage'
+            })
+        }
     }
 
 }

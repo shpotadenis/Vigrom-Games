@@ -1,7 +1,3 @@
-const data = {
-
-}
-
 export default {
     name: "SignInPage",
     data() {
@@ -12,7 +8,7 @@ export default {
             name: null,
             error_name: [],
             error_pass: [],
-            errors: 0
+            errorMessage: ''
         }
     },
     methods: {
@@ -31,10 +27,18 @@ export default {
                 this.$store.dispatch('user/login', {
                     login: this.name,
                     password: this.pass
-                }).then(rsp => {
-                    console.log(rsp)
-                }).catch(err => {
-                    console.log(err)
+                }).then(response => {
+                    console.log('Меня вызвали')
+                    if (response) {
+                        // TODO: Изменить на перенаправление в личный кабинет
+                        this.$router.push({
+                            name: 'homePage'
+                        })
+                    }
+                }).catch(error => {
+                    if (error.non_field_errors) {
+                        this.errorMessage = error.non_field_errors[0]
+                    }
                 })
 
                 return true;
@@ -48,15 +52,10 @@ export default {
             if (!this.pass) {
                 this.error_pass.push('Пустое поле');
             }
-            this.errors++;
             e.preventDefault();
         }
     },
     computed: {
-        getGameData() {
-            return data;
-        }
-
     }
 
 }

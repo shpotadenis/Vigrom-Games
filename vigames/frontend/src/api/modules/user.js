@@ -11,28 +11,25 @@ export default {
         let fd = new FormData()
         fd.append('username', credentials.login)
         fd.append('password', credentials.password)
-        return instance.post(login_endpoint, fd).then(response => {
-            console.log("Response")
-            console.log(response)
-        }).catch(error => {
-            console.log("Error")
-            console.log(error)
-        })
+
+        return instance.post(login_endpoint, fd)
     },
 
     register(credentials)
     {
-        return instance.post(register_endpoint, {
-            'username': credentials.login,
-            'password': credentials.password,
-            'email': credentials.email
-        })
+        let fd = new FormData()
+        fd.append('username', credentials.login)
+        fd.append('password', credentials.password)
+        fd.append('email', credentials.email)
+
+        return instance.post(register_endpoint, fd)
     },
 
     setRole(name, isDev) {
         let fd = new FormData()
         fd.append('username', name)
         fd.append('is_developer', isDev)
+
         return instance.post(role_endpoint, fd)
     }
 
