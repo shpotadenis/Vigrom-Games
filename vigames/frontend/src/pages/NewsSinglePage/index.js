@@ -1,6 +1,7 @@
 import BreadcrumbsComponent from "../../components/BreadcrumbsComponent/index.vue"
 import FooterComponent from "../../components/FooterComponent/index.vue"
 import Checkout from "../../components/Pop-ups/Checkout/checkout"
+import CommentsComponent from "../../components/CommentsComponent/index.vue"
 
 const data = {
     name_news: 'Здесь будет большой заголовок',
@@ -15,7 +16,8 @@ export default {
     components: {
         BreadcrumbsComponent,
         FooterComponent,
-        Checkout
+        Checkout,
+        CommentsComponent
     },
     data() {
         return {
@@ -23,7 +25,7 @@ export default {
             breadcrumbs: [
                 {
                     to: {
-                        name: 'newsSinglePage'
+                        name: 'newsPage'
                     },
                     title: 'Новости'
                 },

@@ -1,4 +1,5 @@
 <template>
+  <div>
 <div class="container">
   <div class="col">
     <div class="wrappen">
@@ -14,10 +15,12 @@
       <recommendation-game-page/>
       <div class="Banner"></div>
       <div class="foot">
-        <footer-components/>
+
       </div>
     </div>
   </div>
+</div>
+  <footer-components/>
 </div>
 </template>
 

@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+.popup_wrapper{
+    background: rgba(0,0,0, .65);
+    display: flex;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+}
+.v_popup{
+    position: fixed;
+    background: #2D2D42;
+    border-radius: 10px;
+    width: 444px;
+    height: 505px;
+    left: 50%;
+    top: 50%;
+    margin-left: -222px;
+    margin-top: -250px;
+    z-index: 10;
+    box-shadow: 0 0 25px 0 #b6b6b6;
+}
+#change_pass_title{
+    margin-left: 47px;
+    margin-top: 30px;
+    float: left;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+#exit_svg{
+    margin-left: 170px;
+    margin-top: 36px;
+    cursor: pointer;
+}
+#line_svg{
+    margin-left: 47px;
+    margin-top: 3px;
+}
+#old_pass_title,#new_pass_title,#repeat_new_pass_title{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    color: #D3D3D6;
+    margin-left: 47px;
+}
+#old_pass_area,#new_pass_area,#repeat_new_pass_area{
+    width: 350px;
+    height: 50px;
+    background: #212130;
+    margin-left: 47px;
+    margin-top: 10px;
+    border: 0;
+    color: #FFFFFF;
+    padding-left: 20px;
+}
+#old_pass_title{
+    margin-left: 47px;
+    margin-top: 23px;
+}
+#new_pass_title,#repeat_new_pass_title{
+    margin-top: 20px;
+}
+#save_change{
+    margin-left: 47px;
+    margin-top: 31px;
+    background: #CE6796;
+    border-radius: 6px;
+    width: 190px;
+    height: 40px;
+    border: 0;
+}
+#eye_pass,#eye_pass_second,#eye_pass_third{
+    position: absolute;
+    cursor: pointer;
+}
+#eye_pass{
+    left: 355px;
+    top: 140px;
+}
+#eye_pass_second{
+    left: 355px;
+    top: 238px;
+}
+#eye_pass_third{
+    left: 355px;
+    top: 338px;
+}
+::placeholder {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+.errors {
+    position: absolute;
+    font-size: 14px;
+    width: 165px;
+    height: 40px;
+    background: #212130;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 0 #b6b6b6;
+    text-align: center;
+    padding-top: 10px;
+}
+.errors:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: calc(50% - 12px);
+    border-top: 10px solid transparent;
+    border-right: 20px solid #212130;
+    border-bottom: 10px solid transparent;
+}
+.errors__old_pass{
+    left: 425px;
+    bottom: 335px;
+}
+.errors__new_pass{
+    left: 425px;
+    bottom: 235px;
+}
+.errors__new_pass_repeat{
+    left: 425px;
+    bottom: 135px;
+}

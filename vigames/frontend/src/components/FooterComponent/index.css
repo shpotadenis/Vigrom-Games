@@ -1,3 +1,7 @@
+.footer{
+    border-top: 1px solid #313144;
+    margin-top: 50px;
+}
 .wrapper {
     margin: 0 auto;
     max-width: 1124px;

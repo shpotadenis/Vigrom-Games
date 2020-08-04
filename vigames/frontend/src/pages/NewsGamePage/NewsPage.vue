@@ -1,4 +1,5 @@
 <template>
+	<div>
 <div class="container">
 	<div class="col">
 		<div class="NewsWrappen">
@@ -24,11 +25,13 @@
 				</div>
 			</div>
 			<div class="foot">
-				<footer-component></footer-component>
+
 			</div>
 			</div>
 	</div>
 </div>
+		<footer-component></footer-component>
+	</div>
 </template>
 
 

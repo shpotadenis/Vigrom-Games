@@ -1,55 +1,28 @@
 ﻿<template>
 <div>
 	<div class="AllCategories">
-		<div class="CategoriesGame">
-			<ul class="AllChooseUL">
-				<a class="AllChooseLi" @click="toggleElement">
-					Категории
-					<img src="@/assets/img/VectorBottom.svg">
-				</a>
-				<li class="AllChooseLi">
-					Скидки
-				</li>
-				<router-link :to="{name: 'freeGames'}" class="AllChooseLi">
-					Бесплатные игры
-				</router-link>
-				<li class="AllChooseLi">
-					Ранний доступ
-				</li>
-			</ul>
-		</div>
-		<div class="FilterGames">
-			<div class="SpaceBetweenImageAndText">
-				<div class="SearchImage">
-					<img src="@/assets/img/search-icon.png">
-				</div>
-				<div class="SearchText">
-					<input
-						type="text"
-						class="InputFilterGames"
-						placeholder="Поиск..."
-					>
-				</div>
-			</div>
-			<div class="BorderTop"></div>
-		</div>
-
-
-	</div>
-   <transition name="fade">
-		<categories-choose
-			v-show="isVisible"
+		<internal-menu
 		/>
-	</transition>
+		<div class="FilterGames">
+				<search-component/>
+		</div>
+	</div>
+
 </div>
 </template>
 
 <script>
 
-import CategoriesChoose from "./CategoriesChoose"
+import SearchComponent from "@/components/SearchComponent/index.vue"
+import InternalMenu from "@/components/InternalMenu/InternalMenu.vue"
+
 
 export default {
 	name: 'Categories',
+	components:{
+		SearchComponent,
+		InternalMenu
+	},
 	data(){
 		return{
 			isVisible: false
@@ -58,12 +31,8 @@ export default {
 	methods:{
 		toggleElement(){
 			this.isVisible = !this.isVisible
+			}
 		}
-	},
-	components:{
-		CategoriesChoose
-	}
-
 }
 </script>
 
@@ -73,14 +42,7 @@ export default {
 		display:flex;
 		justify-content:space-between;
 	}
-	.CategoriesGame>ul{
-		margin-top:15px;
-	}
-	.CategoriesGame>ul>li a{
-		color: #7A7A83;
-		text-decoration:none;
 
-	}
 	.AllChooseUL{
 		display:flex;
 	}
@@ -96,6 +58,7 @@ export default {
 		line-height: 19px;
 		color: #7A7A83;
 	}
+
 	.FilterGames{
 		margin-top:5px;
 		margin-bottom:5px;
@@ -138,11 +101,6 @@ export default {
 		color: rgba(255, 255, 255, 0.3);
 
 	}
-	.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
+
 
 </style>

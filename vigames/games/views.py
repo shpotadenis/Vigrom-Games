@@ -5,11 +5,11 @@ from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, Comments_Game
+from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, Comments_Game, Media
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, OrderSerializer, \
-    OutputGameSerializer
+    OutputGameSerializer, QuestionSerializer, SerializerMedia
 from django.contrib.auth.models import User
 
 #class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -458,3 +458,34 @@ class RoleView(APIView):
             return Response({"message": "success"}, status=status.HTTP_200_OK)
         except Account.DoesNotExist:
             return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class QuestionDetail(APIView):
+
+    def post(self, request):
+        serializer = QuestionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DownloadMedia(APIView):
+    """Добавление медиафайлов"""
+
+    def post(self, request):
+        user = request.user
+        #serializer = SerializerMedia
+        account = Account.objects.get(user=user)
+        for i in list(dict(request.data)['img']):
+            if user.is_authenticated and account.is_developer:
+                Media.objects.create(img=i, author=user)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_200_OK)
+
+    def delete(self, request, pk):
+        img = Media.objects.get(id=pk)
+        account = Account.objects.get(user=request.user)
+        if account.is_developer and img.author == request.user:
+                img.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

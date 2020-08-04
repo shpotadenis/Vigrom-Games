@@ -93,12 +93,12 @@ class Category(models.Model):
 
 
 class Media(models.Model):
-    title = models.CharField('Заголовок изображения', max_length=50)
+    #title = models.CharField('Заголовок изображения', max_length=50)
     img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.img
 
     class Meta:
         verbose_name = "Изображение"
@@ -128,7 +128,7 @@ class Game(models.Model):
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
-    image = models.ManyToManyField(Media, blank=True, related_name='media')
+    image = models.ManyToManyField(Media, blank=True, related_name='game')
     '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
@@ -244,3 +244,6 @@ class FAQ(models.Model):
     answer = models.TextField()
 
 
+class Question(models.Model):
+    email = models.EmailField()
+    question = models.CharField(max_length=500)

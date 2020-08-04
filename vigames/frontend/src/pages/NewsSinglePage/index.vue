@@ -1,6 +1,9 @@
 <template>
+  <div>
   <div class="wrapper">
+    <router-link :to="{name: 'newsPage'}">
     <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
+    </router-link>
     <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>
     <div class="container">
       <div class="Header">
@@ -80,11 +83,13 @@
       </div>
 
       <div class="comments">
+        <comments-component id="reviews"></comments-component>
       </div>
     </div>
+
+  </div>
     <footer-component> </footer-component>
   </div>
-
 </template>
 
 <script src="./index.js" type="application/javascript">

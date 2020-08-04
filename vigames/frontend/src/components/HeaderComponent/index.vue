@@ -39,7 +39,7 @@
 
                 <div class="header__icons">
                     <div class="header__icon">
-                        <router-link :to="{name: 'loginPage'}">
+                        <router-link :to="{name: 'signInPage'}">
                             <div class="header__icon-link">
                                 <img src="@/assets/img/person-icon.png" alt="Person" class="header__icon-pic">
                             </div>
