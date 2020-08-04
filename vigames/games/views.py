@@ -447,7 +447,7 @@ class RoleView(APIView):
         try:
             is_developer = request.POST.get('is_developer')
             account = Account.objects.get(user=user)
-            if is_developer == "True":
+            if is_developer == "true":
                 account.is_developer = True
                 account.is_player = False
                 account.save()
