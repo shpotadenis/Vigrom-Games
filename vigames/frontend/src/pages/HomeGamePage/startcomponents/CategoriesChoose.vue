@@ -1,21 +1,17 @@
 <template>
 <div class="TableCategories">
-	<ul class="TableCategoriesUl">
-		<li class="TableCategoriesLi">Категории</li>
-		<li class="TableCategoriesLi">Категории</li>
-		<li class="TableCategoriesLI">Категории</li>
+	<ul class="StartTable">
+		<li class="Li">Жанры игр</li>
+		<li class="Li">Платформа</li>
 	</ul>
-	<ul class="TableCategoriesUl">
-		<li class="TableCategoriesLi">Категории</li>
-		<li class="TableCategoriesLi">Категории</li>
-		<li class="TableCategoriesLI">Категории</li>
+	<ul class="StartTable">
+		<li class="Li">Жанры игр</li>
+		<li class="Li">Платформа</li>
+		<li class="Li">Платформа</li>
+		<li class="Li">Платформа</li>
 	</ul>
-	<ul class="TableCategoriesUl">
-		<li class="TableCategoriesLi">Категории</li>
-		<li class="TableCategoriesLi">Категории</li>
-		<li class="TableCategoriesLI">Категории</li>
-	</ul>
-
+	<ul></ul>
+	<ul></ul>
 </div>
 </template>
 
@@ -26,7 +22,7 @@
 export default {
   name: 'CategoriesChoose',
   props:{
-			
+
 		},
 		data(){
 			return{
@@ -34,22 +30,31 @@ export default {
 			}
 		},
   components: {
-    
+
   }
 }
 </script>
 
 <style>
-.TableCategories{
+.TableCategories ul{
 	position:absolute;
 	display:flex;
-	background-color:#000;
+	justify-content:space-between;
+	background: #2D2D42;
+	border-radius: 10px;
+	width:720px;
+	height:155px;
 	color:#fff;
 	z-index: 999999;
 }
 
-.TableCategoriesUl{
-	
-
+.StartTable .Li{
+position:relative;
+width:180px;
+height:19px;
+padding-left: 15px;
+z-index:9999999999999999;
 }
+
+
 </style>
