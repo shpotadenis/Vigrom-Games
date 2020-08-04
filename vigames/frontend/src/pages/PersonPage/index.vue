@@ -1,0 +1,51 @@
+<template>
+    <div class="wrapper">
+        <v_popup
+                v-if="isInfoPopupVisible"
+                @closePopup="closeInfoPopup"
+                @SaveNewPass="SaveNewPass"
+        >
+        </v_popup>
+        <PasswordChanged
+                v-if="isDownloadPopupVisible"
+                @close="close"
+        >
+        </PasswordChanged>
+        <div><p id="personal_account_title">Личный кабинет</p></div>
+        <img src="@/assets/img/line.png" alt="line">
+        <div id="personal_account_info">
+        <div id="border_user_info">
+            <div id="img_container">
+            <img src="@/assets/img/Ellipse.svg" alt="ellipse" id="img_ellipse">
+            <a href="http:yandex.ru">
+            <img src="@/assets/img/case.svg" alt="case" id="img_case">
+            <img src="@/assets/img/case_ring.svg" alt="case_ring" id="img_case_ring">
+            </a>
+            </div>
+            <p id="border_user_info_title">Игрок</p>
+            <p id="border_user_info_title_username_now">MARF07</p>
+            <p id="border_user_info_title_username_change">Имя пользователя:</p>
+            <p id="border_user_info_title_email_change">Эл. почта:</p>
+            <form id="change_form" action="" method="POST" name=" application ">
+                <input name="name" type="text" id="change_username_placeholder" placeholder="Введите Ваше имя" required />
+                <input name="email" type="text" id="changer_email_placeholder"  placeholder="Введите Ваш E-mail" required/>
+                <button id="change_button" type="submit" form="change_form">Сохранить</button>
+            </form>
+            <button id="change_password" @click="showPopupinfo">Изменить пароль</button>
+        </div>
+        <div id="control_panel">
+        <p id="control_panel_title">Панель управления</p>
+        <a href="" class="control_panel_list" id="control_panel_title_first">История покупок</a>
+        <a href="" class="control_panel_list" id="control_panel_title_second">Правовая информация</a>
+        <a href="" class="control_panel_list" id="control_panel_title_third">Связаться с разработчиками</a>
+        </div>
+        </div>
+        <footer-component></footer-component>
+    </div>
+</template>
+
+<script src="./index.js" type="application/javascript">
+</script>
+
+<style scoped src="./index.css" rel="stylesheet">
+</style>
