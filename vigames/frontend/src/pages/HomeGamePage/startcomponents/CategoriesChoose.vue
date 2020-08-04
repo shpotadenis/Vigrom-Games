@@ -1,17 +1,9 @@
 <template>
 <div class="TableCategories">
 	<ul class="StartTable">
-		<li class="Li">Жанры игр</li>
-		<li class="Li">Платформа</li>
+		<li>Жанры игр</li>
+		<li>Платформа</li>
 	</ul>
-	<ul class="StartTable">
-		<li class="Li">Жанры игр</li>
-		<li class="Li">Платформа</li>
-		<li class="Li">Платформа</li>
-		<li class="Li">Платформа</li>
-	</ul>
-	<ul></ul>
-	<ul></ul>
 </div>
 </template>
 
@@ -36,7 +28,7 @@ export default {
 </script>
 
 <style>
-.TableCategories ul{
+.TableCategories{
 	position:absolute;
 	display:flex;
 	justify-content:space-between;
@@ -47,11 +39,15 @@ export default {
 	color:#fff;
 	z-index: 999999;
 }
-
-.StartTable .Li{
-position:relative;
+.StartTable {
+	width:720px;
+display:flex;
+justify-content:space-between;
+}
+.StartTable li{
 width:180px;
 height:19px;
+padding-top:10px;
 padding-left: 15px;
 z-index:9999999999999999;
 }

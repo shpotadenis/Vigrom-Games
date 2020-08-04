@@ -6,6 +6,7 @@
   </div>
   <div class="RecommendationComponents">
     <game-card
+      class="ItemCard"
       v-for="item in recommendation"
       :key="item.id"
       :Game="item"
