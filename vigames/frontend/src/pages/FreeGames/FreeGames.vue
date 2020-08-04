@@ -1,9 +1,11 @@
 <template>
 <div>
-  <header-component/>
-    <div class="FreeGames">
-
-    </div>
+<div class="FreeGames">
+  <internal-menu/>
+  <div class="FilterGames">
+      <search-component/>
+  </div>
+</div>
 </div>
 </template>
 

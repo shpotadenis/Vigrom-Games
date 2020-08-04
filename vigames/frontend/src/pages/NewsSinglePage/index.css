@@ -1,0 +1,152 @@
+.wrapper {
+
+}
+
+.container {
+  font-family: Open Sans;
+  font-style: normal;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 25px;
+}
+
+.news-name {
+  width: 375px;
+  height: 30px;
+
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+
+.autor-name {
+  width: 81px;
+  height: 19px;
+
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+
+.Content {
+  margin-bottom: 80px;
+}
+
+.image {
+  margin-left: auto;
+  margin-right: auto;
+  background: #2D2D42;
+  border-radius: 10px;
+}
+
+.img-1 {
+  width: 1110px;
+  height: 441px;
+}
+
+.img-2 {
+  width: 920px;
+  height: 411px;
+}
+
+.img-3 {
+  width: 445px;
+  height: 411px;
+}
+
+.two-images {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 120px;
+  margin-bottom: 90px;
+  width: 538px;
+
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #D3D3D6;
+}
+
+p{
+  padding-bottom: 30px;
+}
+
+.info_about_game {
+  height: 700px;
+}
+
+.info-title {
+  height: 23px;
+  margin-bottom: 30px;
+
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: #FFFFFF;
+}
+
+.game-img {
+  width: 922px;
+  height: 366px;
+  margin-bottom: 30px;
+}
+
+.info-footer {
+  height: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-name {
+  margin-bottom: 10px;
+
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 26px;
+  color: #FFFFFF;
+}
+
+.dev-name {
+  width: 150px;
+
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #FFFFFF;
+}
+
+.btn-buy {
+width: 140px;
+height: 40px;
+border-radius: 6px;
+border: 0;
+
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+
+color: #FFFFFF;
+background: #CE6796;
+}
+
+.btn-buy:hover {
+-moz-box-shadow:0 0 15px #CE6796;
+-webkit-box-shadow:0 0 15px #CE6796;
+box-shadow:0 0 15px #CE6796;
+}
+
+.comments {
+
+}
