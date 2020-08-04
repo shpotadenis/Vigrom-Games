@@ -49,22 +49,17 @@ const actions = {
             user.register(credentials).then(response => {
 
                 resolve(response);
-            })
-                .catch(error => {
+            }).catch(error => {
                     commit('userLogin', {
                         login: credentials.login,
                         token: 'dfsf'
                     })
-                    console.log('error in store/modules/user.js:')
-                    console.log(error)
                     reject(error)
                 })
         });
     },
 
     changeRole({state}, data) {
-        console.log(state)
-        console.log(state.userLogin)
         user.setRole(state.userLogin, data.isDev).then(rsp => {
             console.log(rsp)
         }).catch(e => {
