@@ -23,7 +23,7 @@ export default {
             breadcrumbs: [
                 {
                     to: {
-                        name: 'newsSinglePage'
+                        name: 'newsPage'
                     },
                     title: 'Новости'
                 },
