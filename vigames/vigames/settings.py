@@ -144,3 +144,5 @@ MEDIA_URL = '/media/'
 
 # Путь хранения картинок
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+CORS_ORIGIN_ALLOW_ALL = True
