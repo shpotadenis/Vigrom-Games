@@ -19,6 +19,9 @@ import FeaturedPage from './pages/FeaturedPage/index.vue'
 import NewsSinglePage from "./pages/NewsSinglePage/index.vue"
 import ErrorPage from './pages/ErrorPage/index.vue'
 import FreeGames from "./pages/FreeGames/FreeGames.vue"
+import DiscountsGame from "./pages/DiscountsGame/DiscountGame";
+import EarlyAccessGame from "./pages/EarlyAccessGame/EarlyAccessGame.vue";
+import PersonPage from './pages/PersonPage/index.vue'
 
 Vue.use(VueScrollTo)
 
@@ -42,7 +45,10 @@ const router = new Router({
     { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage },
     { path: '/free_games', name: 'freeGames', component: FreeGames},
     { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage },
-    { path: '/not_found', name: 'errorPage', component: ErrorPage }
+    { path: '/not_found', name: 'errorPage', component: ErrorPage },
+    { path: '/discountsGame', name: 'discountsGame', component: DiscountsGame },
+    { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },
+    { path: '/profile', name: 'personPage', component: PersonPage }
 
   ]
 })
