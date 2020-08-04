@@ -1,4 +1,5 @@
 <template>
+  <div>
 <div class="wrappen">
 <div class="DiscountGames">
   <internal-menu/>
@@ -23,13 +24,16 @@
     :Game="discount"
     />
   </div>
+
 </div>
+    <footer-component></footer-component>
+  </div>
 </template>
 
 
-<script src="./DiscountsGames.js" type="application/javascript">
+<script src="./DiscountsGame.js" type="application/javascript">
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/DiscountsGames.scss"
+@import "@/assets/style/DiscountsGame.scss";
 </style>

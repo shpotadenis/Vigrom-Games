@@ -1,4 +1,5 @@
 <template>
+  <div>
 <div class="wrappen">
 <div class="FreeGames">
   <internal-menu/>
@@ -23,7 +24,11 @@
     :Game="free"
     />
   </div>
+
+
 </div>
+    <footer-component></footer-component>
+  </div>
 </template>
 
 
@@ -31,5 +36,5 @@
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/FreeGames.scss"
+@import "@/assets/style/FreeGames.scss";
 </style>

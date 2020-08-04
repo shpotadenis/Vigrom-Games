@@ -1,9 +1,10 @@
 <template>
+  <div>
 <div class="wrappen">
-<div class="FreeGames">
+<div class="EarlyAccessGames">
   <internal-menu/>
   <div class="FilterGames">
-      <search-component/>
+    <search-component></search-component>
   </div>
 </div>
 <div class="EarlyAccessGamesTitle">
@@ -23,13 +24,16 @@
     :Game="discount"
     />
   </div>
+
 </div>
+    <footer-component></footer-component>
+  </div>
 </template>
 
 
-<script src="./EarlyAccessGames.js" type="application/javascript">
+<script src="./EarlyAccessGame.js" type="application/javascript">
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/EarlyAccessGames.scss"
+@import "@/assets/style/EarlyAccessGame.scss";
 </style>
