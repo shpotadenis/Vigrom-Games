@@ -1,0 +1,32 @@
+.errorPage{
+    color: #FFFFFF;
+}
+
+button{
+    background: #CE6796;
+    border-radius: 6px;
+    position: relative;
+    width: 200px;
+    height: 40px;
+    color: #FFFFFF;
+    margin-top: 10px;
+    border: none;
+}
+
+button:hover{
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
+}
+
+.error{
+    font-weight: bold;
+    font-size: 150px;
+    line-height: 204px;
+}
+
+.message{
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 82px;
+}

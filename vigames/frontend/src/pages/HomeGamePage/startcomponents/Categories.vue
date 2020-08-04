@@ -1,4 +1,4 @@
-<template>
+﻿<template>
 <div>
 	<div class="AllCategories">
 		<internal-menu
@@ -43,6 +43,25 @@ export default {
 		justify-content:space-between;
 	}
 
+<<<<<<< HEAD
+=======
+	}
+	.AllChooseUL{
+		display:flex;
+	}
+	.AllChooseLi{
+		display:block;
+		cursor: pointer;
+		text-decoration: none;
+		font-size: 14px;
+		margin-right:30px;
+		list-style:none;
+		font-style: normal;
+		font-weight: normal;
+		line-height: 19px;
+		color: #7A7A83;
+	}
+>>>>>>> 0de046a1e4a5166012f60e53760c55be40796b61
 	.FilterGames{
 		margin-top:5px;
 		margin-bottom:5px;
