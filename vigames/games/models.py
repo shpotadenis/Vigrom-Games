@@ -107,8 +107,8 @@ class Media(models.Model):
 
 #в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
 class Game(models.Model):
-    players = models.ManyToManyField(Account, blank=True, related_name="players")
-    who_added_to_wishlist = models.ManyToManyField(Account, blank=True, related_name="who_added_to_wishlist")
+    players = models.ManyToManyField(User, blank=True, related_name="players")
+    who_added_to_wishlist = models.ManyToManyField(User, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(User, on_delete=models.PROTECT,
                                related_name="game_author", null=True)
     categories = models.ManyToManyField(Category, blank=True, related_name="categories")
