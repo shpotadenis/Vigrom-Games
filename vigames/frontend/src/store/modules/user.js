@@ -31,40 +31,44 @@ const mutations = {
 };
 
 const actions = {
-    login({ commit }, credentials) {
-        user.login(credentials).then(response => {
-            commit('userLogin', {
-                login: credentials.username,
-                token: response.data.auth_token
-            });
-        })
-        .catch(error => {
-            console.log('error in store/modules/user.js:')
-            console.log(error)
-        })
+    login(context, credentials) {
+        return new Promise((resolve, reject) => {
+            user.login(credentials).then(response => {
+                console.log(response)
+                resolve(response)
+            }).catch(error => {
+                console.log(error)
+                context.commit('userLogin', {
+                    login: credentials.username,
+                    token: error.response.data.auth_token
+                });
+                reject(error)
+            })
+        });
     },
 
     register({commit}, credentials) {
         return new Promise( (resolve, reject) => {
             user.register(credentials).then(response => {
-
+                commit('userLogin', {
+                    login: credentials.login
+                })
                 resolve(response);
             }).catch(error => {
-                    commit('userLogin', {
-                        login: credentials.login,
-                        token: 'dfsf'
-                    })
+
                     reject(error)
                 })
         });
     },
 
     changeRole({state}, data) {
-        user.setRole(state.userLogin, data.isDev).then(rsp => {
-            console.log(rsp)
-        }).catch(e => {
-            console.log(e)
-        })
+        return new Promise((resolve, reject) => {
+            user.setRole(state.userLogin, data.isDev).then(rsp => {
+                resolve(rsp)
+            }).catch(e => {
+                reject(e)
+            })
+        });
     }
 };
 

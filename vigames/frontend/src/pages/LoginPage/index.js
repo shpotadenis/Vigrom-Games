@@ -51,7 +51,7 @@ export default {
                 }).then(response => {
                     console.log(response)
                 }).catch(e => {
-                    console.log(e)
+                    alert(e.data)
                 })
                 return true;
             }

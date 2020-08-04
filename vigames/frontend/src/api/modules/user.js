@@ -8,9 +8,15 @@ const role_endpoint = '/api/role'
 export default {
     login(credentials)
     {
-        return instance.post(login_endpoint, {
-            'username': credentials.login,
-            'password': credentials.password
+        let fd = new FormData()
+        fd.append('username', credentials.login)
+        fd.append('password', credentials.password)
+        return instance.post(login_endpoint, fd).then(response => {
+            console.log("Response")
+            console.log(response)
+        }).catch(error => {
+            console.log("Error")
+            console.log(error)
         })
     },
 
@@ -24,10 +30,10 @@ export default {
     },
 
     setRole(name, isDev) {
-        return instance.post(role_endpoint, {
-            username: name,
-            "is_developer": isDev
-        })
+        let fd = new FormData()
+        fd.append('username', name)
+        fd.append('is_developer', isDev)
+        return instance.post(role_endpoint, fd)
     }
 
 }

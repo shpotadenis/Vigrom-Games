@@ -28,6 +28,15 @@ export default {
         },
         checkForm(e) {
             if (this.name && this.pass) {
+                this.$store.dispatch('user/login', {
+                    login: this.name,
+                    password: this.pass
+                }).then(rsp => {
+                    console.log(rsp)
+                }).catch(err => {
+                    console.log(err)
+                })
+
                 return true;
             }
             this.error_name = []
