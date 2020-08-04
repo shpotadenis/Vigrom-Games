@@ -1,8 +1,8 @@
 .GameComponentPopular{
   position:relative;
+  margin-right: 22px;
   display:inline-block;
   padding-top:25px;
-
 }
 .RatingAndTitlePopular{
   display:flex;
@@ -94,10 +94,8 @@ backface-visibility:hidden;
  }
  .PricePopular{
  font-style: normal;
- margin-top:10px;
  font-weight: normal;
  font-size: 18px;
- line-height: 25px;
  color: #FFFFFF;
 
  }

@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
-
+    'corsheaders',
     'games',
 ]
 
@@ -64,6 +64,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
+)
 
 ROOT_URLCONF = 'vigames.urls'
 
@@ -140,3 +144,5 @@ MEDIA_URL = '/media/'
 
 # Путь хранения картинок
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+CORS_ORIGIN_ALLOW_ALL = True

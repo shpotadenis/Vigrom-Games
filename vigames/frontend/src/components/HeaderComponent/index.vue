@@ -27,7 +27,9 @@
                             </router-link>
                         </li>
                         <li class="header__item">
-                            <a href="#!" class="header__link">Комьюнити</a>
+                            <router-link :to="{name: 'featuredPage'}" class="header__link">
+                            Избранное
+                            </router-link>
                         </li>
                         <li class="header__item">
                             <a @click="isBtnClick = true" class="header__link">Поддержка</a>

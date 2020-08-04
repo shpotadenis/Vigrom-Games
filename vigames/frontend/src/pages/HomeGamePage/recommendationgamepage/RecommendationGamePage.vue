@@ -5,7 +5,8 @@
     <a src="#1" class="Link">Больше игр <img src="@/assets/img/Vector.png"></a>
   </div>
   <div class="RecommendationComponents">
-    <little-popular-page-components
+    <game-card
+      class="ItemCard"
       v-for="item in recommendation"
       :key="item.id"
       :Game="item"

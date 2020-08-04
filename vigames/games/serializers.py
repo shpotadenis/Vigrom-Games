@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account, Posts, Game, Comments_Post, Comments_Game, Rating, FAQ, Orders, Media
+from .models import Account, Posts, Game, Comments_Post, Comments_Game, Rating, FAQ, Orders, Media, Question
 
 
 #Сериализатор пользователя
@@ -116,4 +116,11 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Orders
+        fields = '__all__'
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Question
         fields = '__all__'
