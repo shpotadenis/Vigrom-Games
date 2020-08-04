@@ -5,6 +5,7 @@ import json
 from datetime import date
 import datetime
 import random
+import matcensor
 
 
 class Search:  # первый аргумент - запрос юзера, второй - флаг games или news.
@@ -59,7 +60,7 @@ class Search:  # первый аргумент - запрос юзера, вто
             if games_or_news == 'news':
                 cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
             cursor.execute("SELECT rating FROM games_game WHERE id = ?", (int(str(cursor.fetchone())[1:-2]),))
-            new_rait = (float(str(cursor.fetchone())[1:-2]))
+            new_rait = raiting(int(str(cursor.fetchone())[1:-2]))
             for word in spis_genre:
                 cursor.execute("SELECT ? FROM games_genre WHERE id = ?", (word, id_user))
                 if int(str(cursor.fetchone())[1:-2]) > genre[0]:
@@ -94,26 +95,30 @@ class Search:  # первый аргумент - запрос юзера, вто
         conn.close()
         return tochno_end  # возвращает список айди новостей в нужном порядке
 
-    def raiting(self, rt):
+    def news(self):  # фильтр новостей, ничего не принимает, но возвращает список айди
         cursor, conn = db()
-        cursor.execute("SELECT rait FROM games_game")
-
-    def news(self, id_user):  # фильтр новостей
-        liked = 0
-        disliked = 0
-        cursor, conn = db()
-        proc = []
         cursor.execute("SELECT id FROM games_posts")
-        id_spis = cursor.fetchall()
+        lennn = len(cursor.fetchall())
+        cursor.execute("SELECT id FROM games_posts")
+        id_spis = []
+        for k in range(lennn):
+            id_spis.append([str(cursor.fetchone()[1:-2]), 1])
         for id in id_spis:
-            cursor.execute("SELECT liked FROM games_posts WHERE id = ?", (id,))
+            cursor.execute("SELECT count_likes FROM games_posts WHERE id = ?", (id,))
             liked = (int(str(cursor.fetchone())[1:-2]))
-            cursor.execute("SELECT disliked FROM games_posts WHERE id = ?", (id,))
+            cursor.execute("SELECT count_dislikes FROM games_posts WHERE id = ?", (id,))
             disliked = (int(str(cursor.fetchone())[1:-2]))
-            proc.append(liked / disliked)
-        for word in spis_genre:
-            cursor.execute("SELECT ? FROM games_account WHERE user_id = ?", (word, id_user))
+            id_spis[id_spis.index(id)][1] = liked / disliked
+        for i in range(len(id_spis) + 1):
+            for j in range(len(id_spis) - 1):
+                if j != i:
+                    if j > i:
+                        if id_spis[j][1] > id_spis[i][1]:
+                            s = id_spis[j]
+                            id_spis[j] = id_spis[i]
+                            id_spis[i] = s
         conn.close()
+        return id_spis
 
     def add_clmn(self, name_genre):
         cursor, conn = db()
@@ -121,19 +126,27 @@ class Search:  # первый аргумент - запрос юзера, вто
         spis_genre.append(name_genre)
         conn.close()
 
-    def maiiiin(self):
+    def maiiiin(self):  # фильтр игр , ничего не принимает, но возвращает список игр
         cursor, conn = db()
         games = list_games('games_game')
         for game in games:
             cursor.execute("SELECT rait FROM games_game WHERE id = ?", (game,))
-            games[games.index(game)], games[0] = games[0], games[games.index(game)]
+            games[games.index(game)] = [game, (int(str(cursor.fetchone())[1:-2]))]
+        for i in range(len(games) + 1):
+            for j in range(len(games) - 1):
+                if j != i:
+                    if j > i:
+                        if games[j][1] > games[i][1]:
+                            s = games[j]
+                            games[j] = games[i]
+                            games[i] = s
         conn.close()
         return games
 
     def genre(self, type):
         cursor, conn = db()
 
-    def translit(self, word, name_table):  # название поста и таблицы
+    def translit(self, word, name_table):  # принимает название поста и таблицы
         cursor, conn = db()
         ss = []
         lett = 0
@@ -144,20 +157,37 @@ class Search:  # первый аргумент - запрос юзера, вто
         cursor.execute("SELECT url FROM '%s'" % name_table)
         for elem in range(lenn):
             ss.append(str(cursor.fetchone())[2:-3])
-        print(ss)
         while word in ss:
+            lett = int(lett)
             lett += 1
             lett = str(lett)
             word = word + lett
         return word
 
+    def comments(self, text):  # фильтр мата принимает на вход строку, возвращает ее же запиканную
+        s = text.split(' ')
+        for elem in s:
+            strr_repl = ''
+            for k in range(len(elem)):
+                strr_repl = strr_repl + '*'
+            if elem in matcensor.CensorList:
+                s[s.index(elem)] = strr_repl
+        end = ' '.join(s)
+        return end
 
-def db():
+
+def db():  # функция для базы данных(моя внутренняя)
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     db_path = os.path.join(BASE_DIR, "db.sqlite3")
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     return cursor, conn
+
+
+def raiting(game_id):  # функция для получения рейтинга
+    cursor, conn = db()
+    cursor.execute("SELECT mark FROM games_raiting WHERE game_id = ?", (game_id,))
+    return int(str(cursor.fetchone())[1:-2])
 
 
 def jsonchik(arg):
@@ -166,17 +196,19 @@ def jsonchik(arg):
         json.dump(arg, write_file)
 
 
-def list_games(kwarg):
+def list_games(kwarg):  # функция для создания списка игр
     cursor, conn = db()
     cursor.execute("SELECT COUNT(*) FROM ? WHERE id", (kwarg,))
     counter = int(str(cursor.fetchone())[1:-2])
     cursor.execute("SELECT id FROM ?", (kwarg,))
     games = []
     for gm in range(counter):
-        games.append(int(str(cursor.fetchone())[1:-2]))
+        games.append(str(cursor.fetchone())[1:-2])
     return games
 
 
 start_time = time.time()
-print(Search.translit(Search(), 'bestgame2', 'games_game'))
+print(Search.comments(Search(),
+                      'пиздец ребята я блять просто ахуел пиздолизы ебаные, держу в курсе пиздоглазое мудоебище, слышь ты да ты говно да пидор блять, ты засранец вонючий, подстилка пендосская, хyi иноземный и инородный'
+                      ' пидор короче сука'))
 print("--- %s seconds ---" % (time.time() - start_time))

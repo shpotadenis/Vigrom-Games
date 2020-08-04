@@ -3,7 +3,6 @@
   margin-right: 22px;
   display:inline-block;
   padding-top:25px;
-
 }
 .RatingAndTitlePopular{
   display:flex;
@@ -16,7 +15,6 @@ overflow:hidden;
 wigth:255px;
 height:324px;
 perspective:1000px;
-border-radius: 10px;
 }
 .ImagePopular:hover .rotatePopular{
 transition-delay:1.2s;
@@ -107,40 +105,24 @@ backface-visibility:hidden;
    transform: rotate(180deg);
     top:100px;
     left:20px;
-    transition: 0.1s;
  }
-  .strelk1Popular:hover{
-    opacity: 0.5;
-  }
  .strelk2Popular{
    position: absolute;
    z-index: 99999;
    top:100px;
    left:200px;
-     transition: 0.1s;
- }
- .strelk2Popular:hover{
-   opacity: 0.5;
  }
  .Arrow1Popular{
    position: absolute;
    transform: rotate(180deg);
    top:200px;
    left:20px;
-   transition: 0.1s;
  }
-  .Arrow1Popular:hover{
-    opacity: 0.5;
-  }
  .Arrow2Popular{
    position: absolute;
    z-index: 99999;
    top:200px;
    left:891px;
-   transition: 0.1s;
- }
- .Arrow2Popular:hover{
-   opacity: 0.5;
  }
  .BigScrin{
    position:absolute;

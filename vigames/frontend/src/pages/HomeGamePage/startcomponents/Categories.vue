@@ -10,8 +10,22 @@
 			</ul>
 		</div>
 		<div class="FilterGames">
-			<search-component/>
+			<div class="SpaceBetweenImageAndText">
+				<div class="SearchImage">
+					<img src="@/assets/img/search-icon.png">
+				</div>
+				<div class="SearchText">
+					<input
+						type="text"
+						class="InputFilterGames"
+						placeholder="Поиск..."
+					>
+				</div>
+			</div>
+			<div class="BorderTop"></div>
 		</div>
+
+
 	</div>
    <transition name="fade">
 		<categories-choose
@@ -24,7 +38,6 @@
 <script>
 
 import CategoriesChoose from "./CategoriesChoose"
-import SearchComponent from "@/components/SearchComponent/index.vue"
 
 export default {
 	name: 'Categories',
@@ -39,8 +52,7 @@ export default {
 		}
 	},
 	components:{
-		CategoriesChoose,
-		SearchComponent
+		CategoriesChoose
 	}
 
 }
