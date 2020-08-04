@@ -43,9 +43,6 @@ export default {
 		justify-content:space-between;
 	}
 
-<<<<<<< HEAD
-=======
-	}
 	.AllChooseUL{
 		display:flex;
 	}
@@ -61,7 +58,7 @@ export default {
 		line-height: 19px;
 		color: #7A7A83;
 	}
->>>>>>> 0de046a1e4a5166012f60e53760c55be40796b61
+
 	.FilterGames{
 		margin-top:5px;
 		margin-bottom:5px;
