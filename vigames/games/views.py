@@ -472,9 +472,9 @@ class QuestionDetail(APIView):
 class DownloadMedia(APIView):
     """Добавление медиафайлов"""
 
-    def post(self, request, format='jpg'):
+    def post(self, request):
         user = request.user
-        serializer = SerializerMedia
+        #serializer = SerializerMedia
         account = Account.objects.get(user=user)
         for i in list(dict(request.data)['img']):
             if user.is_authenticated and account.is_developer:
@@ -482,3 +482,10 @@ class DownloadMedia(APIView):
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
         return Response(status=status.HTTP_200_OK)
+
+    def delete(self, request, pk):
+        img = Media.objects.get(id=pk)
+        account = Account.objects.get(user=request.user)
+        if account.is_developer and img.author == request.user:
+                img.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
