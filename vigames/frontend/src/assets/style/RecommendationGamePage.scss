@@ -6,6 +6,9 @@ display:flex;
 justify-content:space-between;
 }
 .RecommendationComponents{
-display:flex;
-justify-content:space-between;
+max-width:1110px;
+display:block;
+}
+.ItemCard{
+  display: inline;
 }
