@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame,\
-    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail
+    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
@@ -9,6 +9,7 @@ urlpatterns = [
     path('profile/<str:pk>', AccountDetail.as_view(), name="profile"),
     path('profile/<str:pk>/library', OutputLibrary.as_view(), name="library"),
 
+    path('role', RoleView.as_view(), name="role"),
     #path('role/<int:pk>', UserProfileDetailView.as_view(), name="role"),
 
     path('games/add', GameDetail.as_view(), name="add_game"),

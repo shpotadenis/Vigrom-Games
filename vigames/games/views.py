@@ -437,3 +437,24 @@ class FaqDetail(ListAPIView):
         faq = FAQ.objects.all()
         serializer = FaqSerializer(faq, many=True)
         return Response(serializer.data)
+
+
+class RoleView(APIView):
+
+    def post(self, request):
+        username = request.POST.get('username')
+        user = User.objects.get(username=username)
+        try:
+            is_developer = request.POST.get('is_developer')
+            account = Account.objects.get(user=user)
+            if is_developer == "True":
+                account.is_developer = True
+                account.is_player = False
+                account.save()
+            else:
+                account.is_player = True
+                account.is_developer = False
+                account.save()
+            return Response({"message": "success"}, status=status.HTTP_200_OK)
+        except Account.DoesNotExist:
+            return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)

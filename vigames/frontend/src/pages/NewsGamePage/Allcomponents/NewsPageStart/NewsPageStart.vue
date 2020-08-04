@@ -12,7 +12,7 @@
                       header="НОВЫЕ ИНДИ ИГРЫ УЖЕ НА ГЛАВНОЙ"
                       description="Унитарное государство, однако, доказывает системный политический процесс в современной России"
                       btn_caption="Подробнее"
-                      :btn_route="{ name: 'homePage' }">
+                      :btn_route="{ name: 'newsSinglePage' }">
     </banner-component>
 </div>
 </template>
