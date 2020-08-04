@@ -98,3 +98,35 @@ input{
 .btn_and_link{
     margin-top: 96px;
 }
+
+.errors{
+    position: absolute;
+    font-size: 14px;
+    left: 300px;
+    bottom: 96px;
+    margin-left: 26px;
+    width: 165px;
+    height: 40px;
+    background: #212130;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 0 #b6b6b6;
+    text-align: center;
+    padding-top: 10px;
+}
+.errors:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: calc(50% - 12px);
+    border-top: 10px solid transparent;
+    border-right: 20px solid #212130;
+    border-bottom: 10px solid transparent;
+}
+
+.errors__name{
+    bottom: 260px;
+}
+.errors__pass{
+    bottom: 195px;
+    position: absolute;
+}

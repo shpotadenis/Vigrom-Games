@@ -25,6 +25,7 @@
     font-style: normal;
     font-size: 16px;
     font-weight: normal;
+    padding: 10px;
   }
   body {
     margin: 0;

@@ -38,7 +38,7 @@ class CommentsNewsSerializer(serializers.ModelSerializer):
 
 
 class CommentsGameSerializer(serializers.ModelSerializer):
-    """Ввод/Вывод комментариев на странице новости"""
+    """Ввод/Вывод комментариев на странице игры"""
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
     children_game = RecursiveSerializer(many=True, read_only=True)
 
@@ -68,16 +68,21 @@ class PostSerializer(serializers.ModelSerializer):
 
 class OutputPost(PostSerializer):
     """Вывод отдельного поста по url"""
-    comments = CommentsNewsSerializer(many=True)
+    comments_post = CommentsNewsSerializer(many=True)
 
 
-#Сериализатор игры
 class GameSerializer(serializers.ModelSerializer):
-    #comments = CommentsGamesSerializer(many=True)
+    """Сериализатор игры (нужен для добавления)"""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
         model = Game
         fields = '__all__'
+
+
+class OutputGameSerializer(GameSerializer):
+    """Сериализатор вывода поста на страницу"""
+    comments_game = CommentsGameSerializer(many=True)
 
 
 class RatingSerializer(serializers.ModelSerializer):

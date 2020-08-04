@@ -5,6 +5,18 @@ from django.contrib.auth.models import User
 
 
 class Genre(models.Model):
+    name = models.CharField('Жанр', max_length=20, unique=True)
+    description = models.TextField('Описание', max_length=150)
+    url = models.CharField("Cсылка", max_length=20, unique=True)
+    img = models.ImageField("Иконка жанра", upload_to="genre")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Жанр"
+        verbose_name_plural = "Жанры"
+    """
     strategy = models.IntegerField(default=0)
     rpg = models.IntegerField(default=0)
     f2p = models.IntegerField(default=0)
@@ -25,6 +37,7 @@ class Genre(models.Model):
     action = models.IntegerField(default=0)
     simylate = models.IntegerField(default=0)
     mmo = models.IntegerField(default=0)
+    """
 
 
 class Account(models.Model):
@@ -79,15 +92,28 @@ class Category(models.Model):
         verbose_name_plural = "Категории"
 
 
+class Media(models.Model):
+    title = models.CharField('Заголовок изображения', max_length=50)
+    img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Изображение"
+        verbose_name_plural = "Изображения"
+
+
 #в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
 class Game(models.Model):
-    players = models.ManyToManyField(Account, blank=True, related_name="players")
-    who_added_to_wishlist = models.ManyToManyField(Account, blank=True, related_name="who_added_to_wishlist")
-    author = models.ForeignKey(Account, on_delete=models.PROTECT,
+    players = models.ManyToManyField(User, blank=True, related_name="players")
+    who_added_to_wishlist = models.ManyToManyField(User, blank=True, related_name="who_added_to_wishlist")
+    author = models.ForeignKey(User, on_delete=models.PROTECT,
                                related_name="game_author", null=True)
     categories = models.ManyToManyField(Category, blank=True, related_name="categories")
     title = models.CharField(max_length=32, default="")
-    #url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
+    url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     file = models.FileField(null=True, upload_to=u'file/%Y/%m', default=None)
     short_description = models.CharField(max_length=250, default="")
     #image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
@@ -98,16 +124,23 @@ class Game(models.Model):
     screenshots = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
     # uploads
     description = models.TextField(default="")
-    genre = models.CharField(max_length=50, default="")
+    genre = models.ManyToManyField(Genre, blank=True, related_name='genre', null=True)
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
+    image = models.ManyToManyField(Media, blank=True, related_name='media')
+    '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots3 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots4 = models.ImageField(upload_to='img/%Y/%m', null=True)
+    '''
+    def __str__(self):
+        return self.title
 
-    
+    class Meta:
+        verbose_name = "Игра"
+        verbose_name_plural = "Игры"
 
 '''
 class Basket(models.Model):
@@ -147,6 +180,7 @@ class Posts(models.Model):
     num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
     draft = models.BooleanField("Черновик", default=False)
     forthegame = models.IntegerField(default=0)
+    image = models.ManyToManyField(Media, blank=True, related_name='image')
 
     # Вопрос по изображениям открыт. Делать для них отдельную модель или сделать загрузку сюда???
     # Вопрос с количеством просмотров тоже открыт
@@ -164,7 +198,7 @@ class Posts(models.Model):
 
 class Comments_Game(models.Model):
     # Комментарий к игре
-    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments_game', null=True)
+    page = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='comments_game', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,
@@ -210,16 +244,3 @@ class FAQ(models.Model):
     answer = models.TextField()
 
 
-class Media(models.Model):
-    title = models.CharField('Заголовок изображения', max_length=50)
-    img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE, null=True)
-    post = models.ForeignKey(Posts, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        verbose_name = "Изображение"
-        verbose_name_plural = "Изображения"

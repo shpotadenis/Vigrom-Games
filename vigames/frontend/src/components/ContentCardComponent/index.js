@@ -3,8 +3,9 @@ export default {
     props: {
         /*
         * card: {
-        *   title: <string>,
-        *   subtitle: <string>,
+        *   title: <string>,    - Заголовок карточки
+        *   subtitle: <string>,     - Подзаголовок карточки
+        *   price: <number>,       - Цена
         *   image: <string>(url)   - TODO
         * }
         * */
