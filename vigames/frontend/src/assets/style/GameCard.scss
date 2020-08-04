@@ -8,13 +8,13 @@
   display:flex;
   justify-content:space-between;
   padding-top:24px;
-
 }
 .ImagePopular{
 overflow:hidden;
 wigth:255px;
 height:324px;
 perspective:1000px;
+border-radius: 10px;
 }
 .ImagePopular:hover .rotatePopular{
 transition-delay:1.2s;

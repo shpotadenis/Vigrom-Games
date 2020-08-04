@@ -43,10 +43,11 @@ export default{
 </script>
 
 <style scoped>
+
 .NewsSectionAndSearch{
 display:flex;
 justify-content:space-between;
-margin-bottom:25px;
+margin-bottom:60px;
 }
 .NewsSection{
 position:relative;
