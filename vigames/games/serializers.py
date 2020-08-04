@@ -72,10 +72,11 @@ class OutputPost(PostSerializer):
 
 
 class SerializerMedia(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
         model = Media
-        fields = ('img', 'title')
+        fields = ('img', 'author')
 
 
 class GameSerializer(serializers.ModelSerializer):

@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame,\
-    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail
+    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, DownloadMedia
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
@@ -38,6 +38,8 @@ urlpatterns = [
     path('commentgame/add', CommentGameCreateView.as_view(), name="add_new_comment_game"),
     path('commentgame/<int:pk>/update', CommentGameCreateView.as_view(), name="update_new_comment_game"),
     path('commentgame/<int:pk>/delete', CommentGameCreateView.as_view(), name="delete_new_comment_game"),
+
+    path('uploads/add', DownloadMedia.as_view(), name='download_media')
 ]
 
 #/api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)

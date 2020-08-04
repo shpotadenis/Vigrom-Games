@@ -5,11 +5,11 @@ from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, Comments_Game
+from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, Comments_Game, Media
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, OrderSerializer, \
-    OutputGameSerializer
+    OutputGameSerializer, SerializerMedia
 from django.contrib.auth.models import User
 
 #class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
@@ -437,3 +437,18 @@ class FaqDetail(ListAPIView):
         faq = FAQ.objects.all()
         serializer = FaqSerializer(faq, many=True)
         return Response(serializer.data)
+
+
+class DownloadMedia(APIView):
+    """Добавление медиафайлов"""
+
+    def post(self, request, format='jpg'):
+        user = request.user
+        serializer = SerializerMedia
+        account = Account.objects.get(user=user)
+        for i in list(dict(request.data)['img']):
+            if user.is_authenticated and account.is_developer:
+                Media.objects.create(img=i, author=user)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_200_OK)
