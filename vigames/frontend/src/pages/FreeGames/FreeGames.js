@@ -3,6 +3,7 @@ import InternalMenu from '../../components/InternalMenu/InternalMenu.vue'
 import SearchComponent from '../../components/SearchComponent/index.vue'
 import GameCard from  '../../components/GameCard/GameCard.vue'
 import BannerComponent from  '../../components/BannerComponent/index.vue'
+import FooterComponent from '../../components/FooterComponent/index.vue'
 export default{
 
   name:"freeGames",
@@ -10,7 +11,8 @@ export default{
     InternalMenu,
     SearchComponent,
     GameCard,
-    BannerComponent
+    BannerComponent,
+    FooterComponent
   },
   data(){
     return{
