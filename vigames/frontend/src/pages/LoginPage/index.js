@@ -44,6 +44,15 @@ export default {
         },
         checkForm(e) {
             if (this.name && this.email && this.pass && this.confirmPass && (this.confirmPass==this.pass)) {
+                this.$store.dispatch('user/register', {
+                    login: this.name,
+                    password: this.pass,
+                    email: this.email
+                }).then(response => {
+                    console.log(response)
+                }).catch(e => {
+                    console.log(e)
+                })
                 return true;
             }
             this.error_name = []

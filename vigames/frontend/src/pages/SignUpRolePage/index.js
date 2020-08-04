@@ -12,7 +12,14 @@ export default {
     },
     methods:{
         check(){
-            if (this.user){
+            if (this.user) {
+                this.$store.dispatch("user/changeRole", {
+                    isDev: this.user == "dev"
+                }).then(response => {
+                    console.log(response)
+                }).catch(e => {
+                    console.log(e)
+                })
                 return true
             }
             this.error = true

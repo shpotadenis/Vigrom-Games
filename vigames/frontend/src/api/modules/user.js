@@ -1,8 +1,9 @@
 import { instance } from '../api'
 
 
-const login_endpoint = '/auth/token/login'
-const register_endpoint = '/auth/users'
+const login_endpoint = '/auth/token/login/'
+const register_endpoint = '/auth/users/'
+const role_endpoint = '/api/role'
 
 export default {
     login(credentials)
@@ -19,6 +20,13 @@ export default {
             'username': credentials.login,
             'password': credentials.password,
             'email': credentials.email
+        })
+    },
+
+    setRole(name, isDev) {
+        return instance.post(role_endpoint, {
+            username: name,
+            "is_developer": isDev
         })
     }
 
