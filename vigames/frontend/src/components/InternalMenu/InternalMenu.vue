@@ -2,12 +2,19 @@
 <div>
   <div class="CategoriesGame">
     <ul class="AllChooseUL">
-      <li class="AllChooseLi"><a href="#!">Категории <img src="@/assets/img/VectorBottom.svg"></a> </li>
-      <li class="AllChooseLi"><a href="#!">Скидки</a></li>
-      <router-link :to="{name: 'freeGames'}"  style="text-decoration:none">
-        <li class="AllChooseLi">Бесплатные игры</li>
+      <li class="AllChooseLi">
+        Категории
+        <img src="@/assets/img/VectorBottom.svg">
+      </li>
+      <router-link :to="{name: 'discountsGame'}" class="AllChooseLi">
+        Скидки
       </router-link>
-      <li class="AllChooseLi"><a href="#!">Ранний доступ</a></li>
+      <router-link :to="{name: 'freeGames'}" class="AllChooseLi">
+        Бесплатные игры
+      </router-link>
+      <router-link :to="{name: 'earlyAccessGame'}" class="AllChooseLi">
+        Ранний доступ
+      </router-link>
     </ul>
   </div>
 </div>
@@ -15,5 +22,8 @@
 <script src="./InternalMenu.js">
 </script>
 <style lang="scss">
-@import '@/assets/style/InternalMenu.scss'
+@import '@/assets/style/InternalMenu.scss';
+  .AllChooseLi{
+    text-decoration: none;
+  }
 </style>
