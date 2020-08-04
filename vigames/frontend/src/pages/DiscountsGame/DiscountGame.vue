@@ -1,12 +1,12 @@
 <template>
 <div class="wrappen">
-<div class="FreeGames">
+<div class="DiscountGames">
   <internal-menu/>
   <div class="FilterGames">
       <search-component/>
   </div>
 </div>
-<div class="FreeGamesTitle">
+<div class="DiscountGamesTitle">
   <p class="Title">Бесплатные игры</p>
 </div>
 <banner-component day="Сегодня"
@@ -15,21 +15,21 @@
                   btn_caption="Подробнее"
                   :btn_route="{ name: 'homePage' }">
 </banner-component>
-  <div class="FreeGamesComponents">
+  <div class="DiscountGamesComponents">
     <game-card
     class="ItemCard"
-    v-for="free in freegames"
-    :key="free.id"
-    :Game="free"
+    v-for="discount in discountgames"
+    :key="discount.id"
+    :Game="discount"
     />
   </div>
 </div>
 </template>
 
 
-<script src="./FreeGames.js" type="application/javascript">
+<script src="./DiscountsGames.js" type="application/javascript">
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/FreeGames.scss"
+@import "@/assets/style/DiscountsGames.scss"
 </style>

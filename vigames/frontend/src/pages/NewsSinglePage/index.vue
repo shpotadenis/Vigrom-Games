@@ -80,6 +80,7 @@
       </div>
 
       <div class="comments">
+        <comments-component id="reviews"></comments-component>
       </div>
     </div>
     <footer-component> </footer-component>
