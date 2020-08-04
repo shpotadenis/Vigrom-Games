@@ -5,7 +5,9 @@
 			<ul class="AllChooseUL">
 				<li class="AllChooseLi" @click="toggleElement"><a href="#!">Категории <img src="@/assets/img/VectorBottom.svg"></a> </li>
 				<li class="AllChooseLi"><a href="#!">Скидки</a></li>
-				<li class="AllChooseLi"><a href="#!">Бесплатные игры</a></li>
+				  <router-link :to="{name: 'freeGames'}">
+						 <li class="AllChooseLi"><a href="#!">Бесплатные игры</a></li>
+					</router-link>
 				<li class="AllChooseLi"><a href="#!">Ранний доступ</a></li>
 			</ul>
 		</div>

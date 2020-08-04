@@ -17,6 +17,7 @@ import LibraryPage from "./pages/LibraryPage/index.vue"
 import VueScrollTo from 'vue-scrollto'
 import FeaturedPage from './pages/FeaturedPage/index.vue'
 import NewsSinglePage from "./pages/NewsSinglePage/index.vue"
+import FreeGames from "./pages/FreeGames/FreeGames.vue"
 
 Vue.use(VueScrollTo)
 
@@ -37,7 +38,8 @@ const router = new Router({
     { path: '/checkout', name: 'checkout', component: Checkout },
     { path: '/library', name: 'libraryPage', component: LibraryPage },
     { path: '/featured', name: 'featuredPage', component: FeaturedPage },
-    { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage }
+    { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage },
+    { path: '/free_games', name: 'freeGames', component: FreeGames}
 
   ]
 })
