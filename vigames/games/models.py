@@ -109,11 +109,11 @@ class Media(models.Model):
 class Game(models.Model):
     players = models.ManyToManyField(Account, blank=True, related_name="players")
     who_added_to_wishlist = models.ManyToManyField(Account, blank=True, related_name="who_added_to_wishlist")
-    author = models.ForeignKey(Account, on_delete=models.PROTECT,
+    author = models.ForeignKey(User, on_delete=models.PROTECT,
                                related_name="game_author", null=True)
     categories = models.ManyToManyField(Category, blank=True, related_name="categories")
     title = models.CharField(max_length=32, default="")
-    #url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
+    url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     file = models.FileField(null=True, upload_to=u'file/%Y/%m', default=None)
     short_description = models.CharField(max_length=250, default="")
     #image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
@@ -135,7 +135,12 @@ class Game(models.Model):
     screenshots3 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots4 = models.ImageField(upload_to='img/%Y/%m', null=True)
     '''
-    
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Игра"
+        verbose_name_plural = "Игры"
 
 '''
 class Basket(models.Model):
@@ -193,7 +198,7 @@ class Posts(models.Model):
 
 class Comments_Game(models.Model):
     # Комментарий к игре
-    page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments_game', null=True)
+    page = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='comments_game', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True,
