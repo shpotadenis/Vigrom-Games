@@ -15,11 +15,8 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 import LibraryPage from "./pages/LibraryPage/index.vue"
 import VueScrollTo from 'vue-scrollto'
-<<<<<<< HEAD
-import NewsSinglePage from "./pages/NewsSinglePage/index.vue"
-=======
 import FeaturedPage from './pages/FeaturedPage/index.vue'
->>>>>>> a59c1d86f8f781d287d130c1647d7649fced6523
+import NewsSinglePage from "./pages/newsSinglePage/index.vue"
 
 Vue.use(VueScrollTo)
 
@@ -39,11 +36,8 @@ const router = new Router({
     { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage },
     { path: '/checkout', name: 'checkout', component: Checkout },
     { path: '/library', name: 'libraryPage', component: LibraryPage },
-<<<<<<< HEAD
-    { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage }
-=======
     { path: '/featured', name: 'featuredPage', component: FeaturedPage }
->>>>>>> a59c1d86f8f781d287d130c1647d7649fced6523
+    { path: '/separate news', name: 'newsSinglePage', component: NewsSinglePage }
 
   ]
 })
