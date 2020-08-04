@@ -394,7 +394,7 @@ class OutputLibrary(ListAPIView):
         user = request.user
         account = Account.objects.get(user=user)
         if user.username == pk:
-            games = Game.objects.filter(players=account)
+            games = Game.objects.filter(players=user)
             serializer = GameSerializer(games, many=True)
             return Response(serializer.data)
         #else:
