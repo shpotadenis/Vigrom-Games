@@ -1,8 +1,8 @@
 <template>
 <div class="CategoriesGamePage">
   <div class="PopularGameTitle">
-    <p class="Title">Категории</p>
-    <a src="#1" class="LinkCategories">Все категории <img src="@/assets/img/Vector.png"></a>
+    <p class="Title">Популярные категории</p>
+  
   </div>
   <div class="AllComponentsCategories">
     <categories-game-page-components

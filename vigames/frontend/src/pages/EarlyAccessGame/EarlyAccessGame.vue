@@ -6,7 +6,7 @@
       <search-component/>
   </div>
 </div>
-<div class="FreeGamesTitle">
+<div class="EarlyAccessGamesTitle">
   <p class="Title">Бесплатные игры</p>
 </div>
 <banner-component day="Сегодня"
@@ -15,21 +15,21 @@
                   btn_caption="Подробнее"
                   :btn_route="{ name: 'homePage' }">
 </banner-component>
-  <div class="FreeGamesComponents">
+  <div class="EarlyAccessGamesComponents">
     <game-card
     class="ItemCard"
-    v-for="free in freegames"
-    :key="free.id"
-    :Game="free"
+    v-for="discount in discountgames"
+    :key="discount.id"
+    :Game="discount"
     />
   </div>
 </div>
 </template>
 
 
-<script src="./FreeGames.js" type="application/javascript">
+<script src="./EarlyAccessGames.js" type="application/javascript">
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/FreeGames.scss"
+@import "@/assets/style/EarlyAccessGames.scss"
 </style>
