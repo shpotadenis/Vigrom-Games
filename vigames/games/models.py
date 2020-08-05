@@ -97,8 +97,8 @@ class Media(models.Model):
     img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.img
+    #def __str__(self):
+    #    return self.img
 
     class Meta:
         verbose_name = "Изображение"

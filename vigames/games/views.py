@@ -2,20 +2,14 @@ from datetime import timedelta, date
 from django.http import Http404, HttpResponse
 from rest_framework import status
 from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, Comments_Game, Media
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
-    RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, OrderSerializer, \
-    OutputGameSerializer, QuestionSerializer, SerializerMedia
+    RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
+    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia
 from django.contrib.auth.models import User
-
-#class UserProfileDetailView(RetrieveUpdateDestroyAPIView):
-    #queryset = Account.objects.all()
-    #serializer_class = AccountSerializer
-    #permission_classes = [IsOwnerProfileOrReadOnly, IsAuthenticated]
 
 
 class OutputAllNewsView(APIView):
@@ -28,10 +22,11 @@ class OutputAllNewsView(APIView):
 
 
 class AccountDetail(APIView):
+    """Получение, редактирование и удаление аккаунта пользователя"""
 
     def get_user(self, pk):
         try:
-            return User.objects.get(username=pk)
+            return User.objects.get(pk=pk)
         except User.DoesNotExist:
             raise Http404
 
@@ -45,20 +40,20 @@ class AccountDetail(APIView):
         user = request.user
         account = Account.objects.get(user=user)
         serializer = AccountSerializer(account, data=request.data)
-        if serializer.is_valid() and user.is_authenticated and user.username == pk:
+        if serializer.is_valid() and user.is_authenticated:
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
         user = request.user
-        if user.is_authenticated and user.username == pk:
+        if user.is_authenticated:
                 user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class PostView(APIView):
-    """ Вывод страницы записи"""
+    """Получение, редактирование и удаление новости"""
 
     def get(self, request, pk):
         try:
@@ -167,13 +162,14 @@ class CommentGameCreateView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class GameDetailView(RetrieveUpdateDestroyAPIView):
-    queryset = Game.objects.all()
-    serializer_class = GameSerializer
-    permission_classes = [IsOwnerProfileOrReadOnly]
+#class GameDetailView(RetrieveUpdateDestroyAPIView):
+#    queryset = Game.objects.all()
+#    serializer_class = GameSerializer
+#    permission_classes = [IsOwnerProfileOrReadOnly]
 
 
 class GameDetail(APIView):
+    """Добавление, получение, редактирование и удаление игры"""
 
     def get_game(self, pk):
         try:
@@ -214,6 +210,7 @@ class GameDetail(APIView):
 
 
 class GameRatingDetail(APIView):
+    """Добавление, получение, редактирование и удаление оценки игры"""
 
     def get_game(self, pk):
         try:
@@ -278,6 +275,7 @@ class GameRatingDetail(APIView):
 
 class OutputGames(ListAPIView):
     """Вывод списка игр за неделю"""
+
     def get(self, request):
         games = Game.objects.filter(date_release__gte=date.today()-timedelta(days=7))\
             .order_by('-date_release')[:10]
@@ -286,6 +284,7 @@ class OutputGames(ListAPIView):
 
 
 class BuyGameDetail(APIView):
+    """Покупка игры"""
 
     def put(self, request, pk, format=None):
         user = request.user
@@ -307,6 +306,7 @@ class BuyGameDetail(APIView):
 
 
 class WishListDetail(APIView):
+    """Добавление, удаление игры в вишлист"""
 
     def get_game(self, pk):
         try:
@@ -327,7 +327,6 @@ class WishListDetail(APIView):
             except Account.DoesNotExist:
                 return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
 
-
     def delete(self, request, pk, format=None):
         user = request.user
         game = Game.objects.get(id=pk)
@@ -342,6 +341,7 @@ class WishListDetail(APIView):
 
 
 class AssessPostDetail(APIView):
+    """Добавление оценки поста, ее удаление"""
 
     def get_game(self, pk):
         try:
@@ -394,7 +394,7 @@ class OutputLibrary(ListAPIView):
     def get(self, request, pk):
         user = request.user
         account = Account.objects.get(user=user)
-        if user.username == pk:
+        if user.is_authenticated:
             games = Game.objects.filter(players=user)
             serializer = GameSerializer(games, many=True)
             return Response(serializer.data)
@@ -405,6 +405,7 @@ class OutputLibrary(ListAPIView):
 
 class DownloadGame(ListAPIView):
     """Скачивание игры"""
+
     def get(self, request, pk):
         user = request.user
         game = Game.objects.get(id=pk)
@@ -424,8 +425,9 @@ class DownloadGame(ListAPIView):
 
 class GameCategoryDetail(ListAPIView):
     """Вывод игр соответствующей категории"""
+
     def get(self, request, pk):
-        category = Category.objects.get(name=pk) #при прикручивании заюзать скрипт перевода в транслит(?)
+        category = Category.objects.get(pk=pk) #при прикручивании заюзать скрипт перевода в транслит(?)
         games = Game.objects.filter(categories=category)
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
@@ -441,7 +443,7 @@ class FaqDetail(ListAPIView):
 
 
 class RoleView(APIView):
-
+    """Добавление роли аккуанта"""
     def post(self, request):
         username = request.POST.get('username')
         user = User.objects.get(username=username)
@@ -462,13 +464,15 @@ class RoleView(APIView):
 
 
 class QuestionDetail(APIView):
-
+    """Добавление вопроса к администрации"""
+    
     def post(self, request):
         serializer = QuestionSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class DownloadMedia(APIView):
     """Добавление медиафайлов"""
