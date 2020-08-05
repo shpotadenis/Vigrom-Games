@@ -1,11 +1,10 @@
 from datetime import timedelta, date
 from django.http import Http404, HttpResponse
 from rest_framework import status
-from rest_framework.generics import (RetrieveUpdateDestroyAPIView, ListAPIView)
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, Comments_Game, Media
-from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer
@@ -24,19 +23,13 @@ class OutputAllNewsView(APIView):
 class AccountDetail(APIView):
     """Получение, редактирование и удаление аккаунта пользователя"""
 
-    def get_user(self, pk):
-        try:
-            return User.objects.get(pk=pk)
-        except User.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None): #отдавать не все параметры
-        user = self.get_user(pk)
+    def get(self, request):
+        user = request.user
         account = Account.objects.get(user=user)
         serializer = AccountSerializer(account)
         return Response(serializer.data)
 
-    def put(self, request, pk, format=None):
+    def put(self, request):
         user = request.user
         account = Account.objects.get(user=user)
         serializer = AccountSerializer(account, data=request.data)
@@ -45,7 +38,7 @@ class AccountDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request):
         user = request.user
         if user.is_authenticated:
                 user.delete()

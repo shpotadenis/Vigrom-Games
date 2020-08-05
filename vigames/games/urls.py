@@ -8,7 +8,7 @@ from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
 
-    path('profile/<int:pk>', AccountDetail.as_view(), name="profile"),#убрать pk
+    path('profile', AccountDetail.as_view(), name="profile"),
     path('profile/library', OutputLibrary.as_view(), name="library"),
 
     path('role', RoleView.as_view(), name="role"),
