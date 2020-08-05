@@ -82,3 +82,8 @@
 .header__icon:last-child {
     margin-right: 0;
 }
+
+button {
+  background: #212130;
+  border: 0;
+}

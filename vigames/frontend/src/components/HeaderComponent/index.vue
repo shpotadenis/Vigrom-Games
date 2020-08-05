@@ -32,7 +32,7 @@
                             </router-link>
                         </li>
                         <li class="header__item">
-                            <a @click="isBtnClick = true" class="header__link">Поддержка</a>
+                            <button @click="isBtnClick = true" class="header__link">Поддержка</button>
                         </li>
                     </ul>
                 </nav>

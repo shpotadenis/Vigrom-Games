@@ -17,37 +17,83 @@
     color: #fff;
 }
 
-.filter__text {
-  font-size: 14px;
-  line-height: 16px;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.filter__icon {
-  margin-left: 10px;
-}
-
-.filter__link {
-    text-decoration: none;
-}
-
 .replay__link {
+    width: 230px;
+    display: flex;
+    justify-content: space-between;
     text-decoration: none;
 }
 
 .replay__text {
+    text-decoration:underline;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    color: #CE6796;
 }
 
 .replay__icon {
     margin-left: 10px;
 }
 
+#window {
+  height: 300px;
+  display: none;
+}
+
+#window:target {
+  display: block;
+}
+
+.send_block {
+  margin-bottom: 20px;
+}
+
+button {
+  border: 0;
+}
+
+.send_btn {
+    width: 157px;
+    height: 33px;
+    border-radius: 6px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+    background: #CE6796;
+}
+
+.send_btn:hover {
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
+}
+
+.sms {
+  height: 70px;
+  width: 555px;
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 0;
+  resize: none;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #FFFFFF;
+  background: #29293D;
+}
+
 .comments__replay {
     margin-top: 22px;
+    margin-bottom: 40px;
 }
 
 .comments__card {

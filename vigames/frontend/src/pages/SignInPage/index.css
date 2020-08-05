@@ -130,3 +130,12 @@ input{
     bottom: 195px;
     position: absolute;
 }
+.forgot-pass-link{
+    position: absolute;
+    font-style: normal;
+    font-weight: normal;
+    color: #F1F1F1;
+    text-decoration: none;
+    padding: 12px;
+    font-size: 14px;
+}

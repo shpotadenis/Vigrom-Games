@@ -2,7 +2,7 @@
     <div class="signInPage container">
         <div class="log row justify-content-center">
             <div  class="login-form pic-form col-5">
-                <img class="login-pic" src="@/assets/img/undraw_launch_day.svg">
+                <img class="login-pic" src="@/assets/img/enter_img_girl.svg">
             </div>
             <div class="login-form col-4">
                 <p class="head_login">ВХОД</p>
@@ -35,6 +35,9 @@
                                     <img src="@/assets/img/eye-off.svg"  class="passEye password-control" v-show="nonEye">
                                     <!--Глаз может поехать-->
                                 </div>
+                                <router-link :to="{name: 'forgotPass'}" class="forgot-pass-link row justify-content-center">
+                                    Забыли пароль?
+                                </router-link>
                             </div>
                             <span>{{errorMessage}}</span>
                         </div>

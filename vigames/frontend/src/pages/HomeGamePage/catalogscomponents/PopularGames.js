@@ -12,15 +12,13 @@ props:{
 			return[]
 		}
 	},
-	Interval:{
-		type: Number,
-		default: 0
-	}
+
 
 },
 data(){
 	return{
-		currentsSlideIndex:0
+		currentsSlideIndex:0,
+    Interval:4000
 
 	}
 },
@@ -40,7 +38,7 @@ methods:{
 
 		}else{
 			this.currentsSlideIndex++
-		
+
 		}
 	}
 
@@ -49,7 +47,13 @@ methods:{
 		if(this.Interval>0){
 			let vm = this;
 			setInterval(function(){
-				vm.rightFunc()
+        if(this.currentsSlideIndex++){
+          vm.Interval = 0
+          console.log(this.Interval)
+        }else{
+          vm.rightFunc()
+        }
+
 			},vm.Interval)
 		}
 }

@@ -28,11 +28,9 @@ export default {
                     login: this.name,
                     password: this.pass
                 }).then(response => {
-                    console.log('Меня вызвали')
                     if (response) {
-                        // TODO: Изменить на перенаправление в личный кабинет
                         this.$router.push({
-                            name: 'homePage'
+                            name: 'personPage'
                         })
                     }
                 }).catch(error => {
@@ -56,6 +54,13 @@ export default {
         }
     },
     computed: {
+    },
+    mounted() {
+        if (this.$store.getters['user/isLoggedIn'] == true) {
+            this.$router.push({
+                name: 'personPage'
+            })
+        }
     }
 
 }

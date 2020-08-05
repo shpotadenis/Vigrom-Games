@@ -1,0 +1,64 @@
+.popup-wrapper {
+
+}
+
+.container {
+  overflow:hidden;
+  font-family: Open Sans;
+  font-style: normal;
+
+  position: fixed;
+  padding: 40px;
+  width: 920px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-top: 25px;
+  margin-bottom: 30px;
+  z-index: 10;
+  border-radius: 10px;
+  background: #2D2D42;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.head-name {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 30px;
+  color: #FFFFFF;
+  padding-bottom: 20px;
+}
+
+button {
+  border: 0;
+}
+
+hr {
+  width: 840px;
+  height: 1px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  border-radius: 10px;
+  border: 0px;
+
+  background: #414159;
+}
+
+.closer {
+
+}
+
+.close-icon {
+  height: 12px;
+  width: 12px;
+  background: #2D2D42;
+}
+
+.Content {
+
+}

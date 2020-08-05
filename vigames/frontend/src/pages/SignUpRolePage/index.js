@@ -18,7 +18,7 @@ export default {
                 }).then(response => {
                     if (response) {
                         this.$router.push({
-                            name: 'homePage'
+                            name: 'signInPage'
                         })
                     }
                 }).catch(e => {

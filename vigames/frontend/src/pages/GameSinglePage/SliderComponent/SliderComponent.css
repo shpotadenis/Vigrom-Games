@@ -1,0 +1,39 @@
+.wrapper{
+    max-width:1110px;
+    overflow:hidden;
+    margin:0 auto;
+}
+.Slider{
+    display:flex;
+    transition: all ease 1s;
+}
+.ImageVector1{
+    position:absolute;
+    width:100px;
+    height: 434px;
+    transform:rotate(180deg);
+    margin-top: 23px;
+    left: -10px;
+    transition: 0.1s;
+}
+.ImageVector1:hover{
+    opacity: 0.5;
+}
+.ImageVector2{
+    position:absolute;
+    width:100px;
+    height: 434px;
+    bottom: 196px;
+    right: 10px;
+    transition: 0.1s;
+}
+.ImageVector2:hover{
+    opacity: 0.5;
+}
+.strelka1{
+    margin-top:200px;
+
+}
+.strelka2{
+    margin-top: 220px;
+}

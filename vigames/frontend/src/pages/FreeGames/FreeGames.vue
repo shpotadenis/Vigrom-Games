@@ -10,12 +10,6 @@
 <div class="FreeGamesTitle">
   <p class="Title">Бесплатные игры</p>
 </div>
-<banner-component day="Сегодня"
-                  header="НОВЫЕ ИНДИ ИГРЫ УЖЕ НА ГЛАВНОЙ"
-                  description="Унитарное государство, однако, доказывает системный политический процесс в современной России"
-                  btn_caption="Подробнее"
-                  :btn_route="{ name: 'homePage' }">
-</banner-component>
   <div class="FreeGamesComponents">
     <game-card
     class="ItemCard"
@@ -24,7 +18,12 @@
     :Game="free"
     />
   </div>
-
+  <banner-component day="Сегодня"
+                    header="НОВЫЕ ИНДИ ИГРЫ УЖЕ НА ГЛАВНОЙ"
+                    description="Унитарное государство, однако, доказывает системный политический процесс в современной России"
+                    btn_caption="Подробнее"
+                    :btn_route="{ name: 'homePage' }">
+  </banner-component>
 
 </div>
     <footer-component></footer-component>

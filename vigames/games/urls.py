@@ -8,11 +8,10 @@ from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
 
-    path('profile/<str:pk>', AccountDetail.as_view(), name="profile"),
-    path('profile/<str:pk>/library', OutputLibrary.as_view(), name="library"),
+    path('profile', AccountDetail.as_view(), name="profile"),
+    path('profile/library', OutputLibrary.as_view(), name="library"),
 
     path('role', RoleView.as_view(), name="role"),
-    #path('role/<int:pk>', UserProfileDetailView.as_view(), name="role"),
 
     path('games/add', GameDetail.as_view(), name="add_game"),
     path('games/<int:pk>', GameDetail.as_view(), name="current_game"),
@@ -30,7 +29,7 @@ urlpatterns = [
     path('news/<int:pk>/delete', PostView.as_view(), name='delete_post'),
     path('news/', OutputAllNewsView.as_view()),
 
-    path('categories/<str:pk>', GameCategoryDetail.as_view(), name="assess"),
+    path('categories/<int:pk>', GameCategoryDetail.as_view(), name="assess"),
 
     path('faq', FaqDetail.as_view(), name="faq"),
 
@@ -44,7 +43,7 @@ urlpatterns = [
     path('commentgame/<int:pk>/update', CommentGameCreateView.as_view(), name="update_new_comment_game"),
     path('commentgame/<int:pk>/delete', CommentGameCreateView.as_view(), name="delete_new_comment_game"),
 
-    path('uploads/add', DownloadMedia.as_view(), name='download_media'),
+    path('uploads/add', DownloadMedia.as_view(), name='upload_media'),
     path('uploads/<int:pk>/delete', DownloadMedia.as_view(), name='delete_media'),
 ]
 
