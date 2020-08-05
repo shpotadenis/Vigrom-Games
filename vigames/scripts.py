@@ -165,15 +165,44 @@ class Search:  # первый аргумент - запрос юзера, вто
         return word
 
     def comments(self, text):  # фильтр мата принимает на вход строку, возвращает ее же запиканную
-        s = text.split(' ')
-        for elem in s:
-            strr_repl = ''
-            for k in range(len(elem)):
-                strr_repl = strr_repl + '*'
-            if elem in matcensor.CensorList:
-                s[s.index(elem)] = strr_repl
-        end = ' '.join(s)
+        matt = ''
+        global_len = 0
+        polf = []
+        for k in range(len(text)):
+            polf.append(text[k])
+        for lelemn in polf:
+            if lelemn == '.':
+                if polf[polf.index(lelemn) + 1] == ' ':
+                    polf[polf.index(lelemn)] = ' . '
+                else:
+                    polf[polf.index(lelemn)] = ' .'
+            elif lelemn == ',':
+                if polf[polf.index(lelemn) + 1] == ' ':
+                    polf[polf.index(lelemn)] = ' , '
+                else:
+                    polf[polf.index(lelemn)] = ' ,'
+        polf = ''.join(polf)
+        polf = polf.split(' ')
+        for elem in polf:
+            for j in range(len(elem)):
+                matt += '*'
+            if elem.lower() in matcensor.CensorList:
+                polf[polf.index(elem)] = matt
+            matt = ''
+        end = ' '.join(polf)
         return end
+
+    def stat(self, sex):
+        spermobaki = 0
+        femki = 0
+        for bull in sex:
+            if bull == True:
+                spermobaki += 1
+            else:
+                femki += 1
+        proc_spermobak = spermobaki / len(sex) * 100
+        proc_femki = femki / len(sex) * 100
+        return proc_spermobak, proc_femki
 
 
 def db():  # функция для базы данных(моя внутренняя)
@@ -209,6 +238,6 @@ def list_games(kwarg):  # функция для создания списка и
 
 start_time = time.time()
 print(Search.comments(Search(),
-                      'пиздец ребята я блять просто ахуел пиздолизы ебаные, держу в курсе пиздоглазое мудоебище, слышь ты да ты говно да пидор блять, ты засранец вонючий, подстилка пендосская, хyi иноземный и инородный'
-                      ' пидор короче сука'))
+                      'Пиздец ребята я блять просто Ахуел. пиздолизы ебаные, Держу в курсе пиздоглазое мудоебище, слышь ты да ты говно да пидор блять, ты засранец вонючий, подстилка пендосская, хyi иноземный и инородный'
+                      ' пидор короче сука варопьиьртргршроьп'))
 print("--- %s seconds ---" % (time.time() - start_time))
