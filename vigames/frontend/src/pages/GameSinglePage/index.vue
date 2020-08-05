@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!loading">
     <div class="wrapper">
         <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
         <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>

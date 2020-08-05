@@ -16,14 +16,7 @@ export default {
     data() {
         return {
             isBtnClick: false,
-            breadcrumbs: [
-                {
-                    to: {
-                        name: 'homePage'
-                    },
-                    title: 'Главная'
-                }
-            ]
+            loading: true
         }
     },
 
@@ -41,36 +34,47 @@ export default {
             }
             return images
         },
+
+        breadcrumbs() {
+            return [
+                {
+                    to: {
+                        name: 'homePage'
+                    },
+                    title: 'Главная'
+                },
+                {
+                    title: this.getGameData.title
+                }
+            ]
+        },
     },
 
     // eslint-disable-next-line no-unused-vars
     beforeRouteUpdate(to, from, next) {
-        this.fetchData()
+        this.fetchData(to.params.id)
         next()
     },
 
-    created() {
-        this.fetchData()
+    mounted() {
+      this.fetchData(this.$route.params.id)
     },
 
     methods: {
-        fetchData() {
-            if (this.$route.params.id) {
-                this.$store.dispatch('games/loadGame', {
-                    id: this.$route.params.id
-                }).then(response => {
-                    this.breadcrumbs.push({
-                        title: this.getGameData.title
-                    })
-                    // FIXME: Убрать отладочный вывод
-                    console.log('GameAdded:')
-                    console.log(response)
-                }).catch(error => {
-                    // TODO: Убрать отладочный вывод, редирект на 404
-                    console.log("Ошибка в GSP")
-                    console.log(error)
-                })
-            }
+        fetchData(gameId) {
+            this.loading = true
+            this.$store.dispatch('games/loadGame', {
+                id: gameId
+            }).then(response => {
+                this.loading = false
+                // FIXME: Убрать отладочный вывод
+                console.log('GameAdded:')
+                console.log(response)
+            }).catch(error => {
+                // TODO: Убрать отладочный вывод, редирект на 404
+                console.log("Ошибка в GSP")
+                console.log(error)
+            })
         }
     }
 

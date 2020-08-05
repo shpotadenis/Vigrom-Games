@@ -35,7 +35,7 @@ const router = new Router({
   routes: [
     { path: '/login', name: 'loginPage', component: LoginPage },
     { path: '/game/:id', name: 'singlePage', component: GameSinglePage },
-    { path: '/home', name: 'homePage', component: HomePage },
+    { path: '/', name: 'homePage', component: HomePage },
     { path: '/news', name: 'newsPage', component: NewsPage },
     { path: '/sign_in', name: 'signInPage', component: SignInPage },
     { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage },
