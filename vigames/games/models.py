@@ -96,10 +96,10 @@ class Media(models.Model):
     #title = models.CharField('Заголовок изображения', max_length=50)
     img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    '''
     def __str__(self):
         return self.img
-
+    '''
     class Meta:
         verbose_name = "Изображение"
         verbose_name_plural = "Изображения"
@@ -128,7 +128,7 @@ class Game(models.Model):
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
-    image = models.ManyToManyField(Media, blank=True, related_name='game')
+    image = models.ManyToManyField(Media, blank=True, related_name='parent_game')
     '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
@@ -172,7 +172,7 @@ class Posts(models.Model):
     count_dislikes = models.PositiveIntegerField(default=0)
 
     title = models.CharField("Заголовок записи", max_length=150)
-    url = models.SlugField(max_length=100, unique=True)
+    #url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
     description = models.TextField("Короткое описание", max_length=160)
     data = models.DateTimeField(auto_now_add=True)

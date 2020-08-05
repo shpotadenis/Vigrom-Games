@@ -85,7 +85,7 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        exclude = ('image', )
+        fields = '__all__'
 
 
 class OutputGameSerializer(serializers.ModelSerializer):
