@@ -7,7 +7,7 @@ import FooterComponent from '../../components/FooterComponent/index.vue'
 
 export default{
 
-  name:"DiscountGames",
+  name:"PuzzleGames",
   components:{
     InternalMenu,
     SearchComponent,
