@@ -26,7 +26,11 @@
                     </h1>
                 </div>
                 <div class="main-content__games">
-                    <content-card-component v-for="(card, idx) in cards" :card="card" :key="'card' + idx"></content-card-component>
+                    <game-card
+                            v-for="item in populars"
+                            :key="item.id"
+                            :Game="item"
+                    />
                 </div>
             </div>
         </div>
