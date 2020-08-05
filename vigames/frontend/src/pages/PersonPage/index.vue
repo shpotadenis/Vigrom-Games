@@ -23,21 +23,25 @@
             </a>
             </div>
             <p id="border_user_info_title">Игрок</p>
-            <p id="border_user_info_title_username_now">MARF07</p>
+            <p id="border_user_info_title_username_now">{{username}}</p>
             <p id="border_user_info_title_username_change">Имя пользователя:</p>
             <p id="border_user_info_title_email_change">Эл. почта:</p>
             <form id="change_form" action="" method="POST" name=" application ">
-                <input name="name" type="text" id="change_username_placeholder" placeholder="Введите Ваше имя" required />
-                <input name="email" type="text" id="changer_email_placeholder"  placeholder="Введите Ваш E-mail" required/>
+                <input name="name" type="text" id="change_username_placeholder" placeholder="Введите новое имя" required />
+                <input name="email" type="text" id="changer_email_placeholder"  placeholder="Введите новый E-mail" required/>
                 <button id="change_button" type="submit" form="change_form">Сохранить</button>
             </form>
-            <button id="change_password" @click="showPopupinfo">Изменить пароль</button>
+            <button
+                    id="change_password"
+                    @click="showPopupinfo"
+            >
+                Изменить пароль
+            </button>
         </div>
         <div id="control_panel">
         <p id="control_panel_title">Панель управления</p>
         <a href="" class="control_panel_list" id="control_panel_title_first">История покупок</a>
-        <a href="" class="control_panel_list" id="control_panel_title_second">Правовая информация</a>
-        <a href="" class="control_panel_list" id="control_panel_title_third">Связаться с разработчиками</a>
+        <button id="control_panel_button">Стать разработчиком</button>
         </div>
         </div>
         <footer-component></footer-component>
