@@ -22,6 +22,7 @@ import FreeGames from "./pages/FreeGames/FreeGames.vue"
 import DiscountsGame from "./pages/DiscountsGame/DiscountGame";
 import EarlyAccessGame from "./pages/EarlyAccessGame/EarlyAccessGame.vue";
 import PersonPage from './pages/PersonPage/index.vue'
+import DeveloperPage from './pages/DeveloperPage/index.vue'
 
 Vue.use(VueScrollTo)
 
@@ -47,8 +48,8 @@ const router = new Router({
     { path: '/not_found', name: 'errorPage', component: ErrorPage },
     { path: '/discountsGame', name: 'discountsGame', component: DiscountsGame },
     { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },
-    { path: '/profile', name: 'personPage', component: PersonPage }
-
+    { path: '/user_profile', name: 'personPage', component: PersonPage },
+    { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage }
   ]
 })
 
