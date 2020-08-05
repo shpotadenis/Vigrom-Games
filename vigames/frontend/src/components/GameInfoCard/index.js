@@ -3,16 +3,13 @@
 export default {
     name: "GameInfoCard",
     props:{
-      GameInfo:{
+      Game_Info_Card:{
       type:Object,
       default(){
         return{}
       }
     },
-    computed: {
-        getGameData() {
-            return gamedata;
-        }
-    }
 
+
+}
 }

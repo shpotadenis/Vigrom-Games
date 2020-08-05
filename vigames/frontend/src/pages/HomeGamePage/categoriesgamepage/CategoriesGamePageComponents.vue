@@ -1,6 +1,6 @@
 <template>
 <div>
-  <top-category v-if="isBtnClick" @close="isBtnClick = false"></top-category>
+  <top-category v-if="isBtnClick" @close="isBtnClick = false"/>
   <a @click="isBtnClick = true">
     <div class="CategoriesGamePageComponent">
       <img v-bind:src="require('@/assets/img/' + Categories_Game.image)" class="ImageCategories">
