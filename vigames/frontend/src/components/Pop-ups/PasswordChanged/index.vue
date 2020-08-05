@@ -4,7 +4,10 @@
             <div class="goDownload_Header">
                 <div class="head-name">Готово!</div>
                 <div class="closer">
-                    <button @click=" $emit('close')" class="close-icon">
+                    <button
+                            @click=" $emit('close')"
+                            class="close-icon"
+                    >
                         <img src="@/assets/img/close-outline.svg" alt="Close">
                     </button>
                 </div>
@@ -14,7 +17,12 @@
                 Ваш пароль изменён
             </div>
             <div class="goDownload_Footer">
-                <button class="download" @click=" $emit('close') ">Хорошо</button>
+                <button
+                        class="download"
+                        @click=" $emit('close') "
+                >
+                    Хорошо
+                </button>
             </div>
         </div>
     </div>

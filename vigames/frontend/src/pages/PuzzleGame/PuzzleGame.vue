@@ -1,21 +1,22 @@
 <template>
   <div>
 <div class="wrappen">
-<div class="FreeGames">
+<div class="PuzzleGames">
   <internal-menu/>
   <div class="FilterGames">
       <search-component/>
   </div>
 </div>
-<div class="FreeGamesTitle">
-  <p class="Title">Бесплатные игры</p>
+<div class="PuzzleGamesTitle">
+  <p class="Title">Головоломки</p>
 </div>
-  <div class="FreeGamesComponents">
+
+  <div class="PuzzleGamesComponents">
     <game-card
     class="ItemCard"
-    v-for="free in freegames"
-    :key="free.id"
-    :Game="free"
+    v-for="discount in discountgames"
+    :key="discount.id"
+    :Game="discount"
     />
   </div>
   <banner-component day="Сегодня"
@@ -24,16 +25,15 @@
                     btn_caption="Подробнее"
                     :btn_route="{ name: 'homePage' }">
   </banner-component>
-
 </div>
     <footer-component></footer-component>
   </div>
 </template>
 
 
-<script src="./FreeGames.js" type="application/javascript">
+<script src="./PuzzleGame.js" type="application/javascript">
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/FreeGames.scss";
+@import "@/assets/style/PuzzleGame.scss";
 </style>

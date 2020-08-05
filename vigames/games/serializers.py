@@ -88,7 +88,7 @@ class GameSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class OutputGameSerializer(GameSerializer):
+class OutputGameSerializer(serializers.ModelSerializer):
     """Сериализатор вывода игры на страницу"""
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     comments_game = CommentsGameSerializer(many=True)
