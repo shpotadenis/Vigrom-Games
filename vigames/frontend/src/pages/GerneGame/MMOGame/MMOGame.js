@@ -1,13 +1,12 @@
 
-import InternalMenu from '../../components/InternalMenu/InternalMenu.vue'
-import SearchComponent from '../../components/SearchComponent/index.vue'
-import GameCard from  '../../components/GameCard/GameCard.vue'
-import BannerComponent from  '../../components/BannerComponent/index.vue'
-import FooterComponent from '../../components/FooterComponent/index.vue'
-
+import InternalMenu from '../../../components/InternalMenu/InternalMenu.vue'
+import SearchComponent from '../../../components/SearchComponent/index.vue'
+import GameCard from  '../../../components/GameCard/GameCard.vue'
+import BannerComponent from  '../../../components/BannerComponent/index.vue'
+import FooterComponent from '../../../components/FooterComponent/index.vue'
 export default{
 
-  name:"SimulatorGames",
+  name:"MMOGames",
   components:{
     InternalMenu,
     SearchComponent,
@@ -17,7 +16,7 @@ export default{
   },
   data(){
     return{
-      discountgames:[
+      freegames:[
         {
         id:"1",
         image:"MaskGroup.svg",
@@ -38,7 +37,7 @@ export default{
         rating:"4.9",
         undername:"Ubisoft Nadeo | Ubisoft",
         price:"",
-        scrin:'vessel-5.jpg',
+        scrin:'Pic1.jpg',
         scrin1:'c97a9.jpg',
         scrin2:'Pic1.jpg',
         scrin3:'c97a9.jpg',
