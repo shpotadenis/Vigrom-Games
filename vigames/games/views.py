@@ -9,6 +9,7 @@ from .serializers import AccountSerializer, OutputAllNews, GameSerializer, Outpu
     RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer
 from django.contrib.auth.models import User
+from scripts import Search
 
 
 class OutputAllNewsView(APIView):
@@ -96,18 +97,20 @@ class CommentNewsCreateView(APIView):
     def post(self, request):
         user = request.user
         comment = CommentsNewsSerializer(data=request.data)
+        text_comment = Search.comments(Search(), request.data['text_comment'])  # Закрываем матерные слова звездочками
         posts = Posts.objects.get(url=request.data["page"])    # Ищем пост, к которому был оставлен коммент. По урлу.
         if comment.is_valid() and user.is_authenticated:
-            comment.save(user=user, page=posts)
+            comment.save(user=user, page=posts, text_comment=text_comment)
             return Response(comment.data)
         return Response(comment.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk):
         comment = Comments_Post.objects.get(id=pk)
         serializer = CommentsNewsSerializer(comment, data=request.data)
+        text_comment = Search.comments(Search(), request.data['text_comment'])  # Закрываем матерные слова звездочками
         user = request.user
         if serializer.is_valid() and user.is_authenticated and comment.user == user:
-            serializer.save()
+            serializer.save(text_comment=text_comment)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -131,20 +134,20 @@ class CommentGameCreateView(APIView):
     def post(self, request):
         user = request.user
         comment = CommentsGameSerializer(data=request.data)
-        print(request.data["page"])
+        text_comment = Search.comments(Search(), request.data['text_comment'])  # Закрываем матерные слова звездочками
         game = Game.objects.get(url=request.data["page"])    # Ищем пост, к которому был оставлен коммент. По урлу.
         if comment.is_valid() and user.is_authenticated:
-            print(game)
-            comment.save(user=user, page=game)
+            comment.save(user=user, page=game, text_comment=text_comment)
             return Response(comment.data)
         return Response(comment.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk):
         comment = Comments_Game.objects.get(id=pk)
         serializer = CommentsGameSerializer(comment, data=request.data)
+        text_comment = Search.comments(Search(), request.data['text_comment'])  # Закрываем матерные слова звездочками
         user = request.user
         if serializer.is_valid() and user.is_authenticated and comment.user == user:
-            serializer.save()
+            serializer.save(text_comment=text_comment)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -174,8 +177,14 @@ class GameDetail(APIView):
         user = request.user
         serializer = GameSerializer(data=request.data)
         account = Account.objects.get(user=user)
+        medias = []
+        for i in list(dict(request.data)['images']):     # Добавление картинок к игре
+            if user.is_authenticated and account.is_developer:
+                medias.append(Media.objects.create(img=i, author=user))
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
         if serializer.is_valid() and user.is_authenticated and account.is_developer:
-            serializer.save(author=user)
+            serializer.save(author=user, image=medias)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -436,6 +445,7 @@ class FaqDetail(ListAPIView):
 
 class RoleView(APIView):
     """Добавление роли аккуанта"""
+
     def post(self, request):
         username = request.POST.get('username')
         user = User.objects.get(username=username)
@@ -457,7 +467,7 @@ class RoleView(APIView):
 
 class QuestionDetail(APIView):
     """Добавление вопроса к администрации"""
-    
+
     def post(self, request):
         serializer = QuestionSerializer(data=request.data)
         if serializer.is_valid():
