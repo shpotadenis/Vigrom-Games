@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="DiscountGamesTitle">
-  <p class="Title">Бесплатные игры</p>
+  <p class="Title">Скидки</p>
 </div>
 <banner-component day="Сегодня"
                   header="НОВЫЕ ИНДИ ИГРЫ УЖЕ НА ГЛАВНОЙ"

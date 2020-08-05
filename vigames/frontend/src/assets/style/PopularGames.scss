@@ -7,13 +7,14 @@
 	display:flex;
 	transition: all ease 1s;
 }
+
 .ImageVector1{
 	position:absolute;
 	width:100px;
 	height: 434px;
 	transform:rotate(180deg);
-	top:2%;
-	left:1%;
+top:86px;
+left:30px;
 	transition: 0.1s;
 }
 .ImageVector1:hover{
@@ -23,8 +24,8 @@
 	position:absolute;
 	width:100px;
 	height: 434px;
-	top:2%;
-	left:93%;
+	top:50px;
+	left:1020px;
 	transition: 0.1s;
 }
 .ImageVector2:hover{

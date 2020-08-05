@@ -43,7 +43,6 @@ const router = new Router({
     { path: '/checkout', name: 'checkout', component: Checkout },
     { path: '/library', name: 'libraryPage', component: LibraryPage },
     { path: '/featured', name: 'featuredPage', component: FeaturedPage },
-    { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage },
     { path: '/free_games', name: 'freeGames', component: FreeGames},
     { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage },
     { path: '/not_found', name: 'errorPage', component: ErrorPage },
@@ -54,7 +53,7 @@ const router = new Router({
   ]
 })
 
-new Vue({
+export default new Vue({
   render: h => h(App),
   router,
   store
