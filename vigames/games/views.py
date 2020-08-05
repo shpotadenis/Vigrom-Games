@@ -143,7 +143,7 @@ class CommentGameCreateView(APIView):
     def post(self, request):
         user = request.user
         comment = CommentsGameSerializer(data=request.data)
-        print(request.data["page"])
+        print(request.data)
         game = Game.objects.get(url=request.data["page"])    # Ищем пост, к которому был оставлен коммент. По урлу.
         if comment.is_valid() and user.is_authenticated:
             print(game)
@@ -174,17 +174,34 @@ class GameDetailView(RetrieveUpdateDestroyAPIView):
 
 
 class GameDetail(APIView):
-
+    """Вывод/редактирование игры"""
     def get_game(self, pk):
         try:
             return Game.objects.get(pk=pk)
         except Game.DoesNotExist:
             raise Http404
+    """
+    def post(self, request):
+        user = request.user
+        #serializer = SerializerMedia
+        account = Account.objects.get(user=user)
+        for i in list(dict(request.data)['img']):
+            if user.is_authenticated and account.is_developer:
+                Media.objects.create(img=i, author=user)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_200_OK)
+    """
 
     def post(self, request, format=None):
         user = request.user
         serializer = GameSerializer(data=request.data)
         account = Account.objects.get(user=user)
+        for i in list(dict(request.data)['image']):     # Добавление картинок к игре
+            if user.is_authenticated and account.is_developer:
+                Media.objects.create(img=i, author=user)
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
         if serializer.is_valid() and user.is_authenticated and account.is_developer:
             serializer.save(author=user)
             return Response(serializer.data)
