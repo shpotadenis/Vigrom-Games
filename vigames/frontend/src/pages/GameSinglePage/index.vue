@@ -5,21 +5,15 @@
         <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>
         <div class="game-card">
             <div class="game-card__banner banner">
-                <img src="@/assets/img/top_banner.png" alt="Banner of game" class="full-banner">
-                <div class="banner__right">
-                    <img src="@/assets/img/chevron-right-icon.svg" alt="" class="banner__right-pic">
-                </div>
-                <div class="banner__left">
-                    <img src="@/assets/img/chevron-right-icon.svg" alt="" class="banner__left-pic">
-                </div>
+                <slider-component :array_-slide="getImages"></slider-component>
             </div>
             <div class="info-card">
                 <div class="info-card__about">
                     <h2 class="info-card__title">
-                        {{getGameData.name}}
+                        {{getGameData.title}}
                     </h2>
                     <p class="info-card__author">
-                        От {{getGameData.dev}}
+                        От {{getGameData.author}}
                     </p>
                 </div>
                 <div class="info-card__buy">
@@ -42,7 +36,7 @@
             <div class="game-info">
                 <div class="game-info__desc">
                     <p>
-                        {{getGameData.desc}}
+                        {{getGameData.short_description}}
                     </p>
                     <a v-scroll-to="'#reviews'" class="desc__show-reviews">
                         Посмотреть отзывы
@@ -71,10 +65,12 @@
                     </ul>
                     <ul class="category__values">
                         <li class="value">
-                            {{getGameData.dev}}
+                            {{getGameData.author}}
                         </li>
                         <li class="value">
-                            {{getGameData.category}}
+                            <div v-for="(category, idx) in getGameData.categories" :key="'cat' + idx">
+                                {{category}}
+                            </div>
                         </li>
                         <li class="value">
                             {{getGameData.rating}}
@@ -95,6 +91,7 @@
             </div>
         </div>
         <div class="wrapper_2">
+        <!-- STATIC DESCRIPTION
             <img src="@/assets/img/game-pic2.png" alt="" class="full-banner">
             <div class="desc__text">
                 <p>
@@ -117,6 +114,8 @@
                 </p>
             </div>
             <img src="@/assets/img/game-pic6.png" alt="" class="full-banner">
+            !-->
+            {{getGameData.description}}
         </div>
         <reviews-component id="reviews"></reviews-component>
         <div class="wrapper_2">
@@ -132,8 +131,7 @@
     </div>
 </template>
 
-<script src="./index.js" type="application/javascript">
-</script>
+<script src="./index.js" language="JavaScript"></script>
 
 <style scoped src="./index.css" rel="stylesheet">
 </style>

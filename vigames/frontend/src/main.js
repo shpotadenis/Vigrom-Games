@@ -34,7 +34,7 @@ Vue.config.productionTip = false
 const router = new Router({
   routes: [
     { path: '/login', name: 'loginPage', component: LoginPage },
-    { path: '/shop', name: 'singlePage', component: GameSinglePage },
+    { path: '/game/:id', name: 'singlePage', component: GameSinglePage },
     { path: '/home', name: 'homePage', component: HomePage },
     { path: '/news', name: 'newsPage', component: NewsPage },
     { path: '/sign_in', name: 'signInPage', component: SignInPage },
