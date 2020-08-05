@@ -104,6 +104,13 @@ class OutputGameSerializer(serializers.ModelSerializer):
                   'description', 'short_description')
 
 
+class GameLibrarySerializer(serializers.ModelSerializer):
+    image = SerializerMedia(many=True)
+
+    class Meta:
+        model = Game
+        fields = ('id', 'author', 'img', 'image', 'title', 'price')
+
 
 class RatingSerializer(serializers.ModelSerializer):
 
