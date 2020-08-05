@@ -90,12 +90,19 @@ class GameSerializer(serializers.ModelSerializer):
 
 class OutputGameSerializer(GameSerializer):
     """Сериализатор вывода игры на страницу"""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     comments_game = CommentsGameSerializer(many=True)
-    players = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
-    who_added_to_wishlist = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
+    #players = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
+    #who_added_to_wishlist = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
     categories = serializers.SlugRelatedField(slug_field='name', read_only=True, many=True)
     genre = serializers.SlugRelatedField(slug_field='name', read_only=True, many=True)
     image = SerializerMedia(many=True)
+
+    class Meta:
+        model = Game
+        fields = ('author', 'comments_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
+                  'description', 'short_description')
+
 
 
 class RatingSerializer(serializers.ModelSerializer):
