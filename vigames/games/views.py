@@ -224,8 +224,9 @@ class GameRatingDetail(APIView):
     def post(self, request, pk, format=None):
         user = request.user
         mark = request.POST.get('mark')
+        game = self.get_game(pk)
         rating_serializer = RatingSerializer(data={'author': user.id, 'mark': mark, 'game': pk})
-        if rating_serializer.is_valid() and user.is_authenticated:
+        if rating_serializer.is_valid() and user.is_authenticated and user in game.players.all():
                 user_ratings = Rating.objects.filter(author=user.id)
                 flag = True
                 for rating in user_ratings:
