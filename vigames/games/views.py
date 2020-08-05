@@ -391,9 +391,8 @@ class AssessPostDetail(APIView):
 class OutputLibrary(ListAPIView):
     """Вывод библиотеки игр пользователя"""
 
-    def get(self, request, pk):
+    def get(self, request):
         user = request.user
-        account = Account.objects.get(user=user)
         if user.is_authenticated:
             games = Game.objects.filter(players=user)
             serializer = GameLibrarySerializer(games, many=True)
