@@ -97,7 +97,7 @@ export default {
                 console.log(response)
             }).catch(error => {
                 console.log('Library error')
-                console.log(error)
+                console.log(error.response)
             })
         }
     }

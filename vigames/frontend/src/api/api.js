@@ -14,7 +14,7 @@ instance.interceptors.request.use(r => {
     // auth
     let token = vue.$store.getters['user/getToken']
     if (token != null) {
-        r.headers.post['Authorization'] = 'Token ' + token
+        r.headers['Authorization'] = 'Token ' + token
     }
 
     return r
