@@ -30,3 +30,49 @@ transition: opacity .5s;
 .fade-enter, .fade-leave-to {
 opacity: 0;
 }
+.AllCategoriesItem{
+  position: absolute;
+  margin-top: 30px;
+  background: #2D2D42;
+border-radius: 10px;
+  width: 720px;
+  height: 155px;
+  z-index: 9999999;
+}
+.Animation-enter, .Animation-leave-to{
+  transition: all 0.5s ease;
+}
+.Animation-leave-active{
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+.AllUlBlock{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 14px;
+  margin-top: 5px;
+}
+.LiBlock{
+  width: 166px;
+  font-family: Open Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 19px;
+color: #FFFFFF;
+}
+.LiBlock1{
+  width: 166px;
+  margin-top: 10px;
+  font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 19px;
+color: #7A7A83;
+}
+.LinkGerne{
+  display: flex;
+}
+.UlComponent{
+  margin-left:14px;
+}

@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="EarlyAccessGamesTitle">
-  <p class="Title">Бесплатные игры</p>
+  <p class="Title">Ранний доступ</p>
 </div>
 <banner-component day="Сегодня"
                   header="НОВЫЕ ИНДИ ИГРЫ УЖЕ НА ГЛАВНОЙ"
