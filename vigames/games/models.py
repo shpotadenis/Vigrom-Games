@@ -121,7 +121,7 @@ class Game(models.Model):
     release_status = models.BooleanField(default=False)
     date_release = models.DateField(default=date.today)
     price = models.IntegerField(default=0)
-    screenshots = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
+    img = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
     # uploads
     description = models.TextField(default="")
     genre = models.ManyToManyField(Genre, blank=True, related_name='genre', null=True)
