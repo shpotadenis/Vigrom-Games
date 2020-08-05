@@ -26,7 +26,7 @@ const mutations = {
     userLogin(state, user) {
         state.userLogin = user.login
 
-        if (user.token !== null) {
+        if (user.token != null) {
             state.token = user.token
             state.loggedIn = true
         }
@@ -53,7 +53,7 @@ const actions = {
                 // Ответ получен, токен существует
                 if (response.data.auth_token) {
                     context.commit('userLogin', {
-                        login: credentials.username,
+                        login: credentials.login,
                         token: response.data.auth_token
                     });
                     resolve(response.data)
