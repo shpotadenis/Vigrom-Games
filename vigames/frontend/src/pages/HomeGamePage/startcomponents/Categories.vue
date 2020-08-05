@@ -23,16 +23,6 @@ export default {
 		SearchComponent,
 		InternalMenu
 	},
-	data(){
-		return{
-			isVisible: false
-		}
-	},
-	methods:{
-		toggleElement(){
-			this.isVisible = !this.isVisible
-			}
-		}
 }
 </script>
 
