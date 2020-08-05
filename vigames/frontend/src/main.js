@@ -50,7 +50,7 @@ const router = new Router({
     { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },
     { path: '/user_profile', name: 'personPage', component: PersonPage },
     { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage }
-  ]
+  ], mode: 'history'
 })
 
 export default new Vue({

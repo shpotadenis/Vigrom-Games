@@ -77,7 +77,28 @@ export default {
     },
     data() {
         return {
-            cards: data
+            cards: data,
+            loading: true
+        }
+    },
+
+    mounted() {
+        this.fetchData()
+    },
+    computed: {
+        getLibraryCards() {
+            return this.$store.getters['user/getLibrary']
+        }
+    },
+    methods: {
+        fetchData() {
+            this.$store.dispatch('user/getLibrary').then(response => {
+                console.log('Library added:')
+                console.log(response)
+            }).catch(error => {
+                console.log('Library error')
+                console.log(error)
+            })
         }
     }
 }
