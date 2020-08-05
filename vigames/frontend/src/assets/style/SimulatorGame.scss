@@ -1,0 +1,31 @@
+.wrappen{
+  width: 1110px;
+  margin: 0 auto;
+}
+.SimulatorGames{
+  display:flex;
+  justify-content:space-between;
+}
+.FilterGames{
+  margin-top:5px;
+  margin-bottom:5px;
+}
+.SimulatorGamesTitle{
+  margin-top:50px;
+  font-style: normal;
+font-weight: 800;
+font-size: 14px;
+line-height: 19px;
+color: #FFFFFF;
+}
+.SimulatorGamesComponents{
+  max-width:1110px;
+  display:block;
+  margin-top:60px;
+}
+.ItemCard{
+  display: inline;
+}
+.banner{
+  margin-top: 60px;
+}
