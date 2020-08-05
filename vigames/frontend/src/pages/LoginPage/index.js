@@ -74,16 +74,16 @@ export default {
             this.error_confirm = []
 
             if (!this.name) {
-                this.error_name.push('Пустое поле');
+                this.error_name.push('Данное поле не заполнено');
             }
             if (!this.email) {
-                this.error_mail.push('Пустое поле');
+                this.error_mail.push('Данное поле не заполнено');
             }
             if (!this.pass) {
-                this.error_pass.push('Пустое поле');
+                this.error_pass.push('Данное поле не заполнено');
             }
             if (!this.confirmPass) {
-                this.error_confirm.push('Пустое поле');
+                this.error_confirm.push('Данное поле не заполнено');
             } else{
                 if (this.confirmPass!=this.pass){
                     this.error_confirm.push('Пароли не совпадают')
