@@ -8,7 +8,7 @@ from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, 
 from .permissions import IsOwnerProfileOrReadOnly
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
-    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia
+    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer
 from django.contrib.auth.models import User
 
 
@@ -391,12 +391,11 @@ class AssessPostDetail(APIView):
 class OutputLibrary(ListAPIView):
     """Вывод библиотеки игр пользователя"""
 
-    def get(self, request, pk):
+    def get(self, request):
         user = request.user
-        account = Account.objects.get(user=user)
         if user.is_authenticated:
             games = Game.objects.filter(players=user)
-            serializer = GameSerializer(games, many=True)
+            serializer = GameLibrarySerializer(games, many=True)
             return Response(serializer.data)
         #else:
         #выводить другие данные игры
