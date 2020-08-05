@@ -22,6 +22,7 @@ import FreeGames from "./pages/FreeGames/FreeGames.vue"
 import DiscountsGame from "./pages/DiscountsGame/DiscountGame";
 import EarlyAccessGame from "./pages/EarlyAccessGame/EarlyAccessGame.vue";
 import PersonPage from './pages/PersonPage/index.vue'
+import DeveloperPage from './pages/DeveloperPage/index.vue'
 
 Vue.use(VueScrollTo)
 
@@ -34,8 +35,8 @@ Vue.config.productionTip = false
 const router = new Router({
   routes: [
     { path: '/login', name: 'loginPage', component: LoginPage },
-    { path: '/shop', name: 'singlePage', component: GameSinglePage },
-    { path: '/home', name: 'homePage', component: HomePage },
+    { path: '/game/:id', name: 'singlePage', component: GameSinglePage },
+    { path: '/', name: 'homePage', component: HomePage },
     { path: '/news', name: 'newsPage', component: NewsPage },
     { path: '/sign_in', name: 'signInPage', component: SignInPage },
     { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage },
@@ -47,8 +48,8 @@ const router = new Router({
     { path: '/not_found', name: 'errorPage', component: ErrorPage },
     { path: '/discountsGame', name: 'discountsGame', component: DiscountsGame },
     { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },
-    { path: '/profile', name: 'personPage', component: PersonPage }
-
+    { path: '/user_profile', name: 'personPage', component: PersonPage },
+    { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage }
   ]
 })
 

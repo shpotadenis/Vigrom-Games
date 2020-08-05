@@ -76,6 +76,17 @@
     width: 190px;
     height: 40px;
     border: 0;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+}
+#save_change:hover{
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
 }
 #eye_pass,#eye_pass_second,#eye_pass_third{
     position: absolute;

@@ -6,7 +6,6 @@
       <categories/>
       <popular-games
         :Array_Slide="items"
-        :Interval="4000"
       />
       <little-popular/>
       <new-game-page/>
