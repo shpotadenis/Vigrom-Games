@@ -99,11 +99,10 @@ export default {
     },
 
     mounted() {
-        // TODO: Изменить редирект с главной на личный кабинет
-        // Пользователь уже авторизован -> редирект на главную
+        // Пользователь уже авторизован -> редирект на ЛК
         if (this.$store.getters['user/isLoggedIn'] == true) {
             this.$router.push({
-                name: 'homePage'
+                name: 'personPage'
             })
         }
 
