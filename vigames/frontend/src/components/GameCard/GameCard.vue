@@ -41,38 +41,34 @@
             <button class='strelk1Popular' @click="leftFunc"></button>
             <button class='strelk2Popular' @click="rightFunc"></button>
             <div
-               :style="{'margin-left': '-' + (100 * SlideNumber) + '%' }"
-               class="AnimationSlider"
              >
               <img
                 v-bind:src="Game.scrin"
                 width="220"
                 height="220"
+                :style="{'margin-left': '-' + (100 * SlideNumber) + '%' }"
                 class="AnimationSlider"
                 >
-            </div>
-            <div>
+
               <img
                 v-bind:src="Game.scrin1"
                 width="220"
                 height="220"
-                class="AnimationSlider"
+
               >
-            </div>
-            <div>
+
               <img
                 v-bind:src="Game.scrin2"
                 width="220"
                 height="220"
-                class="AnimationSlider"
+
               >
-            </div>
-            <div>
+            
               <img
                 v-bind:src="Game.scrin3"
                 width="220"
                 height="220"
-                class="AnimationSlider"
+
               >
 
             </div>

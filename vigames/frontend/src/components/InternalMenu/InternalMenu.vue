@@ -3,7 +3,7 @@
   <div class="CategoriesGame">
     <ul class="AllChooseUL">
       <li class="AllChooseLi" @click="showCategories">
-        Категории
+        Жанры
         <img src="@/assets/img/VectorBottom.svg">
       </li>
       <transition name="Animation">
