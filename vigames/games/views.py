@@ -1,4 +1,3 @@
-import json
 from datetime import timedelta, date
 from django.http import Http404, HttpResponse
 from rest_framework import status
