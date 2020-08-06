@@ -7,6 +7,9 @@ export default {
   },
 data(){
   return {
+    TopCategory:{
+      genre: 'Test complite'
+    },
     isBtnClick: false
   }
 },
@@ -17,6 +20,6 @@ data(){
         return{}
       }
     }
-  }
+  },
 
 }

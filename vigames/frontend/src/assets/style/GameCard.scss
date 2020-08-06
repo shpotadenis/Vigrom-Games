@@ -178,3 +178,8 @@ backface-visibility:hidden;
  .SlideBarImage{
  display:flex;
  }
+
+.RatingAndTitlePopular > a {
+  text-decoration: none;
+  color: inherit;
+}

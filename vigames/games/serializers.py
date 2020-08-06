@@ -3,8 +3,9 @@ from .models import Account, Posts, Game, Comments_Post, Comments_Game, Review, 
     Question, Genre
 
 
-#Сериализатор пользователя
 class AccountSerializer(serializers.ModelSerializer):
+    """Сериализатор пользователя"""
+
     user = serializers.StringRelatedField(read_only=True)
 
     class Meta:
@@ -14,6 +15,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
 class FilterCommentSerializer(serializers.ListSerializer):
     """Сериализатор, чтобы зависимые комментарии не дублировались в основном списке"""
+
     def to_representation(self, data):
         data = data.filter(parent=None)
         print(data)
@@ -22,6 +24,7 @@ class FilterCommentSerializer(serializers.ListSerializer):
 
 class RecursiveSerializer(serializers.Serializer):
     """Сериализатор для вывода вложенных комментариев"""
+
     def to_representation(self, value):
         serializer = self.parent.parent.__class__(value, context=self.context)
         return serializer.data
@@ -29,6 +32,7 @@ class RecursiveSerializer(serializers.Serializer):
 
 class CommentsNewsSerializer(serializers.ModelSerializer):
     """Ввод/Вывод комментариев на странице новости"""
+
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
     children_post = RecursiveSerializer(many=True, read_only=True)
 
@@ -40,6 +44,7 @@ class CommentsNewsSerializer(serializers.ModelSerializer):
 
 class CommentsGameSerializer(serializers.ModelSerializer):
     """Ввод/Вывод комментариев на странице игры"""
+
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
     children_game = RecursiveSerializer(many=True, read_only=True)
 
@@ -51,6 +56,7 @@ class CommentsGameSerializer(serializers.ModelSerializer):
 
 class OutputAllNews(serializers.ModelSerializer):
     """Вывод последних новостей на страницу news"""
+
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
@@ -60,6 +66,7 @@ class OutputAllNews(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     """Сериализатор отдельного поста"""
+
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
@@ -69,10 +76,13 @@ class PostSerializer(serializers.ModelSerializer):
 
 class OutputPost(PostSerializer):
     """Вывод отдельного поста по url"""
+
     comments_post = CommentsNewsSerializer(many=True)
 
 
 class SerializerMedia(serializers.ModelSerializer):
+    """Сериализатор изображений"""
+
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
@@ -82,6 +92,7 @@ class SerializerMedia(serializers.ModelSerializer):
 
 class GameSerializer(serializers.ModelSerializer):
     """Сериализатор игры (нужен для добавления)"""
+
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
@@ -91,6 +102,7 @@ class GameSerializer(serializers.ModelSerializer):
 
 class OutputGameSerializer(serializers.ModelSerializer):
     """Сериализатор вывода игры на страницу"""
+
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     comments_game = CommentsGameSerializer(many=True)
     #players = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
@@ -106,6 +118,8 @@ class OutputGameSerializer(serializers.ModelSerializer):
 
 
 class GameLibrarySerializer(serializers.ModelSerializer):
+    """Сериализатор вывода игры в библиотеку пользователя"""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     image = SerializerMedia(many=True)
 
     class Meta:
@@ -114,6 +128,7 @@ class GameLibrarySerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    """Сериализатор отзыва к игре"""
 
     class Meta:
         model = Review
@@ -121,6 +136,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class FaqSerializer(serializers.ModelSerializer):
+    """Сериализатор вопросов и ответов в Faq"""
 
     class Meta:
         model = FAQ
@@ -128,6 +144,7 @@ class FaqSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
+    """Сериализатор заказа (покупки) игры"""
 
     class Meta:
         model = Orders
@@ -135,6 +152,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
 
 class QuestionSerializer(serializers.ModelSerializer):
+    """Сериализатор вопросов к администраторам сайта"""
 
     class Meta:
         model = Question
@@ -142,6 +160,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class GenreSerializer(serializers.ModelSerializer):
+    """Сериализатор жанров игр"""
 
     class Meta:
         model = Genre

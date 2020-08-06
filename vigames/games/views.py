@@ -57,7 +57,7 @@ class PostView(APIView):
         except:
             raise Http404
 
-    def post(self, request, format=None):
+    def post(self, request):
         user = request.user
         serializer = PostSerializer(data=request.data)
         account = Account.objects.get(user=user)
@@ -76,7 +76,7 @@ class PostView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk):
         posts = Posts.objects.get(id=pk)
         account = Account.objects.get(user=request.user)
         if account.is_developer and posts.user == request.user:
@@ -86,6 +86,7 @@ class PostView(APIView):
 
 class CommentNewsCreateView(APIView):
     """Добавление комментария на страницу записи"""
+
     """
     Help text: комментарий оставляет авторизованный пользователь User.
     Оставляет его на странице page. Страницу мы ищем по url страницы, который нам отправит фронт
@@ -114,7 +115,7 @@ class CommentNewsCreateView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk):
         comment = Comments_Post.objects.get(id=pk)
         if comment.user == request.user:
             comment.delete()
@@ -123,6 +124,7 @@ class CommentNewsCreateView(APIView):
 
 class CommentGameCreateView(APIView):
     """Добавление комментария на страницу игры"""
+
     """
     Help text: комментарий оставляет авторизованный пользователь User.
     Оставляет его на странице game. Страницу мы ищем по url страницы, который нам отправит фронт
@@ -151,7 +153,7 @@ class CommentGameCreateView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk):
         comment = Comments_Game.objects.get(id=pk)
         if comment.user == request.user:
             comment.delete()
@@ -173,7 +175,7 @@ class GameDetail(APIView):
         except Game.DoesNotExist:
             raise Http404
 
-    def post(self, request, format=None):
+    def post(self, request):
         user = request.user
         serializer = GameSerializer(data=request.data)
         account = Account.objects.get(user=user)
@@ -188,12 +190,12 @@ class GameDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def get(self, request, pk, format=None):
+    def get(self, request, pk):
         game = self.get_game(pk)
         serializer = OutputGameSerializer(game)
         return Response(serializer.data)
 
-    def put(self, request, pk, format=None):
+    def put(self, request, pk):
         game = self.get_game(pk)
         serializer = GameSerializer(game, data=request.data)
         user = request.user
@@ -203,7 +205,7 @@ class GameDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk):
         game = self.get_game(pk)
         account = Account.objects.get(user=request.user)
         if account.is_developer and game.author == request.user:
@@ -213,56 +215,56 @@ class GameDetail(APIView):
 
 class GameRatingDetail(APIView):
     """Добавление, получение, редактирование и удаление оценки игры"""
-    #допилить!!!
+
     def get_game(self, pk):
         try:
             return Game.objects.get(pk=pk)
         except Game.DoesNotExist:
             raise Http404
 
-    def post(self, request, pk, format=None):
+    def post(self, request, pk):
         user = request.user
         mark = request.POST.get('mark')
         game = self.get_game(pk)
         comment = request.POST.get('comment')
-        #rating_serializer = RatingSerializer(data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
-        serializer = ReviewSerializer(data=request.data)
+        serializer = ReviewSerializer(data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
         if serializer.is_valid() and user.is_authenticated and user in game.players.all():
             try:
                 user_ratings = Review.objects.get(author=user.id, game=pk)
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             except Review.DoesNotExist:
                 serializer.save()
-                return Response(serializer.data)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-    def get(self, request, pk, format=None):
+    def get(self, request, pk):
         user = request.user
         data = None
         if user.is_authenticated:
-            user_ratings = Review.objects.filter(author=user.id)
-            for rating in user_ratings:
-                if rating.game.id == pk:
-                    data = rating.mark
-        return Response(data)
+            try:
+                user_ratings = Review.objects.get(author=user.id, game=pk)
+                serializer = ReviewSerializer(user_ratings)
+                return Response(serializer.data)
+            except Review.DoesNotExist:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    def put(self, request, pk, format=None):
+    def put(self, request, pk):
         game = self.get_game(pk)
         mark = request.POST.get('mark')
         user = request.user
+        comment = request.POST.get('comment')
         if user.is_authenticated:
-            user_ratings = Review.objects.filter(author=user.id)
-            for rating in user_ratings:
-                if rating.game.id == pk:
-                    rating_ = rating
-                    break
-        serializer = ReviewSerializer(rating_, data={'author': user.id, 'mark': mark, 'game': pk})
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+            try:
+                user_rating = Review.objects.get(author=user.id, game=pk)
+            except Review.DoesNotExist:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+            serializer = ReviewSerializer(user_rating, data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk):
         user = request.user
         if user.is_authenticated:
             try:
@@ -287,12 +289,11 @@ class OutputGames(ListAPIView):
 class BuyGameDetail(APIView):
     """Покупка игры"""
 
-    def put(self, request, pk, format=None):
+    def put(self, request, pk):
         user = request.user
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
             try:
-                #account = Account.objects.get(user=user)
                 if user not in game.players.all():
                     game.players.add(user)
                     game.who_added_to_wishlist.remove(user)
@@ -315,12 +316,11 @@ class WishListDetail(APIView):
         except Game.DoesNotExist:
             raise Http404
 
-    def post(self, request, pk, format=None):
+    def post(self, request, pk):
         user = request.user
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
             try:
-                #account = Account.objects.get(user=user)
                 if user not in game.who_added_to_wishlist.all():
                     game.who_added_to_wishlist.add(user)
                     return Response({"message": "success"}, status=status.HTTP_200_OK)
@@ -328,12 +328,11 @@ class WishListDetail(APIView):
             except Account.DoesNotExist:
                 return Response({"message": "fail"}, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk):
         user = request.user
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
             try:
-                #account = Account.objects.get(user=user)
                 if user in game.who_added_to_wishlist.all():
                     game.who_added_to_wishlist.remove(user)
             except Account.DoesNotExist:
@@ -350,7 +349,7 @@ class AssessPostDetail(APIView):
         except Game.DoesNotExist:
             raise Http404
 
-    def post(self, request, pk, format=None):
+    def post(self, request, pk):
         user = request.user
         post = Posts.objects.get(id=pk)
         if user.is_authenticated:
@@ -371,7 +370,7 @@ class AssessPostDetail(APIView):
                     post.liked.remove(account)
             return Response({"message": "success"}, status=status.HTTP_200_OK)
 
-    def delete(self, request, pk, format=None):
+    def delete(self, request, pk):
         user = request.user
         post = Posts.objects.get(id=pk)
         if user.is_authenticated:
@@ -398,8 +397,6 @@ class OutputLibrary(ListAPIView):
             games = Game.objects.filter(players=user)
             serializer = GameLibrarySerializer(games, many=True)
             return Response(serializer.data)
-        #else:
-        #выводить другие данные игры
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -427,7 +424,7 @@ class GameCategoryDetail(ListAPIView):
     """Вывод игр соответствующей категории"""
 
     def get(self, request, pk):
-        category = Category.objects.get(pk=pk) #при прикручивании заюзать скрипт перевода в транслит(?)
+        category = Category.objects.get(pk=pk)
         games = Game.objects.filter(categories=category)
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
