@@ -19,17 +19,17 @@ export default {
         this.selectFile = event.target.files[0].name;
       },
       UpLoadFile1(event){
-        console.log(event.target.selectFile1)
+        console.log(event.target.selectFile)
         this.selectFile1 = event.target.files[0].name;
       },
       UpLoadFile2(event){
-        console.log(event.target.selectFile2)
+        console.log(event.target.selectFile)
         this.selectFile2 = event.target.files[0].name;
       },
       UpLoadFile3(event){
-        console.log(event.target.selectFile3)
-        this.selectFile3 = event.target.files[0].name;
-      }
+        console.log(event.target.selectFile)
+        this.selectFileZ = event.target.files[0].name;
+      },
 
     }
 
