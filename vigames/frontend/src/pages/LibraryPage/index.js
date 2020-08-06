@@ -4,22 +4,6 @@ import BannerComponent from '../../components/BannerComponent/index.vue'
 import ContentCardComponent from '../../components/ContentCardComponent/index.vue'
 import GameCard from "@/components/GameCard/GameCard.vue"
 
-/* const data =  [
-    {
-        id: 1,
-        title: 'FARCRY5',
-        author: 'Ubisoft Nadeo | Ubisoft',
-        img: 'url', // Обложка картинки
-        image: [
-            {
-                author: 'string',
-                img: 'url'
-            }], // Скриншоты
-        price: 199.00
-    },
-] */
-
-
 export default {
     name: 'LibraryPage',
     components: {
@@ -66,11 +50,25 @@ export default {
                 id: object.id,
                 name: object.title,
                 undername: object.author,
-                scrin: object.img,
+                image: object.img,
                 icon: '',
-                scrin1: object.image[0].img,
-                scrin2: object.image[1].img,
-                scrin3: object.image[2].img
+                price: object.price
+            }
+
+            if (object.image[0]) {
+                obj.scrin = object.image[0].img
+            }
+
+            if (object.image[1]) {
+                obj.scrin1 = object.image[1].img
+            }
+
+            if (object.image[2]) {
+                obj.scrin2 = object.image[2].img
+            }
+
+            if (object.image[3]) {
+                obj.scrin3 = object.image[3].img
             }
 
             return obj
