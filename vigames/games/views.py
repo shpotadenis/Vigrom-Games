@@ -225,41 +225,41 @@ class GameRatingDetail(APIView):
         mark = request.POST.get('mark')
         game = self.get_game(pk)
         comment = request.POST.get('comment')
-        #rating_serializer = RatingSerializer(data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
-        serializer = ReviewSerializer(data=request.data)
+        serializer = ReviewSerializer(data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
         if serializer.is_valid() and user.is_authenticated and user in game.players.all():
             try:
                 user_ratings = Review.objects.get(author=user.id, game=pk)
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             except Review.DoesNotExist:
                 serializer.save()
-                return Response(serializer.data)
-
+                return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, pk, format=None):
         user = request.user
         data = None
         if user.is_authenticated:
-            user_ratings = Review.objects.filter(author=user.id)
-            for rating in user_ratings:
-                if rating.game.id == pk:
-                    data = rating.mark
-        return Response(data)
+            try:
+                user_ratings = Review.objects.get(author=user.id, game=pk)
+                serializer = ReviewSerializer(user_ratings)
+                return Response(serializer.data)
+            except Review.DoesNotExist:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk, format=None):
         game = self.get_game(pk)
         mark = request.POST.get('mark')
         user = request.user
+        comment = request.POST.get('comment')
         if user.is_authenticated:
-            user_ratings = Review.objects.filter(author=user.id)
-            for rating in user_ratings:
-                if rating.game.id == pk:
-                    rating_ = rating
-                    break
-        serializer = ReviewSerializer(rating_, data={'author': user.id, 'mark': mark, 'game': pk})
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+            try:
+                user_rating = Review.objects.get(author=user.id, game=pk)
+            except Review.DoesNotExist:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+            serializer = ReviewSerializer(user_rating, data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):

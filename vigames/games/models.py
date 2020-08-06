@@ -129,7 +129,7 @@ class Game(models.Model):
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
-    screenshots = models.ManyToManyField(Media, blank=True, related_name='parent_game')
+    image = models.ManyToManyField(Media, blank=True, related_name='parent_game')
     '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
