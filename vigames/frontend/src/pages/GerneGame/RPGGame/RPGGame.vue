@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="RPGGamesTitle">
-  <p class="Title">РПГ</p>
+  <p class="Title">RPG</p>
 </div>
 
   <div class="RPGGamesComponents">
