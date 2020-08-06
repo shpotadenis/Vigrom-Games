@@ -139,6 +139,34 @@ class Search:  # первый аргумент - запрос юзера, вто
            'шалава',
            'шалавой', 'шараёбиться', 'шлюха', 'шлюхой', 'шлюшка', 'ябывает']
 
+    def comments(self, text):  # фильтр мата принимает на вход строку, возвращает ее же запиканную
+        matt = ''
+        global_len = 0
+        polf = []
+        for k in range(len(text)):
+            polf.append(text[k])
+        for lelemn in polf:
+            if lelemn == '.':
+                if polf[polf.index(lelemn) + 1] == ' ':
+                    polf[polf.index(lelemn)] = ' . '
+                else:
+                    polf[polf.index(lelemn)] = ' .'
+            elif lelemn == ',':
+                if polf[polf.index(lelemn) + 1] == ' ':
+                    polf[polf.index(lelemn)] = ' , '
+                else:
+                    polf[polf.index(lelemn)] = ' ,'
+        polf = ''.join(polf)
+        polf = polf.split(' ')
+        for elem in polf:
+            for j in range(len(elem)):
+                matt += '*'
+            if elem.lower() in mat:
+                polf[polf.index(elem)] = matt
+            matt = ''
+        end = ' '.join(polf)
+        return end
+'''
     def search(self, reqst, games_or_news,
                id_user):  # фильтр по поиску, принимает сам запрос в поиск, флаг игры или новости, айди юзера
         end_spis = []  # словарь с рейтингом названий
@@ -157,6 +185,7 @@ class Search:  # первый аргумент - запрос юзера, вто
             counter = int(str(cursor.fetchone())[1:-2])
             cursor.execute("SELECT title FROM games_posts")
         for k in range(counter):
+            #print(str(cursor.fetchone())[2:-3])
             games.append(str(cursor.fetchone())[2:-3])
         for elem in games:
             elem.lower()
@@ -168,18 +197,17 @@ class Search:  # первый аргумент - запрос юзера, вто
                 end_spis.append([elem, right_letters, idd])
             idd += 1
             right_letters = 0
+        #print(end_spis)
         if games_or_news == 'games':
             for lelem in end_spis:
                 cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
-                ddt = str(cursor.fetchone())[1:-2]
-                if ddt != 'o':
-                    new_rait = raiting(int(ddt))
+                if type(raiting(float(str(cursor.fetchone())[1:-2]))) is not str:
+                    new_rait = int(raiting(float(str(cursor.fetchone())[1:-2])))
                 if id_user != 0:
                     for word in spis_genre:
                         cursor.execute("SELECT ? FROM games_genre1 WHERE id = ?", (word, id_user))
-                        ddt = int(str(cursor.fetchone())[2:-3])
-                        if ddt > genre[0]:
-                            genre = [ddt, word]
+                        if int(str(cursor.fetchone())[2:-3]) > genre[0]:
+                            genre = [int(str(cursor.fetchone())[1:-2]), word]
                     cursor.execute("SELECT genre FROM games_game WHERE title = ?", (lelem[0],))
                     if genre[1] == str(cursor.fetchone())[1:-2]:
                         lelem[1] += 0, 3 * lelem[1]
@@ -205,7 +233,6 @@ class Search:  # первый аргумент - запрос юзера, вто
                             s = end_spis[j]
                             end_spis[j] = end_spis[i]
                             end_spis[i] = s
-        print(end_spis)
         for helem in end_spis:
             tochno_end.append(helem[2])
         conn.close()
@@ -356,3 +383,4 @@ def list_games(kwarg):  # функция для создания списка и
 start_time = time.time()
 print(Search.search(Search(), 'Запись 2', 'news', 0))
 print("--- %s seconds ---" % (time.time() - start_time))
+'''

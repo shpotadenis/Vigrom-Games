@@ -515,3 +515,37 @@ class OutputStatistics(ListAPIView):
             serializer = StatisticsSerializer(games, many=True)
             return Response(serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+
+'''
+class SearchView(APIView):
+    """
+    Поиск по новостям или играм
+    request.data['search'] - текст запроса
+    dir - раздел в котором ищем. Может быть двух типов games/news
+    user - id пользователя
+    """
+    def post(self, request):
+        user = request.user
+        user_id = 0
+        if user.is_authenticated:
+            user_id = user.id
+        if request.data['dir'] == 'news':
+            list = Search.search(Search(), request.data['search'], 'news', user_id)
+            list_object = [Posts.objects.get(id=i) for i in list]
+
+            print(request.data['search'])
+            print(list)
+            print(list_object)
+            serializer = OutputAllNews(list_object)
+            return Response(serializer.data)
+        elif request.data['dir'] == 'games':
+            list = Search.search(Search(), request.data['search'], 'games', user_id)
+            list_object = [Game.objects.get(id=i) for i in list]
+            serializer = OutputPost(list_object, many=True)
+            print(list_object)
+            print(type(list_object))
+            #print(type((list_object).json))
+            return Response(list_object)
+        #else:
+            #return Response(status=status.HTTP_204_NO_CONTENT)
+'''
