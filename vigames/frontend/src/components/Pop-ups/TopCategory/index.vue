@@ -1,5 +1,6 @@
 <template>
   <div class="popup-wrapper">
+  <div class="scroll-opacity">
     <div class="container">
       <div class="Header">
         <div class="head-name" >
@@ -23,6 +24,10 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> ac05528e617842fb384f045b2c44f28c60be55d7
 
 </template>
 

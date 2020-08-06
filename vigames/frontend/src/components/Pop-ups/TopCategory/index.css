@@ -1,15 +1,16 @@
 .popup-wrapper {
 
 }
+.scroll-opacity{
 
+}
 .container {
-  overflow:hidden;
   font-family: Open Sans;
   font-style: normal;
-
+  overflow-y: scroll;
   position: fixed;
   padding: 40px;
-  width: 920px;
+  width:920px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -19,11 +20,16 @@
   z-index: 10;
   border-radius: 10px;
   background: #2D2D42;
+
+}
+::-webkit-scrollbar{
+  width: 0px;
 }
 
 .Header {
   display: flex;
   justify-content: space-between;
+
 }
 
 .head-name {

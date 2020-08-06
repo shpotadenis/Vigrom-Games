@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Account, Posts, Game, Comments_Post, Comments_Game, Rating, FAQ, Orders, Media, Question
+from .models import Account, Posts, Game, Comments_Post, Comments_Game, Review, FAQ, Orders, Media,\
+    Question, Genre
 
 
 #Сериализатор пользователя
@@ -112,10 +113,10 @@ class GameLibrarySerializer(serializers.ModelSerializer):
         fields = ('id', 'author', 'img', 'image', 'title', 'price')
 
 
-class RatingSerializer(serializers.ModelSerializer):
+class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Rating
+        model = Review
         fields = '__all__'
 
 
@@ -137,4 +138,11 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
+        fields = '__all__'
+
+
+class GenreSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Genre
         fields = '__all__'
