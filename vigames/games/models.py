@@ -145,6 +145,7 @@ class Game(models.Model):
     """Модель игр"""
 
     players = models.ManyToManyField(User, blank=True, related_name="players")
+    number_of_players = models.PositiveIntegerField(default=0)
     who_added_to_wishlist = models.ManyToManyField(User, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(User, on_delete=models.PROTECT,
                                related_name="game_author", null=True)
