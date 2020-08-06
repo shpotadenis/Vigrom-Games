@@ -1,17 +1,17 @@
 <template>
   <div>
 <div class="wrappen">
-<div class="StrategyGames">
+<div class="AdventuresGames">
   <internal-menu/>
   <div class="FilterGames">
       <search-component/>
   </div>
 </div>
-<div class="StrategyGamesTitle">
-  <p class="Title">Головоломки</p>
+<div class="AdventuresGamesTitle">
+  <p class="Title">Приключения</p>
 </div>
 
-  <div class="StrategyGamesComponents">
+  <div class="AdventuresGamesComponents">
     <game-card
     class="ItemCard"
     v-for="discount in discountgames"
@@ -31,9 +31,9 @@
 </template>
 
 
-<script src="./StrategyGame.js" type="application/javascript">
+<script src="./AdventuresGames.js" type="application/javascript">
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/StrategyGame.scss";
+@import "@/assets/style/AdventuresGame.scss";
 </style>

@@ -1,17 +1,17 @@
 <template>
   <div>
 <div class="wrappen">
-<div class="RPGGames">
+<div class="SimulatorGames">
   <internal-menu/>
   <div class="FilterGames">
       <search-component/>
   </div>
 </div>
-<div class="RPGGamesTitle">
-  <p class="Title">Головоломки</p>
+<div class="SimulatorGamesTitle">
+  <p class="Title">Симуляторы</p>
 </div>
 
-  <div class="RPGGamesComponents">
+  <div class="SimulatorGamesComponents">
     <game-card
     class="ItemCard"
     v-for="discount in discountgames"
@@ -31,9 +31,9 @@
 </template>
 
 
-<script src="./RPGGame.js" type="application/javascript">
+<script src="./SimulatorGame.js" type="application/javascript">
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/RPGGame.scss";
+@import "@/assets/style/SimulatorGame.scss";
 </style>

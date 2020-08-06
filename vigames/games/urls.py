@@ -1,17 +1,18 @@
 from django.urls import path
 from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
-    GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame,\
-    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView,\
-    QuestionDetail, DownloadMedia
-
+    GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame, \
+    PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView, \
+    QuestionDetail, DownloadMedia, OutputGenre
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
 
-    path('profile/<int:pk>', AccountDetail.as_view(), name="profile"),
-    path('profile/<int:pk>/library', OutputLibrary.as_view(), name="library"),
+    path('profile', AccountDetail.as_view(), name="profile"),
+    path('profile/library', OutputLibrary.as_view(), name="library"),
 
     path('role', RoleView.as_view(), name="role"),
+
+    path('genres', OutputGenre.as_view(), name="genres"),
 
     path('games/add', GameDetail.as_view(), name="add_game"),
     path('games/<int:pk>', GameDetail.as_view(), name="current_game"),
@@ -43,7 +44,7 @@ urlpatterns = [
     path('commentgame/<int:pk>/update', CommentGameCreateView.as_view(), name="update_new_comment_game"),
     path('commentgame/<int:pk>/delete', CommentGameCreateView.as_view(), name="delete_new_comment_game"),
 
-    path('uploads/add', DownloadMedia.as_view(), name='download_media'),
+    path('uploads/add', DownloadMedia.as_view(), name='upload_media'),
     path('uploads/<int:pk>/delete', DownloadMedia.as_view(), name='delete_media'),
 ]
 
