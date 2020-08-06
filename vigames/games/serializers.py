@@ -117,6 +117,13 @@ class OutputGameSerializer(serializers.ModelSerializer):
                   'description', 'short_description')
 
 
+class StatisticsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Game
+        fields = ('id', 'title', 'rating')
+
+
 class GameLibrarySerializer(serializers.ModelSerializer):
     """Сериализатор вывода игры в библиотеку пользователя"""
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
