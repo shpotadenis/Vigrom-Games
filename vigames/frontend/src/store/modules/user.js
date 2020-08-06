@@ -6,7 +6,8 @@ const state = () => ({
     isRoleSelected: false, // boolean - выбрана ли роль
     token: null, // string - JWT токен для авторизации
     loggedIn: false, // boolean - выполнен ли вход (авторизация)
-    library: {}
+    library: {}, // object - Библиотека пользователя
+    wishlist: {}  // object - избранное пользователя
 });
 
 const getters = {
@@ -57,6 +58,10 @@ const mutations = {
 
     addLibrary(state, library) {
         state.library = library
+    },
+
+    addWishlist(state, wishlist) {
+        state.wishlist = wishlist
     },
 
     changeName(state, newName) {
@@ -126,6 +131,19 @@ const actions = {
                 reject(error)
             })
         })
+    },
+
+    getWishlist({commit}) {
+      return new Promise((resolve, reject) => {
+         user.getWishlist().then(response => {
+             if (response) {
+                 commit('addWishlist', response.data)
+                 resolve(response)
+             }
+         }).catch(error => {
+             reject(error)
+         })
+      });
     },
 
     changePassword(context, data) {

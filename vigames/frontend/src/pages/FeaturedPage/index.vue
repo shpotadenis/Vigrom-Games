@@ -26,7 +26,16 @@
                     </h1>
                 </div>
                 <div class="main-content__games">
-                    <content-card-component v-for="(card, idx) in cards" :card="card" :key="'card' + idx"></content-card-component>
+                    <div v-if="getFeaturedCards.length > 0">
+                        <game-card
+                                v-for="item in getFeaturedCards"
+                                :key="item.id"
+                                :Game="item"
+                        />
+                    </div>
+                    <div v-else>
+                        Список игр пуст.
+                    </div>
                 </div>
             </div>
         </div>
