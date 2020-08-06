@@ -48,11 +48,9 @@ export const router = new Router({
         { path: '/not_found', name: 'errorPage', component: ErrorPage },
         { path: '/discountsGame', name: 'discountsGame', component: DiscountsGame },
         { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },
-        { path: '/user_profile', name: 'personPage', component: PersonPage },
-        { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage },
+        { path: '/user_profile', name: 'userProfilePage', component: PersonPage, meta: { requiresAuth: true } },
         { path: '/forgot_pass', name: 'forgotPass', component: ForgotPass },
-        { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage },
-        { path: '/upload', name: 'uploadPage', component: UploadPage },
+        { path: '/developer_profile', name: 'developerProfilePage', component: DeveloperPage, meta: { requiresAuth: true, requiredRole: 'dev' } },
         { path: '/ActionGame', name: 'ActionGame', component: ActionGame },
         { path: '/AdventuresGame', name: 'AdventuresGame', component: AdventuresGame },
         { path: '/FarmGame', name: 'FarmGame', component: FarmGame },
@@ -63,23 +61,43 @@ export const router = new Router({
         { path: '/ShooterGame', name: 'ShooterGame', component: ShooterGame },
         { path: '/SimulatorGame', name: 'SimulatorGame', component: SimulatorGame },
         { path: '/StrategyGame', name: 'StrategyGame', component: StrategyGame },
-        { path: '/UploadPage', name: 'uploadPage', component: UploadPage }
+        { path: '/UploadPage', name: 'uploadPage', component: UploadPage },
+        { path: '/profile', name: 'personPage', meta: { requiresAuth: true } } // URL не относится к компоненту, нужен, чтобы перенаправлять на нужную страницу (ЛК разработчик или пользователь)
     ]
 })
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        // this route requires auth, check if logged in
-        // if not, redirect to login page.
+        // Проверка авторизации
         if (!router.app.$store.getters['user/isLoggedIn']) {
             next({
                 path: '/sign_in',
-                query: { redirect: to.fullPath }
+                query: {redirect: to.fullPath}
+            })
+        }
+    }
+    // Перенаправление в нужный личный кабинет
+    if (to.name == 'personPage') {
+        console.log('profile route')
+        if (router.app.$store.getters['user/isDeveloper']) {
+            next({
+                name: 'developerProfilePage'
             })
         } else {
-            next()
+            next({
+                name: 'userProfilePage'
+            })
         }
-    } else {
-        next() // make sure to always call next()!
     }
+
+    // Проверка роли для доступа к странице
+    if (to.meta.requiredRole == 'dev' && !router.app.$store.getters['user/isDeveloper']) {
+        alert('Доступ запрещен')
+        next({
+            name: 'homePage'
+        })
+    }
+
+    next()
+
 })

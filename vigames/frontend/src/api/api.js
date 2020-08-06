@@ -30,3 +30,13 @@ instance.interceptors.response.use((response) => {
 
     return Promise.reject(error)
 });
+instance.interceptors.response.use((response) => {
+    return response
+}, error => {
+
+    if (error.response.status == 401 && vue.$store.getters['user/isLoggedIn']) {
+        vue.$store.commit('user/userLogout')
+    }
+
+    return Promise.reject(error)
+});

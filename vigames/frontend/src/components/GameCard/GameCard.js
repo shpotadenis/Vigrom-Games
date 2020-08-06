@@ -18,9 +18,6 @@ methods:{
 			this.SlideNumber=0
 		}else{
 			this.SlideNumber++
-
-      console.log(this.SlideNumber)
-
 		}
 	},
   leftFunc(){
@@ -28,10 +25,6 @@ methods:{
       this.SlideNumber=3
     }else{
       this.SlideNumber--
-
-      console.log(this.SlideNumber)
-
-
     }
   },
   showScrin(){
