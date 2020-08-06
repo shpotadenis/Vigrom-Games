@@ -48,9 +48,9 @@ export const router = new Router({
         { path: '/not_found', name: 'errorPage', component: ErrorPage },
         { path: '/discountsGame', name: 'discountsGame', component: DiscountsGame },
         { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },
-        { path: '/user_profile', name: 'personPage', component: PersonPage },
+        { path: '/user_profile', name: 'userProfilePage', component: PersonPage },
         { path: '/forgot_pass', name: 'forgotPass', component: ForgotPass },
-        { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage },
+        { path: '/developer_profile', name: 'developerProfilePage', component: DeveloperPage },
         { path: '/ActionGame', name: 'ActionGame', component: ActionGame },
         { path: '/AdventuresGame', name: 'AdventuresGame', component: AdventuresGame },
         { path: '/FarmGame', name: 'FarmGame', component: FarmGame },
@@ -61,7 +61,8 @@ export const router = new Router({
         { path: '/ShooterGame', name: 'ShooterGame', component: ShooterGame },
         { path: '/SimulatorGame', name: 'SimulatorGame', component: SimulatorGame },
         { path: '/StrategyGame', name: 'StrategyGame', component: StrategyGame },
-        { path: '/UploadPage', name: 'uploadPage', component: UploadPage }
+        { path: '/UploadPage', name: 'uploadPage', component: UploadPage },
+        { path: '/profile', name: 'personPage' }
     ]
 })
 
@@ -77,7 +78,19 @@ router.beforeEach((to, from, next) => {
         } else {
             next()
         }
-    } else {
+    }
+    else if (to.name == 'profile') {
+        if (router.app.$store.getters['user/isDeveloper']) {
+            next({
+                name: 'userProfilePage'
+            })
+        } else {
+            next({
+                name: 'developerProfilePage'
+            })
+        }
+    }
+    else {
         next() // make sure to always call next()!
     }
 })
