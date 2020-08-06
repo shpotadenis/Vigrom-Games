@@ -133,6 +133,18 @@ const actions = {
                 reject(error.response)
             })
         })
+    },
+
+    changeName(context, data) {
+        return new Promise((resolve, reject) => {
+            user.changeName(data).then(response => {
+                if (response) {
+                    resolve(response.data)
+                }
+            }).catch(error => {
+                reject(error.response)
+            })
+        })
     }
 };
 
