@@ -153,10 +153,11 @@ class Search:  # первый аргумент - запрос юзера, вто
             counter = int(str(cursor.fetchone())[1:-2])
             cursor.execute("SELECT title FROM games_game")
         if games_or_news == 'news':
-            cursor.execute("SELECT COUNT(*) as count FROM games_posts WHERE title")
+            cursor.execute("SELECT COUNT(*) as count FROM games_posts")
             counter = int(str(cursor.fetchone())[1:-2])
             cursor.execute("SELECT title FROM games_posts")
         for k in range(counter):
+            print(str(cursor.fetchone())[2:-3])
             games.append(str(cursor.fetchone())[2:-3])
         for elem in games:
             elem.lower()
@@ -168,10 +169,11 @@ class Search:  # первый аргумент - запрос юзера, вто
                 end_spis.append([elem, right_letters, idd])
             idd += 1
             right_letters = 0
+        print(end_spis)
         if games_or_news == 'games':
             for lelem in end_spis:
                 cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
-                if raiting(float(str(cursor.fetchone())[1:-2])) != 'o':
+                if type(raiting(float(str(cursor.fetchone())[1:-2]))) is not str:
                     new_rait = int(raiting(float(str(cursor.fetchone())[1:-2])))
                 if id_user != 0:
                     for word in spis_genre:
@@ -203,7 +205,6 @@ class Search:  # первый аргумент - запрос юзера, вто
                             s = end_spis[j]
                             end_spis[j] = end_spis[i]
                             end_spis[i] = s
-        print(end_spis)
         for helem in end_spis:
             tochno_end.append(helem[2])
         conn.close()
@@ -352,5 +353,5 @@ def list_games(kwarg):  # функция для создания списка и
 
 
 start_time = time.time()
-print(Search.search(Search(), 'game2', 'games', 0))
+print(Search.search(Search(), 'Запись 2', 'news', 0))
 print("--- %s seconds ---" % (time.time() - start_time))
