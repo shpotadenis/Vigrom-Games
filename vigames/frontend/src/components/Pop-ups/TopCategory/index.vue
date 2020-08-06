@@ -3,7 +3,7 @@
     <div class="container">
       <div class="Header">
         <div class="head-name" >
-          Топ 10 игр в категории ***
+          Топ 10 игр в категории {{Top_Category.genre}} ***
         </div>
         <div class="closer">
           <button @click=" $emit('close')" class="close-icon">
@@ -23,7 +23,6 @@
       </div>
     </div>
   </div>
-
 
 </template>
 
