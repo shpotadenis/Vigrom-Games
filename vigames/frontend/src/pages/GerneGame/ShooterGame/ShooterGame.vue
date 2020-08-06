@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="ShooterGamesTitle">
-  <p class="Title">Головоломки</p>
+  <p class="Title">Шутеры</p>
 </div>
 
   <div class="ShooterGamesComponents">

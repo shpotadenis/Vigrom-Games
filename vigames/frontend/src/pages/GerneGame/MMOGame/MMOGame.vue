@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="MMOGamesTitle">
-  <p class="Title">Бесплатные игры</p>
+  <p class="Title">Массовые многопользовательские игры</p>
 </div>
   <div class="MMOGamesComponents">
     <game-card
