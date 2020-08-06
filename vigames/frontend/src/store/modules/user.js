@@ -117,6 +117,18 @@ const actions = {
                 reject(error)
             })
         })
+    },
+
+    changePassword(context, data) {
+        return new Promise((resolve, reject) => {
+            user.changePassword(data).then(response => {
+                if (response) {
+                    resolve(response.data)
+                }
+            }).catch(error => {
+                reject(error.response)
+            })
+        })
     }
 };
 
