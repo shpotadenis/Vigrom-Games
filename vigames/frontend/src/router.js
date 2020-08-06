@@ -24,15 +24,15 @@ Vue.use(Router);
 export const router = new Router({
     // TODO: Добавить " meta: { requiresAuth: true } " к страницам, требующим авторизации
     routes: [
+        { path: '/home', name: 'homePage', component: HomePage },
         { path: '/login', name: 'loginPage', component: LoginPage },
         { path: '/game/:id', name: 'singlePage', component: GameSinglePage },
-        { path: '/', name: 'homePage', component: HomePage },
         { path: '/news', name: 'newsPage', component: NewsPage },
         { path: '/sign_in', name: 'signInPage', component: SignInPage },
         { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage },
         { path: '/checkout', name: 'checkout', component: Checkout },
         { path: '/library', name: 'libraryPage', component: LibraryPage, meta: { requiresAuth: true } },
-        { path: '/featured', name: 'featuredPage', component: FeaturedPage },
+        { path: '/featured', name: 'featuredPage', component: FeaturedPage, meta: { requiresAuth: true } },
         { path: '/free_games', name: 'freeGames', component: FreeGames},
         { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage },
         { path: '/not_found', name: 'errorPage', component: ErrorPage },
