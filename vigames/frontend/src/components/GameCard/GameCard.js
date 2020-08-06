@@ -1,12 +1,10 @@
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
+
 
 
 export default {
 name: 'GameCard',
 components: {
-Swiper,
-SwiperSlide
+
 },
 data(){
   return{
@@ -21,15 +19,16 @@ methods:{
 
 		}else{
 			this.SlideNumber++
-
+      console.log(this.SlideNumber)
 		}
 	},
   leftFunc(){
-    if(this.SlideNumber<=0){
+    if(this.SlideNumber<0){
       this.SlideNumber=3
 
     }else{
       this.SlideNumber--
+      console.log(this.SlideNumber)
 
     }
   },
