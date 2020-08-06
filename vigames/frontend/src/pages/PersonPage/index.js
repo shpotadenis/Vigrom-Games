@@ -54,6 +54,17 @@ export default {
                 return true
             }
             e.preventDefault()
+        },
+        becomeDev() {
+            this.$store.dispatch('user/changeRole', {
+                isDev: true
+            }).then(response => {
+                // TODO: Убрать отладочный вывод
+                console.log(response)
+            }).catch(error => {
+                // TODO: Убрать отладочный вывод
+                console.log(error)
+            })
         }
     }
 }
