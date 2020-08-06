@@ -290,7 +290,7 @@ class OutputGames(ListAPIView):
 class BuyGameDetail(APIView):
     """Покупка игры"""
 
-    def put(self, request, pk):
+    def post(self, request, pk):
         user = request.user
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
@@ -299,6 +299,8 @@ class BuyGameDetail(APIView):
                     game.players.add(user)
                     game.who_added_to_wishlist.remove(user)
                     price = game.price * game.sale_percent / 100
+                    game.number_of_players += 1
+                    game.save()
                     serializer = OrderSerializer(data={'user': user.id, 'game': pk, 'price': price, 'date': date.today()})
                     if serializer.is_valid():
                         serializer.save()
