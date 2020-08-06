@@ -121,7 +121,7 @@ class StatisticsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ('id', 'title', 'rating')
+        fields = ('id', 'title', 'rating', 'number_of_players')
 
 
 class GameLibrarySerializer(serializers.ModelSerializer):
