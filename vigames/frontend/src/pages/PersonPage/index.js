@@ -13,9 +13,13 @@ export default {
     data() {
         return {
             isInfoPopupVisible: false,
-            isDownloadPopupVisible: false,
-            username: 'MARF07'
+            isDownloadPopupVisible: false
         }
+    },
+    computed: {
+      username() {
+          return this.$store.getters['user/']
+      }
     },
     methods: {
         showPopupinfo() {

@@ -24,6 +24,10 @@ const getters = {
 
     getLibrary(state) {
         return state.library
+    },
+
+    getUserName(state) {
+        return state.userLogin
     }
 };
 
@@ -115,6 +119,18 @@ const actions = {
                 }
             }).catch(error => {
                 reject(error)
+            })
+        })
+    },
+
+    changePassword(context, data) {
+        return new Promise((resolve, reject) => {
+            user.changePassword(data).then(response => {
+                if (response) {
+                    resolve(response.data)
+                }
+            }).catch(error => {
+                reject(error.response)
             })
         })
     }

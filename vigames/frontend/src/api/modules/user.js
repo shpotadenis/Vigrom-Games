@@ -5,6 +5,7 @@ const login_endpoint = '/auth/token/login/'
 const register_endpoint = '/auth/users/'
 const role_endpoint = '/api/role'
 const library_endpoint = '/api/accounts/profile/library'
+const changepass_endpoint = '/auth/users/set_password/'
 
 export default {
     login(credentials)
@@ -36,6 +37,15 @@ export default {
 
     getGamesLibrary() {
         return instance.get(library_endpoint)
+    },
+
+    changePassword(credentials) {
+        let fd = new FormData()
+        fd.append('new_password', credentials.new_password)
+        fd.append('re_new_password', credentials.new_password)
+        fd.append('current_password', credentials.current_password)
+
+        return instance.post(changepass_endpoint, fd)
     }
 
 }
