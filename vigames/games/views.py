@@ -317,6 +317,17 @@ class WishListDetail(APIView):
         except Game.DoesNotExist:
             raise Http404
 
+    def get(self, request, pk):
+        user = request.user
+        if user.is_authenticated:
+            try:
+                games = Game.objects.filter(who_added_to_wishlist=user)
+                serializer = GameLibrarySerializer(games)
+                return Response(serializer.data)
+            except Game.DoesNotExist:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
     def post(self, request, pk):
         user = request.user
         game = Game.objects.get(id=pk)

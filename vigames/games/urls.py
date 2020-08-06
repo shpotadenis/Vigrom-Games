@@ -9,6 +9,7 @@ urlpatterns = [
 
     path('profile', AccountDetail.as_view(), name="profile"),
     path('profile/library', OutputLibrary.as_view(), name="library"),
+    path('profile/wishlist', OutputLibrary.as_view(), name="profile_wishlist"),
     path('profile/statistics', OutputStatistics.as_view(), name="statistics"),
 
     path('role', RoleView.as_view(), name="role"),
