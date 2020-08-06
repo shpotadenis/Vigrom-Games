@@ -24,6 +24,10 @@ const getters = {
 
     getLibrary(state) {
         return state.library
+    },
+
+    getUserName(state) {
+        return state.userLogin
     }
 };
 

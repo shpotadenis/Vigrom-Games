@@ -28,7 +28,22 @@
             <p id="border_user_info_title_email_change">Эл. почта:</p>
             <form id="change_form" action="" method="POST" name=" application ">
                 <input name="name" type="text" id="change_username_placeholder" placeholder="Введите новое имя" required />
-                <input name="email" type="text" id="changer_email_placeholder"  placeholder="Введите новый E-mail" required/>
+                <div class="form-group container">
+                    <label for="password">Пароль</label><br />
+                    <input :type="type"
+                           v-model="pass"
+                           class="form-control"
+                           id="password"
+                           placeholder="Введите пароль..."/>
+                    <div class="errors__pass errors" v-if="error_pass.length">
+                        {{error_pass[0]}}
+                    </div>
+                    <div class="row justify-content-end" @click="hide">
+                        <img src="@/assets/img/eye.png"   class="passEye password-control" v-show="!nonEye"/>
+                        <img src="@/assets/img/eye-off.svg"  class="passEye password-control" v-show="nonEye">
+                        <!--Глаз может поехать-->
+                    </div>
+                </div>
                 <button id="change_button" type="submit" form="change_form">Сохранить</button>
             </form>
             <button
