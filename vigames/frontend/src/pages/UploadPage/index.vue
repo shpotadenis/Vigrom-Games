@@ -48,8 +48,8 @@
                             <div class="blockName">Картинка для карточки игры</div>
                             <div class="form-group">
                                 <label class="label">
-                                    <span class="title">Перетащите файл размером 324х255 или кликните здесь, чтобы добавить его</span>
-                                    <input type="file" class="fileInput textInputs secondInputs">
+                                    <span class="title">{{selectFile3}}</span>
+                                    <input type="file" class="fileInput textInputs secondInputs"  @change="UpLoadFile3">
                                 </label>
                             </div>
                         </div>
@@ -57,8 +57,8 @@
                             <div class="blockName">Картинка для баннера</div>
                             <div class="form-group">
                                 <label class="label">
-                                    <span class="title">Перетащите файл размером 1100х441 или кликните здесь, чтобы добавить его</span>
-                                    <input type="file" class="fileInput textInputs secondInputs">
+                                    <span class="title">{{selectFile2}}</span>
+                                    <input type="file" class="fileInput textInputs secondInputs"  @change="UpLoadFile2">
                                 </label>
                             </div>
                         </div>
@@ -68,8 +68,8 @@
                             <div class="blockName">Скриншоты</div>
                             <div class="form-group">
                                 <label class="label">
-                                    <span class="title">Перетащите 3-5 файлов размером 324х255 или кликните здесь, чтобы добавить их</span>
-                                    <input type="file" class="fileInput textInputs secondInputs" multiple>
+                                    <span class="title">{{selectFile1}}</span>
+                                    <input type="file" class="fileInput textInputs secondInputs" multiple  @change="UpLoadFile1">
                                 </label>
                             </div>
                         </div>
@@ -83,8 +83,8 @@
                             <div class="blockName ">Архив с игрой для скачивания</div>
                             <div class="form-group">
                                 <label class="label">
-                                    <span class="title">Перетащите файл или кликните здесь, чтобы добавить его*</span>
-                                    <input type="file" class="fileInput textInputs secondInputs">
+                                    <span class="title">{{selectFile}}</span>
+                                    <input type="file" class="fileInput textInputs secondInputs" @change="UpLoadFile">
                                 </label>
                             </div>
                         </div>
