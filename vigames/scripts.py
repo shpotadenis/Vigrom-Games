@@ -153,11 +153,10 @@ class Search:  # первый аргумент - запрос юзера, вто
             counter = int(str(cursor.fetchone())[1:-2])
             cursor.execute("SELECT title FROM games_game")
         if games_or_news == 'news':
-            cursor.execute("SELECT COUNT(*) as count FROM games_posts")
+            cursor.execute("SELECT COUNT(*) as count FROM games_posts WHERE title")
             counter = int(str(cursor.fetchone())[1:-2])
             cursor.execute("SELECT title FROM games_posts")
         for k in range(counter):
-            print(str(cursor.fetchone())[2:-3])
             games.append(str(cursor.fetchone())[2:-3])
         for elem in games:
             elem.lower()
@@ -169,17 +168,18 @@ class Search:  # первый аргумент - запрос юзера, вто
                 end_spis.append([elem, right_letters, idd])
             idd += 1
             right_letters = 0
-        print(end_spis)
         if games_or_news == 'games':
             for lelem in end_spis:
                 cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
-                if type(raiting(float(str(cursor.fetchone())[1:-2]))) is not str:
-                    new_rait = int(raiting(float(str(cursor.fetchone())[1:-2])))
+                ddt = str(cursor.fetchone())[1:-2]
+                if ddt != 'o':
+                    new_rait = raiting(int(ddt))
                 if id_user != 0:
                     for word in spis_genre:
                         cursor.execute("SELECT ? FROM games_genre1 WHERE id = ?", (word, id_user))
-                        if int(str(cursor.fetchone())[2:-3]) > genre[0]:
-                            genre = [int(str(cursor.fetchone())[1:-2]), word]
+                        ddt = int(str(cursor.fetchone())[2:-3])
+                        if ddt > genre[0]:
+                            genre = [ddt, word]
                     cursor.execute("SELECT genre FROM games_game WHERE title = ?", (lelem[0],))
                     if genre[1] == str(cursor.fetchone())[1:-2]:
                         lelem[1] += 0, 3 * lelem[1]
@@ -205,6 +205,7 @@ class Search:  # первый аргумент - запрос юзера, вто
                             s = end_spis[j]
                             end_spis[j] = end_spis[i]
                             end_spis[i] = s
+        print(end_spis)
         for helem in end_spis:
             tochno_end.append(helem[2])
         conn.close()
@@ -331,7 +332,7 @@ def db():  # функция для базы данных(моя внутренн
 
 def raiting(game_id):  # функция для получения рейтинга
     cursor, conn = db()
-    cursor.execute("SELECT mark FROM games_rating WHERE game_id = ?", (game_id,))
+    cursor.execute("SELECT rating FROM games_game WHERE id = ?", (game_id,))
     return str(cursor.fetchone())[1:-2]
 
 
@@ -353,5 +354,5 @@ def list_games(kwarg):  # функция для создания списка и
 
 
 start_time = time.time()
-print(Search.search(Search(), 'Запись 2', 'news', 0))
+print(Search.search(Search(), 'game2', 'games', 0))
 print("--- %s seconds ---" % (time.time() - start_time))
