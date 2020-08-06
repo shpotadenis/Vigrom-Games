@@ -357,6 +357,6 @@ def list_games(kwarg):  # функция для создания списка и
     return games
 
 
-start_time = time.time()
-print(Search.search(Search(), 'game1', 'games', 1))
-print("--- %s seconds ---" % (time.time() - start_time))
+#start_time = time.time()
+#print(Search.search(Search(), 'game1', 'games', 1))
+#print("--- %s seconds ---" % (time.time() - start_time))
