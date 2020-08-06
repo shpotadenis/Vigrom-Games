@@ -25,16 +25,11 @@ class Search:  # первый аргумент - запрос юзера, вто
               'Є': 'e', '—': ''}
     mat = ['6ля', '6лядь', '6лять', 'b3ъeб', 'cock', 'cunt', 'hui', 'хуи', 'e6aль', 'ebal', 'eblan', 'eбaл',
            'eбaть', 'eбyч', 'eбать', 'eбёт', 'eблантий', 'fuck', 'fucker', 'fucking', 'xyёв', 'xyй', 'xyя', 'xуе,xуй',
-           'xую',
-           'zaeb', 'zaebal', 'zaebali', 'zaebat', 'архипиздрит', 'ахуел', 'ахуеть', 'бздение', 'бздеть',
-           'бздех',
-           'бздецы', 'бздит', 'бздицы', 'бздло', 'бзднуть', 'бздун', 'бздунья', 'бздюха', 'бздюшка',
-           'бздюшко',
-           'бля',
-           'блябу', 'блябуду', 'бляд', 'бляди', 'блядина', 'блядище', 'блядки', 'блядовать', 'блядство',
-           'блядун',
-           'блядуны', 'блядунья', 'блядь', 'блядюга', 'блять', 'вафел', 'вафлёр', 'взъебка', 'взьебка',
-           'взьебывать',
+           'xую', 'zaeb', 'zaebal', 'zaebali', 'zaebat', 'архипиздрит', 'ахуел', 'ахуеть', 'бздение', 'бздеть',
+           'бздех', 'бздецы', 'бздит', 'бздицы', 'бздло', 'бзднуть', 'бздун', 'бздунья', 'бздюха', 'бздюшка',
+           'бздюшко', 'бля', 'блябу', 'блябуду', 'бляд', 'бляди', 'блядина', 'блядище', 'блядки', 'блядовать',
+           'блядство', 'блядун', 'блядуны', 'блядунья', 'блядь', 'блядюга', 'блять', 'вафел', 'вафлёр', 'взъебка',
+           'взьебка', 'взьебывать',
            'въеб', 'въебался', 'въебенн', 'въебусь', 'въебывать', 'выблядок', 'выблядыш', 'выеб', 'выебать',
            'выебен',
            'выебнулся', 'выебон', 'выебываться', 'вьебен', 'гандон', 'гондон', 'доебываться', 'долбоеб',
@@ -179,11 +174,12 @@ class Search:  # первый аргумент - запрос юзера, вто
             if games_or_news == 'news':
                 cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
             cursor.execute("SELECT rating FROM games_game WHERE id = ?", (int(str(cursor.fetchone())[1:-2]),))
-            new_rait = raiting(float(str(cursor.fetchone())[1:-2]))
+            if raiting(float(str(cursor.fetchone())[1:-2])) != 'o':
+                new_rait = int(raiting(float(str(cursor.fetchone())[1:-2])))
             if id_user != 0:
                 for word in spis_genre:
-                    cursor.execute("SELECT ? FROM games_genre WHERE id = ?", (word, id_user))
-                    if int(str(cursor.fetchone())[1:-2]) > genre[0]:
+                    cursor.execute("SELECT ? FROM games_genre1 WHERE id = ?", (word, id_user))
+                    if int(str(cursor.fetchone())[2:-3]) > genre[0]:
                         genre = [int(str(cursor.fetchone())[1:-2]), word]
                 cursor.execute("SELECT genre FROM games_game WHERE title = ?", (lelem[0],))
                 if genre[1] == str(cursor.fetchone())[1:-2]:
@@ -210,6 +206,7 @@ class Search:  # первый аргумент - запрос юзера, вто
                             s = end_spis[j]
                             end_spis[j] = end_spis[i]
                             end_spis[i] = s
+        print(end_spis)
         for helem in end_spis:
             tochno_end.append(helem[2])
         conn.close()
@@ -337,7 +334,7 @@ def db():  # функция для базы данных(моя внутренн
 def raiting(game_id):  # функция для получения рейтинга
     cursor, conn = db()
     cursor.execute("SELECT mark FROM games_rating WHERE game_id = ?", (game_id,))
-    return int(str(cursor.fetchone())[1:-2])
+    return str(cursor.fetchone())[1:-2]
 
 
 def jsonchik(arg):
@@ -357,6 +354,6 @@ def list_games(kwarg):  # функция для создания списка и
     return games
 
 
-#start_time = time.time()
-#print(Search.search(Search(), 'game1', 'games', 1))
-#print("--- %s seconds ---" % (time.time() - start_time))
+start_time = time.time()
+print(Search.search(Search(), 'game3', 'games', 0))
+print("--- %s seconds ---" % (time.time() - start_time))
