@@ -36,6 +36,9 @@ instance.interceptors.response.use((response) => {
 
     if (error.response.status == 401 && vue.$store.getters['user/isLoggedIn']) {
         vue.$store.commit('user/userLogout')
+        vue.$router.push({
+            name: 'signInPage'
+        })
     }
 
     return Promise.reject(error)

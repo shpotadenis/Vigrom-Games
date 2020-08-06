@@ -26,11 +26,16 @@
                     </h1>
                 </div>
                 <div class="main-content__games">
-                    <game-card
-                            v-for="item in getLibraryCards"
-                            :key="item.id"
-                            :Game="item"
-                    />
+                    <div v-if="getLibraryCards.length > 0">
+                        <game-card
+                                v-for="item in getLibraryCards"
+                                :key="item.id"
+                                :Game="item"
+                        />
+                    </div>
+                    <div v-else>
+                        Список игр пуст.
+                    </div>
                 </div>
             </div>
         </div>
