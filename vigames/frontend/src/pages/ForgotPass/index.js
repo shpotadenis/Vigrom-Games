@@ -1,61 +1,54 @@
+import PasswordReset from "../../../src/components/Pop-ups/PasswordReset/index.vue"
+import PasswordChanged from "../../../src/components/Pop-ups/PasswordChanged/index.vue"
+
 export default {
     name: "ForgotPass",
+    components: {
+        PasswordReset,
+        PasswordChanged
+    },
     data() {
-        return{
-            nonEye: true,
+        return {
+            isPassChangePopupVisible: false,
+            first_btn: true,
+            show_reset_pass: false,
             type: 'password',
-            pass: null,
-            name: null,
-            error_name: [],
-            error_pass: [],
-            errorMessage: ''
+            email: null,
+            error_email: [],
+            errorMessage: '',
+            allgood : false,
         }
     },
     methods: {
-        hide(){
-            if (!this.nonEye){
-                this.nonEye = true;
-                this.type = 'text';
-            }
-            else{
-                this.nonEye = false;
-                this.type = 'password';
+        hide() {
+            if (this.allgood == true) {
+                this.first_btn = false;
+                this.show_reset_pass = true;
             }
         },
-        checkForm(e) {
-            if (this.name && this.pass) {
-                this.$store.dispatch('user/login', {
-                    login: this.name,
-                    password: this.pass
-                }).then(response => {
-                    console.log('Меня вызвали')
-                    if (response) {
-                        // TODO: Изменить на перенаправление в личный кабинет
-                        this.$router.push({
-                            name: 'homePage'
-                        })
-                    }
-                }).catch(error => {
-                    if (error.non_field_errors) {
-                        this.errorMessage = error.non_field_errors[0]
-                    }
-                })
+        closePopup() {
+            this.show_reset_pass = false;
+        },
+        close() {
+            this.isPassChangePopupVisible = false;
+        },
+        SaveNewPass() {
+            this.show_reset_pass = false;
+            this.isPassChangePopupVisible = true;
+        },
+        checkform(e) {
+            this.error_email = []
 
-                return true;
+            if (this.email) {
+                return this.allgood = true;
             }
-            this.error_name = []
-            this.error_pass = []
 
-            if (!this.name) {
-                this.error_name.push('Пустое поле');
-            }
-            if (!this.pass) {
-                this.error_pass.push('Пустое поле');
+            if (!this.email) {
+                this.error_email.push('Пустое поле');
             }
             e.preventDefault();
         }
     },
-    computed: {
-    }
+        computed: {}
 
 }
