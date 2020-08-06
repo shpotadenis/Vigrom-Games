@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!loading">
         <div class="wrapper">
             <div class="head">
                 <div class="head__header">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="main-content__games">
                     <game-card
-                            v-for="item in populars"
+                            v-for="item in getLibraryCards"
                             :key="item.id"
                             :Game="item"
                     />

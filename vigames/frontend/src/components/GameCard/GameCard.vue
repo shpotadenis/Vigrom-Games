@@ -10,26 +10,26 @@
         </div>
         <div class="AllScrinImage" @click="closeScrin" >
           <img
-            v-bind:src="require('@/assets/img/' +   Game.scrin)"
+            v-bind:src="Game.scrin"
              :style="{'margin-left': '-' + (100 * SlideNumber) + '%'}"
              width="1000"
              height="500"
              class="ImageScrin"
              >
           <img
-            v-bind:src="require('@/assets/img/' +   Game.scrin1)"
+            v-bind:src="Game.scrin1"
             width="1000"
             height="500"
             class="ImageScrin"
             >
           <img
-            v-bind:src="require('@/assets/img/' +   Game.scrin2)"
+            v-bind:src="Game.scrin2"
             width="1000"
             height="500"
             class="ImageScrin"
             >
           <img
-            v-bind:src="require('@/assets/img/' +   Game.scrin3)"
+            v-bind:src="Game.scrin3"
             width="1000"
             height="500"
             class="ImageScrin"
@@ -38,7 +38,7 @@
       </div>
       <div class="ImagePopular">
         <div class="rotatePopular">
-              <img class="ImageComponentPopular" v-bind:src="require('@/assets/img/' + Game.image)" wigth="255" height="324">
+              <img class="ImageComponentPopular" v-bind:src="Game.image" wigth="255" height="324">
           <div class="TextNewGamePopular">
           <div class="ComponentImagePopular">
 
@@ -51,7 +51,7 @@
                class="AnimationSlider"
              >
               <img
-                v-bind:src="require('@/assets/img/' + Game.scrin)"
+                v-bind:src="Game.scrin"
                 width="220"
                 height="220"
                 class="AnimationSlider"
@@ -59,7 +59,7 @@
             </swiper-slide>
             <swiper-slide>
               <img
-                v-bind:src="require('@/assets/img/' + Game.scrin1)"
+                v-bind:src="Game.scrin1"
                 width="220"
                 height="220"
                 class="AnimationSlider"
@@ -67,7 +67,7 @@
             </swiper-slide>
             <swiper-slide>
               <img
-                v-bind:src="require('@/assets/img/' + Game.scrin2)"
+                v-bind:src="Game.scrin2"
                 width="220"
                 height="220"
                 class="AnimationSlider"
@@ -75,16 +75,13 @@
             </swiper-slide>
             <swiper-slide>
               <img
-                v-bind:src="require('@/assets/img/' + Game.scrin3)"
+                v-bind:src="Game.scrin3"
                 width="220"
                 height="220"
               >
             </swiper-slide>
           </swiper>
-            <img v-bind:src="require('@/assets/img/' + Game.icon)" class="BigScrin" @click="showScrin()">
-              <div>
-                <p class="TextComponentPopular">vnevnjehvnjiehv kjadb uib jab s sH YU</p>
-              </div>
+            <img v-bind:src="Game.icon" class="BigScrin" @click="showScrin()">
             </div>
           </div>
         </div>
