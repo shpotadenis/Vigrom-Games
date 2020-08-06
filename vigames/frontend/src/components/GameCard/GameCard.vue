@@ -2,12 +2,8 @@
   <div class="wrappen">
       <div class="GameComponentPopular">
       <div class="AllScrin" v-if="isShow">
-        <div class="Arrow">
-          <img src="@/assets/img/Vector.svg" class="Arrow1Popular" @click="leftFunc" width="100" height="100">
-        </div>
-        <div class="Arrow">
-          <img src="@/assets/img/Vector.svg" class="Arrow2Popular" @click="rightFunc" width="100" height="100">
-        </div>
+        <button class='Arrow1Popular' @click="leftFunc"></button>
+        <button class='Arrow2Popular' @click="rightFunc"></button>
         <div class="AllScrinImage" @click="closeScrin" >
           <img
             v-bind:src="Game.scrin"
@@ -41,54 +37,57 @@
               <img class="ImageComponentPopular" v-bind:src="Game.image" wigth="255" height="324">
           <div class="TextNewGamePopular">
           <div class="ComponentImagePopular">
-
-          <img src="@/assets/img/Vector.svg" class="strelk1Popular" @click="leftFunc" width="40" height="40">
-          <img src="@/assets/img/Vector.svg" class="strelk2Popular" @click="rightFunc" width="40" height="40">
-
-          <swiper class="AllSlide">
-            <swiper-slide
-               :style="{'margin-left': '-' + (100 * SlideNumber) + '%' }"
-               class="AnimationSlider"
+          <div class="AllSlide">
+            <button class='strelk1Popular' @click="leftFunc"></button>
+            <button class='strelk2Popular' @click="rightFunc"></button>
+            <div
              >
               <img
                 v-bind:src="Game.scrin"
                 width="220"
                 height="220"
+                :style="{'margin-left': '-' + (100 * SlideNumber) + '%' }"
                 class="AnimationSlider"
                 >
-            </swiper-slide>
-            <swiper-slide>
+
               <img
                 v-bind:src="Game.scrin1"
                 width="220"
                 height="220"
-                class="AnimationSlider"
+
               >
-            </swiper-slide>
-            <swiper-slide>
+
               <img
                 v-bind:src="Game.scrin2"
                 width="220"
                 height="220"
-                class="AnimationSlider"
+
               >
-            </swiper-slide>
-            <swiper-slide>
+            
               <img
                 v-bind:src="Game.scrin3"
                 width="220"
                 height="220"
+
               >
-            </swiper-slide>
-          </swiper>
+
+            </div>
+          </div>
+            <img v-bind:src="require('@/assets/img/' + Game.icon)" class="BigScrin" @click="showScrin()">
+              <div>
+                <p class="TextComponentPopular">vnevnjehvnjiehv kjadb uib jab s sH YU</p>
+              </div>
+
             <img v-bind:src="Game.icon" class="BigScrin" @click="showScrin()">
             </div>
           </div>
         </div>
       </div>
         <div class="RatingAndTitlePopular">
-          <p class="NameGamePopular">{{Game.name}}</p>
-            <p class="PricePopular">{{Game.price}}</p>
+          <router-link :to="{ name: 'singlePage', params: { id: Game.id } }">
+              <p class="NameGamePopular">{{Game.name}}</p>
+          </router-link>
+          <p class="PricePopular">{{Game.price}}</p>
         </div>
         <p class="UnderNamePopular">{{Game.undername}}</p>
       </div>

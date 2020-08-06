@@ -10,11 +10,9 @@ export default {
             nonEye: false,
             nonEyeconf: false,
             nonEyeconf_repeat: false,
-            old_pass: null,
             new_pass: null,
             new_pass_repeat: null,
             allgood: false,
-            error_old_pass: [],
             error_new_pass: [],
             error_new_pass_repeat: [],
             errors: 0
@@ -27,16 +25,6 @@ export default {
         SaveNewPass() {
             if (this.allgood == true){
                 this.$emit('SaveNewPass')
-            }
-        },
-        hide(){
-            if (!this.nonEye){
-                this.nonEye = true;
-                this.type = 'text';
-            }
-            else{
-                this.nonEye = false;
-                this.type = 'password';
             }
         },
         hideconf(){
@@ -59,17 +47,13 @@ export default {
                 this.typeconf_repeat = 'password';
             }
         },
-        checkForm(e) {
-            if (this.old_pass && this.new_pass && this.new_pass_repeat && (this.new_pass_repeat==this.new_pass)) {
+        checkForm(e){
+            if (this.new_pass && this.new_pass_repeat && (this.new_pass_repeat==this.new_pass)) {
                 this.allgood = true;
             }
-            this.error_old_pass = []
             this.error_new_pass = []
             this.error_new_pass_repeat = []
 
-            if (!this.old_pass) {
-                this.error_old_pass.push('Пустое поле');
-            }
             if (!this.new_pass) {
                 this.error_new_pass.push('Пустое поле');
             }

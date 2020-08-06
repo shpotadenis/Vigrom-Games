@@ -153,7 +153,7 @@ class Search:  # первый аргумент - запрос юзера, вто
             counter = int(str(cursor.fetchone())[1:-2])
             cursor.execute("SELECT title FROM games_game")
         if games_or_news == 'news':
-            cursor.execute("SELECT COUNT(*) as count FROM games_posts WHERE title")
+            cursor.execute("SELECT COUNT(*) as count FROM games_posts")
             counter = int(str(cursor.fetchone())[1:-2])
             cursor.execute("SELECT title FROM games_posts")
         for k in range(counter):
@@ -168,38 +168,37 @@ class Search:  # первый аргумент - запрос юзера, вто
                 end_spis.append([elem, right_letters, idd])
             idd += 1
             right_letters = 0
-        for lelem in end_spis:
-            if games_or_news == 'games':
+        if games_or_news == 'games':
+            for lelem in end_spis:
                 cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
-            if games_or_news == 'news':
-                cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
-            cursor.execute("SELECT rating FROM games_game WHERE id = ?", (int(str(cursor.fetchone())[1:-2]),))
-            if raiting(float(str(cursor.fetchone())[1:-2])) != 'o':
-                new_rait = int(raiting(float(str(cursor.fetchone())[1:-2])))
-            if id_user != 0:
-                for word in spis_genre:
-                    cursor.execute("SELECT ? FROM games_genre1 WHERE id = ?", (word, id_user))
-                    if int(str(cursor.fetchone())[2:-3]) > genre[0]:
-                        genre = [int(str(cursor.fetchone())[1:-2]), word]
-                cursor.execute("SELECT genre FROM games_game WHERE title = ?", (lelem[0],))
-                if genre[1] == str(cursor.fetchone())[1:-2]:
-                    lelem[1] += 0, 3 * lelem[1]
-                lelem[1] += lelem[1] * new_rait / 6
-            cursor.execute("SELECT author_id FROM games_game WHERE title = ?", (lelem[0],))
-            cursor.execute("SELECT date_joined FROM games_account WHERE user_id = ?",
-                           (int(str(cursor.fetchone())[1:-2]),))
-            date_change = 10
-            db_date = str(cursor.fetchone())[2:-3].split('-')
-            date_old = datetime.datetime(int(db_date[0]), int(db_date[1]), int(db_date[2]))
-            date_now = datetime.datetime.now()
-            delta = date_now - date_old
-            date_change -= delta.days
-            top_date = 0
-            if date_change > top_date:
-                top_date = date_change
-                lelem[1] += top_date * lelem[1] / 6
+                ddt = str(cursor.fetchone())[1:-2]
+                if ddt != 'o':
+                    new_rait = raiting(int(ddt))
+                if id_user != 0:
+                    for word in spis_genre:
+                        cursor.execute("SELECT ? FROM games_genre1 WHERE id = ?", (word, id_user))
+                        ddt = int(str(cursor.fetchone())[2:-3])
+                        if ddt > genre[0]:
+                            genre = [ddt, word]
+                    cursor.execute("SELECT genre FROM games_game WHERE title = ?", (lelem[0],))
+                    if genre[1] == str(cursor.fetchone())[1:-2]:
+                        lelem[1] += 0, 3 * lelem[1]
+                    lelem[1] += lelem[1] * new_rait / 6
+                cursor.execute("SELECT author_id FROM games_game WHERE title = ?", (lelem[0],))
+                cursor.execute("SELECT date_joined FROM games_account WHERE user_id = ?",
+                               (int(str(cursor.fetchone())[1:-2]),))
+                date_change = 10
+                db_date = str(cursor.fetchone())[2:-3].split('-')
+                date_old = datetime.datetime(int(db_date[0]), int(db_date[1]), int(db_date[2]))
+                date_now = datetime.datetime.now()
+                delta = date_now - date_old
+                date_change -= delta.days
+                top_date = 0
+                if date_change > top_date:
+                    top_date = date_change
+                    lelem[1] += top_date * lelem[1] / 6
         for i in range(len(end_spis) + 1):
-            for j in range(len(end_spis) - 1):
+            for j in range(len(end_spis)):
                 if j != i:
                     if j > i:
                         if end_spis[j][1] > end_spis[i][1]:
@@ -227,7 +226,7 @@ class Search:  # первый аргумент - запрос юзера, вто
             disliked = (int(str(cursor.fetchone())[1:-2]))
             id_spis[id_spis.index(id)][1] = liked / disliked
         for i in range(len(id_spis) + 1):
-            for j in range(len(id_spis) - 1):
+            for j in range(len(id_spis)):
                 if j != i:
                     if j > i:
                         if id_spis[j][1] > id_spis[i][1]:
@@ -333,7 +332,7 @@ def db():  # функция для базы данных(моя внутренн
 
 def raiting(game_id):  # функция для получения рейтинга
     cursor, conn = db()
-    cursor.execute("SELECT mark FROM games_rating WHERE game_id = ?", (game_id,))
+    cursor.execute("SELECT rating FROM games_game WHERE id = ?", (game_id,))
     return str(cursor.fetchone())[1:-2]
 
 
@@ -355,5 +354,5 @@ def list_games(kwarg):  # функция для создания списка и
 
 
 start_time = time.time()
-print(Search.search(Search(), 'game3', 'games', 0))
+print(Search.search(Search(), 'Запись 2', 'news', 0))
 print("--- %s seconds ---" % (time.time() - start_time))

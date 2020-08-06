@@ -2,7 +2,6 @@
   <div class="PopularGameIndi">
     <div class="PopularGameTitle">
       <p class="Title">Популярное</p>
-      <a src="#1" class="Link">Больше игр <img src="@/assets/img/Vector.png"></a>
     </div>
     <div class="IndiPopularGame">
       <game-card

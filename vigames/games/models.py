@@ -17,6 +17,7 @@ class Genre(models.Model):
     class Meta:
         verbose_name = "Жанр"
         verbose_name_plural = "Жанры"
+
     """
     strategy = models.IntegerField(default=0)
     rpg = models.IntegerField(default=0)
@@ -39,6 +40,33 @@ class Genre(models.Model):
     simylate = models.IntegerField(default=0)
     mmo = models.IntegerField(default=0)
     """
+
+
+class Genre1(models.Model):
+    name = models.CharField('Жанр', max_length=20, unique=True)
+    strategy = models.IntegerField(default=0)
+    rpg = models.IntegerField(default=0)
+    f2p = models.IntegerField(default=0)
+    shooter = models.IntegerField(default=0)
+    racing = models.IntegerField(default=0)
+    horror = models.IntegerField(default=0)
+    stealth = models.IntegerField(default=0)
+    survival_horror = models.IntegerField(default=0)
+    sports = models.IntegerField(default=0)
+    party = models.IntegerField(default=0)
+    platform = models.IntegerField(default=0)
+    puzzle = models.IntegerField(default=0)
+    god_game = models.IntegerField(default=0)
+    flight_simulation = models.IntegerField(default=0)
+    fighting = models.IntegerField(default=0)
+    beatemup = models.IntegerField(default=0)
+    adventure = models.IntegerField(default=0)
+    action = models.IntegerField(default=0)
+    simylate = models.IntegerField(default=0)
+    mmo = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.name)
 
 
 class Account(models.Model):
@@ -66,12 +94,13 @@ class Account(models.Model):
     is_administrator = models.BooleanField(default=False, null=True)
     bank_cаrd = models.CharField("Номер карты", max_length=20, null=True)
     foto = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
-    #strategy = models.IntegerField(default=0)
-    #simylate = models.IntegerField(default=0)
-    #mmo = models.IntegerField(default=0)
-    #shooter = models.IntegerField(default=0)
-    #adventure = models.IntegerField(default=0)
-    #horror = models.IntegerField(default=0)
+
+    # strategy = models.IntegerField(default=0)
+    # simylate = models.IntegerField(default=0)
+    # mmo = models.IntegerField(default=0)
+    # shooter = models.IntegerField(default=0)
+    # adventure = models.IntegerField(default=0)
+    # horror = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.name)
@@ -98,19 +127,20 @@ class Category(models.Model):
 class Media(models.Model):
     """Модель изображений"""
 
-    #title = models.CharField('Заголовок изображения', max_length=50)
+    # title = models.CharField('Заголовок изображения', max_length=50)
     img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     '''
     def __str__(self):
         return self.img
     '''
+
     class Meta:
         verbose_name = "Изображение"
         verbose_name_plural = "Изображения"
 
 
-#в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
+# в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
 class Game(models.Model):
     """Модель игр"""
 
@@ -123,7 +153,7 @@ class Game(models.Model):
     url = models.CharField(max_length=250, null=True)  # по идее можно выпилить?
     file = models.FileField(null=True, upload_to=u'file/%Y/%m', default=None)
     short_description = models.CharField(max_length=250, default="")
-    #image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
+    # image = models.ImageField('Изображение игры', upload_to='img/%Y/%m', null=True, default=None)
     gameplay_video_link = models.CharField(max_length=250, null=True, default=None)
     release_status = models.BooleanField(default=False)
     date_release = models.DateField(default=date.today)
@@ -143,12 +173,14 @@ class Game(models.Model):
     screenshots3 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots4 = models.ImageField(upload_to='img/%Y/%m', null=True)
     '''
+
     def __str__(self):
         return self.title
 
     class Meta:
         verbose_name = "Игра"
         verbose_name_plural = "Игры"
+
 
 '''
 class Basket(models.Model):
@@ -183,7 +215,7 @@ class Posts(models.Model):
     count_dislikes = models.PositiveIntegerField(default=0)
 
     title = models.CharField("Заголовок записи", max_length=150)
-    #url = models.SlugField(max_length=100, unique=True)
+    # url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
     description = models.TextField("Короткое описание", max_length=160)
     data = models.DateTimeField(auto_now_add=True)

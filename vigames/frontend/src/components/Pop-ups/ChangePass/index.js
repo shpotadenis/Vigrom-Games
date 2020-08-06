@@ -61,7 +61,25 @@ export default {
         },
         checkForm(e) {
             if (this.old_pass && this.new_pass && this.new_pass_repeat && (this.new_pass_repeat==this.new_pass)) {
-                this.allgood = true;
+                this.$store.dispatch('user/changePassword', {
+                    new_password: this.new_pass,
+                    current_password: this.old_pass
+                }).then(response => {
+                    if (response) {
+                        this.allgood = true
+                        this.SaveNewPass()
+                    }
+                }).catch(error => {
+                    if (error.data.current_password) {
+                        this.error_old_pass = [...error.data.current_password]
+                    }
+
+                    if (error.data.new_password) {
+                        this.error_new_pass = [...error.data.new_password]
+                    }
+
+                    console.log(error)
+                })
             }
             this.error_old_pass = []
             this.error_new_pass = []
