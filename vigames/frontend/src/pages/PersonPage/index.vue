@@ -41,7 +41,7 @@
         <div id="control_panel">
         <p id="control_panel_title">Панель управления</p>
         <a href="" class="control_panel_list" id="control_panel_title_first">История покупок</a>
-        <button id="control_panel_button">Стать разработчиком</button>
+        <button id="control_panel_button" @click="becomeDev">Стать разработчиком</button>
         </div>
         </div>
         <footer-component></footer-component>
