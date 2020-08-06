@@ -4,6 +4,7 @@ import { instance } from '../api'
 const login_endpoint = '/auth/token/login/'
 const register_endpoint = '/auth/users/'
 const role_endpoint = '/api/role'
+const library_endpoint = '/api/accounts/profile/library'
 
 export default {
     login(credentials)
@@ -31,6 +32,10 @@ export default {
         fd.append('is_developer', isDev)
 
         return instance.post(role_endpoint, fd)
+    },
+
+    getGamesLibrary() {
+        return instance.get(library_endpoint)
     }
 
 }
