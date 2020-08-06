@@ -74,18 +74,15 @@
                 height="220"
                 class="AnimationSlider"
               >
-<<<<<<< HEAD
+
             </div>
           </div>
             <img v-bind:src="require('@/assets/img/' + Game.icon)" class="BigScrin" @click="showScrin()">
               <div>
                 <p class="TextComponentPopular">vnevnjehvnjiehv kjadb uib jab s sH YU</p>
               </div>
-=======
-            </swiper-slide>
-          </swiper>
+
             <img v-bind:src="Game.icon" class="BigScrin" @click="showScrin()">
->>>>>>> 5696c1a88e4e29b0762fec4a33d46ccc8cb8b0c6
             </div>
           </div>
         </div>
