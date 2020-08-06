@@ -26,11 +26,11 @@
             <p id="border_user_info_title_username_now">{{username}}</p>
             <p id="border_user_info_title_username_change">Имя пользователя:</p>
             <p id="border_user_info_title_email_change">Пароль:</p>
-            <form id="change_form" action="" method="POST" name=" application ">
+            <form name=" application ">
                 <input name="name" type="text" id="change_username_placeholder" v-model="name" placeholder="Введите новое имя" required />
                 <input name="email" type="password" id="changer_email_placeholder" v-model="pass" placeholder="Введите пароль" required/>
-                <button id="change_button" type="submit" @click="saveClick" form="change_form">Сохранить</button>
             </form>
+            <button id="change_button" @click="saveClick">Сохранить</button>
             <button
                     id="change_password"
                     @click="showPopupinfo"

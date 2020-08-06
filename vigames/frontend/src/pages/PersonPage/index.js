@@ -38,7 +38,7 @@ export default {
             this.isDownloadPopupVisible = false;
         },
 
-        saveClick() {
+        saveClick(e) {
             if (this.name && this.pass) {
                 this.$store.dispatch('user/changeName', {
                     username: this.name,
@@ -48,12 +48,12 @@ export default {
                     console.log(response)
                 }).catch(error => {
                     // TODO: Убрать отладочный вывод
+                    // TODO: Добавить обработку ошибок
                     console.log(error)
                 })
                 return true
             }
-
-
+            e.preventDefault()
         }
     }
 }
