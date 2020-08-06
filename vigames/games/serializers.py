@@ -119,7 +119,7 @@ class OutputGameSerializer(serializers.ModelSerializer):
 
 class GameLibrarySerializer(serializers.ModelSerializer):
     """Сериализатор вывода игры в библиотеку пользователя"""
-
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     image = SerializerMedia(many=True)
 
     class Meta:

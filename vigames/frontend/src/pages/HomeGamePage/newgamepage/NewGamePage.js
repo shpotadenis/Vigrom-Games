@@ -1,10 +1,10 @@
 
-import NewGamePageComponent from "./NewGamePageComponents.vue"
+import GameCard from "@/components/GameCard/GameCard.vue"
 
 export default {
   name: 'NewGamePage',
   components: {
-    NewGamePageComponent
+      GameCard
   },
   data(){
   return{

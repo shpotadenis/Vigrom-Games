@@ -17,7 +17,7 @@ perspective:1000px;
 border-radius: 10px;
 }
 .ImagePopular:hover .rotatePopular{
-transition-delay:1.2s;
+transition-delay:0.5s;
 transform: rotateY(180deg);
 }
 
@@ -56,9 +56,9 @@ backface-visibility:hidden;
 }
 .ImageNewGamePopular,
 .ImageComponentPopular{
- -moz-transition: all 1s ease-out;
- -o-transition: all 1s ease-out;
- -webkit-transition: all 1s ease-out;
+ -moz-transition: all 0.5s ease-out;
+ -o-transition: all 0.5s ease-out;
+ -webkit-transition: all 0.5s ease-out;
  }
 .ImageNewGamePopular,
  .ImageComponentPopular:hover{
@@ -100,19 +100,19 @@ backface-visibility:hidden;
 
  }
  .strelk1Popular{
-   position: absolute;
-   z-index: 99999;
-   transform: rotate(180deg);
+   	position: absolute;
+   	transform:rotate(180deg);
     top:100px;
-    left:20px;
-    transition: 0.1s;
+    left:40px;
+   	transition: 0.1s;
+    z-index: 10;
  }
-  .strelk1Popular:hover{
-    opacity:0.5;
-  }
+ .Istrelk1Popular:hover{
+ 	  opacity: 0.5;
+ }
  .strelk2Popular{
    position: absolute;
-   z-index: 99999;
+   z-index: 8;
    top:100px;
    left:200px;
    transition: 0.1s;
@@ -132,7 +132,7 @@ backface-visibility:hidden;
   }
  .Arrow2Popular{
    position: absolute;
-   z-index: 99999;
+   z-index: 10;
    top:200px;
    left:891px;
    transition: 0.1s;
@@ -144,7 +144,7 @@ backface-visibility:hidden;
    position:absolute;
    top: 63%;
    left:80%;
-   z-index: 99999;
+   z-index: 10;
    transition: 0.1s;
  }
  .BigScrin:hover{
@@ -156,14 +156,18 @@ backface-visibility:hidden;
  left:10%;
  width: 1000px;
  height: 500px;
- display: flex;
  overflow:hidden;
- z-index: 999999999;
+ display: flex;
+ z-index: 9;
  }
  .AllSlide{
-   margin-left: 30px;
+   display: flex;
    margin-top: 20px;
-   transition: all ease 0.5s;
+   margin-left:20px;
+   width: 220px;
+   height: 220px;
+   overflow:hidden;
+
  }
  .ImageScrin{
  transition: all ease .5s;
@@ -174,3 +178,8 @@ backface-visibility:hidden;
  .SlideBarImage{
  display:flex;
  }
+
+.RatingAndTitlePopular > a {
+  text-decoration: none;
+  color: inherit;
+}
