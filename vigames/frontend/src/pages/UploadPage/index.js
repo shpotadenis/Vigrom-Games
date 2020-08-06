@@ -4,5 +4,12 @@ export default {
     name: "UploadPage",
     components:{
         FooterComponent
-    }
+    },
+    data(){
+      return{
+        selectFile:""
+
+      }
+    },
+}
 }

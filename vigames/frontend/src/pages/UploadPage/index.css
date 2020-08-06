@@ -85,3 +85,19 @@ label{
     -webkit-box-shadow:0 0 15px #CE6796;
     box-shadow:0 0 15px #CE6796;
 }
+.UpLoad{
+  width:120px;
+  border-radius: 6px;
+  background: #CE6796;
+  margin-top: 10px;
+
+}
+input[type=file]{
+  opacity: 0;
+
+}
+.UpLoadText{
+  position: absolute;
+  margin-top:1px;
+  margin-left: 4px;
+}
