@@ -87,8 +87,10 @@
         </div>
       </div>
         <div class="RatingAndTitlePopular">
-          <p class="NameGamePopular">{{Game.name}}</p>
-            <p class="PricePopular">{{Game.price}}</p>
+          <router-link :to="{ name: 'singlePage', params: { id: Game.id } }">
+              <p class="NameGamePopular">{{Game.name}}</p>
+          </router-link>
+          <p class="PricePopular">{{Game.price}}</p>
         </div>
         <p class="UnderNamePopular">{{Game.undername}}</p>
       </div>
