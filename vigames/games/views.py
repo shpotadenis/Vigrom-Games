@@ -4,10 +4,10 @@ from rest_framework import status
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Account, Posts, Game, Rating, Category, FAQ, Comments_Post, Comments_Game, Media
+from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
-    RatingSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
-    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer
+    ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
+    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer
 from django.contrib.auth.models import User
 from scripts import Search
 
@@ -213,7 +213,7 @@ class GameDetail(APIView):
 
 class GameRatingDetail(APIView):
     """Добавление, получение, редактирование и удаление оценки игры"""
-
+    #допилить!!!
     def get_game(self, pk):
         try:
             return Game.objects.get(pk=pk)
@@ -224,24 +224,23 @@ class GameRatingDetail(APIView):
         user = request.user
         mark = request.POST.get('mark')
         game = self.get_game(pk)
-        rating_serializer = RatingSerializer(data={'author': user.id, 'mark': mark, 'game': pk})
-        if rating_serializer.is_valid() and user.is_authenticated and user in game.players.all():
-                user_ratings = Rating.objects.filter(author=user.id)
-                flag = True
-                for rating in user_ratings:
-                    if rating.game.id == pk:
-                        flag = False
-                        break
-                if flag:
-                        rating_serializer.save()
-                        return Response(rating_serializer.data)
-        return Response(rating_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        comment = request.POST.get('comment')
+        #rating_serializer = RatingSerializer(data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
+        serializer = ReviewSerializer(data=request.data)
+        if serializer.is_valid() and user.is_authenticated and user in game.players.all():
+            try:
+                user_ratings = Review.objects.get(author=user.id, game=pk)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            except Review.DoesNotExist:
+                serializer.save()
+                return Response(serializer.data)
+
 
     def get(self, request, pk, format=None):
         user = request.user
         data = None
         if user.is_authenticated:
-            user_ratings = Rating.objects.filter(author=user.id)
+            user_ratings = Review.objects.filter(author=user.id)
             for rating in user_ratings:
                 if rating.game.id == pk:
                     data = rating.mark
@@ -252,12 +251,12 @@ class GameRatingDetail(APIView):
         mark = request.POST.get('mark')
         user = request.user
         if user.is_authenticated:
-            user_ratings = Rating.objects.filter(author=user.id)
+            user_ratings = Review.objects.filter(author=user.id)
             for rating in user_ratings:
                 if rating.game.id == pk:
                     rating_ = rating
                     break
-        serializer = RatingSerializer(rating_, data={'author': user.id, 'mark': mark, 'game': pk})
+        serializer = ReviewSerializer(rating_, data={'author': user.id, 'mark': mark, 'game': pk})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -267,8 +266,8 @@ class GameRatingDetail(APIView):
         user = request.user
         if user.is_authenticated:
             try:
-                user_ratings = Rating.objects.get(author=user.id, game=pk)
-            except Rating.DoesNotExist:
+                user_ratings = Review.objects.get(author=user.id, game=pk)
+            except Review.DoesNotExist:
                 user_ratings = None
             if user_ratings != None:
                 user_ratings.delete()
@@ -496,3 +495,12 @@ class DownloadMedia(APIView):
         if account.is_developer and img.author == request.user:
                 img.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class OutputGenre(ListAPIView):
+    """Вывод списка жанров"""
+
+    def get(self, request):
+        genres = Genre.objects.all()
+        serializer = GenreSerializer(genres, many=True)
+        return Response(serializer.data)

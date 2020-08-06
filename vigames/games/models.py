@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Genre(models.Model):
     name = models.CharField('Жанр', max_length=20, unique=True)
     description = models.TextField('Описание', max_length=150)
-    url = models.CharField("Cсылка", max_length=20, unique=True)
+    #url = models.CharField("Cсылка", max_length=20, unique=True)
     img = models.ImageField("Иконка жанра", upload_to="genre")
 
     def __str__(self):
@@ -122,13 +122,14 @@ class Game(models.Model):
     date_release = models.DateField(default=date.today)
     price = models.IntegerField(default=0)
     img = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
+    banner = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
     # uploads
     description = models.TextField(default="")
     genre = models.ManyToManyField(Genre, blank=True, related_name='genre', null=True)
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
-    image = models.ManyToManyField(Media, blank=True, related_name='parent_game')
+    screenshots = models.ManyToManyField(Media, blank=True, related_name='parent_game')
     '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
@@ -232,11 +233,12 @@ class Comments_Post(models.Model):
         verbose_name_plural = "Комментарии"
 
 
-class Rating(models.Model):
+class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_author", null=True)
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,
                              related_name="game", null=True)
+    comment = models.CharField(null=True, max_length=500)
 
 
 class FAQ(models.Model):
