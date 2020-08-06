@@ -47,14 +47,48 @@
     color: #FFFFFF;
     border: none;
     padding: 15px;
+    min-width: 220px;
+}
+
+.fileInput{
+    outline: 0;
+    opacity:0;
+    pointer-events:none;
+    user-select:none;
+    width: 50px;
+
+}
+.label{
+    border:2px dashed #212130;
+    border-radius:5px;
+    display:block;
+    transition:border 300ms ease;
+    cursor:pointer;
+    text-align: center;
+    padding: 12px;
+    font-weight: lighter;
+    font-size:12px;
+    height: 82px;
+    width: 260px;
+}
+.label,.label .title{
+    color:#3C3C5A;
+    transition:200ms color
+}
+.label:hover{
+    border:2px solid #212130;
+    background: #212130;
+}
+.label:hover, .label:hover .title{
+    color:#FFFFFF;
 }
 .thirdInpits{
     height: 150px;
     width: 400px;
 }
 .secondInputs{
-    height: 80px;
-    width: 250px;
+    width: 200px;
+    height: 50px;
 }
 .blockName{
     color: #D3D3D6;
@@ -63,6 +97,7 @@
 
 .tip{
     color: #7A7A83;
+    margin-bottom: 10px;
     padding: 0px 0px 20px 0px;
 }
 label{
@@ -85,19 +120,7 @@ label{
     -webkit-box-shadow:0 0 15px #CE6796;
     box-shadow:0 0 15px #CE6796;
 }
-.UpLoad{
-  width:120px;
-  border-radius: 6px;
-  background: #CE6796;
-  margin-top: 10px;
 
-}
-input[type=file]{
-  opacity: 0;
-
-}
-.UpLoadText{
-  position: absolute;
-  margin-top:1px;
-  margin-left: 4px;
+::placeholder{
+    color: #3C3C5A;
 }
