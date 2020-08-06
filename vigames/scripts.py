@@ -153,7 +153,7 @@ class Search:  # первый аргумент - запрос юзера, вто
             counter = int(str(cursor.fetchone())[1:-2])
             cursor.execute("SELECT title FROM games_game")
         if games_or_news == 'news':
-            cursor.execute("SELECT COUNT(*) as count FROM games_posts WHERE title")
+            cursor.execute("SELECT COUNT(*) as count FROM games_posts")
             counter = int(str(cursor.fetchone())[1:-2])
             cursor.execute("SELECT title FROM games_posts")
         for k in range(counter):
@@ -354,5 +354,5 @@ def list_games(kwarg):  # функция для создания списка и
 
 
 start_time = time.time()
-print(Search.search(Search(), 'game2', 'games', 0))
+print(Search.search(Search(), 'Запись 2', 'news', 0))
 print("--- %s seconds ---" % (time.time() - start_time))
