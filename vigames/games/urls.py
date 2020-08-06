@@ -46,6 +46,8 @@ urlpatterns = [
 
     path('uploads/add', DownloadMedia.as_view(), name='upload_media'),
     path('uploads/<int:pk>/delete', DownloadMedia.as_view(), name='delete_media'),
+
+    #path('search', SearchView.as_view(), name='search'),
 ]
 
 #/api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)
