@@ -22,15 +22,16 @@ import Vue from "vue";
 Vue.use(Router);
 
 export const router = new Router({
+    // TODO: Добавить " meta: { requiresAuth: true } " к страницам, требующим авторизации
     routes: [
         { path: '/login', name: 'loginPage', component: LoginPage },
-        { path: '/game/:id', name: 'singlePage', component: GameSinglePage, meta: { requiresAuth: true } },
+        { path: '/game/:id', name: 'singlePage', component: GameSinglePage },
         { path: '/', name: 'homePage', component: HomePage },
         { path: '/news', name: 'newsPage', component: NewsPage },
         { path: '/sign_in', name: 'signInPage', component: SignInPage },
         { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage },
         { path: '/checkout', name: 'checkout', component: Checkout },
-        { path: '/library', name: 'libraryPage', component: LibraryPage },
+        { path: '/library', name: 'libraryPage', component: LibraryPage, meta: { requiresAuth: true } },
         { path: '/featured', name: 'featuredPage', component: FeaturedPage },
         { path: '/free_games', name: 'freeGames', component: FreeGames},
         { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage },
@@ -43,4 +44,21 @@ export const router = new Router({
         { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage },
         { path: '/upload', name: 'uploadPage', component: UploadPage }
     ]
+})
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        // this route requires auth, check if logged in
+        // if not, redirect to login page.
+        if (!router.app.$store.getters['user/isLoggedIn']) {
+            next({
+                path: '/sign_in',
+                query: { redirect: to.fullPath }
+            })
+        } else {
+            next()
+        }
+    } else {
+        next() // make sure to always call next()!
+    }
 })
