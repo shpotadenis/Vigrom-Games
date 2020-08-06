@@ -29,6 +29,10 @@ const getters = {
 
     getUserName(state) {
         return state.userLogin
+    },
+
+    getWishlist(state) {
+        return state.wishlist
     }
 };
 
@@ -66,6 +70,10 @@ const mutations = {
 
     changeName(state, newName) {
         state.userLogin = newName
+    },
+
+    isGamePurchased(state, gameId) {
+        return state.library.some(g => g.id == gameId)
     }
 };
 
@@ -79,6 +87,7 @@ const actions = {
                         login: credentials.login,
                         token: response.data.auth_token
                     });
+                    context.dispatch('afterLoginEvents')
                     resolve(response.data)
                 }
                 else { // В ответе нет токена, но код ответа не содержит ошибки
@@ -88,6 +97,15 @@ const actions = {
                 reject(error.response.data)
             })
         });
+    },
+
+    // Выполняет загрузку необходимых данных после того, как пользователь авторизовался
+    afterLoginEvents(context) {
+        // Загрузка библиотеки
+        context.dispatch('getLibrary')
+
+        // Загрузка wishlist
+        context.dispatch('getWishlist')
     },
 
     register({commit}, credentials) {
@@ -144,6 +162,17 @@ const actions = {
              reject(error)
          })
       });
+    },
+
+    addToWishlist(context, data) {
+        return new Promise((resolve, reject) => {
+            user.addToWishlist(data.gameId).then(response => {
+                context.dispatch('getWishlist')
+                resolve(response)
+            }).catch(error => {
+                reject(error)
+            })
+        })
     },
 
     changePassword(context, data) {

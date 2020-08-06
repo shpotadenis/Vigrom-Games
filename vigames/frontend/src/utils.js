@@ -6,7 +6,7 @@ export function convertApiToComponentObj(object) {
         name: object.title,
         undername: object.author,
         image: object.img,
-        icon: '',
+        icon: 'chevron-right-icon.svg',
         price: object.price
     }
 

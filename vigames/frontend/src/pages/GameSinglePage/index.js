@@ -25,6 +25,10 @@ export default {
             return this.$store.getters['games/getGame'](this.$route.params.id)
         },
 
+        isPurchased() {
+          return this.$store.getters['user/isGamePurchased']
+        },
+
         getImages() {
             let images = []
             for (let i in this.getGameData.image) {
@@ -66,13 +70,24 @@ export default {
             this.$store.dispatch('games/loadGame', {
                 id: gameId
             }).then(response => {
-                this.loading = false
-                // FIXME: Убрать отладочный вывод
-                console.log('GameAdded:')
-                console.log(response)
+                if (response) {
+                    this.loading = false
+                }
             }).catch(error => {
-                // TODO: Убрать отладочный вывод, редирект на 404
-                console.log("Ошибка в GSP")
+                console.log(error)
+                this.$router.push({
+                    name: 'errorPage404'
+                })
+            })
+        },
+        downloadBtnClick() {
+
+        },
+        addToWishlistClick() {
+            this.$store.dispatch('user/addToWishlist', {
+                gameId: this.$route.params.id
+            }).catch(error => {
+                console.log('Error "addToWishlistClick"')
                 console.log(error)
             })
         }
