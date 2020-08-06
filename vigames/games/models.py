@@ -5,9 +5,10 @@ from django.contrib.auth.models import User
 
 
 class Genre(models.Model):
+    """Модель жанров игр"""
+
     name = models.CharField('Жанр', max_length=20, unique=True)
     description = models.TextField('Описание', max_length=150)
-    #url = models.CharField("Cсылка", max_length=20, unique=True)
     img = models.ImageField("Иконка жанра", upload_to="genre")
 
     def __str__(self):
@@ -41,7 +42,8 @@ class Genre(models.Model):
 
 
 class Account(models.Model):
-    # Аккаунт пользователя
+    """Модель аккаунтов пользователей"""
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # Достаем из базы
     # данные регистрации
     fav_genres = models.ManyToManyField(Genre, blank=True)
@@ -80,7 +82,8 @@ class Account(models.Model):
 
 
 class Category(models.Model):
-    # Модель категорий
+    """Модель категорий"""
+
     name = models.CharField("Категория", max_length=100, unique=True)
     descriptions = models.TextField("Описание")
 
@@ -93,6 +96,8 @@ class Category(models.Model):
 
 
 class Media(models.Model):
+    """Модель изображений"""
+
     #title = models.CharField('Заголовок изображения', max_length=50)
     img = models.ImageField("Изображение", upload_to="img/%Y/%m", null=True, default=None)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -107,6 +112,8 @@ class Media(models.Model):
 
 #в продакшене выпилить некоторые null=True (сейчас удобно тестировать с ними)
 class Game(models.Model):
+    """Модель игр"""
+
     players = models.ManyToManyField(User, blank=True, related_name="players")
     who_added_to_wishlist = models.ManyToManyField(User, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(User, on_delete=models.PROTECT,
@@ -153,6 +160,8 @@ class Basket(models.Model):
 
 
 class Orders(models.Model):
+    """Модель заказов (покупки) игр"""
+
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     game = models.ForeignKey(Game, null=True, on_delete=models.SET_NULL)
     price = models.IntegerField(null=True)
@@ -161,7 +170,8 @@ class Orders(models.Model):
 
 
 class Posts(models.Model):
-    # Модель записи в блоге
+    """Модель записей в блоге (новости)"""
+
     # author = models.ManyToManyField(User, default='admin')
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     liked = models.ManyToManyField(Account, blank=True, related_name="liked")
@@ -198,7 +208,8 @@ class Posts(models.Model):
 
 
 class Comments_Game(models.Model):
-    # Комментарий к игре
+    """Модель комментариев к играм"""
+
     page = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='comments_game', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
@@ -216,7 +227,8 @@ class Comments_Game(models.Model):
 
 
 class Comments_Post(models.Model):
-    # Комментарий к записи
+    """Модель комментариев к новостям"""
+
     page = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name='comments_post', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     text_comment = models.TextField()
@@ -234,6 +246,8 @@ class Comments_Post(models.Model):
 
 
 class Review(models.Model):
+    """Модель отзывов к играм"""
+
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_author", null=True)
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE,
@@ -242,10 +256,14 @@ class Review(models.Model):
 
 
 class FAQ(models.Model):
+    """Модель вопросов и ответов в Faq"""
+
     question = models.CharField(max_length=150)
     answer = models.TextField()
 
 
 class Question(models.Model):
+    """Модель вопросов к администраторам сайта"""
+
     email = models.EmailField()
     question = models.CharField(max_length=500)
