@@ -6,6 +6,7 @@ const register_endpoint = '/auth/users/'
 const role_endpoint = '/api/role'
 const library_endpoint = '/api/accounts/profile/library'
 const changepass_endpoint = '/auth/users/set_password/'
+const changename_endpoint = '/auth/users/set_username/'
 
 export default {
     login(credentials)
@@ -46,6 +47,14 @@ export default {
         fd.append('current_password', credentials.current_password)
 
         return instance.post(changepass_endpoint, fd)
+    },
+
+    changeName(credentials) {
+        let fd = new FormData()
+        fd.append('new_username', credentials.username)
+        fd.append('current_password', credentials.password)
+
+        return instance.post(changename_endpoint, fd)
     }
 
 }

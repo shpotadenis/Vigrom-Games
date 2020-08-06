@@ -2,13 +2,14 @@ from django.urls import path
 from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame, \
     PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView, \
-    QuestionDetail, DownloadMedia, OutputGenre
+    QuestionDetail, DownloadMedia, OutputGenre, OutputStatistics
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
 
     path('profile', AccountDetail.as_view(), name="profile"),
     path('profile/library', OutputLibrary.as_view(), name="library"),
+    path('profile/statistics', OutputStatistics.as_view(), name="statistics"),
 
     path('role', RoleView.as_view(), name="role"),
 
@@ -46,6 +47,8 @@ urlpatterns = [
 
     path('uploads/add', DownloadMedia.as_view(), name='upload_media'),
     path('uploads/<int:pk>/delete', DownloadMedia.as_view(), name='delete_media'),
+
+    #path('search', SearchView.as_view(), name='search'),
 ]
 
 #/api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)
