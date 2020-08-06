@@ -7,7 +7,8 @@ from rest_framework.views import APIView
 from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
-    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer
+    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer, \
+    StatisticsSerializer
 from django.contrib.auth.models import User
 from scripts import Search
 
@@ -501,6 +502,19 @@ class OutputGenre(ListAPIView):
         genres = Genre.objects.all()
         serializer = GenreSerializer(genres, many=True)
         return Response(serializer.data)
+
+
+class OutputStatistics(ListAPIView):
+    """Вывод статистики разработчика (игра-рейтинг)"""
+
+    def get(self, request):
+        user = request.user
+        account = Account.objects.get(user=user)
+        games = Game.objects.filter(author=user)
+        if user.is_authenticated and account.is_developer:
+            serializer = StatisticsSerializer(games, many=True)
+            return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 '''
 class SearchView(APIView):
