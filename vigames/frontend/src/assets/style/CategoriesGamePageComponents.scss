@@ -11,6 +11,10 @@ transition:all ease 0.3s;
 background:#CE6796;
 
 }
+.AllCategories{
+  display: flex;
+  justify-content: space-between;
+}
 .ImageCategories{
 position:absolute;
 top:28%;

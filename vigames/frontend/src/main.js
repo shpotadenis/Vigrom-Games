@@ -23,6 +23,8 @@ import DiscountsGame from "./pages/DiscountsGame/DiscountGame";
 import EarlyAccessGame from "./pages/EarlyAccessGame/EarlyAccessGame.vue";
 import PersonPage from './pages/PersonPage/index.vue'
 import DeveloperPage from './pages/DeveloperPage/index.vue'
+import UploadPage from './pages/UploadPage/index.vue'
+import ForgotPass from './pages/ForgotPass/index.vue'
 
 Vue.use(VueScrollTo)
 
@@ -49,8 +51,11 @@ const router = new Router({
     { path: '/discountsGame', name: 'discountsGame', component: DiscountsGame },
     { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },
     { path: '/user_profile', name: 'personPage', component: PersonPage },
-    { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage }
-  ], mode: 'history'
+    { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage },
+    { path: '/forgot_pass', name: 'forgotPass', component: ForgotPass },
+    { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage },
+    { path: '/upload', name: 'uploadPage', component: UploadPage }
+  ]
 })
 
 export default new Vue({

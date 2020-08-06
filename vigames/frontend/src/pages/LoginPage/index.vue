@@ -17,7 +17,13 @@
                                class="form-control"
                                id="mail"
                                placeholder="Введите эл. почту..."/>
-                        <div class="errors__mail errors" v-if="error_mail.length">{{error_mail[0]}}</div>
+                        <div class="errors__mail errors container" v-if="error_mail.length">
+                            <div class="row justify-content-end">
+                                <div class="col-12 text">
+                                    {{error_mail[0]}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group container">
@@ -39,7 +45,7 @@
                                id="password"
                                placeholder="Введите пароль..."/>
                         <div class="errors errors__pass" v-if="error_pass.length">{{error_pass[0]}}</div>
-                        <div class="row justify-content-end" @click="hide">
+                        <div class="row justify-content-end eyeClick" @click="hide">
                             <img src="@/assets/img/eye.png"   class="passEye password-control" v-show="!nonEye"/>
                             <img src="@/assets/img/eye-off.svg"  class="passEye password-control" v-show="nonEye">
                             <!--Глаз может поехать-->
@@ -53,10 +59,12 @@
                                class="form-control"
                                id="confirmPass"
                                placeholder="Повторите пароль..."/>
-                        <div class="errors errors__confirm" v-if="error_confirm.length">
-                            {{error_confirm[0]}}
+                        <div class="errors errors__confirm " v-if="error_confirm.length">
+
+                                {{error_confirm[0]}}
+
                         </div>
-                        <div class="row justify-content-end" @click="hideconf">
+                        <div class="row justify-content-end eyeClick" @click="hideconf">
                             <img src="@/assets/img/eye.png" class="confirmEye password-control" v-show="!nonEyeconf"/>
                             <img src="@/assets/img/eye-off.svg" class="confirmEye password-control" v-show="nonEyeconf">
                             <!--Глаз может поехать-->
