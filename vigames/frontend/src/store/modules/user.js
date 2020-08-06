@@ -45,6 +45,7 @@ const mutations = {
         state.userLogin = null
         state.token = null
         state.loggedIn = false
+        window.localStorage.clear()
     },
 
     setUserRole(state, isDev) {
@@ -56,6 +57,10 @@ const mutations = {
 
     addLibrary(state, library) {
         state.library = library
+    },
+
+    changeName(state, newName) {
+        state.userLogin = newName
     }
 };
 
@@ -128,6 +133,19 @@ const actions = {
             user.changePassword(data).then(response => {
                 if (response) {
                     resolve(response.data)
+                }
+            }).catch(error => {
+                reject(error.response)
+            })
+        })
+    },
+
+    changeName(context, data) {
+        return new Promise((resolve, reject) => {
+            user.changeName(data).then(response => {
+                if (response) {
+                    resolve(response.data)
+                    context.commit('changeName', data.username)
                 }
             }).catch(error => {
                 reject(error.response)
