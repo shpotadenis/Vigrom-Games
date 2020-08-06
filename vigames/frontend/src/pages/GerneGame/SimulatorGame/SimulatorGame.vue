@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="SimulatorGamesTitle">
-  <p class="Title">Головоломки</p>
+  <p class="Title">Симуляторы</p>
 </div>
 
   <div class="SimulatorGamesComponents">

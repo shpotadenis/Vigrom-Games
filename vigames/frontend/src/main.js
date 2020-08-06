@@ -25,6 +25,16 @@ import PersonPage from './pages/PersonPage/index.vue'
 import DeveloperPage from './pages/DeveloperPage/index.vue'
 import UploadPage from './pages/UploadPage/index.vue'
 import ForgotPass from './pages/ForgotPass/index.vue'
+import ActionGame from './pages/GerneGame/ActionGame/ActionGame.vue'
+import AdventuresGame from './pages/GerneGame/AdventuresGame/AdventuresGames.vue'
+import FarmGame from './pages/GerneGame/FarmGame/FarmGame.vue'
+import MMOGame from './pages/GerneGame/MMOGame/MMOGame.vue'
+import PuzzleGame from './pages/GerneGame/PuzzleGame/PuzzleGame.vue'
+import RaceGame from './pages/GerneGame/RaceGame/RaceGame.vue'
+import RPGGame from './pages/GerneGame/RPGGame/RPGGame.vue'
+import ShooterGame from './pages/GerneGame/ShooterGame/ShooterGame.vue'
+import SimulatorGame from './pages/GerneGame/SimulatorGame/SimulatorGame.vue'
+import StrategyGame from './pages/GerneGame/StrategyGame/StrategyGame.vue'
 
 Vue.use(VueScrollTo)
 
@@ -54,7 +64,17 @@ const router = new Router({
     { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage },
     { path: '/forgot_pass', name: 'forgotPass', component: ForgotPass },
     { path: '/developer_profile', name: 'DeveloperPage', component: DeveloperPage },
-    { path: '/upload', name: 'uploadPage', component: UploadPage }
+    { path: '/ActionGame', name: 'ActionGame', component: ActionGame },
+    { path: '/AdventuresGame', name: 'AdventuresGame', component: AdventuresGame },
+    { path: '/FarmGame', name: 'FarmGame', component: FarmGame },
+    { path: '/MMOGame', name: 'MMOGame', component: MMOGame },
+    { path: '/PuzzleGame', name: 'PuzzleGame', component: PuzzleGame },
+    { path: '/RaceGame', name: 'RaceGame', component: RaceGame },
+    { path: '/RPGGame', name: 'RPGGame', component: RPGGame },
+    { path: '/ShooterGame', name: 'ShooterGame', component: ShooterGame },
+    { path: '/SimulatorGame', name: 'SimulatorGame', component: SimulatorGame },
+    { path: '/StrategyGame', name: 'StrategyGame', component: StrategyGame },
+    { path: '/UploadPage', name: 'uploadPage', component: UploadPage }
   ]
 })
 

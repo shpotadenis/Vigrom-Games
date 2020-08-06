@@ -31,7 +31,7 @@
 </template>
 
 
-<script src="./AdventuresGame.js" type="application/javascript">
+<script src="./AdventuresGames.js" type="application/javascript">
 </script>
 
 <style lang="scss" scoped>

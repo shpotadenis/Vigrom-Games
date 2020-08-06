@@ -35,5 +35,5 @@
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/MMOGame.scss";
-</MMO
+  @import "@/assets/style/MMOGame.scss";
+  </style>
