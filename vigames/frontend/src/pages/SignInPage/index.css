@@ -139,3 +139,6 @@ input{
     padding: 12px;
     font-size: 14px;
 }
+.forgot-pass-link:hover{
+    text-decoration: underline;
+}

@@ -14,22 +14,6 @@
                         alt=""
                 >
                 <div
-                        @click="hide"
-                >
-                    <img
-                            id="eye_pass"
-                            src="@/assets/img/eye.png"
-                            alt=""
-                            v-show="!nonEye"
-                    >
-                    <img
-                            id="eye_pass"
-                            src="@/assets/img/eye-off.svg"
-                            alt=""
-                            v-show="nonEye"
-                    >
-                </div>
-                <div
                         @click="hideconf"
                 >
                     <img
@@ -63,19 +47,6 @@
                 </div>
             </div>
             <div class="v-popup_content">
-                <p id="old_pass_title">Старый пароль</p>
-                <input
-                        name="old_pass"
-                        :type="type"
-                        id="old_pass_area"
-                        placeholder="Введите старый пароль"
-                        v-model="old_pass"
-                >
-                <div
-                        class="errors errors__old_pass"
-                        v-if="error_old_pass.length"
-                >{{error_old_pass[0]}}
-                </div>
                 <p id="new_pass_title">Новый пароль</p>
                 <input
                         name="new_pass"
