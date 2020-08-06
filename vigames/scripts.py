@@ -199,7 +199,7 @@ class Search:  # первый аргумент - запрос юзера, вто
                 top_date = date_change
                 lelem[1] += top_date * lelem[1] / 6
         for i in range(len(end_spis) + 1):
-            for j in range(len(end_spis) - 1):
+            for j in range(len(end_spis)):
                 if j != i:
                     if j > i:
                         if end_spis[j][1] > end_spis[i][1]:
@@ -227,7 +227,7 @@ class Search:  # первый аргумент - запрос юзера, вто
             disliked = (int(str(cursor.fetchone())[1:-2]))
             id_spis[id_spis.index(id)][1] = liked / disliked
         for i in range(len(id_spis) + 1):
-            for j in range(len(id_spis) - 1):
+            for j in range(len(id_spis)):
                 if j != i:
                     if j > i:
                         if id_spis[j][1] > id_spis[i][1]:
@@ -355,5 +355,5 @@ def list_games(kwarg):  # функция для создания списка и
 
 
 start_time = time.time()
-print(Search.search(Search(), 'game3', 'games', 0))
+print(Search.search(Search(), 'game2', 'games', 0))
 print("--- %s seconds ---" % (time.time() - start_time))
