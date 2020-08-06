@@ -12,7 +12,7 @@
                 <nav class="header__nav">
                     <ul class="header__nav-list">
                         <li class="header__item">
-                            <router-link :to="{name: 'singlePage'}" class="header__link">
+                            <router-link :to="{name: 'homePage'}" class="header__link">
                                 Магазин
                             </router-link>
                         </li>
