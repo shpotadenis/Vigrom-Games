@@ -14,20 +14,20 @@
             </ul>
             <div class="LinkGerne">
               <ul class="UlComponent">
-                  <li class="LiBlock1">Приключения</li>
-                  <li class="LiBlock1">Головоломки</li>
-                  <li class="LiBlock1">Экшн</li>
-                  <li class="LiBlock1">РПГ</li>
+                  <router-link :to="{name: 'AdventuresGame'}" class="LiBlock1">Приключения</router-link>
+                  <router-link :to="{name: 'PuzzleGame'}" class="LiBlock1">Головоломки</router-link>
+                  <router-link :to="{name: 'ActionGame'}" class="LiBlock1">Экшн</router-link>
+                  <router-link :to="{name: 'RPGGame'}" class="LiBlock1">РПГ</router-link>
               </ul>
               <ul class="UlComponent">
-                  <li class="LiBlock1">Стратегии</li>
-                  <li class="LiBlock1">Фермы</li>
-                  <li class="LiBlock1">ММО</li>
-                  <li class="LiBlock1">Шутеры</li>
+                  <router-link :to="{name: 'StrategyGame'}" class="LiBlock1">Стратегии</router-link>
+                  <router-link :to="{name: 'FarmGame'}" class="LiBlock1">Фермы</router-link>
+                  <router-link :to="{name: 'MMOGame'}" class="LiBlock1">ММО</router-link>
+                  <router-link :to="{name: 'ShooterGame'}" class="LiBlock1">Шутеры</router-link>
               </ul>
               <ul class="UlComponent">
-                  <li class="LiBlock1">Гонки</li>
-                  <li class="LiBlock1">Симуляторы</li>
+                  <router-link :to="{name: 'RaceGame'}" class="LiBlock1">Гонки</router-link>
+                  <router-link :to="{name: 'SimulatorGame'}" class="LiBlock1">Симуляторы</router-link>
 
               </ul>
               <ul class="UlComponent">

@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="MMOGamesTitle">
-  <p class="Title">Бесплатные игры</p>
+  <p class="Title">ММО</p>
 </div>
   <div class="MMOGamesComponents">
     <game-card
@@ -35,5 +35,5 @@
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/style/MMOGame.scss";
-</MMO
+  @import "@/assets/style/MMOGame.scss";
+  </style>

@@ -8,7 +8,7 @@
   </div>
 </div>
 <div class="FarmGamesTitle">
-  <p class="Title">Скидки</p>
+  <p class="Title">Фермы</p>
 </div>
 
   <div class="FarmGamesComponents">
