@@ -28,7 +28,6 @@ export default {
 
 <style>
 	.AllCategories{
-		widht:452px;
 		display:flex;
 		justify-content:space-between;
 	}
