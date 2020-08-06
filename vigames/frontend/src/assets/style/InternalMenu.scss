@@ -69,6 +69,15 @@ font-weight: normal;
 font-size: 14px;
 line-height: 19px;
 color: #7A7A83;
+  display: flex;
+  text-decoration: none;
+}
+
+.LiBlock1:hover{
+  text-decoration: underline;
+}
+.AllChooseLi:hover{
+  text-decoration: underline;
 }
 .LinkGerne{
   display: flex;

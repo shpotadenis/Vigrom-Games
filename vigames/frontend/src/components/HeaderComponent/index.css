@@ -42,6 +42,7 @@
     color: #7A7A83;
     text-decoration: none;
     padding-bottom: 30px;
+    cursor: pointer;
 }
 
 .header__link:hover, .header__link:active, .header__link:focus {
@@ -83,7 +84,7 @@
     margin-right: 0;
 }
 
-button {
-  background: #212130;
-  border: 0;
-}
+/*button {*/
+/*  background: #212130;*/
+/*  border: 0;*/
+/*}*/

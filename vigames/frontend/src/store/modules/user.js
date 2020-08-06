@@ -5,7 +5,8 @@ const state = () => ({
     isDev: false, // boolean - является ли разработчиком
     isRoleSelected: false, // boolean - выбрана ли роль
     token: null, // string - JWT токен для авторизации
-    loggedIn: false // boolean - выполнен ли вход (авторизация)
+    loggedIn: false, // boolean - выполнен ли вход (авторизация)
+    library: {}
 });
 
 const getters = {
@@ -19,6 +20,10 @@ const getters = {
 
     isDeveloper(state) {
         return state.isDev
+    },
+
+    getLibrary(state) {
+        return state.library
     }
 };
 
@@ -43,6 +48,10 @@ const mutations = {
             state.isRoleSelected = true;
         }
         state.isDev = isDev
+    },
+
+    addLibrary(state, library) {
+        state.library = library
     }
 };
 
@@ -95,6 +104,19 @@ const actions = {
                 reject(e.response.data)
             })
         });
+    },
+
+    getLibrary({commit}) {
+        return new Promise((resolve, reject) => {
+            user.getGamesLibrary().then(response => {
+                if (response) {
+                    commit('addLibrary', response.data)
+                    resolve(response)
+                }
+            }).catch(error => {
+                reject(error)
+            })
+        })
     }
 };
 

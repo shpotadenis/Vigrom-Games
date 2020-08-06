@@ -2,7 +2,6 @@
 <div class="RecommendationGamePage">
   <div class="RecommedationGameTitle">
     <p class="Title">Рекомендации</p>
-    <a src="#1" class="Link">Больше игр <img src="@/assets/img/Vector.png"></a>
   </div>
   <div class="RecommendationComponents">
     <game-card

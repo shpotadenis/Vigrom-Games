@@ -48,5 +48,12 @@ export default {
         ]
       }
     },
-    methods: {}
+    props:{
+      Top_Category:{
+      type:Object,
+      default(){
+        return{}
+      }
+    },
+}
 }
