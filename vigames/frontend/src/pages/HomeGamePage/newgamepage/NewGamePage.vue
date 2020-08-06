@@ -3,13 +3,12 @@
     <div class="NewGamePageComponent">
       <div class="NewGameTitle">
         <p class="Title">Новинки</p>
-        <a src="#1" class="Link">Больше игр <img src="@/assets/img/Vector.png"></a>
       </div>
       <div class="NewsGamePage">
-        <new-game-page-component
-        v-for="item in news"
-        :key="item.id"
-        :Game="item"
+        <game-card
+          v-for="gamebests in news"
+          :key="gamebests.id"
+          :Game="gamebests"
         />
       </div>
     </div>

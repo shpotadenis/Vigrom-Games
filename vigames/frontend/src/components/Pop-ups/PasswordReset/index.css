@@ -14,7 +14,7 @@
     background: #2D2D42;
     border-radius: 10px;
     width: 444px;
-    height: 505px;
+    height: 402px;
     left: 50%;
     top: 50%;
     margin-left: -222px;
@@ -98,11 +98,11 @@
 }
 #eye_pass_second{
     left: 355px;
-    top: 238px;
+    top: 135px;
 }
 #eye_pass_third{
     left: 355px;
-    top: 338px;
+    top: 235px;
 }
 ::placeholder {
     font-family: Open Sans;
