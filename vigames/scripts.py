@@ -168,36 +168,33 @@ class Search:  # первый аргумент - запрос юзера, вто
                 end_spis.append([elem, right_letters, idd])
             idd += 1
             right_letters = 0
-        for lelem in end_spis:
-            if games_or_news == 'games':
+        if games_or_news == 'games':
+            for lelem in end_spis:
                 cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
-            if games_or_news == 'news':
-                cursor.execute("SELECT id FROM games_game WHERE title = ?", (lelem[0],))
-            cursor.execute("SELECT rating FROM games_game WHERE id = ?", (int(str(cursor.fetchone())[1:-2]),))
-            if raiting(float(str(cursor.fetchone())[1:-2])) != 'o':
-                new_rait = int(raiting(float(str(cursor.fetchone())[1:-2])))
-            if id_user != 0:
-                for word in spis_genre:
-                    cursor.execute("SELECT ? FROM games_genre1 WHERE id = ?", (word, id_user))
-                    if int(str(cursor.fetchone())[2:-3]) > genre[0]:
-                        genre = [int(str(cursor.fetchone())[1:-2]), word]
-                cursor.execute("SELECT genre FROM games_game WHERE title = ?", (lelem[0],))
-                if genre[1] == str(cursor.fetchone())[1:-2]:
-                    lelem[1] += 0, 3 * lelem[1]
-                lelem[1] += lelem[1] * new_rait / 6
-            cursor.execute("SELECT author_id FROM games_game WHERE title = ?", (lelem[0],))
-            cursor.execute("SELECT date_joined FROM games_account WHERE user_id = ?",
-                           (int(str(cursor.fetchone())[1:-2]),))
-            date_change = 10
-            db_date = str(cursor.fetchone())[2:-3].split('-')
-            date_old = datetime.datetime(int(db_date[0]), int(db_date[1]), int(db_date[2]))
-            date_now = datetime.datetime.now()
-            delta = date_now - date_old
-            date_change -= delta.days
-            top_date = 0
-            if date_change > top_date:
-                top_date = date_change
-                lelem[1] += top_date * lelem[1] / 6
+                if raiting(float(str(cursor.fetchone())[1:-2])) != 'o':
+                    new_rait = int(raiting(float(str(cursor.fetchone())[1:-2])))
+                if id_user != 0:
+                    for word in spis_genre:
+                        cursor.execute("SELECT ? FROM games_genre1 WHERE id = ?", (word, id_user))
+                        if int(str(cursor.fetchone())[2:-3]) > genre[0]:
+                            genre = [int(str(cursor.fetchone())[1:-2]), word]
+                    cursor.execute("SELECT genre FROM games_game WHERE title = ?", (lelem[0],))
+                    if genre[1] == str(cursor.fetchone())[1:-2]:
+                        lelem[1] += 0, 3 * lelem[1]
+                    lelem[1] += lelem[1] * new_rait / 6
+                cursor.execute("SELECT author_id FROM games_game WHERE title = ?", (lelem[0],))
+                cursor.execute("SELECT date_joined FROM games_account WHERE user_id = ?",
+                               (int(str(cursor.fetchone())[1:-2]),))
+                date_change = 10
+                db_date = str(cursor.fetchone())[2:-3].split('-')
+                date_old = datetime.datetime(int(db_date[0]), int(db_date[1]), int(db_date[2]))
+                date_now = datetime.datetime.now()
+                delta = date_now - date_old
+                date_change -= delta.days
+                top_date = 0
+                if date_change > top_date:
+                    top_date = date_change
+                    lelem[1] += top_date * lelem[1] / 6
         for i in range(len(end_spis) + 1):
             for j in range(len(end_spis)):
                 if j != i:
