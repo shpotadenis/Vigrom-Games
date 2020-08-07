@@ -16,7 +16,8 @@ export default {
     methods:{
       UpLoadFile(event){
         console.log(event.target.selectFile)
-        this.selectFile = event.target.files[0].name;
+        this.selectFile = event.target.files[0].name;       //Это имя файла
+
       },
       UpLoadFile1(event){
         console.log(event.target.selectFile)
@@ -26,11 +27,11 @@ export default {
       },
       UpLoadFile2(event){
         console.log(event.target.selectFile)
-        this.selectFile2 = event.target.files[0].name;
+        this.selectFile2 = event.target.files[0].name;       //Это имя файла
       },
       UpLoadFile3(event){
         console.log(event.target.selectFile)
-        this.selectFileZ = event.target.files[0].name;
+        this.selectFileZ = event.target.files[0].name;       //Это имя файла
       },
 
     }

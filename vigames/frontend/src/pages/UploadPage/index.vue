@@ -121,8 +121,8 @@
                                 *Добавьте полное описание игры, разделив его на 3 блока,
                                 каждый максимум по 440 символов
                             </div>
-                            <input type="checkbox" id="agreement" name="agreement">
-                            <label for="agreement">Я принимаю </label><a>пользовательсткое соглашение</a><br>
+                            <input type="checkbox" class="agreement" id="agreement" name="agreement">
+                            <label for="agreement">Я принимаю <a class="link"> пользовательсткое соглашение</a></label><br>
                             <button class="uploadBtn">Опубликовать игру</button>
                         </div>
                     </div>
