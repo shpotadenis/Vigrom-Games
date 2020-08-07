@@ -10,7 +10,7 @@ from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, 
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer, \
-    StatisticsSerializer, OutputReviewSerializer, Search_game_serializers, Search_news_serializers
+    StatisticsSerializer, OutputReviewSerializer
 from django.contrib.auth.models import User
 from scripts import Search
 
