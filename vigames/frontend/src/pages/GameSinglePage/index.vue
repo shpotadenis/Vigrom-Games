@@ -16,24 +16,31 @@
                         От {{getGameData.author}}
                     </p>
                 </div>
-                <div class="info-card__buy" v-if="isPurchased">
-                    <button @click="isBtnClick = true" class="buy__btn">
-                        Купить
-                        <span class="buy__price">
-                            {{getGameData.price}}
-                            <img src="@/assets/img/ruble-white.svg" alt="" class="buy__btn-ruble">
-                        </span>
-                    </button>
-                </div>
-                <div class="info-card__buy" v-else>
-                    <button @click="downloadBtnClick" class="buy__btn">
-                        Скачать
-                    </button>
-                </div>
-                <div class="info-card__buy">
-                    <button @click="addToWishlistClick" class="buy__btn">
-                        В избранное
-                    </button>
+                <div class="info-card__buttons">
+                    <div class="info-card__buy" v-if="!isInWishlist">
+                        <button @click="addToWishlistClick" class="buy__btn">
+                            В избранное
+                        </button>
+                    </div>
+                    <div class="info-card__buy" v-else>
+                        <button @click="removeFromWishlistClick" class="buy__btn">
+                            Удалить из избранного
+                        </button>
+                    </div>
+                    <div class="info-card__buy" v-if="!isPurchased">
+                        <button @click="isBtnClick = true" class="buy__btn">
+                            Купить
+                            <span class="buy__price">
+                                {{getGameData.price}}
+                                <img src="@/assets/img/ruble-white.svg" alt="" class="buy__btn-ruble">
+                            </span>
+                        </button>
+                    </div>
+                    <div class="info-card__buy" v-else>
+                        <button @click="downloadBtnClick" class="buy__btn">
+                            Скачать
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

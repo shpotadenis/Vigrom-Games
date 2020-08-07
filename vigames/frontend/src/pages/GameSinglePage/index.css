@@ -29,6 +29,10 @@
     margin-bottom: 15px;
 }
 
+.info-card__buttons {
+    display: flex;
+}
+
 .info-card__author {
     margin-bottom: 20px;
 }
@@ -45,6 +49,11 @@
 .info-card__buy {
     display: flex;
     margin-bottom: 25px;
+    margin-right: 10px;
+}
+
+.info-card__buy:last-child {
+    margin-right: 0;
 }
 
 .buy__price {

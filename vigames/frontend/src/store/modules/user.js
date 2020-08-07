@@ -33,7 +33,15 @@ const getters = {
 
     getWishlist(state) {
         return state.wishlist
-    }
+    },
+
+    isInWishlist: (state) => (gameId) => {
+        return state.library.some(g => g.id == gameId)
+    },
+
+    isGamePurchased: (state) => (gameId) => {
+        return state.library.some(g => g.id == gameId)
+    },
 };
 
 const mutations = {
@@ -72,9 +80,6 @@ const mutations = {
         state.userLogin = newName
     },
 
-    isGamePurchased(state, gameId) {
-        return state.library.some(g => g.id == gameId)
-    }
 };
 
 const actions = {
@@ -167,6 +172,17 @@ const actions = {
     addToWishlist(context, data) {
         return new Promise((resolve, reject) => {
             user.addToWishlist(data.gameId).then(response => {
+                context.dispatch('getWishlist')
+                resolve(response)
+            }).catch(error => {
+                reject(error)
+            })
+        })
+    },
+
+    removeFromWishlist(context, data) {
+        return new Promise((resolve, reject) => {
+            user.removeFromWishlist(data.gameId).then(response => {
                 context.dispatch('getWishlist')
                 resolve(response)
             }).catch(error => {

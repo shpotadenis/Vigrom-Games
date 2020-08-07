@@ -26,7 +26,11 @@ export default {
         },
 
         isPurchased() {
-          return this.$store.getters['user/isGamePurchased']
+          return this.$store.getters['user/isGamePurchased'](this.$route.params.id)
+        },
+
+        isInWishlist() {
+          return this.$store.getters['user/isInWishlist'](this.$route.params.id)
         },
 
         getImages() {
@@ -88,6 +92,15 @@ export default {
                 gameId: this.$route.params.id
             }).catch(error => {
                 console.log('Error "addToWishlistClick"')
+                console.log(error)
+            })
+        },
+
+        removeFromWishlistClick() {
+            this.$store.dispatch('user/removeFromWishlist', {
+                gameId: this.$route.params.id
+            }).catch(error => {
+                console.log('Error "removeFromWishlist"')
                 console.log(error)
             })
         }

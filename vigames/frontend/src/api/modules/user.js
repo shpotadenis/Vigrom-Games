@@ -65,6 +65,10 @@ export default {
 
     addToWishlist(gameId) {
         return instance.post("/api/games/" + gameId +"/wishlist")
+    },
+
+    removeFromWishlist(gameId) {
+        return instance.delete('/api/games/' + gameId + '/wishlist')
     }
 
 }
