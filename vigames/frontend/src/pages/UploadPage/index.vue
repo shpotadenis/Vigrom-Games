@@ -12,7 +12,7 @@
                         </div>
                         <div class="blocks">
                             <div class="blockName">Краткое описание</div>
-                            <input class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
+                            <textarea class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
                         </div>
                     </div>
                     <div class="col-6">
@@ -105,17 +105,17 @@
                         <div class="col-6">
                             <div class="blocks">
                                 <div class="blockName">Блок 1</div>
-                                <input class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
+                                <textarea class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
                             </div>
                             <div class="blocks">
                                 <div class="blockName">Блок 3</div>
-                                <input class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
+                                <textarea class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="blocks">
                                 <div class="blockName">Блок 2</div>
-                                <input class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
+                                <textarea class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
                             </div>
                             <div class="col-10 tip">
                                 *Добавьте полное описание игры, разделив его на 3 блока,
