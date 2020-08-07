@@ -433,16 +433,16 @@ class DownloadGame(ListAPIView):
         user = request.user
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
-            try:
-                account = Account.objects.get(user=user)
-                if account in game.players.all():
+            #try:
+                #account = Account.objects.get(user=user)
+                if user in game.players.all():
                     if game.file:
                         response = HttpResponse(game.file)
                         #надо заставлять разрабов загружать только зипы? сохранять имя и тип файла?
                         response['Content-Disposition'] = 'attachment; filename=' + game.title + '.zip'
                         return response
-            except Account.DoesNotExist:
-                return Response({"message": "fail"})
+            #except Account.DoesNotExist:
+            #    return Response({"message": "fail"})
         return Response({"message": "fail"})
 
 

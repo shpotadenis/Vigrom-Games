@@ -113,7 +113,7 @@ class OutputGameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ('author', 'comments_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
+        fields = ('id', 'author', 'comments_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
                   'description', 'short_description')
 
 
