@@ -10,7 +10,7 @@ from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, 
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer, \
-    StatisticsSerializer, Search_game_serializers, Search_news_serializers
+    StatisticsSerializer, OutputReviewSerializer
 from django.contrib.auth.models import User
 from scripts import Search
 
@@ -230,9 +230,12 @@ class GameRatingDetail(APIView):
         ratings = Review.objects.filter(game=pk)
         length = len(ratings)
         sum = 0
-        for r in ratings:
-            sum += r.mark
-        game.rating = sum / length
+        res = 0
+        if length != 0:
+            for r in ratings:
+                sum += r.mark
+            res = sum / length
+        game.rating = res
         game.save()
 
     def post(self, request, pk):
@@ -241,26 +244,23 @@ class GameRatingDetail(APIView):
         game = self.get_game(pk)
         comment = request.POST.get('comment')
         comment = Search.comments(Search(), comment)
-        serializer = ReviewSerializer(data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
+        serializer = ReviewSerializer(data={'author': user, 'mark': mark, 'game': pk, 'comment': comment})
         if serializer.is_valid() and user.is_authenticated and user in game.players.all():
             try:
-                user_ratings = Review.objects.get(author=user.id, game=pk)
+                user_ratings = Review.objects.get(author=user, game=pk)
             except Review.DoesNotExist:
-                serializer.save()
+                serializer.save(author=user)
                 self.rating(pk)
                 return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, pk):
-        user = request.user
-        if user.is_authenticated:
-            try:
-                user_ratings = Review.objects.get(author=user.id, game=pk)
-                serializer = ReviewSerializer(user_ratings)
-                return Response(serializer.data)
-            except Review.DoesNotExist:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:
+            user_ratings = Review.objects.get(game=pk)
+            serializer = OutputReviewSerializer(user_ratings)
+            return Response(serializer.data)
+        except Review.DoesNotExist:
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
     def put(self, request, pk):
         game = self.get_game(pk)
@@ -270,12 +270,12 @@ class GameRatingDetail(APIView):
         comment = Search.comments(Search(), comment)
         if user.is_authenticated:
             try:
-                user_rating = Review.objects.get(author=user.id, game=pk)
+                user_rating = Review.objects.get(author=user, game=pk)
             except Review.DoesNotExist:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-            serializer = ReviewSerializer(user_rating, data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
+            serializer = ReviewSerializer(user_rating, data={'author': user, 'mark': mark, 'game': pk, 'comment': comment})
             if serializer.is_valid():
-                serializer.save()
+                serializer.save(author=user)
                 self.rating(pk)
                 return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -284,7 +284,7 @@ class GameRatingDetail(APIView):
         user = request.user
         if user.is_authenticated:
             try:
-                user_ratings = Review.objects.get(author=user.id, game=pk)
+                user_ratings = Review.objects.get(author=user, game=pk)
             except Review.DoesNotExist:
                 user_ratings = None
             if user_ratings != None:
