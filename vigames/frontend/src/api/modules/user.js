@@ -88,7 +88,14 @@ export default {
         fd.append('mark', data.mark)
         fd.append('comment', data.comment)
         return instance.post('/api/games/' + gameId + '/rating', fd)
+    },
+
+    // eslint-disable-next-line no-unused-vars
+    uploadGame(gameId, data) {
+        // eslint-disable-next-line no-unused-vars
+        let fd = new FormData()
 
     }
+
 
 }

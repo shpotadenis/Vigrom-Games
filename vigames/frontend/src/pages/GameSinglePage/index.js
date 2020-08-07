@@ -4,6 +4,7 @@ import FooterComponent from "../../components/FooterComponent/index.vue"
 import Checkout from "../../components/Pop-ups/Checkout/checkout"
 import SliderComponent from './SliderComponent/SliderComponent.vue'
 import user from '../../api/modules/user.js'
+import games from '../../api/modules/user.js'
 import { getImageUrl } from '../../utils.js'
 
 export default {

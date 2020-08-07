@@ -10,5 +10,9 @@ export default {
 
     getListOfGames() {
         return instance.get(game_list_endpoint)
+    },
+
+    getReviews(gameId) {
+        return instance.get('/api/games/' + gameId + '/rating')
     }
 }

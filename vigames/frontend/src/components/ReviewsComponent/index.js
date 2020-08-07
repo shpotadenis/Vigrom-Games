@@ -1,3 +1,5 @@
+import games from '../../api/modules/games.js'
+
 const reviews = [
     {
         id: 1,
@@ -41,7 +43,11 @@ export default {
 
         fetchData() {
             this.loading = true
-            this.reviews = reviews
+            games.getReviews().then(response => {
+                this.reviews = response.data
+            }).catch(error => {
+                console.log(error)
+            })
             this.loading = false
         }
     }

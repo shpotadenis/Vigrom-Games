@@ -8,17 +8,17 @@
                     <div class="col-6">
                         <div class="blocks">
                             <div class="blockName">Название</div>
-                            <input class="textInputs nameInput" placeholder="Введите название"/>
+                            <input class="textInputs nameInput" v-model="title" placeholder="Введите название"/>
                         </div>
                         <div class="blocks">
                             <div class="blockName">Краткое описание</div>
-                            <input class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
+                            <input class="textInputs thirdInpits" v-model="short_description" placeholder="Не более 440 символов"/>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="blocks">
                             <div class="blockName">Жанр</div>
-                            <select class="textInputs">
+                            <select class="textInputs" v-model="genre">
                                 <option>Выберите жанр</option>
                                 <option>Приключения</option>
                                 <option>Головоломки</option>
@@ -34,7 +34,7 @@
                         </div>
                         <div class="blocks">
                             <div class="blockName">Цена</div>
-                            <input class="textInputs priceInput" placeholder="Укажите цену в рублях"/>
+                            <input class="textInputs priceInput" v-model="price" placeholder="Укажите цену в рублях"/>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="blocks">
                             <div class="blockName ">Ссылка на геймплей-видео</div>
-                            <input class="textInputs secondInputs" placeholder="Укажите ссылку на Youtube"/>
+                            <input class="textInputs secondInputs" v-model="youtube_link" placeholder="Укажите ссылку на Youtube"/>
                         </div>
                     </div>
                     <div class="col-4">
@@ -105,17 +105,17 @@
                         <div class="col-6">
                             <div class="blocks">
                                 <div class="blockName">Блок 1</div>
-                                <input class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
+                                <input class="textInputs thirdInpits" v-model="block1" placeholder="Не более 440 символов"/>
                             </div>
                             <div class="blocks">
                                 <div class="blockName">Блок 3</div>
-                                <input class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
+                                <input class="textInputs thirdInpits" v-model="block3" placeholder="Не более 440 символов"/>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="blocks">
                                 <div class="blockName">Блок 2</div>
-                                <input class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
+                                <input class="textInputs thirdInpits" v-model="block2" placeholder="Не более 440 символов"/>
                             </div>
                             <div class="col-10 tip">
                                 *Добавьте полное описание игры, разделив его на 3 блока,
@@ -123,7 +123,7 @@
                             </div>
                             <input type="checkbox" class="agreement" id="agreement" name="agreement">
                             <label for="agreement">Я принимаю <a class="link"> пользовательсткое соглашение</a></label><br>
-                            <button class="uploadBtn">Опубликовать игру</button>
+                            <button class="uploadBtn" @click="uploadButtonClick">Опубликовать игру</button>
                         </div>
                     </div>
             </div>
