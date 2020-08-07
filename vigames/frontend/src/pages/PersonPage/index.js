@@ -70,6 +70,12 @@ export default {
                 // TODO: Убрать отладочный вывод
                 console.log(error)
             })
+        },
+        quit() {
+            this.$store.commit('user/userLogout')
+            this.$router.push({
+                name: 'homePage'
+            })
         }
     }
 }

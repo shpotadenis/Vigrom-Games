@@ -55,5 +55,12 @@ export default {
             }
             e.preventDefault()
         },
+
+        quit() {
+            this.$store.commit('user/userLogout')
+            this.$router.push({
+                name: 'homePage'
+            })
+        }
     }
 }

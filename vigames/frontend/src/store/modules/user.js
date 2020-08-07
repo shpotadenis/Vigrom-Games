@@ -1,5 +1,6 @@
 import user from '../../api/modules/user'
 
+
 const state = () => ({
     userLogin: null, // string - логин пользователя
     isDev: false, // boolean - является ли разработчиком
@@ -56,8 +57,12 @@ const mutations = {
 
     userLogout(state) {
         state.userLogin = null
+        state.isDev = false
+        state.isRoleSelected = false
         state.token = null
         state.loggedIn = false
+        state.library = {} 
+        state.wishlist = {}
         window.localStorage.clear()
     },
 

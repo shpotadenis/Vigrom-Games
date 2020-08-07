@@ -30,7 +30,7 @@
                     <input name="name" type="text" id="change_username_placeholder" v-model="name" placeholder="Введите новое имя" required />
                     <input name="email" type="password" id="changer_email_placeholder" v-model="pass" placeholder="Введите пароль" required/>
                 </form>
-                <button id="change_button" @click="saveClick">Сохранить</button>
+                <button class="change_button" @click="saveClick">Сохранить</button>
                 <button
                         id="change_password"
                         @click="showPopupinfo"
@@ -44,6 +44,7 @@
                 <router-link :to="{name: 'uploadPage'}">
                     <button id="control_panel_button">Загрузить игру</button>
                 </router-link>
+                <button class="change_button exit_btn" @click="quit">Выход</button>
             </div>
         </div>
         <footer-component></footer-component>
