@@ -104,20 +104,27 @@ backface-visibility:hidden;
  .strelk1Popular{
    	position: absolute;
    	transform:rotate(180deg);
-    top:100px;
+    width:50px;
+    height: 200px;
     left:40px;
+    border: 0;
+    background: transparent;
     z-index:8;
    	transition: 0.1s;
 
  }
  .Istrelk1Popular:hover{
+     z-index:8;
  	  opacity: 0.5;
  }
  .strelk2Popular{
    position: absolute;
    z-index: 8;
-   top:100px;
-   left:200px;
+   width:50px;
+   height: 200px;
+   border: 0;
+   background: transparent;
+   left:170px;
    transition: 0.1s;
  }
  .strelk2Popular:hover{
@@ -126,8 +133,11 @@ backface-visibility:hidden;
  .Arrow1Popular{
    position: absolute;
    transform: rotate(180deg);
-   top:200px;
    left:20px;
+   width:100px;
+   height: 500px;
+   border: 0;
+   background: transparent;
    transition: 0.1s;
  }
   .Arrow1Popular:hover{
@@ -136,9 +146,13 @@ backface-visibility:hidden;
  .Arrow2Popular{
    position: absolute;
    z-index: 10;
-   top:200px;
+   width:100px;
+   height: 500px;
    left:891px;
+   border: 0;
+   background: transparent;
    transition: 0.1s;
+
  }
  .Arrow2Popular:hover{
    opacity: 0.5;

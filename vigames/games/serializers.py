@@ -100,11 +100,21 @@ class GameSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ReviewSerializer(serializers.ModelSerializer):
+    """Сериализатор отзыва к игре"""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+
+    class Meta:
+        model = Review
+        fields = '__all__'
+
+
 class OutputGameSerializer(serializers.ModelSerializer):
     """Сериализатор вывода игры на страницу"""
 
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
-    comments_game = CommentsGameSerializer(many=True)
+    #comments_game = CommentsGameSerializer(many=True)
+    reviews_game = ReviewSerializer(many=True)
     #players = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
     #who_added_to_wishlist = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
     categories = serializers.SlugRelatedField(slug_field='name', read_only=True, many=True)
@@ -113,7 +123,7 @@ class OutputGameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ('id', 'author', 'comments_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
+        fields = ('id', 'author', 'reviews_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
                   'description', 'short_description')
 
 
@@ -132,14 +142,6 @@ class GameLibrarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = ('id', 'author', 'img', 'image', 'title', 'price')
-
-
-class ReviewSerializer(serializers.ModelSerializer):
-    """Сериализатор отзыва к игре"""
-
-    class Meta:
-        model = Review
-        fields = '__all__'
 
 
 class FaqSerializer(serializers.ModelSerializer):

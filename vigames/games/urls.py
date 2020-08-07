@@ -2,14 +2,14 @@ from django.urls import path
 from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame, \
     PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView, \
-    QuestionDetail, DownloadMedia, OutputGenre, OutputStatistics
+    QuestionDetail, DownloadMedia, OutputGenre, OutputStatistics, OutputWishlist
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
 
     path('profile', AccountDetail.as_view(), name="profile"),
     path('profile/library', OutputLibrary.as_view(), name="library"),
-    path('profile/wishlist', OutputLibrary.as_view(), name="profile_wishlist"),
+    path('profile/wishlist', OutputWishlist.as_view(), name="profile_wishlist"),
     path('profile/statistics', OutputStatistics.as_view(), name="statistics"),
 
     path('role', RoleView.as_view(), name="role"),

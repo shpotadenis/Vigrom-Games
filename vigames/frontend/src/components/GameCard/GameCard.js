@@ -21,7 +21,7 @@ methods:{
 		}
 	},
   leftFunc(){
-    if(this.SlideNumber<0){
+    if(this.SlideNumber<=0){
       this.SlideNumber=3
     }else{
       this.SlideNumber--
@@ -40,7 +40,7 @@ props:{
   default(){
     return{}
   }
-},
+}
 
 }
 }
