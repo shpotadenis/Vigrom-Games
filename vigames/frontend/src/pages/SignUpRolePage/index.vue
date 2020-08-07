@@ -25,7 +25,9 @@
                                        id="developer"
                                        value="dev"
                                        v-model="user"/>
-                                <label class="words" for="developer"> Я разработчик</label>
+                                <label class="words" for="developer">
+                                    <span>Я разработчик</span>
+                                </label>
                             </div>
                             <div class="errors" v-if="error">
                                 Роль не выбрана
