@@ -4,6 +4,7 @@ import FooterComponent from "../../components/FooterComponent/index.vue"
 import Checkout from "../../components/Pop-ups/Checkout/checkout"
 import SliderComponent from './SliderComponent/SliderComponent.vue'
 import user from '../../api/modules/user.js'
+import { getImageUrl } from '../../utils.js'
 
 export default {
     name: "GameSinglePage",
@@ -38,7 +39,7 @@ export default {
             let images = []
             for (let i in this.getGameData.image) {
                 images.push({
-                    image: this.getGameData.image[i].img
+                    image: getImageUrl(this.getGameData.image[i].img)
                 })
             }
             return images
@@ -98,7 +99,7 @@ export default {
                 const url = window.URL.createObjectURL(new Blob([response.data]))
                 const link = document.createElement('a')
                 link.href = url
-                link.setAttribute('download', '') //or any other extension
+                link.setAttribute('download', this.getGameData.title + '.zip') //or any other extension
                 document.body.appendChild(link)
                 link.click()
             }).catch(error => {

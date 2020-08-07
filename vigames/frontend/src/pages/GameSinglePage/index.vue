@@ -136,7 +136,7 @@
         </div>
         <reviews-component id="reviews"></reviews-component>
         <div class="wrapper_2">
-            <img src="@/assets/img/top_banner.png" alt="" class="full-banner">
+            <img :src="getImages[0].image" alt="" class="full-banner">
             <div class="privacy-policy">
                 <a href="#!" class="privacy-policy__link">
                     Политика конфиденциальности
