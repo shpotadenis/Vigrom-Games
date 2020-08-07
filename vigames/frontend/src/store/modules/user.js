@@ -195,7 +195,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             user.changePassword(data).then(response => {
                 if (response) {
-                    resolve(response.data)
+                    resolve(response)
                 }
             }).catch(error => {
                 reject(error.response)
