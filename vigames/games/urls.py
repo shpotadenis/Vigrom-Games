@@ -2,7 +2,7 @@ from django.urls import path
 from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame, \
     PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView, \
-    QuestionDetail, DownloadMedia, OutputGenre, OutputStatistics, OutputWishlist
+    QuestionDetail, DownloadMedia, OutputGenre, OutputStatistics, OutputWishlist, SearchView
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
@@ -25,12 +25,12 @@ urlpatterns = [
     path('games/<int:pk>/download', DownloadGame.as_view(), name="download_game"),
     path('games/<int:pk>/wishlist', WishListDetail.as_view(), name="wishlist"),
 
+    path('news/', OutputAllNewsView.as_view()),
     path('news/add', PostView.as_view(), name="add_new_post"),
     path('news/<int:pk>/assess', AssessPostDetail.as_view(), name="assess"),
-    path('news/<str:pk>/', PostView.as_view(), name='view_post'),
+    path('news/<int:pk>/', PostView.as_view(), name='view_post'),
     path('news/<int:pk>/update', PostView.as_view(), name='update_post'),
     path('news/<int:pk>/delete', PostView.as_view(), name='delete_post'),
-    path('news/', OutputAllNewsView.as_view()),
 
     path('categories/<int:pk>', GameCategoryDetail.as_view(), name="assess"),
 
@@ -49,7 +49,7 @@ urlpatterns = [
     path('uploads/add', DownloadMedia.as_view(), name='upload_media'),
     path('uploads/<int:pk>/delete', DownloadMedia.as_view(), name='delete_media'),
 
-    #path('search', SearchView.as_view(), name='search'),
+    path('search', SearchView.as_view(), name='search'),
 ]
 
 #/api/accounts/profile/id/	редактирование аккаунта пользователя (изменение имени, фамилии, телефона и т.д.)
