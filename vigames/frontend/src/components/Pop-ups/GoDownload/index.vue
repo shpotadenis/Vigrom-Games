@@ -15,7 +15,7 @@
           Теперь вы можете скачать файл на свой компьютер. Приятной игры!
          </div>
         <div class="goDownload_Footer">
-          <button class="download">Cкачать</button>
+          <button class="download" @click="downloadGame">Cкачать</button>
         </div>
       </div>
     </div>

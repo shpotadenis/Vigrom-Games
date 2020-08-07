@@ -1,10 +1,10 @@
-
+import GoDownload from "../../../components/Pop-ups/GoDownload/index.vue"
 
 
 export default {
     name: "checkout",
     components: {
-
+        GoDownload
     },
     props: ['gameData'],
     data() {
@@ -12,7 +12,8 @@ export default {
           ammount_donate: 0,
           isBtnDonate1Click: false,
           isBtnDonate2Click: false,
-          isBtnDonate3Click: false
+          isBtnDonate3Click: false,
+          isBtnClick2: false
         }
     },
 

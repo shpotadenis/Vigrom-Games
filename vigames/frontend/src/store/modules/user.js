@@ -36,7 +36,7 @@ const getters = {
     },
 
     isInWishlist: (state) => (gameId) => {
-        return state.library.some(g => g.id == gameId)
+        return state.wishlist.some(g => g.id == gameId)
     },
 
     isGamePurchased: (state) => (gameId) => {

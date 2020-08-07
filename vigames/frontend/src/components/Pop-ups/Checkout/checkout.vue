@@ -1,6 +1,7 @@
 <template>
   <div class="popup-wrapper">
     <div class="checkout container">
+        <goDownload v-if="isBtnClick2" @close="isBtnClick2 = false">  </goDownload>
         <div class="checkout_header">
             <div class="head-block">
                 <div class="head-name">Оформление покупки</div>

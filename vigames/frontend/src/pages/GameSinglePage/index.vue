@@ -16,7 +16,7 @@
                         От {{getGameData.author}}
                     </p>
                 </div>
-                <div class="info-card__buttons">
+                <div class="info-card__buttons" v-if="this.$store.getters['user/isLoggedIn']">
                     <div class="info-card__buy" v-if="!isInWishlist">
                         <button @click="addToWishlistClick" class="buy__btn">
                             В избранное
@@ -136,7 +136,7 @@
         </div>
         <reviews-component id="reviews"></reviews-component>
         <div class="wrapper_2">
-            <img :src="getImages[0].image" alt="" class="full-banner">
+            <img v-if="getImages[0]" :src="getImages[0].image" alt="" class="full-banner">
             <div class="privacy-policy">
                 <a href="#!" class="privacy-policy__link">
                     Политика конфиденциальности
