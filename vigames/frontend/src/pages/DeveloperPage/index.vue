@@ -41,7 +41,9 @@
             <div id="control_panel">
                 <p id="control_panel_title">Панель управления</p>
                 <a href="" class="control_panel_list" id="control_panel_title_first">Мои игры</a>
-                <button id="control_panel_button">Загрузить игру</button>
+                <router-link :to="{name: 'uploadPage'}">
+                    <button id="control_panel_button">Загрузить игру</button>
+                </router-link>
             </div>
         </div>
         <footer-component></footer-component>

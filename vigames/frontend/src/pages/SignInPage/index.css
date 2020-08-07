@@ -17,10 +17,9 @@
 .login-pic{
     padding: 0;
     position: absolute;
-    height: 420px;
-    width: 570px;
-    left: -80px;
-    bottom: 15px;
+    height: 460px;
+    width: 620px;
+    left: -40px;
 }
 p{
     font-style: normal;

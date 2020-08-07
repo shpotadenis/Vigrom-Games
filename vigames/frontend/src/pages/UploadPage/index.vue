@@ -8,10 +8,10 @@
                     <div class="col-6">
                         <div class="blocks">
                             <div class="blockName">Название</div>
-                            <input class="textInputs nameInput" placeholder="Не более 440 символов"/>
+                            <input class="textInputs nameInput" placeholder="Введите название"/>
                         </div>
                         <div class="blocks">
-                            <div class="blockName">Название игры</div>
+                            <div class="blockName">Краткое описание</div>
                             <input class="textInputs thirdInpits" placeholder="Не более 440 символов"/>
                         </div>
                     </div>
@@ -20,17 +20,21 @@
                             <div class="blockName">Жанр</div>
                             <select class="textInputs">
                                 <option>Выберите жанр</option>
-                            </select>
-                        </div>
-                        <div class="blocks">
-                            <div class="blockName">Статус релиза</div>
-                            <select class="textInputs">
-                                <option>Выберите статус</option>
+                                <option>Приключения</option>
+                                <option>Головоломки</option>
+                                <option>Экшн</option>
+                                <option>РПГ</option>
+                                <option>Стратегии</option>
+                                <option>Фермы</option>
+                                <option>ММО</option>
+                                <option>Шутеры</option>
+                                <option>Гонки</option>
+                                <option>Симуляторы</option>
                             </select>
                         </div>
                         <div class="blocks">
                             <div class="blockName">Цена</div>
-                            <input class="textInputs priceInput" placeholder="Не более 440 символов"/>
+                            <input class="textInputs priceInput" placeholder="Укажите цену в рублях"/>
                         </div>
                     </div>
                 </div>
@@ -42,17 +46,32 @@
                     <div class="col-4">
                         <div class="blocks">
                             <div class="blockName">Картинка для карточки игры</div>
-                            <input class="textInputs secondInputs" placeholder="Перетащите или загрузите сюда файл размером 324х255"/>
+                            <div class="form-group">
+                                <label class="label">
+                                    <span class="title">{{selectFile3}}</span>
+                                    <input type="file" class="fileInput textInputs secondInputs"  @change="UpLoadFile3">
+                                </label>
+                            </div>
                         </div>
                         <div class="blocks">
                             <div class="blockName">Картинка для баннера</div>
-                            <input class="textInputs secondInputs" placeholder="Перетащите или загрузите сюда файл размером 1100х441"/>
+                            <div class="form-group">
+                                <label class="label">
+                                    <span class="title">{{selectFile2}}</span>
+                                    <input type="file" class="fileInput textInputs secondInputs"  @change="UpLoadFile2">
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="blocks">
                             <div class="blockName">Скриншоты</div>
-                            <input class="textInputs secondInputs" placeholder="Перетащите или загрузите сюда 3-5 файлов размером 324х255"/>
+                            <div class="form-group">
+                                <label class="label">
+                                    <span class="title">{{selectFile1}}</span>
+                                    <input type="file" class="fileInput textInputs secondInputs" multiple  @change="UpLoadFile1">
+                                </label>
+                            </div>
                         </div>
                         <div class="blocks">
                             <div class="blockName ">Ссылка на геймплей-видео</div>
@@ -62,10 +81,15 @@
                     <div class="col-4">
                         <div class="blocks">
                             <div class="blockName ">Архив с игрой для скачивания</div>
-                            <input class="textInputs secondInputs" placeholder="Перетащите или загрузите сюда файл*"/>
+                            <div class="form-group">
+                                <label class="label">
+                                    <span class="title">{{selectFile}}</span>
+                                    <input type="file" class="fileInput textInputs secondInputs" @change="UpLoadFile">
+                                </label>
+                            </div>
                         </div>
                         <div class="col-11 tip">
-                            Мы советуем добавить в архив инструктцию по установке игры.
+                            Мы советуем добавить в архив инструкцию по установке игры.
                         </div>
                         <div class="col-11 tip">
                             *Обратите внимание, что размер архива не должен превышать 750 МБ.
