@@ -20,7 +20,9 @@ export default {
       },
       UpLoadFile1(event){
         console.log(event.target.selectFile)
-        this.selectFile1 = event.target.files[0].name;
+        for(let i=0; i<5;i++){
+          this.selectFile1 = event.target.files[i].name;
+        }
       },
       UpLoadFile2(event){
         console.log(event.target.selectFile)
