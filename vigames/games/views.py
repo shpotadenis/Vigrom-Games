@@ -4,11 +4,13 @@ from rest_framework import status
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from .search import Search_engine
 from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer, \
-    StatisticsSerializer
+    StatisticsSerializer, Search_game_serializers, Search_news_serializers
 from django.contrib.auth.models import User
 from scripts import Search
 
@@ -52,7 +54,7 @@ class PostView(APIView):
 
     def get(self, request, pk):
         try:
-            news = Posts.objects.get(url=pk, draft=False)
+            news = Posts.objects.get(id=pk, draft=False)
             serializer = OutputPost(news)
             return Response(serializer.data)
         except:
@@ -228,6 +230,7 @@ class GameRatingDetail(APIView):
         mark = request.POST.get('mark')
         game = self.get_game(pk)
         comment = request.POST.get('comment')
+        comment = Search.comments(Search(), comment)
         serializer = ReviewSerializer(data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
         if serializer.is_valid() and user.is_authenticated and user in game.players.all():
             try:
@@ -254,6 +257,7 @@ class GameRatingDetail(APIView):
         mark = request.POST.get('mark')
         user = request.user
         comment = request.POST.get('comment')
+        comment = Search.comments(Search(), comment)
         if user.is_authenticated:
             try:
                 user_rating = Review.objects.get(author=user.id, game=pk)
@@ -549,3 +553,24 @@ class SearchView(APIView):
         #else:
             #return Response(status=status.HTTP_204_NO_CONTENT)
 '''
+class SearchView(APIView):
+    """
+    Поиск по новостям или играм
+    request.data['search'] - текст запроса
+    dir - раздел в котором ищем. Может быть двух типов games/news
+    user - id пользователя
+    """
+
+    def post(self, request):
+        text = request.data['search']
+        if request.data['dir'] == 'games':
+            game = Game.objects.filter()
+            serializer = OutputGameSerializer(game, many=True)
+        elif request.data['dir'] == 'news':
+            post = Posts.objects.filter(draft=False)
+            serializer = OutputPost(post, many=True)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        list_index = Search_engine(text, list(serializer.data))
+        return Response(list_index)
+

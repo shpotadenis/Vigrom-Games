@@ -206,8 +206,8 @@ class Posts(models.Model):
 
     # author = models.ManyToManyField(User, default='admin')
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    liked = models.ManyToManyField(Account, blank=True, related_name="liked")
-    disliked = models.ManyToManyField(Account, blank=True, related_name="disliked")
+    #liked = models.ManyToManyField(Account, blank=True, related_name="liked")
+    #disliked = models.ManyToManyField(Account, blank=True, related_name="disliked")
 
     # в принципе можно убрать счетчики и искать кол-во лайкнувших/дизлайкнувших людей,
     # посмотреть, как удобнее

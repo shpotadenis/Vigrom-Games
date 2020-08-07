@@ -61,7 +61,7 @@ class OutputAllNews(serializers.ModelSerializer):
 
     class Meta:
         model = Posts
-        fields = ('author', 'title', 'description', 'data', 'url', 'num_views', 'img')
+        fields = ('id', 'author', 'title', 'description', 'data', 'num_views', 'img')
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -75,7 +75,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class OutputPost(PostSerializer):
-    """Вывод отдельного поста по url"""
+    """Вывод отдельного поста"""
 
     comments_post = CommentsNewsSerializer(many=True)
 
@@ -113,7 +113,7 @@ class OutputGameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ('author', 'comments_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
+        fields = ('id', 'author', 'comments_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
                   'description', 'short_description')
 
 
@@ -172,3 +172,17 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = '__all__'
+
+
+class Search_game_serializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Game
+        fields = ('id', 'title', )
+
+
+class Search_news_serializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Posts
+        fields = ('id', 'title', )
