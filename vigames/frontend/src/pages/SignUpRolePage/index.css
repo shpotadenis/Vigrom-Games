@@ -56,19 +56,63 @@ p{
 
 .words{
     font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 19px;
-    padding-left: 12px;
+    padding-left: 15px;
+    cursor: pointer;
 }
-input{
+
+/*input{*/
+/*    padding: 5px;*/
+/*    margin-top: 8px;*/
+/*    margin-bottom: 8px;*/
+/*    border: none;*/
+/*    color: #FFFFFF;*/
+/*    height: 22px;*/
+/*    width: 22px;*/
+/*}*/
+/*span{*/
+/*    margin-bottom: 50px;*/
+/*    font-size: 14px;*/
+/*}*/
+input[type='radio'] {
     padding: 5px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    border: none;
-    color: #FFFFFF;
+    margin-top: 10px;
+    position: relative;
     height: 22px;
     width: 22px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type='radio']::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2D2D42;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    visibility: visible;
 }
 
 .signin-link{
