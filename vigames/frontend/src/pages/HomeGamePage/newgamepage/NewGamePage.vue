@@ -6,9 +6,10 @@
       </div>
       <div class="NewsGamePage">
         <game-card
-          v-for="gamebests in news"
+          v-for="gamebests in list"
           :key="gamebests.id"
           :Game="gamebests"
+          class="game-card"
         />
       </div>
     </div>

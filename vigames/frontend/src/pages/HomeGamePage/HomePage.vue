@@ -7,7 +7,7 @@
       <popular-games
         :Array_Slide="items"
       />
-      <little-popular/>
+     <!-- <little-popular/> !-->
       <new-game-page/>
       <bests-game-page/>
       <categories-game-page/>

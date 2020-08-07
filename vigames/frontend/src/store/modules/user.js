@@ -61,7 +61,7 @@ const mutations = {
         state.isRoleSelected = false
         state.token = null
         state.loggedIn = false
-        state.library = {} 
+        state.library = {}
         state.wishlist = {}
         window.localStorage.clear()
     },
