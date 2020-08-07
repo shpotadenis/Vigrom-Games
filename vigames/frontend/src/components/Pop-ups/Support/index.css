@@ -191,3 +191,29 @@ hr {
     -webkit-box-shadow:0 0 15px #CE6796;
     box-shadow:0 0 15px #CE6796;
 }
+.errors {
+  position: absolute;
+  font-size: 14px;
+  left: 800px;
+  bottom: 325px;
+  margin-left: 26px;
+  width: 230px;
+  min-height: 43px;
+  max-height: 65px;
+  background: #212130;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 #b6b6b6;
+  color: #FFFFFF;
+  text-align: center;
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+.errors:before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: calc(50% - 12px);
+  border-top: 10px solid transparent;
+  border-right: 20px solid #212130;
+  border-bottom: 10px solid transparent;
+}
