@@ -125,5 +125,8 @@ export default{
 
       ]
     }
+  },
+  methods:{
+    
   }
 }

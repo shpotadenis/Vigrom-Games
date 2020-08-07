@@ -25,6 +25,7 @@
                     btn_caption="Подробнее"
                     :btn_route="{ name: 'homePage' }">
   </banner-component>
+  <div class="PuzzleGamesComponents">
   <game-card
   class="ItemCard"
   v-for="discount in discountgames"
