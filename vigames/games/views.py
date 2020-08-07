@@ -424,6 +424,18 @@ class OutputLibrary(ListAPIView):
             serializer = GameLibrarySerializer(games, many=True)
             return Response(serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+
+class OutputWishlist(ListAPIView):
+    """Вывод библиотеки игр пользователя"""
+
+    def get(self, request):
+        user = request.user
+        if user.is_authenticated:
+            games = Game.objects.filter(who_added_to_wishlist=user)
+            serializer = GameLibrarySerializer(games, many=True)
+            return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class DownloadGame(ListAPIView):
