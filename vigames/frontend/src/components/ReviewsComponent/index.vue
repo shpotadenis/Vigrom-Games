@@ -1,5 +1,5 @@
 <template>
-    <div class="reviews__wrapper">
+    <div class="reviews__wrapper" v-if="!loading">
         <div class="header">
             <h3 class="header__text">
                 Отзывы
@@ -13,17 +13,37 @@
                 </a>
             </div>
         </div>
-        <div class="reviews__replay">
-            <a href="#!" class="replay__link">
-                <span class="replay__text">
-                    Оставить свой отзыв
-                </span>
-                <img src="@/assets/img/chevron-down-icon.svg" alt="" class="replay__icon">
-            </a>
+        <div v-if="this.$store.getters['user/isLoggedIn']">
+            <div class="reviews__replay">
+                <a class="replay__link" @click="reviewFormShow = !reviewFormShow">
+                    <span class="replay__text">
+                        Оставить свой отзыв
+                    </span>
+                    <img src="@/assets/img/chevron-down-icon.svg" alt="" class="replay__icon">
+                </a>
+            </div>
+            <div id="window" v-if="reviewFormShow">
+                <div class="send_block">
+                    <div class="rating">
+                        <label for="rating_game" class="rating_label">Рейтинг</label>
+                        <select class="textInputs" id="rating_game" v-model="rating">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                  <textarea type="text" class="sms" id="message" v-model="content" placeholder="Оставьте свой отзыв">
+                  </textarea>
+                </div>
+                <div>
+                    <button class="send_btn" @click="sendBtnClick">Отправить</button>
+                </div>
+            </div>
         </div>
-
         <div class="review__cards">
-            <div class="review__card" v-for="review in getReviews" :key="review.id">
+            <div class="review__card" v-for="review in reviews" :key="review.id">
                 <div class="review__userplate">
                     <img src="@/assets/img/userpic.png" alt="" class="userplate__pic">
                     <p class="review__username">

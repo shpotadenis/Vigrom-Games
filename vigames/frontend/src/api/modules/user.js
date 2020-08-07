@@ -81,6 +81,14 @@ export default {
             url: '/api/games/' + gameId + '/download',
             responseType: 'arraybuffer'
         })
+    },
+
+    createReview(gameId, data) {
+        let fd = new FormData()
+        fd.append('mark', data.mark)
+        fd.append('comment', data.comment)
+        return instance.post('/api/games/' + gameId + '/rating', fd)
+
     }
 
 }

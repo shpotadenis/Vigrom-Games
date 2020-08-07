@@ -10,8 +10,8 @@
      <!-- <little-popular/> !-->
       <new-game-page/>
       <bests-game-page/>
-      <categories-game-page/>
-      <recommendation-game-page/>
+     <!-- <categories-game-page/> !-->
+     <!-- <recommendation-game-page/> !-->
       <div class="Banner"></div>
       <div class="foot">
 

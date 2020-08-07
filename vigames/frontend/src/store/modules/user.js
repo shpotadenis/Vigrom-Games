@@ -234,6 +234,17 @@ const actions = {
                 reject(error)
             })
         })
+    },
+
+    addReview(context, data) {
+        return new Promise((resolve, reject) => {
+            user.createReview(data.gameId, data).then(response => {
+                resolve(response)
+            }).catch(error => {
+                console.log(error.response)
+                reject(error)
+            })
+        })
     }
 };
 

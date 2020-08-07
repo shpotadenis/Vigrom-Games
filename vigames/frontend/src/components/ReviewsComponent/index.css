@@ -48,6 +48,7 @@
 
 .reviews__replay {
     margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .review__card {
@@ -90,4 +91,70 @@
     line-height: 16px;
     color: rgba(255, 255, 255, 0.8);
     margin-top: 10px;
+}
+
+.send_btn {
+    width: 157px;
+    height: 33px;
+    border-radius: 6px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+    background: #CE6796;
+}
+
+.send_btn:hover {
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
+}
+.send_block {
+    margin-bottom: 20px;
+}
+.replay__link {
+    cursor: pointer;
+}
+.sms {
+    height: 70px;
+    width: 555px;
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: 0;
+    resize: none;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+    background: #29293D;
+}
+
+.textInputs{
+    background: #212130;
+    border-radius: 8px;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px;
+    min-width: 100px;
+}
+#window {
+    display: block;
+    width: 550px;
+}
+.rating_label {
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.rating {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
 }
