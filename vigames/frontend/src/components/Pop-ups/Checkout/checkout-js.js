@@ -1,4 +1,4 @@
-import GoDownload from "../../../components/Pop-ups/GoDownload/index.vue"
+
 
 const data = {
     name: 'Название игры',
@@ -9,11 +9,10 @@ const data = {
 export default {
     name: "checkout",
     components: {
-        GoDownload
+
     },
     data() {
         return {
-          isBtnClick2: false,
           ammount_donate: 0,
           isBtnDonate1Click: false,
           isBtnDonate2Click: false,
