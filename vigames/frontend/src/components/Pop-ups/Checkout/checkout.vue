@@ -1,7 +1,6 @@
 <template>
   <div class="popup-wrapper">
     <div class="checkout container">
-          <goDownload v-if="isBtnClick2" @close="isBtnClick2 = false">  </goDownload>
         <div class="checkout_header">
             <div class="head-block">
                 <div class="head-name">Оформление покупки</div>
@@ -53,7 +52,6 @@
             </div>
             <div class="btns-footer">
             <div><button class="payment">Перейти к оплате</button></div>
-            <div><button @click="isBtnClick2 = true" class="payment">Всплывашка после покупки</button></div>
           </div>
         </div>
     </div>
