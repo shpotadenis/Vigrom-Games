@@ -13,7 +13,7 @@
             </div>
         </div>
         <hr>
-
+    <!-- TODO: Добавить функциональность
         <div class="checkout_content">
             <div class="text-1">
                 После оплаты вы получите письмо с ключом для скачивания игры в Dowload Manager на указанный вами email
@@ -23,7 +23,7 @@
                 <input type="text" id="mail" :placeholder="getGameData.email"/>
             </div>
         </div>
-
+    !-->
         <div class="donate">
             <div class="text-2">Поддержать разработчика</div>
             <div class="btns_donate">
@@ -52,8 +52,9 @@
                 <div class="price-sum">{{getGameData.price+ammount_donate}}<img src="@/assets/img/ruble-white.svg" alt="Ruble"></div>
             </div>
             <div class="btns-footer">
-            <div><button class="payment">Перейти к оплате</button></div>
-            <div><button @click="isBtnClick2 = true" class="payment">Всплывашка после покупки</button></div>
+            <div><button @click="buyGame" class="payment">Перейти к оплате</button></div>
+            <!-- <div><button @click="isBtnClick2 = true" class="payment">Всплывашка после покупки</button></div>
+            !-->
           </div>
         </div>
     </div>

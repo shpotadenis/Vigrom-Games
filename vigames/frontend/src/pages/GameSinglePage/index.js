@@ -3,6 +3,7 @@ import BreadcrumbsComponent from "../../components/BreadcrumbsComponent/index.vu
 import FooterComponent from "../../components/FooterComponent/index.vue"
 import Checkout from "../../components/Pop-ups/Checkout/checkout"
 import SliderComponent from './SliderComponent/SliderComponent.vue'
+import user from '../../api/modules/user.js'
 
 export default {
     name: "GameSinglePage",
@@ -41,6 +42,13 @@ export default {
                 })
             }
             return images
+        },
+        getCheckoutGameData() {
+            return {
+                id: this.getGameData.id,
+                name: this.getGameData.title,
+                price: this.getGameData.price
+            }
         },
 
         breadcrumbs() {
@@ -85,7 +93,17 @@ export default {
             })
         },
         downloadBtnClick() {
-
+            user.downloadGame(this.$route.params.id).then(response => {
+                console.log(response)
+                const url = window.URL.createObjectURL(new Blob([response.data]))
+                const link = document.createElement('a')
+                link.href = url
+                link.setAttribute('download', 'file') //or any other extension
+                document.body.appendChild(link)
+                link.click()
+            }).catch(error => {
+                console.log(error)
+            })
         },
         addToWishlistClick() {
             this.$store.dispatch('user/addToWishlist', {

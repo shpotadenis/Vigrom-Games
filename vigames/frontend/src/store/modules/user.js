@@ -214,6 +214,21 @@ const actions = {
                 reject(error.response)
             })
         })
+    },
+
+    buyGame(context, data) {
+        return new Promise((resolve, reject) => {
+            user.buyGame(data.gameId).then(response => {
+                if (response) {
+                    resolve(response.data)
+                    context.dispatch('getWishlist')
+                    context.dispatch('getLibrary')
+                }
+            }).catch(error => {
+                console.log(error)
+                reject(error)
+            })
+        })
     }
 };
 

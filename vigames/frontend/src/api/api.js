@@ -3,7 +3,7 @@ import vue from '../main'
 
 
 export const instance = axios.create()
-instance.defaults.baseURL = 'http://13.94.157.21:8000' // 'http://13.94.157.21:8000' - for test in remote
+instance.defaults.baseURL = 'http://localhost:8000' // 'http://13.94.157.21:8000' - for test in remote
 instance.defaults.timeout = 1000000
 
 instance.interceptors.request.use(r => {

@@ -69,6 +69,18 @@ export default {
 
     removeFromWishlist(gameId) {
         return instance.delete('/api/games/' + gameId + '/wishlist')
+    },
+
+    buyGame(gameId) {
+        return instance.post('/api/games/' + gameId + '/buy')
+    },
+
+    downloadGame(gameId) {
+        return instance({
+            method: 'get',
+            url: '/api/games/' + gameId + '/download',
+            responseType: 'arraybuffer'
+        })
     }
 
 }

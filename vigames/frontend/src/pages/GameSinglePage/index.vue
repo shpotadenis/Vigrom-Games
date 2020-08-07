@@ -2,7 +2,7 @@
     <div v-if="!loading">
     <div class="wrapper">
         <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
-        <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>
+        <checkout v-if="isBtnClick" @close="isBtnClick = false" :gameData="getCheckoutGameData"></checkout>
         <div class="game-card">
             <div class="game-card__banner banner">
                 <slider-component :array_-slide="getImages"></slider-component>
