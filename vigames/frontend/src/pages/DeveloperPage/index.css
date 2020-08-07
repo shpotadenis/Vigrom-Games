@@ -14,6 +14,10 @@
     line-height: 19px;
     color: #FFFFFF;
 }
+.exit_btn {
+    position: absolute;
+    bottom: 15px;
+}
 #personal_account_info{
     display: flex;
     justify-content: space-between;
@@ -108,7 +112,7 @@
     border: 0;
     border-radius: 8px;
 }
-#change_button{
+.change_button{
     position: absolute;
     top: 318px;
     left: 30px;
@@ -153,7 +157,7 @@ input{
 #change_password:hover{
     text-decoration: underline;
 }
-#change_button:hover{
+.change_button:hover{
     -moz-box-shadow:0 0 15px #CE6796;
     -webkit-box-shadow:0 0 15px #CE6796;
     box-shadow:0 0 15px #CE6796;

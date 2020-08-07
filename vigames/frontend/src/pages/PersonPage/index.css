@@ -109,7 +109,7 @@
     border-radius: 8px;
     color: #fff;
 }
-#change_button{
+.change_button{
     position: absolute;
     top: 318px;
     left: 30px;
@@ -136,7 +136,7 @@
 input{
     padding: 0 20px;
 }
-#change_password{
+.change_password{
     position: absolute;
     left: 30px;
     top: 269px;
@@ -151,10 +151,14 @@ input{
     font-size: 14px;
     line-height: 19px;
 }
-#change_password:hover{
+.change_password:hover{
     text-decoration: underline;
 }
-#change_button:hover{
+.exit_btn {
+    position: absolute;
+    bottom: 15px;
+}
+.change_button:hover{
     -moz-box-shadow:0 0 15px #CE6796;
     -webkit-box-shadow:0 0 15px #CE6796;
     box-shadow:0 0 15px #CE6796;

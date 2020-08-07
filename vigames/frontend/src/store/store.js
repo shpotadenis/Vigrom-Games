@@ -10,7 +10,9 @@ Vue.use(vuex)
 
 const vuexLocal = new VuexPersistence({
     storage: window.localStorage,
-    modules: ['user']
+    reducer: (state) => ({
+        user: state.user
+    })
 })
 
 export default new vuex.Store({

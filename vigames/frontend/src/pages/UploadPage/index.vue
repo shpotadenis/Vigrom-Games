@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <label class="label">
                                     <span class="title">{{selectFile1}}</span>
-                                    <input type="file" class="fileInput textInputs secondInputs" multiple  @change="UpLoadFile1">
+                                    <input type="file" class="fileInput textInputs secondInputs" v-on:change="UpLoadFile1" multiple>
                                 </label>
                             </div>
                         </div>

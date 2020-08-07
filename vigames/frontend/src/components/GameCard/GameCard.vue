@@ -73,12 +73,7 @@
 
             </div>
           </div>
-            <img v-bind:src="require('@/assets/img/' + Game.icon)" class="BigScrin" @click="showScrin()">
-              <div>
-                <p class="TextComponentPopular">vnevnjehvnjiehv kjadb uib jab s sH YU</p>
-              </div>
-
-            <img v-bind:src="Game.icon" class="BigScrin" @click="showScrin()">
+            <img v-if="Game.icon" v-bind:src="require('@/assets/img/' + Game.icon)" class="BigScrin" @click="showScrin()">
             </div>
           </div>
         </div>

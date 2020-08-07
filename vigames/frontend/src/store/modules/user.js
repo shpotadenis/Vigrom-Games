@@ -1,5 +1,6 @@
 import user from '../../api/modules/user'
 
+
 const state = () => ({
     userLogin: null, // string - логин пользователя
     isDev: false, // boolean - является ли разработчиком
@@ -29,7 +30,19 @@ const getters = {
 
     getUserName(state) {
         return state.userLogin
-    }
+    },
+
+    getWishlist(state) {
+        return state.wishlist
+    },
+
+    isInWishlist: (state) => (gameId) => {
+        return state.wishlist.some(g => g.id == gameId)
+    },
+
+    isGamePurchased: (state) => (gameId) => {
+        return state.library.some(g => g.id == gameId)
+    },
 };
 
 const mutations = {
@@ -44,8 +57,12 @@ const mutations = {
 
     userLogout(state) {
         state.userLogin = null
+        state.isDev = false
+        state.isRoleSelected = false
         state.token = null
         state.loggedIn = false
+        state.library = {} 
+        state.wishlist = {}
         window.localStorage.clear()
     },
 
@@ -66,7 +83,8 @@ const mutations = {
 
     changeName(state, newName) {
         state.userLogin = newName
-    }
+    },
+
 };
 
 const actions = {
@@ -79,6 +97,7 @@ const actions = {
                         login: credentials.login,
                         token: response.data.auth_token
                     });
+                    context.dispatch('afterLoginEvents')
                     resolve(response.data)
                 }
                 else { // В ответе нет токена, но код ответа не содержит ошибки
@@ -88,6 +107,15 @@ const actions = {
                 reject(error.response.data)
             })
         });
+    },
+
+    // Выполняет загрузку необходимых данных после того, как пользователь авторизовался
+    afterLoginEvents(context) {
+        // Загрузка библиотеки
+        context.dispatch('getLibrary')
+
+        // Загрузка wishlist
+        context.dispatch('getWishlist')
     },
 
     register({commit}, credentials) {
@@ -146,11 +174,33 @@ const actions = {
       });
     },
 
+    addToWishlist(context, data) {
+        return new Promise((resolve, reject) => {
+            user.addToWishlist(data.gameId).then(response => {
+                context.dispatch('getWishlist')
+                resolve(response)
+            }).catch(error => {
+                reject(error)
+            })
+        })
+    },
+
+    removeFromWishlist(context, data) {
+        return new Promise((resolve, reject) => {
+            user.removeFromWishlist(data.gameId).then(response => {
+                context.dispatch('getWishlist')
+                resolve(response)
+            }).catch(error => {
+                reject(error)
+            })
+        })
+    },
+
     changePassword(context, data) {
         return new Promise((resolve, reject) => {
             user.changePassword(data).then(response => {
                 if (response) {
-                    resolve(response.data)
+                    resolve(response)
                 }
             }).catch(error => {
                 reject(error.response)
@@ -167,6 +217,21 @@ const actions = {
                 }
             }).catch(error => {
                 reject(error.response)
+            })
+        })
+    },
+
+    buyGame(context, data) {
+        return new Promise((resolve, reject) => {
+            user.buyGame(data.gameId).then(response => {
+                if (response) {
+                    resolve(response.data)
+                    context.dispatch('getWishlist')
+                    context.dispatch('getLibrary')
+                }
+            }).catch(error => {
+                console.log(error)
+                reject(error)
             })
         })
     }
