@@ -1,7 +1,7 @@
-import GameInfoCard from "../../../components/GameInfoCard/index.vue"
+import GameInfoCard from "../../../../components/GameInfoCard/index.vue"
 
 export default {
-    name: "topCategory",
+    name: "simulators",
 
     components:{
       GameInfoCard
@@ -47,13 +47,5 @@ export default {
           },
         ]
       }
-    },
-    props:{
-      Top_Category:{
-      type:Object,
-      default(){
-        return{}
-      }
-    },
-}
+    }
 }

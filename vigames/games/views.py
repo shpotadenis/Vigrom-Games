@@ -295,7 +295,7 @@ class OutputGames(ListAPIView):
     def get(self, request):
         games = Game.objects.filter(date_release__gte=date.today()-timedelta(days=7))\
             .order_by('-date_release')[:10]
-        serializer = GameSerializer(games, many=True)
+        serializer = GameLibrarySerializer(games, many=True)
         return Response(serializer.data)
 
 
@@ -424,7 +424,7 @@ class OutputLibrary(ListAPIView):
             serializer = GameLibrarySerializer(games, many=True)
             return Response(serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST)
-    
+
 
 class OutputWishlist(ListAPIView):
     """Вывод библиотеки игр пользователя"""
