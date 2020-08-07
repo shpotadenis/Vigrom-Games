@@ -25,12 +25,16 @@
                         Ваши игры
                     </h1>
                 </div>
-                <div class="main-content__games">
+                <div class="main-content__games" v-if="getLibraryCards.length > 0">
                     <game-card
                             v-for="item in getLibraryCards"
                             :key="item.id"
                             :Game="item"
+                            class="game_card"
                     />
+                </div>
+                <div class="main-content__games" v-else>
+                    Список игр пуст.
                 </div>
             </div>
         </div>

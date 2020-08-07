@@ -4,7 +4,7 @@
     <div class="container">
       <div class="Header">
         <div class="head-name" >
-          Топ 10 игр в категории {{Top_Category.genre}} ***
+          Топ 10 игр в категории Симуляторы
         </div>
         <div class="closer">
           <button @click=" $emit('close')" class="close-icon">

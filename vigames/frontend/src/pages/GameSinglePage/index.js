@@ -3,6 +3,8 @@ import BreadcrumbsComponent from "../../components/BreadcrumbsComponent/index.vu
 import FooterComponent from "../../components/FooterComponent/index.vue"
 import Checkout from "../../components/Pop-ups/Checkout/checkout"
 import SliderComponent from './SliderComponent/SliderComponent.vue'
+import user from '../../api/modules/user.js'
+import { getImageUrl } from '../../utils.js'
 
 export default {
     name: "GameSinglePage",
@@ -25,14 +27,29 @@ export default {
             return this.$store.getters['games/getGame'](this.$route.params.id)
         },
 
+        isPurchased() {
+          return this.$store.getters['user/isGamePurchased'](this.$route.params.id)
+        },
+
+        isInWishlist() {
+          return this.$store.getters['user/isInWishlist'](this.$route.params.id)
+        },
+
         getImages() {
             let images = []
             for (let i in this.getGameData.image) {
                 images.push({
-                    image: this.getGameData.image[i].img
+                    image: getImageUrl(this.getGameData.image[i].img)
                 })
             }
             return images
+        },
+        getCheckoutGameData() {
+            return {
+                id: this.getGameData.id,
+                name: this.getGameData.title,
+                price: this.getGameData.price
+            }
         },
 
         breadcrumbs() {
@@ -66,13 +83,43 @@ export default {
             this.$store.dispatch('games/loadGame', {
                 id: gameId
             }).then(response => {
-                this.loading = false
-                // FIXME: Убрать отладочный вывод
-                console.log('GameAdded:')
-                console.log(response)
+                if (response) {
+                    this.loading = false
+                }
             }).catch(error => {
-                // TODO: Убрать отладочный вывод, редирект на 404
-                console.log("Ошибка в GSP")
+                console.log(error)
+                this.$router.push({
+                    name: 'errorPage404'
+                })
+            })
+        },
+        downloadBtnClick() {
+            user.downloadGame(this.$route.params.id).then(response => {
+                console.log(response)
+                const url = window.URL.createObjectURL(new Blob([response.data]))
+                const link = document.createElement('a')
+                link.href = url
+                link.setAttribute('download', this.getGameData.title + '.zip') //or any other extension
+                document.body.appendChild(link)
+                link.click()
+            }).catch(error => {
+                console.log(error.response)
+            })
+        },
+        addToWishlistClick() {
+            this.$store.dispatch('user/addToWishlist', {
+                gameId: this.$route.params.id
+            }).catch(error => {
+                console.log('Error "addToWishlistClick"')
+                console.log(error)
+            })
+        },
+
+        removeFromWishlistClick() {
+            this.$store.dispatch('user/removeFromWishlist', {
+                gameId: this.$route.params.id
+            }).catch(error => {
+                console.log('Error "removeFromWishlist"')
                 console.log(error)
             })
         }

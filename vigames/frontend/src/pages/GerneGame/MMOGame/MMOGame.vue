@@ -24,7 +24,14 @@
                     btn_caption="Подробнее"
                     :btn_route="{ name: 'homePage' }">
   </banner-component>
-
+  <div class="MMOGamesComponents">
+    <game-card
+    class="ItemCard"
+    v-for="free in freegames"
+    :key="free.id"
+    :Game="free"
+    />
+  </div>
 </div>
     <footer-component></footer-component>
   </div>

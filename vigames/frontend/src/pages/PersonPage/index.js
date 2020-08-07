@@ -59,11 +59,22 @@ export default {
             this.$store.dispatch('user/changeRole', {
                 isDev: true
             }).then(response => {
-                // TODO: Убрать отладочный вывод
-                console.log(response)
+
+                if (response) {
+                    this.$router.push({
+                        name: 'personPage'
+                    })
+                }
+
             }).catch(error => {
                 // TODO: Убрать отладочный вывод
                 console.log(error)
+            })
+        },
+        quit() {
+            this.$store.commit('user/userLogout')
+            this.$router.push({
+                name: 'homePage'
             })
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!loading">
         <div class="wrapper">
             <div class="head">
                 <div class="head__header">
@@ -25,8 +25,16 @@
                         Избранные игры
                     </h1>
                 </div>
-                <div class="main-content__games">
-                    <content-card-component v-for="(card, idx) in cards" :card="card" :key="'card' + idx"></content-card-component>
+                <div class="main-content__games" v-if="getFeaturedCards.length > 0">
+                    <game-card
+                            v-for="item in getFeaturedCards"
+                            :key="item.id"
+                            :Game="item"
+                            class="game_card"
+                    />
+                </div>
+                <div class="main-content__games" v-else>
+                    Список игр пуст.
                 </div>
             </div>
         </div>

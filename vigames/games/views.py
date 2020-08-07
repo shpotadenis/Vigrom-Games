@@ -225,6 +225,16 @@ class GameRatingDetail(APIView):
         except Game.DoesNotExist:
             raise Http404
 
+    def rating(self, pk):
+        game = self.get_game(pk)
+        ratings = Review.objects.filter(game=pk)
+        length = len(ratings)
+        sum = 0
+        for r in ratings:
+            sum += r.mark
+        game.rating = sum / length
+        game.save()
+
     def post(self, request, pk):
         user = request.user
         mark = request.POST.get('mark')
@@ -237,12 +247,12 @@ class GameRatingDetail(APIView):
                 user_ratings = Review.objects.get(author=user.id, game=pk)
             except Review.DoesNotExist:
                 serializer.save()
+                self.rating(pk)
                 return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, pk):
         user = request.user
-        data = None
         if user.is_authenticated:
             try:
                 user_ratings = Review.objects.get(author=user.id, game=pk)
@@ -266,6 +276,7 @@ class GameRatingDetail(APIView):
             serializer = ReviewSerializer(user_rating, data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
             if serializer.is_valid():
                 serializer.save()
+                self.rating(pk)
                 return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -278,6 +289,7 @@ class GameRatingDetail(APIView):
                 user_ratings = None
             if user_ratings != None:
                 user_ratings.delete()
+                self.rating(pk)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
@@ -287,14 +299,14 @@ class OutputGames(ListAPIView):
     def get(self, request):
         games = Game.objects.filter(date_release__gte=date.today()-timedelta(days=7))\
             .order_by('-date_release')[:10]
-        serializer = GameSerializer(games, many=True)
+        serializer = GameLibrarySerializer(games, many=True)
         return Response(serializer.data)
 
 
 class BuyGameDetail(APIView):
     """Покупка игры"""
 
-    def put(self, request, pk):
+    def post(self, request, pk):
         user = request.user
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
@@ -303,6 +315,8 @@ class BuyGameDetail(APIView):
                     game.players.add(user)
                     game.who_added_to_wishlist.remove(user)
                     price = game.price * game.sale_percent / 100
+                    game.number_of_players += 1
+                    game.save()
                     serializer = OrderSerializer(data={'user': user.id, 'game': pk, 'price': price, 'date': date.today()})
                     if serializer.is_valid():
                         serializer.save()
@@ -320,6 +334,17 @@ class WishListDetail(APIView):
             return Game.objects.get(pk=pk)
         except Game.DoesNotExist:
             raise Http404
+
+    def get(self, request, pk):
+        user = request.user
+        if user.is_authenticated:
+            try:
+                games = Game.objects.filter(who_added_to_wishlist=user)
+                serializer = GameLibrarySerializer(games)
+                return Response(serializer.data)
+            except Game.DoesNotExist:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def post(self, request, pk):
         user = request.user
@@ -405,6 +430,18 @@ class OutputLibrary(ListAPIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
+class OutputWishlist(ListAPIView):
+    """Вывод библиотеки игр пользователя"""
+
+    def get(self, request):
+        user = request.user
+        if user.is_authenticated:
+            games = Game.objects.filter(who_added_to_wishlist=user)
+            serializer = GameLibrarySerializer(games, many=True)
+            return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
 class DownloadGame(ListAPIView):
     """Скачивание игры"""
 
@@ -412,16 +449,16 @@ class DownloadGame(ListAPIView):
         user = request.user
         game = Game.objects.get(id=pk)
         if user.is_authenticated:
-            try:
-                account = Account.objects.get(user=user)
-                if account in game.players.all():
+            #try:
+                #account = Account.objects.get(user=user)
+                if user in game.players.all():
                     if game.file:
                         response = HttpResponse(game.file)
                         #надо заставлять разрабов загружать только зипы? сохранять имя и тип файла?
                         response['Content-Disposition'] = 'attachment; filename=' + game.title + '.zip'
                         return response
-            except Account.DoesNotExist:
-                return Response({"message": "fail"})
+            #except Account.DoesNotExist:
+            #    return Response({"message": "fail"})
         return Response({"message": "fail"})
 
 

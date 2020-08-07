@@ -25,12 +25,12 @@
                 <p id="border_user_info_title">Игрок</p>
                 <p id="border_user_info_title_username_now">{{username}}</p>
                 <p id="border_user_info_title_username_change">Имя пользователя:</p>
-                <p id="border_user_info_title_email_change">Эл. почта:</p>
-                <form id="change_form" action="" method="POST" name=" application ">
-                    <input name="name" type="text" id="change_username_placeholder" placeholder="Введите новое имя" required />
-                    <input name="email" type="text" id="changer_email_placeholder"  placeholder="Введите новый E-mail" required/>
-                    <button id="change_button" type="submit" form="change_form">Сохранить</button>
+                <p id="border_user_info_title_email_change">Пароль:</p>
+                <form name=" application ">
+                    <input name="name" type="text" id="change_username_placeholder" v-model="name" placeholder="Введите новое имя" required />
+                    <input name="email" type="password" id="changer_email_placeholder" v-model="pass" placeholder="Введите пароль" required/>
                 </form>
+                <button class="change_button" @click="saveClick">Сохранить</button>
                 <button
                         id="change_password"
                         @click="showPopupinfo"
@@ -41,7 +41,10 @@
             <div id="control_panel">
                 <p id="control_panel_title">Панель управления</p>
                 <a href="" class="control_panel_list" id="control_panel_title_first">Мои игры</a>
-                <button id="control_panel_button">Загрузить игру</button>
+                <router-link :to="{name: 'uploadPage'}">
+                    <button id="control_panel_button">Загрузить игру</button>
+                </router-link>
+                <button class="change_button exit_btn" @click="quit">Выход</button>
             </div>
         </div>
         <footer-component></footer-component>

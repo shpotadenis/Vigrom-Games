@@ -31,3 +31,7 @@
     grid-gap: 30px;
 }
 
+.game_card {
+    width: auto !important;
+    margin: 0 !important;
+}

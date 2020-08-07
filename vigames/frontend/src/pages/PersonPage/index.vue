@@ -30,9 +30,9 @@
                 <input name="name" type="text" id="change_username_placeholder" v-model="name" placeholder="Введите новое имя" required />
                 <input name="email" type="password" id="changer_email_placeholder" v-model="pass" placeholder="Введите пароль" required/>
             </form>
-            <button id="change_button" @click="saveClick">Сохранить</button>
+            <button class="change_button" @click="saveClick">Сохранить</button>
             <button
-                    id="change_password"
+                    class="change_password"
                     @click="showPopupinfo"
             >
                 Изменить пароль
@@ -40,8 +40,13 @@
         </div>
         <div id="control_panel">
         <p id="control_panel_title">Панель управления</p>
-        <a href="" class="control_panel_list" id="control_panel_title_first">История покупок</a>
+        <router-link :to="{name: 'libraryPage'}"
+                     class="control_panel_list"
+                     id="control_panel_title_first">
+            История покупок
+        </router-link>
         <button id="control_panel_button" @click="becomeDev">Стать разработчиком</button>
+        <button class="change_button exit_btn" @click="quit">Выход</button>
         </div>
         </div>
         <footer-component></footer-component>

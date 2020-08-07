@@ -1,9 +1,10 @@
 const axios = require('axios')
-import vue from '../main'
+import vue from '../main.js'
 
 
+export const apiUrl = 'http://localhost:8000'
 export const instance = axios.create()
-instance.defaults.baseURL = 'http://localhost:8000'
+instance.defaults.baseURL = apiUrl // 'http://13.94.157.21:8000' - for test in remote
 instance.defaults.timeout = 1000000
 
 instance.interceptors.request.use(r => {
@@ -36,6 +37,9 @@ instance.interceptors.response.use((response) => {
 
     if (error.response.status == 401 && vue.$store.getters['user/isLoggedIn']) {
         vue.$store.commit('user/userLogout')
+        vue.$router.push({
+            name: 'signInPage'
+        })
     }
 
     return Promise.reject(error)

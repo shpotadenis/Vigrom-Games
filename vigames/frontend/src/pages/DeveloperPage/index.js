@@ -14,7 +14,13 @@ export default {
         return {
             isInfoPopupVisible: false,
             isDownloadPopupVisible: false,
-            username: 'MARF07'
+            name: '',
+            pass: ''
+        }
+    },
+    computed: {
+        username() {
+            return this.$store.getters['user/getUserName']
         }
     },
     methods: {
@@ -31,5 +37,30 @@ export default {
         close() {
             this.isDownloadPopupVisible = false;
         },
+
+        saveClick(e) {
+            if (this.name && this.pass) {
+                this.$store.dispatch('user/changeName', {
+                    username: this.name,
+                    password: this.pass
+                }).then(response => {
+                    // TODO: Убрать отладочный вывод
+                    console.log(response)
+                }).catch(error => {
+                    // TODO: Убрать отладочный вывод
+                    // TODO: Добавить обработку ошибок
+                    console.log(error)
+                })
+                return true
+            }
+            e.preventDefault()
+        },
+
+        quit() {
+            this.$store.commit('user/userLogout')
+            this.$router.push({
+                name: 'homePage'
+            })
+        }
     }
 }

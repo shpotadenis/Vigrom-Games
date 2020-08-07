@@ -2,8 +2,8 @@
   <div class="wrappen">
       <div class="GameComponentPopular">
       <div class="AllScrin" v-if="isShow">
-        <button class='Arrow1Popular' @click="leftFunc"></button>
-        <button class='Arrow2Popular' @click="rightFunc"></button>
+        <button class='Arrow1Popular' @click="leftFunc"><img src="@/assets/img/chevron-right-icon.svg"></button>
+        <button class='Arrow2Popular' @click="rightFunc"><img src="@/assets/img/chevron-right-icon.svg"></button>
         <div class="AllScrinImage" @click="closeScrin" >
           <img
             v-bind:src="Game.scrin"
@@ -38,8 +38,8 @@
           <div class="TextNewGamePopular">
           <div class="ComponentImagePopular">
           <div class="AllSlide">
-            <button class='strelk1Popular' @click="leftFunc"></button>
-            <button class='strelk2Popular' @click="rightFunc"></button>
+            <button class='strelk1Popular' @click="leftFunc"><img src="@/assets/img/chevron-right-icon.svg" ></button>
+            <button class='strelk2Popular' @click="rightFunc"><img src="@/assets/img/chevron-right-icon.svg"></button>
             <div
              >
               <img
@@ -63,7 +63,7 @@
                 height="220"
 
               >
-            
+
               <img
                 v-bind:src="Game.scrin3"
                 width="220"
@@ -73,12 +73,7 @@
 
             </div>
           </div>
-            <img v-bind:src="require('@/assets/img/' + Game.icon)" class="BigScrin" @click="showScrin()">
-              <div>
-                <p class="TextComponentPopular">vnevnjehvnjiehv kjadb uib jab s sH YU</p>
-              </div>
-
-            <img v-bind:src="Game.icon" class="BigScrin" @click="showScrin()">
+            <img v-if="Game.icon" v-bind:src="require('@/assets/img/' + Game.icon)" class="BigScrin" @click="showScrin()">
             </div>
           </div>
         </div>

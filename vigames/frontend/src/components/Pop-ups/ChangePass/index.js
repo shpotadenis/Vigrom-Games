@@ -67,7 +67,8 @@ export default {
                 }).then(response => {
                     if (response) {
                         this.allgood = true
-                        this.SaveNewPass()
+                        this.closePopup()
+                        console.log(response)
                     }
                 }).catch(error => {
                     if (error.data.current_password) {

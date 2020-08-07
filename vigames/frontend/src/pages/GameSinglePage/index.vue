@@ -2,7 +2,7 @@
     <div v-if="!loading">
     <div class="wrapper">
         <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
-        <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>
+        <checkout v-if="isBtnClick" @close="isBtnClick = false" :gameData="getCheckoutGameData"></checkout>
         <div class="game-card">
             <div class="game-card__banner banner">
                 <slider-component :array_-slide="getImages"></slider-component>
@@ -16,14 +16,31 @@
                         От {{getGameData.author}}
                     </p>
                 </div>
-                <div class="info-card__buy">
-                    <button @click="isBtnClick = true" class="buy__btn">
-                        Купить
-                        <span class="buy__price">
-                            {{getGameData.price}}
-                            <img src="@/assets/img/ruble-white.svg" alt="" class="buy__btn-ruble">
-                        </span>
-                    </button>
+                <div class="info-card__buttons" v-if="this.$store.getters['user/isLoggedIn']">
+                    <div class="info-card__buy" v-if="!isInWishlist">
+                        <button @click="addToWishlistClick" class="buy__btn">
+                            В избранное
+                        </button>
+                    </div>
+                    <div class="info-card__buy" v-else>
+                        <button @click="removeFromWishlistClick" class="buy__btn">
+                            Удалить из избранного
+                        </button>
+                    </div>
+                    <div class="info-card__buy" v-if="!isPurchased">
+                        <button @click="isBtnClick = true" class="buy__btn">
+                            Купить
+                            <span class="buy__price">
+                                {{getGameData.price}}
+                                <img src="@/assets/img/ruble-white.svg" alt="" class="buy__btn-ruble">
+                            </span>
+                        </button>
+                    </div>
+                    <div class="info-card__buy" v-else>
+                        <button @click="downloadBtnClick" class="buy__btn">
+                            Скачать
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,7 +136,7 @@
         </div>
         <reviews-component id="reviews"></reviews-component>
         <div class="wrapper_2">
-            <img src="@/assets/img/top_banner.png" alt="" class="full-banner">
+            <img v-if="getImages[0]" :src="getImages[0].image" alt="" class="full-banner">
             <div class="privacy-policy">
                 <a href="#!" class="privacy-policy__link">
                     Политика конфиденциальности

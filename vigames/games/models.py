@@ -145,6 +145,7 @@ class Game(models.Model):
     """Модель игр"""
 
     players = models.ManyToManyField(User, blank=True, related_name="players")
+    number_of_players = models.PositiveIntegerField(default=0)
     who_added_to_wishlist = models.ManyToManyField(User, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(User, on_delete=models.PROTECT,
                                related_name="game_author", null=True)
@@ -282,8 +283,7 @@ class Review(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_author", null=True)
     mark = models.PositiveIntegerField(default=0, null=True)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE,
-                             related_name="game", null=True)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name="reviews_game", null=True)
     comment = models.CharField(null=True, max_length=500)
 
 
