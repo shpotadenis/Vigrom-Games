@@ -68,7 +68,7 @@
                             <div class="blockName">Скриншоты</div>
                             <div class="form-group">
                                 <label class="label">
-                                    <span class="title">{{selectFile1}}</span>
+                                    <span class="title" v-for="text in a" :key="text.name">{{text}}</span>
                                     <input type="file" class="fileInput textInputs secondInputs" v-on:change="UpLoadFile1" multiple>
                                 </label>
                             </div>

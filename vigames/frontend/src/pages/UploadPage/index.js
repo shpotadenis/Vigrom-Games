@@ -11,8 +11,9 @@ export default {
         selectFile1:"Перетащите 3-5 файлов размером 324х255 или кликните здесь, чтобы добавить их",
         selectFile2:"Перетащите файл размером 1100х441 или кликните здесь, чтобы добавить его",
         selectFile3:"Перетащите файл размером 324х255 или кликните здесь, чтобы добавить его",
-        b:"",
-        a:[]
+        a:[
+
+        ]
 
       }
     },
@@ -23,11 +24,8 @@ export default {
 
       },
       UpLoadFile1(){
-          for(let i=0; i<6;i++){
-            this.b = event.target.files[i]
-            this.a = this.b.name
-            this.selectFile1 = this.a
-
+          for(let i=0; i<5;i++){
+            this.a.push(event.target.files[i].name)
           }
       },
       UpLoadFile2(event){
