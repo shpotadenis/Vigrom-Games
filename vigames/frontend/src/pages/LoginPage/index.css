@@ -27,9 +27,8 @@ p{
     font-weight: 800;
     font-size: 14px;
     line-height: 19px;
-    /* identical to box height */
-
     text-align: center;
+    color: #FFFFFF;
 }
 
 .head_login{
