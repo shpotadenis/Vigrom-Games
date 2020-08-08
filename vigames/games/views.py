@@ -183,11 +183,24 @@ class GameDetail(APIView):
         serializer = GameSerializer(data=request.data)
         account = Account.objects.get(user=user)
         medias = []
+
+        print(request.data)
+        print(request.data['imagesCount'])
+        '''
         for i in list(dict(request.data)['images']):     # Добавление картинок к игре
             if user.is_authenticated and account.is_developer:
                 medias.append(Media.objects.create(img=i, author=user))
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
+        '''
+        """Пробный вариант кода для загрузки (внимание костыль)"""
+        for i in request.data['imagesCount']:     # Добавление картинок к игре
+            if user.is_authenticated and account.is_developer:
+                medias.append(Media.objects.create(img=request.data[f'images[{i}]'], author=user))
+            else:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
         if serializer.is_valid() and user.is_authenticated and account.is_developer:
             serializer.save(author=user, image=medias)
             return Response(serializer.data)
@@ -599,6 +612,7 @@ class SearchView(APIView):
     """
 
     def post(self, request):
+        print(request.data)
         text = request.data['search']
         if request.data['dir'] == 'games':
             game = Game.objects.filter()
