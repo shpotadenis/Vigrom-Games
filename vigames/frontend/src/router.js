@@ -45,7 +45,7 @@ export const router = new Router({
         { path: '/library', name: 'libraryPage', component: LibraryPage, meta: { requiresAuth: true } },
         { path: '/featured', name: 'featuredPage', component: FeaturedPage, meta: { requiresAuth: true } },
         { path: '/free_games', name: 'freeGames', component: FreeGames},
-        { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage },
+        { path: '/separate_news/:id', name: 'newsSinglePage', component: NewsSinglePage },
         { path: '/not_found', name: 'errorPage404', component: ErrorPage },
         { path: '/discountsGame', name: 'discountsGame', component: DiscountsGame },
         { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },

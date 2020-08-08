@@ -1,19 +1,21 @@
 <template>
 <div class="NewsFeedComponents">
   <div class="NewsFeedComponents">
-    <img v-bind:src="require('@/assets/img/' + News_Feed.image)" width="520" height="324">
+    <img v-bind:src="getImage" width="520" height="324">
     <div class="NewsFeedTextAndImage">
-      <p class="NewsFeedName">{{News_Feed.name}}</p>
+      <router-link :to="{name: 'newsSinglePage', params: {id: News_Feed.id}}">
+        <p class="NewsFeedName">{{News_Feed.title}}</p>
+      </router-link>
       <img src="@/assets/img/Vector.svg" class="NewsFeedTextAndImageImg">
     </div>
-    <p class="NewsFeedUnderName">{{News_Feed.undername}}</p>
+    <p class="NewsFeedUnderName">{{News_Feed.description}}</p>
   </div>
 </div>
 </template>
 
 
 <script>
-
+import { getImageUrl } from '@/utils.js'
 
 
 export default{
@@ -29,6 +31,11 @@ export default{
       }
     }
 
+  },
+  computed: {
+    getImage() {
+      return getImageUrl(this.News_Feed.img)
+    }
   },
   data(){
     return{

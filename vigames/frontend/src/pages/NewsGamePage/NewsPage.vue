@@ -35,77 +35,9 @@
 </template>
 
 
-<script>
-
-import NewsPageStart from "./Allcomponents/NewsPageStart/NewsPageStart.vue"
-import SelectedArticles from "./Allcomponents/NewsPageStart/SelectedArticles.vue"
-import NewsFeed from "./Allcomponents/NewsPageStart/NewsFeed.vue"
-import FooterComponent from "../../components/FooterComponent/index.vue"
-
-
-export default{
-  name:"NewsPage",
-  components:{
-    NewsPageStart,
-		SelectedArticles,
-		NewsFeed,
-    FooterComponent
-  },
-  props:{},
-  data(){
-    return{
-			Selected:[
-			{
-				date:"Сегодня",
-				name:"Новое оборудование на серверах Vigrom",
-				id:"1"
-			},
-			{
-				date:"Сегодня",
-				name:"Новое оборудование на серверах Vigrom",
-				id:"2"
-			},
-			{
-				date:"Сегодня",
-				name:"Новое оборудование на серверах Vigrom",
-				id:"3"
-			},
-			{
-				date:"Сегодня",
-				name:"Новое оборудование на серверах Vigrom",
-				id:"4"
-			},
-			],
-			Feeds:[
-			{
-				id:"1",
-				image:"image.svg",
-				name:"Новое оборудование на серверах Vigrom",
-				undername:"Как известно, политический процесс в современной России неравномерен. Типология средств..."
-			},
-			{
-				id:"2",
-				image:"image.svg",
-				name:"Новое оборудование на серверах Vigrom",
-				undername:"Как известно, политический процесс в современной России неравномерен. Типология средств..."
-			},
-			{
-				id:"3",
-				image:"image.svg",
-				name:"Новое оборудование на серверах Vigrom",
-				undername:"Как известно, политический процесс в современной России неравномерен. Типология средств..."
-			},
-			{
-				id:"4",
-				image:"image.svg",
-				name:"Новое оборудование на серверах Vigrom",
-				undername:"Как известно, политический процесс в современной России неравномерен. Типология средств..."
-			},
-			]
-    }
-  }
-}
+<script src="./NewsPage.js">
 </script>
+
 
 <style scoped>
 
