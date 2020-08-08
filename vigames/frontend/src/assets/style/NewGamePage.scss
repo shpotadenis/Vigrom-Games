@@ -12,10 +12,16 @@
   line-height: 19px;
 }
 .NewsGamePage{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  grid-gap: 30px;
   margin-top: 25px;
 }
 .NewGamePageComponent{
   margin-top: 122px;
+}
+
+.game_card {
+  width: auto !important;
+  margin: 0 !important;
 }

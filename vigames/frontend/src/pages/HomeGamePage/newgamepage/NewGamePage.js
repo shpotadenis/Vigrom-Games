@@ -1,5 +1,7 @@
 
 import GameCard from "@/components/GameCard/GameCard.vue"
+import { convertApiToComponentObj } from '../../../utils.js'
+import games from '../../../api/modules/games.js'
 
 export default {
   name: 'NewGamePage',
@@ -7,66 +9,30 @@ export default {
       GameCard
   },
   data(){
-  return{
-    news:[
-      {
-      id:"1",
-      image:"MaskGroup.svg",
-      name:"DANGER CREW",
-      rating:"4.9",
-      undername:"Ubisoft Nadeo | Ubisoft",
-      price:"299.99",
-      scrin:'vessel-5.jpg',
-      scrin1:'c97a9.jpg',
-      scrin2:'Pic1.jpg',
-      scrin3:'c97a9.jpg',
-      icon:'cart-icon.png'
-      },
-      {
-      id:"2",
-      image:"MaskGroup.svg",
-      name:"DANGER CREW",
-      rating:"4.9",
-      undername:"Ubisoft Nadeo | Ubisoft",
-      price:"299.99",
-      scrin:'c97a9.jpg',
-      scrin1:'vessel-5.jpg',
-      scrin2:'vessel-5.jpg',
-      scrin3:'c97a9.jpg',
-      icon:'cart-icon.png'
-      },
-      {
-      id:"3",
-      image:"MaskGroup.svg",
-      name:"DANGER CREW",
-      rating:"4.9",
-      undername:"Ubisoft Nadeo | Ubisoft",
-      price:"299.99",
-      scrin:'Pic1.jpg',
-      scrin1:'vessel-5.jpg',
-      scrin2:'vessel-5.jpg',
-      scrin3:'c97a9.jpg',
-      icon:'cart-icon.png'
-      },
-      {
-      id:"4",
-      image:"MaskGroup.svg",
-      name:"DANGER CREW",
-      rating:"4.9",
-      undername:"Ubisoft Nadeo | Ubisoft",
-      price:"299.99",
-      scrin:'vessel-5.jpg',
-      scrin1:'vessel-5.jpg',
-      scrin2:'c97a9.jpg',
-      scrin3:'c97a9.jpg',
-      icon:'cart-icon.png'
-      },
-    ],
+    return{
+      loading: false,
+      list: null
+    }
+  },
+  beforeMount() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      this.loading = true
+      games.getListOfGames().then(response => {
 
+        let gameCards = response.data // Карточки, полученные из API
+        let gameComponentCards = [] // Сконвертированные карточки для компонента GameCard
+        for (let i in gameCards) {
+          gameComponentCards.push(convertApiToComponentObj(gameCards[i]))
+        }
+        this.list = gameComponentCards
 
-}
-},
-props:{
-
-}
+        this.loading = false
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+  }
 }

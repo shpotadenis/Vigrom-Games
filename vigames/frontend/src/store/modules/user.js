@@ -61,7 +61,7 @@ const mutations = {
         state.isRoleSelected = false
         state.token = null
         state.loggedIn = false
-        state.library = {} 
+        state.library = {}
         state.wishlist = {}
         window.localStorage.clear()
     },
@@ -231,6 +231,17 @@ const actions = {
                 }
             }).catch(error => {
                 console.log(error)
+                reject(error)
+            })
+        })
+    },
+
+    addReview(context, data) {
+        return new Promise((resolve, reject) => {
+            user.createReview(data.gameId, data).then(response => {
+                resolve(response)
+            }).catch(error => {
+                console.log(error.response)
                 reject(error)
             })
         })

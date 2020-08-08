@@ -123,10 +123,9 @@ export default{
         icon:'cart-icon.png'
         },
 
-      ]
+      ],
     }
-  },
-  methods:{
-    
-  }
+},
+
+
 }

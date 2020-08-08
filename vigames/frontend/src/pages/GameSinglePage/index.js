@@ -106,6 +106,10 @@ export default {
                 console.log(error.response)
             })
         },
+        updateGame() {
+            this.fetchData(this.$route.params.id)
+        },
+
         addToWishlistClick() {
             this.$store.dispatch('user/addToWishlist', {
                 gameId: this.$route.params.id

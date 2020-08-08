@@ -163,7 +163,8 @@ class Game(models.Model):
     banner = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
     # uploads
     description = models.TextField(default="")
-    genre = models.ManyToManyField(Genre, blank=True, related_name='genre', null=True)
+    #genre = models.ManyToManyField(Genre, blank=True, related_name='genre', null=True)
+    genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
@@ -284,6 +285,7 @@ class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_author", null=True)
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name="reviews_game", null=True)
+    title = models.CharField(null=True, max_length=70)
     comment = models.CharField(null=True, max_length=500)
 
 
