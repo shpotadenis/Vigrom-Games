@@ -136,6 +136,25 @@
     background: #29293D;
 }
 
+.sms__header {
+    height: 25px;
+    width: 263px;
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: 0;
+    resize: none;
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+    background: #29293D;
+    margin-bottom: 16px;
+}
+
 .textInputs{
     background: #212130;
     border-radius: 8px;

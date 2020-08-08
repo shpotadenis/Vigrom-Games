@@ -24,15 +24,13 @@
             </div>
             <div id="window" v-if="reviewFormShow">
                 <div class="send_block">
-                    <div class="rating">
-                        <label for="rating_game" class="rating_label">Рейтинг</label>
-                        <select class="textInputs" id="rating_game" v-model="rating">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
+                    <div class="review__header">
+                        <div class="review__title">
+                            <input type="text" class="sms__header" placeholder="Заголовок">
+                        </div>
+                        <div class="review__rating">
+                            <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in 5" @click="rating = i" :key="'k' + i">
+                        </div>
                     </div>
                   <textarea type="text" class="sms" id="message" v-model="content" placeholder="Оставьте свой отзыв">
                   </textarea>
@@ -52,7 +50,7 @@
                 </div>
                 <div class="review__content">
                     <div class="review__header">
-                        <h4 class="review__title"></h4>
+                        <h4 class="review__title">{{review.caption}}</h4> <!-- Заголовок отзыва !-->
                         <div class="review__rating">
                             <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in review.mark" :key="'r' + i + review.id">
                         </div>

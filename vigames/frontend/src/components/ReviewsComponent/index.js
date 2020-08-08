@@ -5,9 +5,9 @@ export default {
         return {
             reviewFormShow: false,
             content: '',
-            rating: 1,
+            rating: null,
             loading: false,
-            reviews: ''
+            reviews: [],
         }
     },
     props: ['gameData'],
@@ -32,12 +32,12 @@ export default {
         fetchData() {
             this.loading = true
             games.getReviews(this.gameData.id).then(response => {
+                this.reviews.push(response.data)
+                console.log(response)
                 this.loading = false
-                this.reviews = response.data
             }).catch(error => {
                 console.log(error)
             })
-            this.loading = false
-        }
+        },
     }
 }
