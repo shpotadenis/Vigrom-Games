@@ -2,7 +2,8 @@ from django.urls import path
 from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame, \
     PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView, \
-    QuestionDetail, DownloadMedia, OutputGenre, OutputStatistics, OutputWishlist, SearchView
+    QuestionDetail, DownloadMedia, OutputStatistics, OutputWishlist, SearchView, OutputGenreGames, \
+    OutputGenreTopGames
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
@@ -14,7 +15,7 @@ urlpatterns = [
 
     path('role', RoleView.as_view(), name="role"),
 
-    path('genres', OutputGenre.as_view(), name="genres"),
+    #path('genres', OutputGenre.as_view(), name="genres"),
 
     path('games/add', GameDetail.as_view(), name="add_game"),
     path('games/<int:pk>', GameDetail.as_view(), name="current_game"),
@@ -24,6 +25,9 @@ urlpatterns = [
     path('games/<int:pk>/buy', BuyGameDetail.as_view(), name="buy_game"),
     path('games/<int:pk>/download', DownloadGame.as_view(), name="download_game"),
     path('games/<int:pk>/wishlist', WishListDetail.as_view(), name="wishlist"),
+
+    path('genre/<str:pk>', OutputGenreGames.as_view(), name="genre_games"),
+    path('genre/<str:pk>/top', OutputGenreTopGames.as_view(), name="genre_top_games"),
 
     path('news/', OutputAllNewsView.as_view()),
     path('news/add', PostView.as_view(), name="add_new_post"),

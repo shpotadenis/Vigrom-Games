@@ -550,12 +550,28 @@ class DownloadMedia(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class OutputGenre(ListAPIView):
+#class OutputGenre(ListAPIView):
     """Вывод списка жанров"""
 
-    def get(self, request):
-        genres = Genre.objects.all()
-        serializer = GenreSerializer(genres, many=True)
+    #def get(self, request):
+    #    genres = Genre.objects.all()
+    #    serializer = GenreSerializer(genres, many=True)
+    #    return Response(serializer.data)
+
+
+class OutputGenreGames(ListAPIView):
+
+    def get(self, request, pk):
+        games = Game.objects.filter(genre=pk).order_by('rating')
+        serializer = GameSerializer(games, many=True)
+        return Response(serializer.data)
+
+
+class OutputGenreTopGames(ListAPIView):
+
+    def get(self, request, pk):
+        games = Game.objects.filter(genre=pk).order_by('rating')[:8]
+        serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
 
 
