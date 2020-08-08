@@ -69,8 +69,7 @@
                             <div class="form-group">
                                 <label class="label">
                                   <div class="AllName">
-                                    <span class="title" v-for="(text,index) in array" :key="index">{{text}}</span>
-                                      <span class="title" >{{selectFile1}}</span>
+                                    <span class="title" v-for="(text,index) in array" :key="index">{{text.name}}</span>
                                     </div>
                                     <input type="file" class="fileInput textInputs secondInputs" v-on:change="UpLoadFile1" multiple>
                                 </label>

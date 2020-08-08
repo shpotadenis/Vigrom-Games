@@ -87,14 +87,29 @@ export default {
         let fd = new FormData()
         fd.append('mark', data.mark)
         fd.append('comment', data.comment)
+        fd.append('title', data.title)
         return instance.post('/api/games/' + gameId + '/rating', fd)
     },
 
-    // eslint-disable-next-line no-unused-vars
-    uploadGame(gameId, data) {
-        // eslint-disable-next-line no-unused-vars
+    uploadGame(data) {
         let fd = new FormData()
-
+        fd.append('title', data.title)
+        fd.append('short_description', data.short_description)
+        fd.append('price', data.price)
+        fd.append('description', data.description)
+        fd.append('file', data.file)
+        fd.append('genre', data.genre)
+        fd.append('img', data.img)
+        fd.append('banner', data.banner)
+        fd.append('gameplay_video_link', data.gameplay_video_link)
+        fd.append('images[0]', data.images[0])
+        fd.append('images[1]', data.images[1])
+        fd.append('imagesCount', "2")
+        return instance.post('/api/games/add', fd, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
     }
 
 
