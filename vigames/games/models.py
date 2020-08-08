@@ -163,7 +163,8 @@ class Game(models.Model):
     banner = models.ImageField(upload_to='img/%Y/%m', null=True, default=None)
     # uploads
     description = models.TextField(default="")
-    genre = models.ManyToManyField(Genre, blank=True, related_name='genre', null=True)
+    #genre = models.ManyToManyField(Genre, blank=True, related_name='genre', null=True)
+    genre = models.CharField(max_length=50, default="")
     tags = models.CharField(max_length=50, default="")
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)

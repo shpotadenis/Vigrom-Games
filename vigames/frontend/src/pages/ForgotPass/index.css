@@ -14,11 +14,11 @@
 }
 .login-pic{
     padding: 0;
+    left: -37px;
     position: absolute;
-    height: 420px;
-    width: 570px;
-    left: -80px;
-    bottom: 15px;
+    height: 525px;
+    width: 615px;
+    top: -32px;
 }
 p{
     font-family: Open Sans;
@@ -43,6 +43,7 @@ label{
     line-height: 19px;
     color: #FFFFFF;
     margin-bottom: 10px;
+    padding: 7px;
 }
 input{
     background: #29293D;
@@ -51,6 +52,7 @@ input{
     width: 250px;
     height: 33px;
     margin-top: 5px;
+    padding-left: 10px;
 }
 .title{
     width: 250px;

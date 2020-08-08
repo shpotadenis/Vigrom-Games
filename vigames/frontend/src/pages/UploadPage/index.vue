@@ -68,7 +68,10 @@
                             <div class="blockName">Скриншоты</div>
                             <div class="form-group">
                                 <label class="label">
-                                    <span class="title">{{selectFile1}}</span>
+                                  <div class="AllName">
+                                    <span class="title" v-for="(text,index) in array" :key="index">{{text}}</span>
+                                      <span class="title" >{{selectFile1}}</span>
+                                    </div>
                                     <input type="file" class="fileInput textInputs secondInputs" v-on:change="UpLoadFile1" multiple>
                                 </label>
                             </div>
@@ -83,7 +86,7 @@
                             <div class="blockName ">Архив с игрой для скачивания</div>
                             <div class="form-group">
                                 <label class="label">
-                                    <span class="title">{{selectFile}}</span>
+                                    <div class="title">{{selectFile}}</div>
                                     <input type="file" class="fileInput textInputs secondInputs" @change="UpLoadFile">
                                 </label>
                             </div>
