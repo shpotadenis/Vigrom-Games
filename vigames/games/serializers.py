@@ -127,7 +127,7 @@ class OutputGameSerializer(serializers.ModelSerializer):
     #players = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
     #who_added_to_wishlist = serializers.SlugRelatedField(slug_field='username', read_only=True, many=True)
     categories = serializers.SlugRelatedField(slug_field='name', read_only=True, many=True)
-    genre = serializers.SlugRelatedField(slug_field='name', read_only=True, many=True)
+    #genre = serializers.SlugRelatedField(slug_field='name', read_only=True, many=True)
     image = SerializerMedia(many=True)
 
     class Meta:
