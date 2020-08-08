@@ -244,7 +244,9 @@ class GameRatingDetail(APIView):
         game = self.get_game(pk)
         comment = request.POST.get('comment')
         comment = Search.comments(Search(), comment)
-        serializer = ReviewSerializer(data={'author': user, 'mark': mark, 'game': pk, 'comment': comment})
+        title = request.POST.get('title')
+        serializer = ReviewSerializer(data={'author': user, 'mark': mark, 'game': pk,
+                                            'comment': comment, 'title': title})
         if serializer.is_valid() and user.is_authenticated and user in game.players.all():
             try:
                 user_ratings = Review.objects.get(author=user, game=pk)
@@ -268,12 +270,14 @@ class GameRatingDetail(APIView):
         user = request.user
         comment = request.POST.get('comment')
         comment = Search.comments(Search(), comment)
+        title = request.POST.get('title')
         if user.is_authenticated:
             try:
                 user_rating = Review.objects.get(author=user, game=pk)
             except Review.DoesNotExist:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-            serializer = ReviewSerializer(user_rating, data={'author': user, 'mark': mark, 'game': pk, 'comment': comment})
+            serializer = ReviewSerializer(user_rating, data={'author': user, 'mark': mark, 'game': pk,
+                                                             'comment': comment, 'title': title})
             if serializer.is_valid():
                 serializer.save(author=user)
                 self.rating(pk)
