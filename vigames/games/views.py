@@ -4,11 +4,13 @@ from rest_framework import status
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from .search import Search_engine
 from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer, \
-    StatisticsSerializer
+    StatisticsSerializer, OutputReviewSerializer
 from django.contrib.auth.models import User
 from scripts import Search
 
@@ -52,7 +54,7 @@ class PostView(APIView):
 
     def get(self, request, pk):
         try:
-            news = Posts.objects.get(url=pk, draft=False)
+            news = Posts.objects.get(id=pk, draft=False)
             serializer = OutputPost(news)
             return Response(serializer.data)
         except:
@@ -228,9 +230,12 @@ class GameRatingDetail(APIView):
         ratings = Review.objects.filter(game=pk)
         length = len(ratings)
         sum = 0
-        for r in ratings:
-            sum += r.mark
-        game.rating = sum / length
+        res = 0
+        if length != 0:
+            for r in ratings:
+                sum += r.mark
+            res = sum / length
+        game.rating = res
         game.save()
 
     def post(self, request, pk):
@@ -238,40 +243,39 @@ class GameRatingDetail(APIView):
         mark = request.POST.get('mark')
         game = self.get_game(pk)
         comment = request.POST.get('comment')
-        serializer = ReviewSerializer(data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
+        comment = Search.comments(Search(), comment)
+        serializer = ReviewSerializer(data={'author': user, 'mark': mark, 'game': pk, 'comment': comment})
         if serializer.is_valid() and user.is_authenticated and user in game.players.all():
             try:
-                user_ratings = Review.objects.get(author=user.id, game=pk)
+                user_ratings = Review.objects.get(author=user, game=pk)
             except Review.DoesNotExist:
-                serializer.save()
+                serializer.save(author=user)
                 self.rating(pk)
                 return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, request, pk):
-        user = request.user
-        if user.is_authenticated:
-            try:
-                user_ratings = Review.objects.get(author=user.id, game=pk)
-                serializer = ReviewSerializer(user_ratings)
-                return Response(serializer.data)
-            except Review.DoesNotExist:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:
+            user_ratings = Review.objects.get(game=pk)
+            serializer = OutputReviewSerializer(user_ratings)
+            return Response(serializer.data)
+        except Review.DoesNotExist:
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
     def put(self, request, pk):
         game = self.get_game(pk)
         mark = request.POST.get('mark')
         user = request.user
         comment = request.POST.get('comment')
+        comment = Search.comments(Search(), comment)
         if user.is_authenticated:
             try:
-                user_rating = Review.objects.get(author=user.id, game=pk)
+                user_rating = Review.objects.get(author=user, game=pk)
             except Review.DoesNotExist:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-            serializer = ReviewSerializer(user_rating, data={'author': user.id, 'mark': mark, 'game': pk, 'comment': comment})
+            serializer = ReviewSerializer(user_rating, data={'author': user, 'mark': mark, 'game': pk, 'comment': comment})
             if serializer.is_valid():
-                serializer.save()
+                serializer.save(author=user)
                 self.rating(pk)
                 return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -280,7 +284,7 @@ class GameRatingDetail(APIView):
         user = request.user
         if user.is_authenticated:
             try:
-                user_ratings = Review.objects.get(author=user.id, game=pk)
+                user_ratings = Review.objects.get(author=user, game=pk)
             except Review.DoesNotExist:
                 user_ratings = None
             if user_ratings != None:
@@ -586,3 +590,24 @@ class SearchView(APIView):
         #else:
             #return Response(status=status.HTTP_204_NO_CONTENT)
 '''
+class SearchView(APIView):
+    """
+    Поиск по новостям или играм
+    request.data['search'] - текст запроса
+    dir - раздел в котором ищем. Может быть двух типов games/news
+    user - id пользователя
+    """
+
+    def post(self, request):
+        text = request.data['search']
+        if request.data['dir'] == 'games':
+            game = Game.objects.filter()
+            serializer = OutputGameSerializer(game, many=True)
+        elif request.data['dir'] == 'news':
+            post = Posts.objects.filter(draft=False)
+            serializer = OutputPost(post, many=True)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        list_index = Search_engine(text, list(serializer.data))
+        return Response(list_index)
+

@@ -25,6 +25,12 @@
                     btn_caption="Подробнее"
                     :btn_route="{ name: 'homePage' }">
   </banner-component>
+  <game-card
+  class="ItemCard"
+  v-for="discount in discountgames"
+  :key="discount.id"
+  :Game="discount"
+  />
 </div>
     <footer-component></footer-component>
   </div>

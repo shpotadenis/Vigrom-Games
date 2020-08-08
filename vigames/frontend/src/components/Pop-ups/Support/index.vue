@@ -20,19 +20,27 @@
         <div class="email">
           <div class="email-name">Контактный e-mail</div>
           <div class="input-blank">
-            <input type="text" class="email-form" id="mail" placeholder="Введите e-mail"/>
+            <input type="text"
+                   v-model="mail"
+                   class="email-form"
+                   id="mail"
+                   placeholder="Введите e-mail"/>
+            <div class="errors errors__name" v-if="error_mail.length">{{error_mail[0]}}</div>
           </div>
         </div>
         <div class="message">
           <div class="message-name">Ваше сообщение</div>
           <div class="msg">
-            <textarea type="text" class="message-form" id="message" placeholder="Напишите что нибудь">
+            <textarea type="text"
+                      class="message-form"
+                      id="message"
+                      placeholder="Напишите что нибудь">
             </textarea>
           </div>
         </div>
       </div>
       <div class="form_Footer">
-        <button @click="isBtnClick = true" class="send">Отправить</button>
+        <button @click="checkForm" class="send">Отправить</button>
       </div>
   </div>
 </div>

@@ -43,22 +43,22 @@
             </div>
         </div>
         <div class="review__cards">
-            <div class="review__card" v-for="review in reviews" :key="review.id">
+            <div class="review__card" v-for="(review, idx) in this.reviews" :key="idx">
                 <div class="review__userplate">
                     <img src="@/assets/img/userpic.png" alt="" class="userplate__pic">
                     <p class="review__username">
-                        {{review.user_nickname}}
+                        {{review.author}}
                     </p>
                 </div>
                 <div class="review__content">
                     <div class="review__header">
-                        <h4 class="review__title">{{review.title}}</h4>
+                        <h4 class="review__title"></h4>
                         <div class="review__rating">
-                            <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in review.rating" :key="'r' + i + review.id">
+                            <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in review.mark" :key="'r' + i + review.id">
                         </div>
                     </div>
                     <div class="review__text">
-                        <p>{{review.text}}</p>
+                        <p>{{review.comment}}</p>
                     </div>
                 </div>
             </div>

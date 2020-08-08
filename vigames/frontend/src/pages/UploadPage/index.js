@@ -19,6 +19,9 @@ export default {
         block2: '',
         block3: '',
         youtube_link: '',
+        b:"",
+        a:[]
+
       }
     },
     methods:{
@@ -42,8 +45,7 @@ export default {
             this.selectFileZ = event.target.files[0].name;       //Это имя файла
         },
         uploadButtonClick() {
-
-        }
+      },
     }
 
 }

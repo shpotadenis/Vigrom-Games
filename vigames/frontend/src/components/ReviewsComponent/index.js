@@ -1,16 +1,4 @@
 import games from '../../api/modules/games.js'
-
-const reviews = [
-    {
-        id: 1,
-        user_nickname: 'Name',
-        title: 'Мой первый отзыв',
-        rating: 3,
-        text: 'Maecenas nec nunc lectus. Phasellus suscipit dui id rhoncus iaculis. Proin lobortis, enim nec condimentum vulputate, augue risus fermentum purus, ac pharetra orci justo nec tellus. Ut augue ex, laoreet in orci et, eleifend volutpat augue. Donec tempor dignissim diam blandit viverra. Praesent et neque blandit, ornare arcu imperdiet, tincidunt magna. Etiam sed fermentum lectus, vitae porta mauris. Proin pharetra enim eget enim facilisis, in facilisis enim tincidunt.'
-    }
-]
-
-
 export default {
     name: "ReviewsComponent",
     data() {
@@ -43,7 +31,8 @@ export default {
 
         fetchData() {
             this.loading = true
-            games.getReviews().then(response => {
+            games.getReviews(this.gameData.id).then(response => {
+                this.loading = false
                 this.reviews = response.data
             }).catch(error => {
                 console.log(error)

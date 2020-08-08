@@ -12,7 +12,7 @@ export default {
       bests:[
       {
         image:"bests.svg",
-        name:"the last of ass 2",
+        name:"the last of us 2",
         categoreis:"MMOPRG",
         undername:"Компьютерная игра в жанре action-adventure с элементами survival horror и стелс-экшена, разработанная студией Naughty Dog."
       }
@@ -66,7 +66,7 @@ export default {
         rating:"4.9",
         undername:"Ubisoft Nadeo | Ubisoft",
         price:"299.99",
-  
+
         scrin:'vessel-5.jpg',
         scrin1:'c97a9.jpg',
         scrin2:'Pic1.jpg',
