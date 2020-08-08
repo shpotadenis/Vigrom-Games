@@ -6,6 +6,7 @@ export default {
             reviewFormShow: false,
             content: '',
             rating: null,
+            title: null,
             loading: false,
             reviews: [],
         }

@@ -26,7 +26,7 @@
                 <div class="send_block">
                     <div class="review__header">
                         <div class="review__title">
-                            <input type="text" class="sms__header" placeholder="Заголовок">
+                            <input type="text" class="sms__header" v-model="title" placeholder="Заголовок">
                         </div>
                         <div class="review__rating">
                             <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in 5" @click="rating = i" :key="'k' + i">
