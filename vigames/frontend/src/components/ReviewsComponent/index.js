@@ -20,7 +20,8 @@ export default {
             this.$store.dispatch('user/addReview', {
                 gameId: this.gameData.id,
                 mark: this.rating,
-                comment: this.content
+                comment: this.content,
+                title: this.title
             }).then(response => {
                 this.$emit('update-game')
                 this.reviewFormShow = false

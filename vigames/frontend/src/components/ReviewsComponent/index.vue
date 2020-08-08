@@ -50,7 +50,7 @@
                 </div>
                 <div class="review__content">
                     <div class="review__header">
-                        <h4 class="review__title">{{review.caption}}</h4> <!-- Заголовок отзыва !-->
+                        <h4 class="review__title">{{review.title}}</h4> <!-- Заголовок отзыва !-->
                         <div class="review__rating">
                             <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in review.mark" :key="'r' + i + review.id">
                         </div>
