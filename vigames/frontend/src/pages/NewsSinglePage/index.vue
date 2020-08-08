@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!loading">
   <div class="wrapper">
     <router-link :to="{name: 'newsPage'}">
     <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>

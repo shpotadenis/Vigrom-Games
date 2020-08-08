@@ -2,14 +2,7 @@ import BreadcrumbsComponent from "../../components/BreadcrumbsComponent/index.vu
 import FooterComponent from "../../components/FooterComponent/index.vue"
 import Checkout from "../../components/Pop-ups/Checkout/checkout"
 import CommentsComponent from "../../components/CommentsComponent/index.vue"
-
-const data = {
-    name_news: 'Здесь будет большой заголовок',
-    name_game: 'Название игры',
-    autor: 'Имя Автора',
-    dev: 'Имя Разработчика',
-    price: 125
-}
+import news from '../../api/modules/news.js'
 
 export default {
     name: "NewsSinglePage",
@@ -21,7 +14,9 @@ export default {
     },
     data() {
         return {
-          isBtnClick: false,
+            loading: false,
+            isBtnClick: false,
+            newsData: {},
             breadcrumbs: [
                 {
                     to: {
@@ -36,14 +31,22 @@ export default {
         }
     },
     computed: {
-        getGameData() {
-            return data;
+    },
+
+    beforeMount() {
+        this.fetchData(this.$route.params.id)
+    },
+
+    methods: {
+        fetchData(id) {
+            this.loading = true
+            news.getNewsInfo(id).then(response => {
+                this.newsData = response.data
+                this.loading = false
+            }).catch(error => {
+                console.log(error)
+            })
         }
     }
-
-
-
-
-
 
 }

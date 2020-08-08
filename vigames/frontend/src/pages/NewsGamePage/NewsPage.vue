@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="!loading">
 <div class="container">
 	<div class="col">
 		<div class="NewsWrappen">

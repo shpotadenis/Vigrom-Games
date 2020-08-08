@@ -34,6 +34,7 @@
             <textarea type="text"
                       class="message-form"
                       id="message"
+                      v-model="mess"
                       placeholder="Напишите что нибудь">
             </textarea>
           </div>

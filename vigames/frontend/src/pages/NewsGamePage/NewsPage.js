@@ -53,6 +53,7 @@ export default{
             news.getListOfNews().then(response => {
                 this.Feeds = response.data
                 console.log(response)
+                this.loading = false
             }).catch(error => {
                 console.log(error)
             })
