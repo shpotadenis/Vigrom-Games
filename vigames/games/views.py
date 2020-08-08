@@ -183,9 +183,6 @@ class GameDetail(APIView):
         serializer = GameSerializer(data=request.data)
         account = Account.objects.get(user=user)
         medias = []
-
-        print(request.data)
-        print(request.data['imagesCount'])
         '''
         for i in list(dict(request.data)['images']):     # Добавление картинок к игре
             if user.is_authenticated and account.is_developer:
@@ -194,7 +191,7 @@ class GameDetail(APIView):
                 return Response(status=status.HTTP_400_BAD_REQUEST)
         '''
         """Пробный вариант кода для загрузки (внимание костыль)"""
-        for i in request.data['imagesCount']:     # Добавление картинок к игре
+        for i in range(int(request.data['imagesCount'])):     # Добавление картинок к игре
             if user.is_authenticated and account.is_developer:
                 medias.append(Media.objects.create(img=request.data[f'images[{i}]'], author=user))
             else:
