@@ -13,6 +13,9 @@ export default {
     methods:{
       showCategories(){
         this.isCategories = !this.isCategories
+      },
+      mouseleave: function(){
+        this.isCategories = false
       }
     }
 

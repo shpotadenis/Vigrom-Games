@@ -11,8 +11,8 @@
     name: 'App',
     components: {
       HeaderComponent
-    }
-  }
+    },
+}
 </script>
 
 <style>
