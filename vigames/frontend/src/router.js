@@ -12,7 +12,7 @@ import ForgotPass from './pages/ForgotPass/index.vue'
 import LibraryPage from "./pages/LibraryPage/index.vue"
 import GameSinglePage from "./pages/GameSinglePage/index.vue";
 import LoginPage from "./pages/LoginPage/index.vue";
-import NewsPage from "./pages/NewsGamePage/NewsPage";
+import NewsPage from "./pages/NewsGamePage/NewsPage.vue";
 import HomePage from "./pages/HomeGamePage/HomePage.vue";
 import SignInPage from "./pages/SignInPage/index.vue"
 import SignUpRolePage from "./pages/SignUpRolePage/index.vue"
