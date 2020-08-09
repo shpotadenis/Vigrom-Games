@@ -169,6 +169,7 @@ class Game(models.Model):
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
     image = models.ManyToManyField(Media, blank=True, related_name='parent_game')
+    num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров игры
     '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
@@ -213,20 +214,20 @@ class Posts(models.Model):
 
     # в принципе можно убрать счетчики и искать кол-во лайкнувших/дизлайкнувших людей,
     # посмотреть, как удобнее
-    count_likes = models.PositiveIntegerField(default=0)
-    count_dislikes = models.PositiveIntegerField(default=0)
+    #count_likes = models.PositiveIntegerField(default=0)
+    #count_dislikes = models.PositiveIntegerField(default=0)
 
     title = models.CharField("Заголовок записи", max_length=150)
     # url = models.SlugField(max_length=100, unique=True)
     text = models.TextField()
     description = models.TextField("Короткое описание", max_length=160)
-    data = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True)
     img = models.ImageField('Изображение записи', upload_to='img/%Y/%m', null=True)  # Главная фотография записи
     num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров записи
     draft = models.BooleanField("Черновик", default=False)
-    forthegame = models.IntegerField(default=0)
     image = models.ManyToManyField(Media, blank=True, related_name='image')
-
+    fav = models.BooleanField('Избранное', default=False)
+    fav_date = models.DateTimeField(auto_now_add=True)
     # Вопрос по изображениям открыт. Делать для них отдельную модель или сделать загрузку сюда???
     # Вопрос с количеством просмотров тоже открыт
 
