@@ -5,6 +5,7 @@ import Checkout from "../../components/Pop-ups/Checkout/checkout"
 import SliderComponent from './SliderComponent/SliderComponent.vue'
 import user from '../../api/modules/user.js'
 import { getImageUrl } from '../../utils.js'
+import games from "../../api/modules/games";
 
 export default {
     name: "GameSinglePage",
@@ -18,13 +19,14 @@ export default {
     data() {
         return {
             isBtnClick: false,
-            loading: true
+            loading: true,
+            gameData: null
         }
     },
 
     computed: {
         getGameData() {
-            return this.$store.getters['games/getGame'](this.$route.params.id)
+            return this.gameData
         },
 
         isPurchased() {
@@ -80,12 +82,12 @@ export default {
     methods: {
         fetchData(gameId) {
             this.loading = true
-            this.$store.dispatch('games/loadGame', {
-                id: gameId
-            }).then(response => {
-                if (response) {
-                    this.loading = false
+            games.getGameInfo(gameId).then(response => {
+                if (response.data) {
+                    this.gameData = response.data
+                    this.gameData.id = gameId
                 }
+                this.loading = false
             }).catch(error => {
                 console.log(error)
                 this.$router.push({
