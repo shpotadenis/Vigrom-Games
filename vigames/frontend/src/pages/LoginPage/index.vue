@@ -11,40 +11,48 @@
                 <form class="data row justify-content-center" method="post">
                     <div class="">
                     <div class="form-group container">
-                        <label for="mail">E-mail</label><br />
+                        <div>
+                            <label for="mail">E-mail</label>
+                            <error-message :error="error_mail[0]"
+                                           v-show="error_mail.length>0">
+                            </error-message>
+                        </div>
                         <input type="text"
                                v-model="email"
                                class="form-control"
                                id="mail"
                                placeholder="Введите эл. почту..."/>
-                        <div class="errors__mail errors container" v-if="error_mail.length">
-                            <div class="row justify-content-end">
-                                <div class="col-12 text">
-                                    {{error_mail[0]}}
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="form-group container">
-                        <label for="login">Логин</label><br />
+                        <div>
+                            <label for="login">Логин</label>
+                            <error-message :error="error_name[0]"
+                                           v-show="error_name.length>0">
+                            </error-message>
+                        </div>
                         <input type="text"
                                v-model="name"
                                class="form-control"
                                id="login"
                                placeholder="Введите логин..."/>
-                        <div class="errors errors__name" v-if="error_name.length">{{error_name[0]}}</div>
                     </div>
 
 
                     <div class="form-group container">
-                        <label for="password">Пароль</label><br />
+                        <div>
+                            <label for="password">Пароль</label>
+                            <error-message :error="error_pass[0]"
+                                           v-show="error_pass.length>0">
+                            </error-message>
+                        </div>
                         <input :type="type"
                                v-model="pass"
                                class="form-control"
                                id="password"
                                placeholder="Введите пароль..."/>
-                        <div class="errors errors__pass" v-if="error_pass.length">{{error_pass[0]}}</div>
+
                         <div class="row justify-content-end eyeClick" @click="hide">
                             <img src="@/assets/img/eye.png"   class="passEye password-control" v-show="!nonEye"/>
                             <img src="@/assets/img/eye-off.svg"  class="passEye password-control" v-show="nonEye">
@@ -53,17 +61,18 @@
 
                     </div>
                     <div class="form-group container">
-                        <label for="confirmPass">Повтор пароля</label><br />
+                        <div>
+                            <label for="confirmPass">Повтор пароля</label>
+                            <error-message :error="error_confirm[0]"
+                                           v-show="error_confirm.length>0">
+                            </error-message>
+                        </div>
                         <input :type="typeconf"
                                v-model="confirmPass"
                                class="form-control"
                                id="confirmPass"
                                placeholder="Повторите пароль..."/>
-                        <div class="errors errors__confirm " v-if="error_confirm.length">
 
-                                {{error_confirm[0]}}
-
-                        </div>
                         <div class="row justify-content-end eyeClick" @click="hideconf">
                             <img src="@/assets/img/eye.png" class="confirmEye password-control" v-show="!nonEyeconf"/>
                             <img src="@/assets/img/eye-off.svg" class="confirmEye password-control" v-show="nonEyeconf">

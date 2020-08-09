@@ -47,7 +47,13 @@
                 </div>
             </div>
             <div class="v-popup_content">
-                <p id="new_pass_title">Новый пароль</p>
+                <div class="field">
+                <div>
+                    <label for="new_pass_area" id="new_pass_title">Новый пароль</label>
+                    <error-message :error="error_new_pass[0]"
+                                   v-show="error_new_pass.length>0">
+                    </error-message>
+                </div>
                 <input
                         name="new_pass"
                         :type="typeconf"
@@ -55,13 +61,14 @@
                         placeholder="Введите новый пароль"
                         v-model="new_pass"
                 >
-                <div
-                        class="errors errors__new_pass"
-                        v-if="error_new_pass.length"
-                >
-                    {{error_new_pass[0]}}
                 </div>
-                <p id="repeat_new_pass_title">Повторите новый пароль</p>
+                <div>
+                <div>
+                    <label for="repeat_new_pass_area" id="repeat_new_pass_title">Повторите новый пароль</label>
+                    <error-message :error="error_new_pass_repeat[0]"
+                                   v-show="error_new_pass_repeat.length>0">
+                    </error-message>
+                </div>
                 <input
                         name="repeat_new_pass"
                         :type="typeconf_repeat"
@@ -69,11 +76,6 @@
                         placeholder="Повторите новый пароль"
                         v-model="new_pass_repeat"
                 >
-                <div
-                        class="errors errors__new_pass_repeat"
-                        v-if="error_new_pass_repeat.length"
-                >
-                    {{error_new_pass_repeat[0]}}
                 </div>
             </div>
             <div

@@ -23,14 +23,18 @@
                     <form class="data row justify-content-center">
                         <div class="">
                             <div class="form-group container">
-                                <label for="mail">E-mail</label><br />
+                                <div>
+                                    <label for="mail">E-mail</label>
+                                    <error-message :error="error_mail[0]"
+                                                   v-show="error_mail.length>0">
+                                    </error-message>
+                                </div>
                                 <input type="text"
                                        class="form-control"
                                        id="mail"
                                        placeholder="Введите e-mail"
                                        v-model="email"
                                 >
-                                <div id="error" v-if="error_email.length">{{error_email[0]}}</div>
                             </div>
                             <div class="title"><span id="message">На ваш e-mail будет отправлено письмо со ссылкой на сброс пароля.</span>
                             </div>

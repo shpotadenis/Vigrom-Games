@@ -107,44 +107,7 @@ input{
     text-decoration: underline;
 }
 
-.errors {
-    position: absolute;
-    font-size: 14px;
-    left: 300px;
-    bottom: 96px;
-    margin-left: 26px;
-    width: 230px;
-    min-height: 40px;
-    max-height: 65px;
-    background: #212130;
-    border-radius: 10px;
-    box-shadow: 0 0 25px 0 #b6b6b6;
-    text-align: center;
-    padding-bottom: 5px;
-    padding-top: 10px;
-}
-.text{
 
-}
-.errors:before {
-    content: "";
-    position: absolute;
-    right: 100%;
-    top: calc(50% - 12px);
-    border-top: 10px solid transparent;
-    border-right: 20px solid #212130;
-    border-bottom: 10px solid transparent;
-}
-.errors__mail{
-    bottom: 290px;
-}
-.errors__name{
-    bottom: 225px;
-}
-.errors__pass{
-    bottom: 160px;
-    position: absolute;
-}
 .eyeClick{
     cursor: pointer;
 }
