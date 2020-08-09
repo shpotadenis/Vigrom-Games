@@ -27,6 +27,12 @@
     font-weight: normal;
     padding: 10px;
   }
+  a{
+    cursor: pointer;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
   body {
     margin: 0;
     background: #212130;
