@@ -122,10 +122,71 @@ export default{
         scrin3:'c97a9.jpg',
         icon:'cart-icon.png'
         },
+        {
+        id:"9",
+        image:"MaskGroup.svg",
+        name:"DANGER CREW",
+        rating:"4.9",
+        undername:"Ubisoft Nadeo | Ubisoft",
+        price:"",
+        scrin:'vessel-5.jpg',
+        scrin1:'c97a9.jpg',
+        scrin2:'Pic1.jpg',
+        scrin3:'c97a9.jpg',
+        icon:'cart-icon.png'
+        },
+        {
+        id:"10",
+        image:"MaskGroup.svg",
+        name:"DANGER CREW",
+        rating:"4.9",
+        undername:"Ubisoft Nadeo | Ubisoft",
+        price:"",
+        scrin:'vessel-5.jpg',
+        scrin1:'c97a9.jpg',
+        scrin2:'Pic1.jpg',
+        scrin3:'c97a9.jpg',
+        icon:'cart-icon.png'
+        },
+        {
+        id:"11",
+        image:"MaskGroup.svg",
+        name:"DANGER CREW",
+        rating:"4.9",
+        undername:"Ubisoft Nadeo | Ubisoft",
+        price:"",
+        scrin:'vessel-5.jpg',
+        scrin1:'c97a9.jpg',
+        scrin2:'Pic1.jpg',
+        scrin3:'c97a9.jpg',
+        icon:'cart-icon.png'
+        },
+        {
+        id:"12",
+        image:"MaskGroup.svg",
+        name:"DANGER CREW",
+        rating:"4.9",
+        undername:"Ubisoft Nadeo | Ubisoft",
+        price:"",
+        scrin:'vessel-5.jpg',
+        scrin1:'c97a9.jpg',
+        scrin2:'Pic1.jpg',
+        scrin3:'c97a9.jpg',
+        icon:'cart-icon.png'
+        },
 
       ],
+      array:[],
+      array2:[]
     }
 },
-
-
+      mounted(){
+        for(let i = 0; i<this.discountgames.length; i++){
+          if(i<8){
+            this.array.push(this.discountgames[i])
+          }else{
+            this.array2.push(this.discountgames[i])
+          }
+        }
+      }
 }
