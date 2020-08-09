@@ -123,7 +123,7 @@
                                 *Добавьте полное описание игры, разделив его на 3 блока,
                                 каждый максимум по 440 символов
                             </div>
-                            <input type="checkbox" class="agreement" id="agreement" name="agreement">
+                            <input type="checkbox" class="agreement" v-model="agreement" id="agreement" name="agreement">
                             <label for="agreement">Я принимаю <a class="link"> пользовательсткое соглашение</a></label><br>
                             <button class="uploadBtn" @click="uploadButtonClick">Опубликовать игру</button>
                         </div>

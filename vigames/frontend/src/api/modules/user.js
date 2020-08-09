@@ -103,9 +103,10 @@ export default {
         fd.append('img', data.img)
         fd.append('banner', data.banner)
         fd.append('gameplay_video_link', data.gameplay_video_link)
-        fd.append('images[0]', data.images[0])
-        fd.append('images[1]', data.images[1])
-        fd.append('imagesCount', "2")
+        for (let i in data.images) {
+            fd.append('images[' + i + ']', data.images[i])
+        }
+        fd.append('imagesCount', data.images.length.toString())
         return instance.post('/api/games/add', fd, {
             headers: {
                 'Content-Type': 'multipart/form-data'

@@ -12,6 +12,7 @@ export default {
         return instance.get(game_list_endpoint)
     },
 
+    // DEPRECATED
     getReviews(gameId) {
         return instance.get('/api/games/' + gameId + '/rating')
     },
