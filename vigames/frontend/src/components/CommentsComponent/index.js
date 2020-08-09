@@ -1,32 +1,12 @@
-const comments = [
-    {
-        id: 1,
-        user_nickname: 'Имя Фамилия',
-        text: 'Vivamus porta dignissim blandit. Mauris non libero sit amet mauris maximus pulvinar. Aliquam mattis vehicula metus, congue aliquam tellus euismod ultricies.'
-    },
-    {
-        id: 2,
-        user_nickname: 'Имя Фамилия',
-        text: 'Vivamus porta dignissim blandit. Mauris non libero sit amet mauris maximus pulvinar. Aliquam mattis vehicula metus, congue aliquam tellus euismod ultricies.'
-    },
-    {
-        id: 3,
-        user_nickname: 'Имя Фамилия',
-        text: 'Vivamus porta dignissim blandit. Mauris non libero sit amet mauris maximus pulvinar. Aliquam mattis vehicula metus, congue aliquam tellus euismod ultricies.'
-    },
-    {
-        id: 4,
-        user_nickname: 'Имя Фамилия',
-        text: 'Vivamus porta dignissim blandit. Mauris non libero sit amet mauris maximus pulvinar. Aliquam mattis vehicula metus, congue aliquam tellus euismod ultricies.'
-    }
-]
-
+import CommentComponent from './CommentComponent/index.vue'
 
 export default {
     name: "CommentsComponent",
+    props: ['comments'],
+    components: {
+      CommentComponent
+    },
     computed: {
-        getComments() {
-            return comments;
-        }
+
     }
 }

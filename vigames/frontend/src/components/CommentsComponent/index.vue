@@ -25,19 +25,10 @@
       </div>
 
       <div class="comments__cards">
-          <div class="comments__card" v-for="comments in getComments" :key="comments.id">
-              <div class="comments__userplate">
-                  <img src="@/assets/img/userpic.png" alt="avatar" class="userplate__pic">
-              </div>
-              <div class="comments__content">
-                  <div class="comments__header">
-                      <h4 class="comments__username">{{comments.user_nickname}}</h4>
-                  </div>
-                  <div class="comments__text">
-                      <p>{{comments.text}}</p>
-                  </div>
-              </div>
-          </div>
+          <comment-component v-for="comment in comments"
+                             :commentData="comment"
+                             :key="comment.id">
+          </comment-component>
       </div>
   </div>
 </template>

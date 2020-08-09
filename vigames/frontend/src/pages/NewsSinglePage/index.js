@@ -17,24 +17,27 @@ export default {
         return {
             loading: false,
             isBtnClick: false,
-            newsData: {},
-            breadcrumbs: [
-                {
-                    to: {
-                        name: 'newsPage'
-                    },
-                    title: 'Новости'
-                },
-                {
-                    title: 'Заголовок новости'
-                }
-            ]
+            newsData: {}
         }
     },
     computed: {
         getImage() {
             return getImageUrl(this.newsData.img)
-        }
+        },
+
+        breadcrumbs() {
+            return [
+                {
+                    to: {
+                        name: 'homePage'
+                    },
+                    title: 'Главная'
+                },
+                {
+                    title: this.newsData.title
+                }
+            ]
+        },
     },
 
     beforeMount() {
@@ -46,6 +49,7 @@ export default {
             this.loading = true
             news.getNewsInfo(id).then(response => {
                 this.newsData = response.data
+                console.log(response)
                 this.loading = false
             }).catch(error => {
                 console.log(error)

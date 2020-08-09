@@ -39,7 +39,7 @@
       </div> !-->
 
       <div class="comments">
-        <comments-component id="reviews"></comments-component>
+        <comments-component id="reviews" :comments="newsData.comments_post"></comments-component>
       </div>
     </div>
 

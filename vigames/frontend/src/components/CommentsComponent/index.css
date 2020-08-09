@@ -95,33 +95,3 @@ button {
     margin-top: 22px;
     margin-bottom: 40px;
 }
-
-.comments__card {
-    margin-bottom: 120px;
-    display: grid;
-    grid-template-columns: 14% 86%;
-}
-
-.comments__card:first-child {
-    margin-top: 30px;
-}
-
-.comments__header {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.comments__text {
-    margin-top: 17px;
-    font-size: 14px;
-    line-height: 16px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.comments__username {
-    margin-top: 2px;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    color: rgba(255, 255, 255, 0.8);
-}
