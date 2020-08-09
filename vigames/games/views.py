@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .search import Search_engine
-from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre
+from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre, Orders
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer, \
@@ -21,7 +21,10 @@ class OutputAllNewsView(APIView):
     def get(self, request):
         news = Posts.objects.filter(draft=False)
         serializer = OutputAllNews(news, many=True)
-        return Response(serializer.data)
+        # Получаем избранные записи. Сортируем по дате и выбираем последние 4 записи
+        news_fav = Posts.objects.filter(draft=False, fav=True, ).order_by('-fav_date', '-num_views')[:4]
+        serializer_fav = OutputAllNews(news_fav, many=True)
+        return Response({'news_fav': list(serializer_fav.data), 'news': list(serializer.data)})
 
 
 class AccountDetail(APIView):
@@ -54,8 +57,10 @@ class PostView(APIView):
 
     def get(self, request, pk):
         try:
-            news = Posts.objects.get(id=pk, draft=False)
-            serializer = OutputPost(news)
+            post = Posts.objects.get(id=pk, draft=False)
+            serializer = OutputPost(post)
+            post.num_views += 1     # Увеличиваем счетчик просмотров на 1
+            post.save()
             return Response(serializer.data)
         except:
             raise Http404
@@ -70,20 +75,20 @@ class PostView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, pk):
-        posts = Posts.objects.get(id=pk)
-        serializer = PostSerializer(posts, data=request.data)
+        post = Posts.objects.get(id=pk)
+        serializer = PostSerializer(post, data=request.data)
         user = request.user
         account = Account.objects.get(user=user)
-        if serializer.is_valid() and user.is_authenticated and account.is_developer and posts.author == user:
+        if serializer.is_valid() and user.is_authenticated and account.is_developer and post.author == user:
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        posts = Posts.objects.get(id=pk)
+        post = Posts.objects.get(id=pk)
         account = Account.objects.get(user=request.user)
-        if account.is_developer and posts.user == request.user:
-            posts.delete()
+        if account.is_developer and post.user == request.user:
+            post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
@@ -102,7 +107,7 @@ class CommentNewsCreateView(APIView):
         user = request.user
         comment = CommentsNewsSerializer(data=request.data)
         text_comment = Search.comments(Search(), request.data['text_comment'])  # Закрываем матерные слова звездочками
-        posts = Posts.objects.get(url=request.data["page"])    # Ищем пост, к которому был оставлен коммент. По урлу.
+        posts = Posts.objects.get(id=request.data["id"])    # Ищем пост, к которому был оставлен коммент. По урлу.
         if comment.is_valid() and user.is_authenticated:
             comment.save(user=user, page=posts, text_comment=text_comment)
             return Response(comment.data)
@@ -183,21 +188,11 @@ class GameDetail(APIView):
         serializer = GameSerializer(data=request.data)
         account = Account.objects.get(user=user)
         medias = []
-        '''
-        for i in list(dict(request.data)['images']):     # Добавление картинок к игре
-            if user.is_authenticated and account.is_developer:
-                medias.append(Media.objects.create(img=i, author=user))
-            else:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
-        '''
-        """Пробный вариант кода для загрузки (внимание костыль)"""
         for i in range(int(request.data['imagesCount'])):     # Добавление картинок к игре
             if user.is_authenticated and account.is_developer:
                 medias.append(Media.objects.create(img=request.data[f'images[{i}]'], author=user))
             else:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
         if serializer.is_valid() and user.is_authenticated and account.is_developer:
             serializer.save(author=user, image=medias)
             return Response(serializer.data)
@@ -206,6 +201,8 @@ class GameDetail(APIView):
     def get(self, request, pk):
         game = self.get_game(pk)
         serializer = OutputGameSerializer(game)
+        game.num_views += 1     # Увеличиваем счетчик просмотров на 1
+        game.save()
         return Response(serializer.data)
 
     def put(self, request, pk):
@@ -574,7 +571,7 @@ class OutputGenreTopGames(ListAPIView):
         serializer = GameLibrarySerializer(games, many=True)
         return Response(serializer.data)
 
-
+'''
 class OutputStatistics(ListAPIView):
     """Вывод статистики разработчика (игра-рейтинг)"""
 
@@ -586,40 +583,33 @@ class OutputStatistics(ListAPIView):
             serializer = StatisticsSerializer(games, many=True)
             return Response(serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST)
-
 '''
-class SearchView(APIView):
-    """
-    Поиск по новостям или играм
-    request.data['search'] - текст запроса
-    dir - раздел в котором ищем. Может быть двух типов games/news
-    user - id пользователя
-    """
-    def post(self, request):
+
+
+class OutputStatistics(ListAPIView):
+    """Вывод статистики разработчика (игра-рейтинг)"""
+
+    def get(self, request, pk=0):
         user = request.user
-        user_id = 0
-        if user.is_authenticated:
-            user_id = user.id
-        if request.data['dir'] == 'news':
-            list = Search.search(Search(), request.data['search'], 'news', user_id)
-            list_object = [Posts.objects.get(id=i) for i in list]
+        account = Account.objects.get(user=user)
+        games = Game.objects.filter(author=user)
+        orders = {}
+        today = date.today()
+        if user.is_authenticated and account.is_developer:
+            serializer = StatisticsSerializer(games, many=True)
+            if pk != 0:
+                game = Game.objects.get(id=pk)
+                if game.author == user:
+                    for i in range(1, 31):
+                        orders[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = Orders.objects.filter(game=game, date=today-timedelta(days=i)).count()
+                        data = {'orders': orders, 'rating': list(serializer.data)}
+                    return Response(data)
+                return Response(status=status.HTTP_403_FORBIDDEN)
+            data = {'rating': list(serializer.data)}
+            return Response(data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
-            print(request.data['search'])
-            print(list)
-            print(list_object)
-            serializer = OutputAllNews(list_object)
-            return Response(serializer.data)
-        elif request.data['dir'] == 'games':
-            list = Search.search(Search(), request.data['search'], 'games', user_id)
-            list_object = [Game.objects.get(id=i) for i in list]
-            serializer = OutputPost(list_object, many=True)
-            print(list_object)
-            print(type(list_object))
-            #print(type((list_object).json))
-            return Response(list_object)
-        #else:
-            #return Response(status=status.HTTP_204_NO_CONTENT)
-'''
+
 class SearchView(APIView):
     """
     Поиск по новостям или играм
@@ -629,7 +619,6 @@ class SearchView(APIView):
     """
 
     def post(self, request):
-        print(request.data)
         text = request.data['search']
         if request.data['dir'] == 'games':
             game = Game.objects.filter()

@@ -15,7 +15,7 @@
 
     <game-card
     class="ItemCard"
-    v-for="discount in discountgames"
+    v-for="discount in array"
     :key="discount.id"
     :Game="discount"
     />
@@ -28,10 +28,9 @@
                     :btn_route="{ name: 'homePage' }">
   </banner-component>
   <div class="AdventuresGamesComponents">
-
     <game-card
     class="ItemCard"
-    v-for="discount in discountgames"
+    v-for="discount in array2"
     :key="discount.id"
     :Game="discount"
     />
