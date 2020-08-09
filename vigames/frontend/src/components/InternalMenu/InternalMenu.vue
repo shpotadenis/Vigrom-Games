@@ -7,7 +7,7 @@
         <img src="@/assets/img/VectorBottom.svg">
       </li>
       <transition name="Animation">
-        <div class="AllCategoriesItem" v-show="isCategories">
+        <div class="AllCategoriesItem" v-show="isCategories" @mouseleave="mouseleave">
             <ul class="AllUlBlock">
               <li class="LiBlock">Жанры игр</li>
               <li class="LiBlock">Платформа</li>
