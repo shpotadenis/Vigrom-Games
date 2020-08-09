@@ -21,7 +21,10 @@ class OutputAllNewsView(APIView):
     def get(self, request):
         news = Posts.objects.filter(draft=False)
         serializer = OutputAllNews(news, many=True)
-        return Response(serializer.data)
+        # Получаем избранные записи. Сортируем по дате и выбираем последние 4 записи
+        news_fav = Posts.objects.filter(draft=False, fav=True, ).order_by('-fav_date', '-num_views')[:4]
+        serializer_fav = OutputAllNews(news_fav, many=True)
+        return Response({'news_fav': list(serializer_fav.data), 'news': list(serializer.data)})
 
 
 class AccountDetail(APIView):
@@ -104,7 +107,7 @@ class CommentNewsCreateView(APIView):
         user = request.user
         comment = CommentsNewsSerializer(data=request.data)
         text_comment = Search.comments(Search(), request.data['text_comment'])  # Закрываем матерные слова звездочками
-        posts = Posts.objects.get(url=request.data["page"])    # Ищем пост, к которому был оставлен коммент. По урлу.
+        posts = Posts.objects.get(id=request.data["id"])    # Ищем пост, к которому был оставлен коммент. По урлу.
         if comment.is_valid() and user.is_authenticated:
             comment.save(user=user, page=posts, text_comment=text_comment)
             return Response(comment.data)
