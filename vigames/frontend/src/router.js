@@ -62,7 +62,7 @@ export const router = new Router({
         { path: '/ShooterGame', name: 'ShooterGame', component: ShooterGame },
         { path: '/SimulatorGame', name: 'SimulatorGame', component: SimulatorGame },
         { path: '/StrategyGame', name: 'StrategyGame', component: StrategyGame },
-        { path: '/UploadPage', name: 'uploadPage', component: UploadPage },
+        { path: '/UploadPage', name: 'uploadPage', component: UploadPage, meta: { requiresAuth: true, requiredRole: 'dev' }  },
         { path: '/profile', name: 'personPage', meta: { requiresAuth: true } } // URL не относится к компоненту, нужен, чтобы перенаправлять на нужную страницу (ЛК разработчик или пользователь)
     ]
 })
