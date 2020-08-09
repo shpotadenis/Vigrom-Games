@@ -1,4 +1,5 @@
 import MessageSent from "../../../components/Pop-ups/MessageSent/index.vue"
+import user from '../../../api/modules/user.js'
 
 export default {
     name: "Support",
@@ -18,8 +19,20 @@ export default {
         checkForm(e){
 
             if (this.mail){
-                this.isBtnClick = true;
                 this.error_mail = [];
+                user.makeQuestion({
+                    email: this.mail,
+                    question: this.mess
+                }).then(response => {
+                    if (response) {
+                        this.isBtnClick = true;
+                    }
+
+                }).catch(error => {
+                    if (error.response.data.email) {
+                        this.error_mail = [...error.response.data.email]
+                    }
+                })
                 return true
             }
             this.error_mail = [];

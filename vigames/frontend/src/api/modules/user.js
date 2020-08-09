@@ -8,6 +8,7 @@ const library_endpoint = '/api/accounts/profile/library'
 const wishlist_endpoint = '/api/accounts/profile/wishlist'
 const changepass_endpoint = '/auth/users/set_password/'
 const changename_endpoint = '/auth/users/set_username/'
+const question_endpoint = '/api/question'
 //const addwishlist_endpoint = '/api/games/{0}/wishlist'
 
 export default {
@@ -110,6 +111,14 @@ export default {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+
+    makeQuestion(data) {
+        let fd = new FormData()
+        fd.append('email', data.email)
+        fd.append('question', data.question)
+
+        return instance.post(question_endpoint, fd)
     }
 
 

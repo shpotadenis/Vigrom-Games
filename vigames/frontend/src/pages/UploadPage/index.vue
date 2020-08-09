@@ -20,16 +20,16 @@
                             <div class="blockName">Жанр</div>
                             <select class="textInputs" v-model="genre">
                                 <option>Выберите жанр</option>
-                                <option>Приключения</option>
-                                <option>Головоломки</option>
-                                <option>Экшн</option>
-                                <option>РПГ</option>
-                                <option>Стратегии</option>
-                                <option>Фермы</option>
-                                <option>ММО</option>
-                                <option>Шутеры</option>
-                                <option>Гонки</option>
-                                <option>Симуляторы</option>
+                                <option value="adventures">Приключения</option>
+                                <option value="puzzle">Головоломки</option>
+                                <option value="action">Экшн</option>
+                                <option value="rpg">РПГ</option>
+                                <option value="strategy">Стратегии</option>
+                                <option value="farm">Фермы</option>
+                                <option value="mmo">ММО</option>
+                                <option value="shooter">Шутеры</option>
+                                <option value="race">Гонки</option>
+                                <option value="simulator">Симуляторы</option>
                             </select>
                         </div>
                         <div class="blocks">

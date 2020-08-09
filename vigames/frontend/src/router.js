@@ -12,7 +12,7 @@ import ForgotPass from './pages/ForgotPass/index.vue'
 import LibraryPage from "./pages/LibraryPage/index.vue"
 import GameSinglePage from "./pages/GameSinglePage/index.vue";
 import LoginPage from "./pages/LoginPage/index.vue";
-import NewsPage from "./pages/NewsGamePage/NewsPage";
+import NewsPage from "./pages/NewsGamePage/NewsPage.vue";
 import HomePage from "./pages/HomeGamePage/HomePage.vue";
 import SignInPage from "./pages/SignInPage/index.vue"
 import SignUpRolePage from "./pages/SignUpRolePage/index.vue"
@@ -45,7 +45,7 @@ export const router = new Router({
         { path: '/library', name: 'libraryPage', component: LibraryPage, meta: { requiresAuth: true } },
         { path: '/featured', name: 'featuredPage', component: FeaturedPage, meta: { requiresAuth: true } },
         { path: '/free_games', name: 'freeGames', component: FreeGames},
-        { path: '/separate_news', name: 'newsSinglePage', component: NewsSinglePage },
+        { path: '/separate_news/:id', name: 'newsSinglePage', component: NewsSinglePage },
         { path: '/not_found', name: 'errorPage404', component: ErrorPage },
         { path: '/discountsGame', name: 'discountsGame', component: DiscountsGame },
         { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },
@@ -62,7 +62,7 @@ export const router = new Router({
         { path: '/ShooterGame', name: 'ShooterGame', component: ShooterGame },
         { path: '/SimulatorGame', name: 'SimulatorGame', component: SimulatorGame },
         { path: '/StrategyGame', name: 'StrategyGame', component: StrategyGame },
-        { path: '/UploadPage', name: 'uploadPage', component: UploadPage },
+        { path: '/UploadPage', name: 'uploadPage', component: UploadPage, meta: { requiresAuth: true, requiredRole: 'dev' }  },
         { path: '/profile', name: 'personPage', meta: { requiresAuth: true } } // URL не относится к компоненту, нужен, чтобы перенаправлять на нужную страницу (ЛК разработчик или пользователь)
     ]
 })
