@@ -6,6 +6,11 @@ export default {
     components: {
       CommentComponent
     },
+    data() {
+      return {
+          commentFormShow: false
+      }
+    },
     computed: {
 
     }

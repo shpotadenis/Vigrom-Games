@@ -6,7 +6,7 @@
           </h3>
       </div>
       <div class="comments__replay">
-          <a href="#window" class="replay__link">
+          <a class="replay__link" @click="commentFormShow = !commentFormShow">
               <div class="replay__text">
                   Оставьте свой комментарий
               </div>
@@ -14,7 +14,7 @@
           </a>
       </div>
 
-      <div id="window">
+      <div v-if="commentFormShow">
         <div class="send_block">
           <textarea type="text" class="sms" id="message" placeholder="Оставьте свой комментарий">
           </textarea>
