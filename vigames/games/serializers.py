@@ -18,7 +18,6 @@ class FilterCommentSerializer(serializers.ListSerializer):
 
     def to_representation(self, data):
         data = data.filter(parent=None)
-        print(data)
         return super().to_representation(data)
 
 
@@ -54,6 +53,16 @@ class CommentsGameSerializer(serializers.ModelSerializer):
         exclude = ('moderation', 'page')
 
 
+class SerializerMedia(serializers.ModelSerializer):
+    """Сериализатор изображений"""
+
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+
+    class Meta:
+        model = Media
+        fields = ('img', 'author')
+
+
 class OutputAllNews(serializers.ModelSerializer):
     """Вывод последних новостей на страницу news"""
 
@@ -71,23 +80,14 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Posts
-        fields = '__all__'
+        exclude = ('fav', 'fav_date')
 
 
 class OutputPost(PostSerializer):
     """Вывод отдельного поста"""
 
     comments_post = CommentsNewsSerializer(many=True)
-
-
-class SerializerMedia(serializers.ModelSerializer):
-    """Сериализатор изображений"""
-
-    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
-
-    class Meta:
-        model = Media
-        fields = ('img', 'author')
+    image = SerializerMedia(many=True)
 
 
 class GameSerializer(serializers.ModelSerializer):
