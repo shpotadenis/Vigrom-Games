@@ -16,10 +16,13 @@
         <div v-if="this.$store.getters['user/isLoggedIn']">
             <div class="reviews__replay">
                 <a class="replay__link" @click="reviewFormShow = !reviewFormShow">
-                    <span class="replay__text">
+                    <span class="replay__text" v-if="!reviewFormShow">
                         Оставить свой отзыв
                     </span>
-                    <img src="@/assets/img/chevron-down-icon.svg" alt="" class="replay__icon">
+                    <span class="replay__text" v-else>
+                        Скрыть
+                    </span>
+                    <img src="@/assets/img/chevron-down-icon.svg" :class="{ activeForm: reviewFormShow }" alt="" class="replay__icon">
                 </a>
             </div>
             <div id="window" v-if="reviewFormShow">

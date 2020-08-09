@@ -1,5 +1,11 @@
 <template>
     <div class="popup_wrapper">
+        <PasswordChanged
+                v-if="isPassChangedPopupVisible"
+                @close="close"
+                style="z-index: 999"
+        >
+        </PasswordChanged>
         <div class="v_popup">
             <div class="v-popup_header">
                 <p id="change_pass_title">Смена пароля</p>

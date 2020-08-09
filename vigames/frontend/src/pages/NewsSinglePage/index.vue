@@ -1,9 +1,7 @@
 <template>
   <div v-if="!loading">
   <div class="wrapper">
-    <router-link :to="{name: 'newsPage'}">
     <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
-    </router-link>
     <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>
     <div class="container">
       <div class="Header">

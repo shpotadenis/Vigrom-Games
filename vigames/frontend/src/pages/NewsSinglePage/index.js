@@ -34,6 +34,12 @@ export default {
                     title: 'Главная'
                 },
                 {
+                  to: {
+                      name: 'newsPage'
+                  },
+                  title: 'Новости'
+                },
+                {
                     title: this.newsData.title
                 }
             ]

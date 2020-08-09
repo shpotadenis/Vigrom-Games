@@ -25,6 +25,10 @@
     cursor: pointer;
 }
 
+.activeForm {
+    transform: rotate(180deg)
+}
+
 .replay__text {
     text-decoration:underline;
     font-weight: normal;

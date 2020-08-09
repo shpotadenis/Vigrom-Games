@@ -17,6 +17,10 @@
     color: #fff;
 }
 
+.activeForm {
+    transform: rotate(180deg);
+}
+
 .filter__text {
     font-size: 14px;
     line-height: 16px;

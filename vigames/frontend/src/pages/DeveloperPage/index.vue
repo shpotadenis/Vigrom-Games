@@ -6,11 +6,6 @@
                 @SaveNewPass="SaveNewPass"
         >
         </v_popup>
-        <PasswordChanged
-                v-if="isDownloadPopupVisible"
-                @close="close"
-        >
-        </PasswordChanged>
         <div><p id="personal_account_title">Личный кабинет</p></div>
         <img src="@/assets/img/line.png" alt="line">
         <div id="personal_account_info">
@@ -22,7 +17,7 @@
                         <img src="@/assets/img/case_ring.svg" alt="case_ring" id="img_case_ring">
                     </a>
                 </div>
-                <p id="border_user_info_title">Игрок</p>
+                <p id="border_user_info_title">Разработчик</p>
                 <p id="border_user_info_title_username_now">{{username}}</p>
                 <p id="border_user_info_title_username_change">Имя пользователя:</p>
                 <p id="border_user_info_title_email_change">Пароль:</p>

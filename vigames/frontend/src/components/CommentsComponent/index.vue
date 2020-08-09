@@ -7,10 +7,13 @@
       </div>
       <div class="comments__replay">
           <a class="replay__link" @click="commentFormShow = !commentFormShow">
-              <div class="replay__text">
+              <div class="replay__text" v-if="!commentFormShow">
                   Оставьте свой комментарий
               </div>
-              <div><img src="@/assets/img/chevron-down-icon.svg" alt="" class="replay__icon"></div>
+              <div class="replay__text" v-else>
+                  Скрыть
+              </div>
+              <div><img src="@/assets/img/chevron-down-icon.svg" :class="{ activeForm: commentFormShow }"  alt="" class="replay__icon"></div>
           </a>
       </div>
 
