@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .search import Search_engine
-from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre
+from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre, Orders
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer, \
@@ -571,7 +571,7 @@ class OutputGenreTopGames(ListAPIView):
         serializer = GameLibrarySerializer(games, many=True)
         return Response(serializer.data)
 
-
+'''
 class OutputStatistics(ListAPIView):
     """Вывод статистики разработчика (игра-рейтинг)"""
 
@@ -583,40 +583,33 @@ class OutputStatistics(ListAPIView):
             serializer = StatisticsSerializer(games, many=True)
             return Response(serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST)
-
 '''
-class SearchView(APIView):
-    """
-    Поиск по новостям или играм
-    request.data['search'] - текст запроса
-    dir - раздел в котором ищем. Может быть двух типов games/news
-    user - id пользователя
-    """
-    def post(self, request):
+
+
+class OutputStatistics(ListAPIView):
+    """Вывод статистики разработчика (игра-рейтинг)"""
+
+    def get(self, request, pk=0):
         user = request.user
-        user_id = 0
-        if user.is_authenticated:
-            user_id = user.id
-        if request.data['dir'] == 'news':
-            list = Search.search(Search(), request.data['search'], 'news', user_id)
-            list_object = [Posts.objects.get(id=i) for i in list]
+        account = Account.objects.get(user=user)
+        games = Game.objects.filter(author=user)
+        orders = {}
+        today = date.today()
+        if user.is_authenticated and account.is_developer:
+            serializer = StatisticsSerializer(games, many=True)
+            if pk != 0:
+                game = Game.objects.get(id=pk)
+                if game.author == user:
+                    for i in range(1, 31):
+                        orders[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = Orders.objects.filter(game=game, date=today-timedelta(days=i)).count()
+                        data = {'orders': orders, 'rating': list(serializer.data)}
+                    return Response(data)
+                return Response(status=status.HTTP_403_FORBIDDEN)
+            data = {'rating': list(serializer.data)}
+            return Response(data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
-            print(request.data['search'])
-            print(list)
-            print(list_object)
-            serializer = OutputAllNews(list_object)
-            return Response(serializer.data)
-        elif request.data['dir'] == 'games':
-            list = Search.search(Search(), request.data['search'], 'games', user_id)
-            list_object = [Game.objects.get(id=i) for i in list]
-            serializer = OutputPost(list_object, many=True)
-            print(list_object)
-            print(type(list_object))
-            #print(type((list_object).json))
-            return Response(list_object)
-        #else:
-            #return Response(status=status.HTTP_204_NO_CONTENT)
-'''
+
 class SearchView(APIView):
     """
     Поиск по новостям или играм
