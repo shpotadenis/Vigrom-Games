@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="uploadPage">
-            <div class="title">ЗАГРУЗКА ИГРЫ</div>
+            <div class="title mainTitle">ЗАГРУЗКА ИГРЫ</div>
             <div class="generalInfo container">
                 <div class="partTitle">Основное</div>
                 <div class="row ">
