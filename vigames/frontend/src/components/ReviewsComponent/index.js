@@ -34,7 +34,7 @@ export default {
         fetchData() {
             this.loading = true
             games.getReviews(this.gameData.id).then(response => {
-                this.reviews.push(response.data)
+                this.reviews = response.data
                 console.log(response)
                 this.loading = false
             }).catch(error => {
