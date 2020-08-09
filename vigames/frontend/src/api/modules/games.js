@@ -14,5 +14,9 @@ export default {
 
     getReviews(gameId) {
         return instance.get('/api/games/' + gameId + '/rating')
+    },
+
+    getByGenre(genre) {
+        return instance.get('/api/genre/' + genre)
     }
 }

@@ -3,6 +3,7 @@ import FooterComponent from "../../components/FooterComponent/index.vue"
 import Checkout from "../../components/Pop-ups/Checkout/checkout"
 import CommentsComponent from "../../components/CommentsComponent/index.vue"
 import news from '../../api/modules/news.js'
+import { getImageUrl } from '../../utils.js'
 
 export default {
     name: "NewsSinglePage",
@@ -31,6 +32,9 @@ export default {
         }
     },
     computed: {
+        getImage() {
+            return getImageUrl(this.newsData.img)
+        }
     },
 
     beforeMount() {
