@@ -25,6 +25,7 @@
                                             @click="areOptionsVisible = !areOptionsVisible"
                                     >
                                         {{selected}}
+                                        <img src="@/assets/img/genre-arrow.png" alt="" class="arrow">
                                     </div>
                                         <div
                                                 class="options"
@@ -39,6 +40,30 @@
                                             </p>
                                         </div>
                                 </div>
+                        </div>
+                        <div class="blocks">
+                            <div class="blockName">Платформа</div>
+                            <div class="v-select">
+                                <div
+                                        class="genre_title"
+                                        @click="areOptionsVisible_second = !areOptionsVisible_second"
+                                >
+                                    {{selected_two}}
+                                    <img src="@/assets/img/genre-arrow.png" alt="" class="arrow">
+                                </div>
+                                <div
+                                        class="options"
+                                        v-if="areOptionsVisible_second"
+                                >
+                                    <p
+                                            v-for="option in options_second"
+                                            :key="option.value"
+                                            @click="select_second_Option(option)"
+                                    >
+                                        {{option.name}}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                         <div class="blocks">
                             <div class="blockName">Цена</div>
