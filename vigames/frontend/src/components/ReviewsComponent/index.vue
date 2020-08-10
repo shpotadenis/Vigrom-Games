@@ -31,9 +31,7 @@
                         <div class="review__title">
                             <input type="text" class="sms__header" v-model="title" placeholder="Заголовок">
                         </div>
-                        <div class="review__rating">
-                            <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in 5" @click="rating = i" :key="'k' + i">
-                        </div>
+                        <StarComponent @rating-select="selectedRating" class="review__rating"></StarComponent>
                     </div>
                   <textarea type="text" class="sms" id="message" v-model="content" placeholder="Оставьте свой отзыв">
                   </textarea>
@@ -55,7 +53,8 @@
                     <div class="review__header">
                         <h4 class="review__title">{{review.title}}</h4> <!-- Заголовок отзыва !-->
                         <div class="review__rating">
-                            <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in review.mark" :key="'r' + i + review.id">
+                            <img src="@/assets/img/star-filled.svg" alt="" class="review__star" v-for="i in review.mark" :key="'r' + i + review.id">
+                            <img src="@/assets/img/star.svg" alt="" class="review__star" v-for="i in 5 - review.mark" :key="'rf' + i + review.id">
                         </div>
                     </div>
                     <div class="review__text">

@@ -19,11 +19,11 @@
 
       <div v-if="commentFormShow">
         <div class="send_block">
-          <textarea type="text" class="sms" id="message" placeholder="Оставьте свой комментарий">
+          <textarea type="text" class="sms" id="message" v-model="message" placeholder="Оставьте свой комментарий">
           </textarea>
         </div>
         <div>
-          <button class="send_btn">Отправить</button>
+          <button class="send_btn" :disabled="message.length == 0">Отправить</button>
         </div>
       </div>
 

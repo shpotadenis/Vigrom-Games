@@ -26,8 +26,17 @@
     margin-right:10px;
 
 }
-
-input[type=text]{
+.ListGame{
+  position: absolute;
+  margin-top: 15px;
+  z-index: 20;
+  background-color: #2D2D42;
+  border-radius: 10px;
+}
+.name{
+  width:300px;
+}
+input[type=search]{
     color:#fff;
 }
 
@@ -35,11 +44,33 @@ input::placeholder{
     color: rgba(255, 255, 255, 0.3);
 
 }
-
+.SearchItemGame{
+  display: flex;
+  width: 350px;
+  height: 61px;
+  border-radius: 10px;
+  background-color: #2D2D42;
+}
+.SearchItemImage{
+  width:120px;
+  height: 45px;
+  margin-top:8px;
+  margin-left: 5px;
+}
 .BorderTop{
     position:relative;
     top:7px;
     width:350px;
     height:1px;
     background: #7A7A83;
+}
+.SearchItemName{
+  margin-left: 25px;
+  margin-top: 11px;
+}
+fade-enter{
+  transition: 0.1s;
+}
+fade-leave{
+  transition:  0.1s;
 }
