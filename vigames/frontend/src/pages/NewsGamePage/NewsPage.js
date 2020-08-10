@@ -17,28 +17,7 @@ export default{
     data(){
         return{
             loading: false,
-            Selected:[
-                {
-                    date:"Сегодня",
-                    name:"Новое оборудование на серверах Vigrom",
-                    id:"1"
-                },
-                {
-                    date:"Сегодня",
-                    name:"Новое оборудование на серверах Vigrom",
-                    id:"2"
-                },
-                {
-                    date:"Сегодня",
-                    name:"Новое оборудование на серверах Vigrom",
-                    id:"3"
-                },
-                {
-                    date:"Сегодня",
-                    name:"Новое оборудование на серверах Vigrom",
-                    id:"4"
-                },
-            ],
+            Selected: [],
             Feeds: []
         }
     },
@@ -51,7 +30,8 @@ export default{
         fetchData() {
             this.loading = true
             news.getListOfNews().then(response => {
-                this.Feeds = response.data
+                this.Feeds = response.data.news
+                this.Selected = response.data.news_fav
                 console.log(response)
                 this.loading = false
             }).catch(error => {
