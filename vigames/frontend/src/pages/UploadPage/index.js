@@ -57,7 +57,7 @@ export default {
         },
 
         uploadButtonClick() {
-          isBtnClick = true;
+          this.isBtnClick = true;
             let data = {
                 title: this.title,
                 short_description: this.short_description,
