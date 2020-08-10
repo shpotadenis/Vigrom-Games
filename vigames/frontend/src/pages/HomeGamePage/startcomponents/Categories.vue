@@ -4,7 +4,7 @@
 		<internal-menu
 		/>
 		<div class="FilterGames">
-				<search-component/>
+				<search-component :key="game"/>
 		</div>
 	</div>
 
