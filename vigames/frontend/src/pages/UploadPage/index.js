@@ -28,16 +28,29 @@ export default {
         block3: '',
         youtube_link: '',
         b:"",
+        OS: '',
         a:[],
         options: [
-            {name: 'Option1', value: 1},
-            {name: 'Option2', value: 2},
-            {name: 'Option3', value: 3},
-            {name: 'Option4', value: 4},
-            {name: 'Option5', value: 5}
+            {name: 'Приключения', value: 'Adventures'},
+            {name: 'Головоломки', value: 'Puzzles'},
+            {name: 'Экшн', value: 'Action'},
+            {name: 'РПГ', value: 'RPG'},
+            {name: 'Стратегии', value: 'Strategy'},
+            {name: 'Фермы', value: 'Farms'},
+            {name: 'ММО', value: 'MMO'},
+            {name: 'Шутеры', value: 'Shooters'},
+            {name: 'Гонки', value: 'Race'},
+            {name: 'Симуляторы', value: 'Simulators'},
+        ],
+        options_second: [
+            {name: 'Windows', value: 'Windows'},
+            {name: 'MacOS', value: 'MacOS'},
+            {name: 'Обе платформы', value: 'Both'},
         ],
         areOptionsVisible: false,
-        selected: 'Выберите жанр'
+        areOptionsVisible_second: false,
+        selected: 'Выберите жанр',
+        selected_two: 'Выберите платформу'
       }
     },
 
@@ -64,7 +77,6 @@ export default {
             this.selectFile3 = event.target.files[0].name       //Это имя файла
             this.img = event.target.files[0]
         },
-
         uploadButtonClick() {
           this.isBtnClick = true;
             let data = {
@@ -77,7 +89,8 @@ export default {
                 img: this.img,
                 banner: this.banner,
                 gameplay_video_link: this.youtube_link,
-                images: this.array
+                images: this.array,
+                OS: this.OS
             }
             console.log(data)
             user.uploadGame(data).then(response => {
@@ -91,7 +104,12 @@ export default {
             this.genre = option.value;
             this.selected = option.name;
             this.areOptionsVisible = false;
-        }
+        },
+        select_second_Option(option) {
+            this.OS = option.value;
+            this.selected_two = option.name;
+            this.areOptionsVisible_second = false;
+        },
     }
 
 }
