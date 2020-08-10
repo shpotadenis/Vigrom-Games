@@ -3,7 +3,7 @@ from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame, \
     PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView, \
     QuestionDetail, DownloadMedia, OutputStatistics, OutputWishlist, SearchView, OutputGenreGames, \
-    OutputGenreTopGames, HideGameDetail, ShowGameDetail
+    OutputGenreTopGames, HideGameDetail, ShowGameDetail, GameInfoToEditDetail
 
 urlpatterns = [
     path('', OutputGames.as_view(), name="main"),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('games/<int:pk>/wishlist', WishListDetail.as_view(), name="wishlist"),
     path('games/<int:pk>/hide', HideGameDetail.as_view(), name="hide_game"),
     path('games/<int:pk>/show', ShowGameDetail.as_view(), name="show_game"),
+    path('games/<int:pk>/show_info', GameInfoToEditDetail.as_view(), name="show_game_info_to_edit"),
 
     path('genre/<str:pk>', OutputGenreGames.as_view(), name="genre_games"),
     path('genre/<str:pk>/top', OutputGenreTopGames.as_view(), name="genre_top_games"),

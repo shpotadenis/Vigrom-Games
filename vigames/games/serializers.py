@@ -153,6 +153,17 @@ class OutputShortGameInfoSerializer(serializers.ModelSerializer):
         fields = ('id', 'author', 'img', 'image', 'title', 'price', 'is_hidden')
 
 
+class OutputGameInfoToEditSerializer(serializers.ModelSerializer):
+    """Сериализатор вывода игры в библиотеку, вишлист пользователя, на главную, на страницы жанров и т.д."""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+    image = SerializerMedia(many=True)
+
+    class Meta:
+        model = Game
+        fields = ('id', 'author', 'img', 'banner', 'image', 'title', 'price', 'file',
+                  'short_description', 'description', 'genre', 'is_hidden')
+
+
 class FaqSerializer(serializers.ModelSerializer):
     """Сериализатор вопросов и ответов в Faq"""
 

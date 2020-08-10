@@ -9,8 +9,9 @@ from .search import Search_engine
 from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre, Orders
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
-    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, OutputShortGameInfoSerializer, GenreSerializer, \
-    StatisticsSerializer, OutputReviewSerializer
+    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, OutputShortGameInfoSerializer, \
+    GenreSerializer, \
+    StatisticsSerializer, OutputReviewSerializer, OutputGameInfoToEditSerializer
 from django.contrib.auth.models import User
 from scripts import Search
 
@@ -656,3 +657,15 @@ class ShowGameDetail(APIView):
             return Response(status=status.HTTP_200_OK)
         except Game.DoesNotExist:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class GameInfoToEditDetail(ListAPIView):
+    """Вывод информации по игре для последующего редактирования"""
+
+    def get(self, request, pk):
+        game = Game.objects.get(pk=pk)
+        serializer = OutputGameInfoToEditSerializer(game)
+        user = request.user
+        if user.is_authenticated and game.author == user:
+            return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
