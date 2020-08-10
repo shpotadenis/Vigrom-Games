@@ -39,7 +39,6 @@ export default {
 
         getImages() {
             let images = []
-            //images.push(this.getGameData.banner)
             for (let i in this.getGameData.image) {
                 images.push({
                     image: getImageUrl(this.getGameData.image[i].img)
