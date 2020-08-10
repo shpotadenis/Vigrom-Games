@@ -17,7 +17,6 @@ import NewsPage from "./pages/NewsGamePage/NewsPage.vue";
 import HomePage from "./pages/HomeGamePage/HomePage.vue";
 import SignInPage from "./pages/SignInPage/index.vue"
 import SignUpRolePage from "./pages/SignUpRolePage/index.vue"
-import Checkout from "./components/Pop-ups/Checkout/checkout.vue"
 import ActionGame from './pages/GerneGame/ActionGame/ActionGame.vue'
 import AdventuresGame from './pages/GerneGame/AdventuresGame/AdventuresGames.vue'
 import FarmGame from './pages/GerneGame/FarmGame/FarmGame.vue'
@@ -28,7 +27,14 @@ import RPGGame from './pages/GerneGame/RPGGame/RPGGame.vue'
 import ShooterGame from './pages/GerneGame/ShooterGame/ShooterGame.vue'
 import SimulatorGame from './pages/GerneGame/SimulatorGame/SimulatorGame.vue'
 import StrategyGame from './pages/GerneGame/StrategyGame/StrategyGame.vue'
+import ChangePass from './components/Pop-ups/ChangePass/index.vue'
+import Checkout from './components/Pop-ups/Checkout/checkout.vue'
 import GameDownloaded from './components/Pop-ups/GameDownloaded/index.vue'
+import GoDownload from './components/Pop-ups/GoDownload/index.vue'
+import MessageSent from './components/Pop-ups/MessageSent/index.vue'
+import PasswordChanged from './components/Pop-ups/PasswordChanged/index.vue'
+import PasswordReset from './components/Pop-ups/PasswordReset/index.vue'
+import Support from './components/Pop-ups/Support/index.vue'
 import Vue from "vue";
 
 
@@ -44,7 +50,6 @@ export const router = new Router({
         { path: '/news', name: 'newsPage', component: NewsPage },
         { path: '/sign_in', name: 'signInPage', component: SignInPage },
         { path: '/sign_up_next', name: 'signUpRolePage', component: SignUpRolePage },
-        { path: '/checkout', name: 'checkout', component: Checkout },
         { path: '/library', name: 'libraryPage', component: LibraryPage, meta: { requiresAuth: true } },
         { path: '/featured', name: 'featuredPage', component: FeaturedPage, meta: { requiresAuth: true } },
         { path: '/free_games', name: 'freeGames', component: FreeGames},
@@ -68,7 +73,14 @@ export const router = new Router({
         { path: '/Error403', name: 'ErrorPage403', component: ErrorPage403 },
         { path: '/UploadPage', name: 'uploadPage', component: UploadPage, meta: { requiresAuth: true, requiredRole: 'dev' }  },
         { path: '/profile', name: 'personPage', meta: { requiresAuth: true } }, // URL не относится к компоненту, нужен, чтобы перенаправлять на нужную страницу (ЛК разработчик или пользователь)
-        { path: '/gameDownloaded', name: 'gameDownloaded', component: GameDownloaded }
+        { path: '/ChangePass', name: 'ChangePass', component: ChangePass },
+        { path: '/Checkout', name: 'Checkout', component: Checkout },
+        { path: '/GameDownloaded', name: 'GameDownloaded', component: GameDownloaded },
+        { path: '/GoDownload', name: 'GoDownload', component: GoDownload },
+        { path: '/MessageSent', name: 'MessageSent', component: MessageSent },
+        { path: '/PasswordChanged', name: 'PasswordChanged', component: PasswordChanged },
+        { path: '/PasswordReset', name: 'PasswordReset', component: PasswordReset },
+        { path: '/Support', name: 'Support', component: Support }
     ]
 })
 
