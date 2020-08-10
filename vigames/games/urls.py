@@ -6,7 +6,7 @@ from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     OutputGenreTopGames, HideGameDetail, ShowGameDetail, GameInfoToEditDetail
 
 urlpatterns = [
-    path('', OutputGames.as_view(), name="main"),
+    path('main/new', OutputGames.as_view(), name="main"),
 
     path('profile', AccountDetail.as_view(), name="profile"),
     path('profile/library', OutputLibrary.as_view(), name="library"),
