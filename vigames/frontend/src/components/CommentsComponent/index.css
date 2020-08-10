@@ -72,6 +72,16 @@ button {
     background: #CE6796;
 }
 
+.send_btn:disabled {
+    background: #2D2D42;
+}
+
+.send_btn:hover:disabled {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
 .send_btn:hover {
     -moz-box-shadow:0 0 15px #CE6796;
     -webkit-box-shadow:0 0 15px #CE6796;

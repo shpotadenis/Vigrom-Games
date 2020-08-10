@@ -8,7 +8,8 @@ export default {
     },
     data() {
       return {
-          commentFormShow: false
+          commentFormShow: false,
+          message: ''
       }
     },
     computed: {
