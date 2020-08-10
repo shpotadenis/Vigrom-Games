@@ -1,5 +1,5 @@
 .header {
-    margin-bottom: 74px;
+    margin-bottom: 33px;
     color: #64646E;
     border-bottom: 1px solid #313144;;
 }
@@ -7,6 +7,10 @@
 .wrapper {
     margin: 0 auto;
     max-width: 1124px;
+}
+
+.panel{
+    margin-left: 20px;
 }
 
 .header__wrapper {
@@ -17,6 +21,7 @@
 
 .header__logo {
     margin: 20px 0;
+    position: absolute;
 }
 
 .header__nav-list {
@@ -63,11 +68,11 @@
 }
 
 .header__nav {
-    margin-left: 119px;
+    margin-left: 190px;
 }
 
 .header__icons {
-    margin: 28px 0 28px 348px;
+    margin: 28px 0 28px 480px;
     display: flex;
     flex-wrap: wrap;
 }
