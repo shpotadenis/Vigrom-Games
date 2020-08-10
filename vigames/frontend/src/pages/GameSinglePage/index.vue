@@ -9,24 +9,27 @@
             </div>
             <div class="info-card">
                 <div class="info-card__about">
-                    <h2 class="info-card__title">
-                        {{getGameData.title}}
-                    </h2>
+                    <div class="info-card__title">
+                        <h2 class="info-card__title-text">{{getGameData.title}}</h2>
+                        <div v-if="this.$store.getters['user/isLoggedIn']">
+                            <div class="info-card__wishlist" v-if="!isInWishlist">
+                                <div @click="addToWishlistClick" class="wishlist__btn">
+                                    <img src="@/assets/img/heart.svg" alt="" class="wishlist__heart">
+                                </div>
+                            </div>
+                            <div class="info-card__wishlist" v-else>
+                                <div @click="removeFromWishlistClick" class="wishlist__btn">
+                                    <img src="@/assets/img/heart-filled.svg" alt="" class="wishlist__heart-filled">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <p class="info-card__author">
                         От {{getGameData.author}}
                     </p>
+
                 </div>
-                <div class="info-card__buttons" v-if="this.$store.getters['user/isLoggedIn']">
-                    <div class="info-card__buy" v-if="!isInWishlist">
-                        <button @click="addToWishlistClick" class="buy__btn">
-                            В избранное
-                        </button>
-                    </div>
-                    <div class="info-card__buy" v-else>
-                        <button @click="removeFromWishlistClick" class="buy__btn">
-                            Удалить из избранного
-                        </button>
-                    </div>
+                <div v-if="this.$store.getters['user/isLoggedIn']">
                     <div class="info-card__buy" v-if="!isPurchased">
                         <button @click="isBtnClick = true" class="buy__btn">
                             Купить

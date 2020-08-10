@@ -3,3 +3,7 @@
     transition: .2s;
 }
 
+.review__star {
+    cursor: pointer;
+}
+
