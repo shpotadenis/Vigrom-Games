@@ -17,7 +17,7 @@ export default {
         undername:"Компьютерная игра в жанре action-adventure с элементами survival horror и стелс-экшена, разработанная студией Naughty Dog."
       }
       ],
-      bestscomponents:[
+  bestscomponents:[
         {
         id:"1",
         image:"MaskGroup.svg",

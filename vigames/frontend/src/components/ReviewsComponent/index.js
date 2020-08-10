@@ -1,8 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import games from '../../api/modules/games.js'
+import StarComponent from '../StarComponent/index.vue'
 
 export default {
     name: "ReviewsComponent",
+    components: {
+      StarComponent
+    },
     data() {
         return {
             reviewFormShow: false,
@@ -28,7 +32,10 @@ export default {
                 console.log(error)
             })
         },
-
+        selectedRating(i) {
+            this.rating = i
+            console.log(i)
+        }
        /* fetchData() {
             this.loading = true
             games.getReviews(this.gameData.id).then(response => {

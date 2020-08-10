@@ -20,6 +20,11 @@
 }
 
 .info-card__title {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.info-card__title-text {
     font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
@@ -209,4 +214,14 @@
     width: 50px;
     transform: rotate(180deg);
     cursor: pointer;
+}
+
+.wishlist__btn {
+    padding-left: 16px;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.wishlist__btn:hover {
+    transform: scale(1.15);
 }
