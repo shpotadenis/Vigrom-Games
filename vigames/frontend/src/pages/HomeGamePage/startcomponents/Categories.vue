@@ -1,9 +1,11 @@
 ﻿<template>
-<div >
-	<div class="AllCategories">
-		<internal-menu
-		/>
-		<div class="FilterGames">
+<div container>
+	<div class="AllCategories row justify-content-between">
+
+		<div class="col-6">
+			<internal-menu/>
+		</div>
+		<div class="FilterGames col-4">
 				<search-component/>
 		</div>
 	</div>
@@ -27,11 +29,6 @@ export default {
 </script>
 
 <style>
-	.AllCategories{
-		display:flex;
-		justify-content:space-between;
-	}
-
 	.AllChooseUL{
 		display:flex;
 	}

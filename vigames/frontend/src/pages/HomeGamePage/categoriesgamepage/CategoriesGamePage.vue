@@ -1,9 +1,6 @@
 <template>
 <div class="CategoriesGamePage">
-  <div class="PopularGameTitle">
-    <p class="Title">Популярные категории</p>
 
-  </div>
   <div class="AllComponentsCategories">
     <categories-game-page-components
     />
@@ -14,6 +11,6 @@
 <script src="./CategoriesGamePage.js">
 
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/style/CategoriesGamePage.scss'
 </style>
