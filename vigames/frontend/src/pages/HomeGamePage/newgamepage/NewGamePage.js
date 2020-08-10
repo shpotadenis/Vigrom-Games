@@ -11,7 +11,36 @@ export default {
   data(){
     return{
       loading: false,
-      list: null
+      list:[
+            {
+            id:"1",
+            image:"MaskGroup.svg",
+            name:"DANGER CREW",
+            undername:"Ubisoft Nadeo | Ubisoft",
+            price:"299.99"
+            },
+            {
+            id:"2",
+            image:"MaskGroup.svg",
+            name:"DANGER CREW",
+            undername:"Ubisoft Nadeo | Ubisoft",
+            price:"299.99"
+            },
+            {
+            id:"3",
+            image:"MaskGroup.svg",
+            name:"DANGER CREW",
+            undername:"Ubisoft Nadeo | Ubisoft",
+            price:"299.99"
+            },
+            {
+            id:"4",
+            image:"MaskGroup.svg",
+            name:"DANGER CREW",
+            undername:"Ubisoft Nadeo | Ubisoft",
+            price:"299.99"
+            },
+          ]
     }
   },
   beforeMount() {
