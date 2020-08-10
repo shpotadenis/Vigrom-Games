@@ -164,3 +164,35 @@ label{
 textarea{
     resize: none;
 }
+.v-select{
+    position: relative;
+    width: 200px;
+}
+.options{
+    border: none;
+    position: absolute;
+    width: 220px;
+    border-radius: 0 0 8px 8px;
+    background: #212130;
+    z-index: 2;
+}
+.options p{
+    padding: 10px;
+}
+.genre_title{
+    cursor: pointer;
+    background: #212130;
+    border-radius: 8px 8px 0 0;
+    border: 0;
+    padding: 15px;
+    min-width: 220px;
+}
+.options p:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.arrow{
+    position: absolute;
+    left: 180px;
+    top: 23px;
+}

@@ -3,10 +3,11 @@ from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     GameRatingDetail, BuyGameDetail, WishListDetail, AssessPostDetail, OutputLibrary, DownloadGame, \
     PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView, \
     QuestionDetail, DownloadMedia, OutputStatistics, OutputWishlist, SearchView, OutputGenreGames, \
-    OutputGenreTopGames
+    OutputGenreTopGames, HideGameDetail, ShowGameDetail, GameInfoToEditDetail, RecommendedGamesDetail
 
 urlpatterns = [
-    path('', OutputGames.as_view(), name="main"),
+    path('main/new', OutputGames.as_view(), name="main"),
+    path('main/recommended', RecommendedGamesDetail.as_view(), name="recommended_games"),
 
     path('profile', AccountDetail.as_view(), name="profile"),
     path('profile/library', OutputLibrary.as_view(), name="library"),
@@ -27,6 +28,9 @@ urlpatterns = [
     path('games/<int:pk>/buy', BuyGameDetail.as_view(), name="buy_game"),
     path('games/<int:pk>/download', DownloadGame.as_view(), name="download_game"),
     path('games/<int:pk>/wishlist', WishListDetail.as_view(), name="wishlist"),
+    path('games/<int:pk>/hide', HideGameDetail.as_view(), name="hide_game"),
+    path('games/<int:pk>/show', ShowGameDetail.as_view(), name="show_game"),
+    path('games/<int:pk>/show_info', GameInfoToEditDetail.as_view(), name="show_game_info_to_edit"),
 
     path('genre/<str:pk>', OutputGenreGames.as_view(), name="genre_games"),
     path('genre/<str:pk>/top', OutputGenreTopGames.as_view(), name="genre_top_games"),

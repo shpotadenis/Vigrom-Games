@@ -20,6 +20,11 @@
 }
 
 .info-card__title {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.info-card__title-text {
     font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
@@ -78,6 +83,24 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
+}
+
+.not_available_btn {
+  display: flex;
+  align-items: baseline;
+  background: #2D2D42;
+  border-radius: 6px;
+  position: relative;
+  padding: 9px 28px;
+  color: #FFFFFF;
+  margin-top: 10px;
+  border: none;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
 }
 
 .buy__btn:hover{
@@ -209,4 +232,14 @@
     width: 50px;
     transform: rotate(180deg);
     cursor: pointer;
+}
+
+.wishlist__btn {
+    padding-left: 16px;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.wishlist__btn:hover {
+    transform: scale(1.15);
 }

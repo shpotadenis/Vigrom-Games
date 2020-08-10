@@ -254,8 +254,3 @@ button {
     -webkit-box-shadow:0 0 15px #CE6796;
     box-shadow:0 0 15px #CE6796;
 }
-
-.btns-footer {
-    display: flex;
-    justify-content: space-between;
-}

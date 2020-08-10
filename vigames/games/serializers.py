@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import Account, Posts, Game, Comments_Post, Comments_Game, Review, FAQ, Orders, Media,\
-    Question, Genre
+from .models import Account, Posts, Game, Comments_Post, Comments_Game, Review, FAQ, Orders, Media, \
+    Question, Genre, Views_Game
 
 
 class AccountSerializer(serializers.ModelSerializer):
@@ -133,7 +133,7 @@ class OutputGameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = ('id', 'author', 'reviews_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
-                  'description', 'short_description')
+                  'description', 'short_description', 'is_hidden')
 
 
 class StatisticsSerializer(serializers.ModelSerializer):
@@ -143,14 +143,25 @@ class StatisticsSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'rating', 'number_of_players')
 
 
-class GameLibrarySerializer(serializers.ModelSerializer):
-    """Сериализатор вывода игры в библиотеку пользователя"""
+class OutputShortGameInfoSerializer(serializers.ModelSerializer):
+    """Сериализатор вывода игры в библиотеку, вишлист пользователя, на главную, на страницы жанров и т.д."""
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     image = SerializerMedia(many=True)
 
     class Meta:
         model = Game
-        fields = ('id', 'author', 'img', 'image', 'title', 'price')
+        fields = ('id', 'author', 'img', 'image', 'title', 'price', 'is_hidden')
+
+
+class OutputGameInfoToEditSerializer(serializers.ModelSerializer):
+    """Сериализатор вывода игры в библиотеку, вишлист пользователя, на главную, на страницы жанров и т.д."""
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+    image = SerializerMedia(many=True)
+
+    class Meta:
+        model = Game
+        fields = ('id', 'author', 'img', 'banner', 'image', 'title', 'price', 'file',
+                  'short_description', 'description', 'genre', 'is_hidden')
 
 
 class FaqSerializer(serializers.ModelSerializer):
@@ -183,3 +194,11 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = '__all__'
+
+
+class ViewsGameSerializer(serializers.ModelSerializer):
+    """ Сериализатор вывода количества просмотров игры """
+
+    class Meta:
+        model = Views_Game
+        fields = "__all__"

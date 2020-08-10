@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="uploadPage">
+            <game-downloaded v-if="isBtnClick" @close="isBtnClick = false"></game-downloaded>
             <div class="title mainTitle">ЗАГРУЗКА ИГРЫ</div>
             <div class="generalInfo container">
                 <div class="partTitle">Основное</div>
@@ -18,19 +19,51 @@
                     <div class="col-6">
                         <div class="blocks">
                             <div class="blockName">Жанр</div>
-                            <select class="textInputs" v-model="genre">
-                                <option>Выберите жанр</option>
-                                <option value="adventures">Приключения</option>
-                                <option value="puzzle">Головоломки</option>
-                                <option value="action">Экшн</option>
-                                <option value="rpg">РПГ</option>
-                                <option value="strategy">Стратегии</option>
-                                <option value="farm">Фермы</option>
-                                <option value="mmo">ММО</option>
-                                <option value="shooter">Шутеры</option>
-                                <option value="race">Гонки</option>
-                                <option value="simulator">Симуляторы</option>
-                            </select>
+                                <div class="v-select">
+                                    <div
+                                            class="genre_title"
+                                            @click="areOptionsVisible = !areOptionsVisible"
+                                    >
+                                        {{selected}}
+                                        <img src="@/assets/img/genre-arrow.png" alt="" class="arrow">
+                                    </div>
+                                        <div
+                                                class="options"
+                                                v-if="areOptionsVisible"
+                                        >
+                                            <p
+                                                v-for="option in options"
+                                                :key="option.value"
+                                                @click="selectOption(option)"
+                                            >
+                                                {{option.name}}
+                                            </p>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="blocks">
+                            <div class="blockName">Платформа</div>
+                            <div class="v-select">
+                                <div
+                                        class="genre_title"
+                                        @click="areOptionsVisible_second = !areOptionsVisible_second"
+                                >
+                                    {{selected_two}}
+                                    <img src="@/assets/img/genre-arrow.png" alt="" class="arrow">
+                                </div>
+                                <div
+                                        class="options"
+                                        v-if="areOptionsVisible_second"
+                                >
+                                    <p
+                                            v-for="option in options_second"
+                                            :key="option.value"
+                                            @click="select_second_Option(option)"
+                                    >
+                                        {{option.name}}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                         <div class="blocks">
                             <div class="blockName">Цена</div>
@@ -39,7 +72,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="generalInfo container">
                 <div class="partTitle">Загрузки</div>
                 <div class="row ">
@@ -123,7 +155,7 @@
                                 *Добавьте полное описание игры, разделив его на 3 блока,
                                 каждый максимум по 440 символов
                             </div>
-                            <input type="checkbox" class="agreement" id="agreement" name="agreement">
+                            <input type="checkbox" class="agreement" v-model="agreement" id="agreement" name="agreement">
                             <label for="agreement">Я принимаю <a class="link"> пользовательсткое соглашение</a></label><br>
                             <button class="uploadBtn" @click="uploadButtonClick">Опубликовать игру</button>
                         </div>

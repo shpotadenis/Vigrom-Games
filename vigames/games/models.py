@@ -169,7 +169,8 @@ class Game(models.Model):
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
     image = models.ManyToManyField(Media, blank=True, related_name='parent_game')
-    num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров игры
+    #num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров игры
+    is_hidden = models.BooleanField(default=False)
     '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)
@@ -185,6 +186,15 @@ class Game(models.Model):
         verbose_name_plural = "Игры"
 
 
+class Views_Game(models.Model):
+    """ Модель просмотров игры """
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='views_game')
+    num = models.PositiveIntegerField(default=0)  # Хранит количество просмотров игры
+    date = models.DateField(default=date.today)
+
+    class Meta:
+        verbose_name = "Просмотр игры"
+        verbose_name_plural = "Просмотры игр"
 '''
 class Basket(models.Model):
     # Корзина
@@ -230,7 +240,7 @@ class Posts(models.Model):
     draft = models.BooleanField("Черновик", default=False)
     image = models.ManyToManyField(Media, blank=True, related_name='image')
     fav = models.BooleanField('Избранное', default=False)
-    fav_date = models.DateTimeField(auto_now_add=True)
+    fav_date = models.DateTimeField(auto_now=True, blank=True) #было auto_now_add=True, ругался
     # Вопрос по изображениям открыт. Делать для них отдельную модель или сделать загрузку сюда???
     # Вопрос с количеством просмотров тоже открыт
 
@@ -289,8 +299,8 @@ class Review(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="rating_author", null=True)
     mark = models.PositiveIntegerField(default=0, null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name="reviews_game", null=True)
-    title = models.CharField(null=True, max_length=70)
-    comment = models.CharField(null=True, max_length=500)
+    title = models.CharField(null=True, max_length=70, blank=True)
+    comment = models.CharField(null=True, max_length=500, blank=True)
 
 
 class FAQ(models.Model):
