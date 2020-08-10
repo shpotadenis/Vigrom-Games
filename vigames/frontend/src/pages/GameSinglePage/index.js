@@ -5,6 +5,7 @@ import Checkout from "../../components/Pop-ups/Checkout/checkout"
 import SliderComponent from './SliderComponent/SliderComponent.vue'
 import user from '../../api/modules/user.js'
 import { getImageUrl } from '../../utils.js'
+// eslint-disable-next-line no-unused-vars
 import games from "../../api/modules/games";
 
 export default {
@@ -81,8 +82,12 @@ export default {
 
     methods: {
         fetchData(gameId) {
-            this.loading = true
-            games.getGameInfo(gameId).then(response => {
+            this.loading = false
+            this.gameData = {
+                title: 'game'
+            }
+            console.log(gameId)
+            /* games.getGameInfo(gameId).then(response => {
                 if (response.data) {
                     this.gameData = response.data
                     this.gameData.id = gameId
@@ -93,7 +98,7 @@ export default {
                 this.$router.push({
                     name: 'errorPage404'
                 })
-            })
+            }) */
         },
         downloadBtnClick() {
             user.downloadGame(this.$route.params.id).then(response => {
