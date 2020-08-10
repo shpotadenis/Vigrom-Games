@@ -9,8 +9,9 @@ from .search import Search_engine
 from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre, Orders
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
-    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, GameLibrarySerializer, GenreSerializer, \
-    StatisticsSerializer, OutputReviewSerializer
+    OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, OutputShortGameInfoSerializer, \
+    GenreSerializer, \
+    StatisticsSerializer, OutputReviewSerializer, OutputGameInfoToEditSerializer
 from django.contrib.auth.models import User
 from scripts import Search
 
@@ -215,12 +216,12 @@ class GameDetail(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk):
-        game = self.get_game(pk)
-        account = Account.objects.get(user=request.user)
-        if account.is_developer and game.author == request.user:
-                game.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    #def delete(self, request, pk):
+    #    game = self.get_game(pk)
+    #    account = Account.objects.get(user=request.user)
+    #    if account.is_developer and game.author == request.user:
+    #            game.delete()
+    #    return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class GameRatingDetail(APIView):
@@ -308,9 +309,9 @@ class OutputGames(ListAPIView):
     """Вывод списка игр за неделю"""
 
     def get(self, request):
-        games = Game.objects.filter(date_release__gte=date.today()-timedelta(days=7))\
+        games = Game.objects.filter(date_release__gte=date.today()-timedelta(days=7), is_hidden=False)\
             .order_by('-date_release')[:10]
-        serializer = GameLibrarySerializer(games, many=True)
+        serializer = OutputShortGameInfoSerializer(games, many=True)
         return Response(serializer.data)
 
 
@@ -351,7 +352,7 @@ class WishListDetail(APIView):
         if user.is_authenticated:
             try:
                 games = Game.objects.filter(who_added_to_wishlist=user)
-                serializer = GameLibrarySerializer(games)
+                serializer = OutputShortGameInfoSerializer(games)
                 return Response(serializer.data)
             except Game.DoesNotExist:
                 return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -436,7 +437,7 @@ class OutputLibrary(ListAPIView):
         user = request.user
         if user.is_authenticated:
             games = Game.objects.filter(players=user)
-            serializer = GameLibrarySerializer(games, many=True)
+            serializer = OutputShortGameInfoSerializer(games, many=True)
             return Response(serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -447,8 +448,8 @@ class OutputWishlist(ListAPIView):
     def get(self, request):
         user = request.user
         if user.is_authenticated:
-            games = Game.objects.filter(who_added_to_wishlist=user)
-            serializer = GameLibrarySerializer(games, many=True)
+            games = Game.objects.filter(who_added_to_wishlist=user, is_hidden=False)
+            serializer = OutputShortGameInfoSerializer(games, many=True)
             return Response(serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -478,7 +479,7 @@ class GameCategoryDetail(ListAPIView):
 
     def get(self, request, pk):
         category = Category.objects.get(pk=pk)
-        games = Game.objects.filter(categories=category)
+        games = Game.objects.filter(categories=category, is_hidden=False)
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
 
@@ -559,16 +560,16 @@ class DownloadMedia(APIView):
 class OutputGenreGames(ListAPIView):
 
     def get(self, request, pk):
-        games = Game.objects.filter(genre=pk).order_by('rating')
-        serializer = GameLibrarySerializer(games, many=True)
+        games = Game.objects.filter(genre=pk, is_hidden=False).order_by('rating')
+        serializer = OutputShortGameInfoSerializer(games, many=True)
         return Response(serializer.data)
 
 
 class OutputGenreTopGames(ListAPIView):
 
     def get(self, request, pk):
-        games = Game.objects.filter(genre=pk).order_by('rating')[:8]
-        serializer = GameLibrarySerializer(games, many=True)
+        games = Game.objects.filter(genre=pk, is_hidden=False).order_by('rating')[:8]
+        serializer = OutputShortGameInfoSerializer(games, many=True)
         return Response(serializer.data)
 
 '''
@@ -621,7 +622,7 @@ class SearchView(APIView):
     def post(self, request):
         text = request.data['search']
         if request.data['dir'] == 'games':
-            game = Game.objects.filter()
+            game = Game.objects.filter(is_hidden=False)
             serializer = OutputGameSerializer(game, many=True)
         elif request.data['dir'] == 'news':
             post = Posts.objects.filter(draft=False)
@@ -631,3 +632,40 @@ class SearchView(APIView):
         list_index = Search_engine(text, list(serializer.data))
         return Response(list_index)
 
+
+class HideGameDetail(APIView):
+    """Скрытие игры"""
+
+    def post(self, request, pk):
+        try:
+            game = Game.objects.get(pk)
+            game.is_hidden = True
+            game.save()
+            return Response(status=status.HTTP_200_OK)
+        except Game.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class ShowGameDetail(APIView):
+    """Возвращение игры"""
+
+    def post(self, request, pk):
+        try:
+            game = Game.objects.get(pk)
+            game.is_hidden = False
+            game.save()
+            return Response(status=status.HTTP_200_OK)
+        except Game.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class GameInfoToEditDetail(ListAPIView):
+    """Вывод информации по игре для последующего редактирования"""
+
+    def get(self, request, pk):
+        game = Game.objects.get(pk=pk)
+        serializer = OutputGameInfoToEditSerializer(game)
+        user = request.user
+        if user.is_authenticated and game.author == user:
+            return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)

@@ -29,7 +29,16 @@ export default {
         block3: '',
         youtube_link: '',
         b:"",
-        a:[]
+        a:[],
+        options: [
+            {name: 'Option1', value: 1},
+            {name: 'Option2', value: 2},
+            {name: 'Option3', value: 3},
+            {name: 'Option4', value: 4},
+            {name: 'Option5', value: 5}
+        ],
+        areOptionsVisible: false,
+        selected: 'Выберите жанр'
       }
     },
 
@@ -85,6 +94,11 @@ export default {
                 console.log(error.response)
             })
         },
+        selectOption(option) {
+            this.genre = option.value;
+            this.selected = option.name;
+            this.areOptionsVisible = false;
+        }
     }
 
 }

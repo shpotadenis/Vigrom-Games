@@ -16,7 +16,7 @@
         по игре в личном кабинете.
       </div>
       <div class="Footer">
-        <div><button class="Btn">Понятно</button></div>
+        <div><button @click=" $emit('close')" class="Btn">Понятно</button></div>
       </div>
     </div>
   </div>
