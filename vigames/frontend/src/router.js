@@ -73,10 +73,8 @@ export const router = new Router({
         { path: '/Error403', name: 'ErrorPage403', component: ErrorPage403 },
         { path: '/UploadPage', name: 'uploadPage', component: UploadPage, meta: { requiresAuth: true, requiredRole: 'dev' }  },
         { path: '/profile', name: 'personPage', meta: { requiresAuth: true } }, // URL не относится к компоненту, нужен, чтобы перенаправлять на нужную страницу (ЛК разработчик или пользователь)
-<<<<<<< HEAD
         { path: '/gameDownloaded', name: 'gameDownloaded', component: GameDownloaded },
-        { path: '/change', name: 'change', component: UploadPage}
-=======
+        { path: '/change', name: 'change', component: UploadPage},
         { path: '/ChangePass', name: 'ChangePass', component: ChangePass },
         { path: '/Checkout', name: 'Checkout', component: Checkout },
         { path: '/GameDownloaded', name: 'GameDownloaded', component: GameDownloaded },
@@ -85,7 +83,6 @@ export const router = new Router({
         { path: '/PasswordChanged', name: 'PasswordChanged', component: PasswordChanged },
         { path: '/PasswordReset', name: 'PasswordReset', component: PasswordReset },
         { path: '/Support', name: 'Support', component: Support }
->>>>>>> c9dd47ab2d63cf34bc003dbd5767f07499b5e54b
     ]
 })
 
