@@ -19,19 +19,26 @@
                     <div class="col-6">
                         <div class="blocks">
                             <div class="blockName">Жанр</div>
-                            <select class="textInputs" v-model="genre">
-                                <option>Выберите жанр</option>
-                                <option value="adventures">Приключения</option>
-                                <option value="puzzle">Головоломки</option>
-                                <option value="action">Экшн</option>
-                                <option value="rpg">РПГ</option>
-                                <option value="strategy">Стратегии</option>
-                                <option value="farm">Фермы</option>
-                                <option value="mmo">ММО</option>
-                                <option value="shooter">Шутеры</option>
-                                <option value="race">Гонки</option>
-                                <option value="simulator">Симуляторы</option>
-                            </select>
+                                <div class="v-select">
+                                    <div
+                                            class="genre_title"
+                                            @click="areOptionsVisible = !areOptionsVisible"
+                                    >
+                                        {{selected}}
+                                    </div>
+                                        <div
+                                                class="options"
+                                                v-if="areOptionsVisible"
+                                        >
+                                            <p
+                                                v-for="option in options"
+                                                :key="option.value"
+                                                @click="selectOption(option)"
+                                            >
+                                                {{option.name}}
+                                            </p>
+                                        </div>
+                                </div>
                         </div>
                         <div class="blocks">
                             <div class="blockName">Цена</div>
@@ -40,7 +47,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="generalInfo container">
                 <div class="partTitle">Загрузки</div>
                 <div class="row ">

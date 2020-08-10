@@ -164,3 +164,24 @@ label{
 textarea{
     resize: none;
 }
+.v-select{
+    position: relative;
+    width: 200px;
+}
+.options{
+    border: solid 1px #aeaeae;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 100%;
+}
+.genre_title{
+    cursor: pointer;
+    width: 273px;
+    height: 50px;
+    background: #212130;
+    border-radius: 8px;
+}
+.options p:hover{
+    background: #e7e7e7;
+}
