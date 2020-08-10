@@ -133,7 +133,7 @@ class OutputGameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = ('id', 'author', 'reviews_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
-                  'description', 'short_description')
+                  'description', 'short_description', 'is_hidden')
 
 
 class StatisticsSerializer(serializers.ModelSerializer):
@@ -143,14 +143,14 @@ class StatisticsSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'rating', 'number_of_players')
 
 
-class GameLibrarySerializer(serializers.ModelSerializer):
-    """Сериализатор вывода игры в библиотеку пользователя"""
+class OutputShortGameInfoSerializer(serializers.ModelSerializer):
+    """Сериализатор вывода игры в библиотеку, вишлист пользователя, на главную, на страницы жанров и т.д."""
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     image = SerializerMedia(many=True)
 
     class Meta:
         model = Game
-        fields = ('id', 'author', 'img', 'image', 'title', 'price')
+        fields = ('id', 'author', 'img', 'image', 'title', 'price', 'is_hidden')
 
 
 class FaqSerializer(serializers.ModelSerializer):
