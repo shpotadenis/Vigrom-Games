@@ -1,6 +1,9 @@
+import ErrorMessage from '../../ErrorMessageComponent/index.vue'
+
 export default {
     name: "password_reset_popup",
-    props: {
+    components: {
+        ErrorMessage
     },
     data() {
         return {
@@ -55,13 +58,13 @@ export default {
             this.error_new_pass_repeat = []
 
             if (!this.new_pass) {
-                this.error_new_pass.push('Пустое поле');
+                this.error_new_pass.push('*Обязательное поле');
             }
             if (!this.new_pass_repeat) {
-                this.error_new_pass_repeat.push('Пустое поле');
+                this.error_new_pass_repeat.push('*Обязательное поле');
             } else{
                 if (this.new_pass!=this.new_pass_repeat){
-                    this.error_new_pass_repeat.push('Пароли не совпадают')
+                    this.error_new_pass_repeat.push('*Пароли не совпадают')
                 }
             }
             this.errors++;

@@ -10,26 +10,33 @@
                     <form class="data row justify-content-center">
                         <div class="">
                             <div class="form-group container">
-                                <label for="login">Логин</label><br />
+                                <div>
+                                    <label for="password">Логин</label>
+                                    <error-message
+                                            :error="error_name[0]"
+                                            v-show="error_name.length>0">
+                                    </error-message>
+                                </div>
                                 <input type="text"
                                        v-model="name"
                                        class="form-control"
                                        id="login"
                                        placeholder="Введите логин..."/>
-                                <div class="errors__name errors" v-if="error_name.length">
-                                    {{error_name[0]}}
-                                </div>
+
                             </div>
                             <div class="form-group container">
-                                <label for="password">Пароль</label><br />
+                                <div>
+                                    <label for="password">Пароль</label>
+                                    <error-message :error="error_pass[0]"
+                                                   v-show="error_pass.length>0">
+                                    </error-message>
+                                </div>
                                 <input :type="type"
                                        v-model="pass"
                                        class="form-control"
                                        id="password"
                                        placeholder="Введите пароль..."/>
-                                <div class="errors__pass errors" v-if="error_pass.length">
-                                    {{error_pass[0]}}
-                                </div>
+
                                 <div class="row justify-content-end" @click="hide">
                                     <img src="@/assets/img/eye.png"   class="passEye password-control" v-show="!nonEye"/>
                                     <img src="@/assets/img/eye-off.svg"  class="passEye password-control" v-show="nonEye">

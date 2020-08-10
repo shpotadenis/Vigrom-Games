@@ -9,6 +9,12 @@
     bottom: 0;
     z-index: 5;
 }
+.v-popup_content{
+    margin-top: 20px;
+}
+.field{
+    padding-bottom: 19px;
+}
 .v_popup{
     position: fixed;
     background: #2D2D42;
@@ -58,6 +64,7 @@
     margin-left: 47px;
     margin-top: 10px;
     border: 0;
+    border-radius: 10px;
     color: #FFFFFF;
     padding-left: 20px;
 }
@@ -98,7 +105,7 @@
 }
 #eye_pass_second{
     left: 355px;
-    top: 135px;
+    top: 137px;
 }
 #eye_pass_third{
     left: 355px;
@@ -110,37 +117,5 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
-    color: #FFFFFF;
-}
-.errors {
-    position: absolute;
-    font-size: 14px;
-    width: 165px;
-    height: 40px;
-    background: #212130;
-    border-radius: 10px;
-    box-shadow: 0 0 25px 0 #b6b6b6;
-    text-align: center;
-    padding-top: 10px;
-}
-.errors:before {
-    content: "";
-    position: absolute;
-    right: 100%;
-    top: calc(50% - 12px);
-    border-top: 10px solid transparent;
-    border-right: 20px solid #212130;
-    border-bottom: 10px solid transparent;
-}
-.errors__old_pass{
-    left: 425px;
-    bottom: 335px;
-}
-.errors__new_pass{
-    left: 425px;
-    bottom: 235px;
-}
-.errors__new_pass_repeat{
-    left: 425px;
-    bottom: 135px;
+    color: #464668;
 }

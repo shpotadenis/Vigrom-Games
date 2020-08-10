@@ -1,3 +1,5 @@
+import ErrorMessage from '../../components/ErrorMessageComponent/index.vue'
+
 export default {
     name: "SignInPage",
     data() {
@@ -6,10 +8,13 @@ export default {
             type: 'password',
             pass: null,
             name: null,
+            errorMessage: '',
             error_name: [],
-            error_pass: [],
-            errorMessage: ''
+            error_pass: []
         }
+    },
+    components:{
+        ErrorMessage
     },
     methods: {
         hide(){
@@ -41,14 +46,14 @@ export default {
 
                 return true;
             }
-            this.error_name = []
-            this.error_pass = []
+            this.error_name = [];
+            this.error_pass = [];
 
             if (!this.name) {
-                this.error_name.push('Пустое поле');
+                this.error_name.push('*Обязательное поле');
             }
             if (!this.pass) {
-                this.error_pass.push('Пустое поле');
+                this.error_pass.push('*Обязательное поле');
             }
             e.preventDefault();
         }

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/vigames/frontend/src/components/ErrorMessageComponent/index.vue" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/vigames/frontend/src/components/Pop-ups/Support/index.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/vigames/frontend/src/components/Pop-ups/Support/index.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/vigames/frontend/src/pages/ErrorPage/index.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vigames/frontend/src/pages/ErrorPage403/index.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vigames/frontend/src/pages/ErrorPage404/index.vue" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/vigames/frontend/src/pages/UploadPage/index.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/vigames/frontend/src/pages/UploadPage/index.vue" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/vigames/games/search.py" charset="UTF-8" />

@@ -201,7 +201,10 @@ class Orders(models.Model):
     game = models.ForeignKey(Game, null=True, on_delete=models.SET_NULL)
     price = models.IntegerField(null=True)
     date = models.DateField(default=date.today)
-    pass
+
+    class Meta:
+        verbose_name = "Заказ"
+        verbose_name_plural = "Заказы"
 
 
 class Posts(models.Model):

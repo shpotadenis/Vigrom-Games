@@ -1,7 +1,8 @@
 import Router from 'vue-router'
 import FeaturedPage from './pages/FeaturedPage/index.vue'
 import NewsSinglePage from "./pages/NewsSinglePage/index.vue"
-import ErrorPage from './pages/ErrorPage/index.vue'
+import ErrorPage404 from './pages/ErrorPage404/index.vue'
+import ErrorPage403 from './pages/ErrorPage403/index.vue'
 import FreeGames from "./pages/FreeGames/FreeGames.vue"
 import DiscountsGame from "./pages/DiscountsGame/DiscountGame";
 import EarlyAccessGame from "./pages/EarlyAccessGame/EarlyAccessGame.vue";
@@ -46,7 +47,7 @@ export const router = new Router({
         { path: '/featured', name: 'featuredPage', component: FeaturedPage, meta: { requiresAuth: true } },
         { path: '/free_games', name: 'freeGames', component: FreeGames},
         { path: '/separate_news/:id', name: 'newsSinglePage', component: NewsSinglePage },
-        { path: '/not_found', name: 'errorPage404', component: ErrorPage },
+        { path: '/not_found', name: 'errorPage404', component: ErrorPage404 },
         { path: '/discountsGame', name: 'discountsGame', component: DiscountsGame },
         { path: '/earlyAccess', name: 'earlyAccessGame', component: EarlyAccessGame },
         { path: '/user_profile', name: 'userProfilePage', component: PersonPage, meta: { requiresAuth: true } },
@@ -62,6 +63,7 @@ export const router = new Router({
         { path: '/ShooterGame', name: 'ShooterGame', component: ShooterGame },
         { path: '/SimulatorGame', name: 'SimulatorGame', component: SimulatorGame },
         { path: '/StrategyGame', name: 'StrategyGame', component: StrategyGame },
+        { path: '/Error403', name: 'ErrorPage403', component: ErrorPage403 },
         { path: '/UploadPage', name: 'uploadPage', component: UploadPage, meta: { requiresAuth: true, requiredRole: 'dev' }  },
         { path: '/profile', name: 'personPage', meta: { requiresAuth: true } } // URL не относится к компоненту, нужен, чтобы перенаправлять на нужную страницу (ЛК разработчик или пользователь)
     ]

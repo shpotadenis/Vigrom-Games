@@ -96,6 +96,7 @@ hr {
   font-size: 14px;
   line-height: 19px;
   color: #D3D3D6;
+
 }
 
 .email-form {
@@ -105,7 +106,7 @@ hr {
   border: 0px;
   background: #29293D;
   padding-left: 17px;
-
+  margin-top: 10px;
   font-weight: normal;
   font-size: 14px;
   line-height: 19px;
@@ -140,6 +141,7 @@ hr {
 }
 
 .message-form {
+  margin-top: 10px;
   height: 140px;
   width: 350px;
   padding: 15px 20px;

@@ -1,18 +1,21 @@
 import MessageSent from "../../../components/Pop-ups/MessageSent/index.vue"
 import user from '../../../api/modules/user.js'
+import ErrorMessage from '../../ErrorMessageComponent/index.vue'
 
 export default {
     name: "Support",
 
     components: {
-      MessageSent
+      MessageSent,
+        ErrorMessage
     },
     data() {
       return {
         isBtnClick: false,
           mail: null,
           mess: null,
-          error_mail: []
+          error_mail: [],
+          error_mess: []
       }
     },
     methods:{
@@ -36,8 +39,12 @@ export default {
                 return true
             }
             this.error_mail = [];
+            this.error_mess = [];
             if (!this.mail) {
-                this.error_mail.push('Пустое поле');
+                this.error_mail.push('*Обязательное поле');
+            }
+            if (!this.mess) {
+                this.error_mess.push('*Обязательное поле');
             }
 
             e.preventDefault()

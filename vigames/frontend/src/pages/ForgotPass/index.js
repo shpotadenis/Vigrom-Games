@@ -1,11 +1,13 @@
 import PasswordReset from "../../../src/components/Pop-ups/PasswordReset/index.vue"
 import PasswordChanged from "../../../src/components/Pop-ups/PasswordChanged/index.vue"
+import ErrorMessage from '../../components/ErrorMessageComponent/index.vue'
 
 export default {
     name: "ForgotPass",
     components: {
         PasswordReset,
-        PasswordChanged
+        PasswordChanged,
+        ErrorMessage
     },
     data() {
         return {
@@ -14,7 +16,7 @@ export default {
             show_reset_pass: false,
             type: 'password',
             email: null,
-            error_email: [],
+            error_mail: [],
             errorMessage: '',
             allgood : false,
         }
@@ -37,14 +39,14 @@ export default {
             this.isPassChangePopupVisible = true;
         },
         checkform(e) {
-            this.error_email = []
+            this.error_mail = []
 
             if (this.email) {
                 return this.allgood = true;
             }
 
             if (!this.email) {
-                this.error_email.push('Пустое поле');
+                this.error_mail.push('*Обязательное поле');
             }
             e.preventDefault();
         }

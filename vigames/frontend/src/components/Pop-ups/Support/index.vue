@@ -18,18 +18,27 @@
 
       <div class="form_Content">
         <div class="email">
-          <div class="email-name">Контактный e-mail</div>
+          <div>
+            <label class="email-name" for="mail">Контактный e-mail</label>
+            <error-message :error="error_mail[0]"
+                           v-show="error_mail.length>0">
+            </error-message>
+          </div>
           <div class="input-blank">
             <input type="text"
                    v-model="mail"
                    class="email-form"
                    id="mail"
                    placeholder="Введите e-mail"/>
-            <div class="errors errors__name" v-if="error_mail.length">{{error_mail[0]}}</div>
           </div>
         </div>
         <div class="message">
-          <div class="message-name">Ваше сообщение</div>
+          <div>
+            <label class="message-name" for="message">Контактный e-mail</label>
+            <error-message :error="error_mess[0]"
+                           v-show="error_mess.length>0">
+            </error-message>
+          </div>
           <div class="msg">
             <textarea type="text"
                       class="message-form"

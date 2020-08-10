@@ -1,5 +1,8 @@
+import ErrorMessage from '../../components/ErrorMessageComponent/index.vue'
+
 export default {
     name: "LoginPage",
+
     data() {
         return{
         nonEye: false,
@@ -15,6 +18,9 @@ export default {
             error_pass: [],
             error_confirm: []
         }
+    },
+    components:{
+        ErrorMessage
     },
     methods: {
         hide(){
@@ -74,27 +80,25 @@ export default {
             this.error_confirm = []
 
             if (!this.name) {
-                this.error_name.push('Пустое поле');
+                this.error_name.push('*Обязательное поле');
             }
             if (!this.email) {
-                this.error_mail.push('Пустое поле');
+                this.error_mail.push('*Обязательное поле');
             }
             if (!this.pass) {
-                this.error_pass.push('Пустое поле');
+                this.error_pass.push('*Обязательное поле');
             }
             if (!this.confirmPass) {
-                this.error_confirm.push('Пустое поле');
+                this.error_confirm.push('*Обязательное поле');
             } else{
                 if (this.confirmPass!=this.pass){
-                    this.error_confirm.push('Пароли не совпадают')
+                    this.error_confirm.push('*Пароли не совпадают')
                 }
             }
             e.preventDefault();
         }
     },
-    components: {
 
-    },
     computed: {
     },
 

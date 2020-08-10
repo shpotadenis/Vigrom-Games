@@ -70,7 +70,7 @@ class OutputAllNews(serializers.ModelSerializer):
 
     class Meta:
         model = Posts
-        fields = ('id', 'author', 'title', 'description', 'data', 'num_views', 'img')
+        fields = ('id', 'author', 'title', 'description', 'date', 'num_views', 'img')
 
 
 class PostSerializer(serializers.ModelSerializer):

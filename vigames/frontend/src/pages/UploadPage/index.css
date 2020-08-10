@@ -8,26 +8,23 @@
 .nameInput{
     height: 40px;
     width: 300px;
-
 }
 .priceInput{
     width: 200px;
     margin-bottom: 10px;
 }
-.AllName{
-  position: absolute;
-  top:25px;
-  width: 200px;
-  display: block;
-}
+
 .title{
     font-style: normal;
     font-weight: 800;
     display: inline-block;
     font-size: 14px;
     line-height: 19px;
+    padding: 0px 0px 7px 0px;
+}
+.mainTitle{
     border-bottom: 1px solid #313144;
-    padding: 7px;
+    width: 1110px;
 }
 
 .generalInfo{
