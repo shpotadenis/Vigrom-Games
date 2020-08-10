@@ -28,7 +28,9 @@ import RPGGame from './pages/GerneGame/RPGGame/RPGGame.vue'
 import ShooterGame from './pages/GerneGame/ShooterGame/ShooterGame.vue'
 import SimulatorGame from './pages/GerneGame/SimulatorGame/SimulatorGame.vue'
 import StrategyGame from './pages/GerneGame/StrategyGame/StrategyGame.vue'
+import GameDownloaded from './components/Pop-ups/GameDownloaded/index.vue'
 import Vue from "vue";
+
 
 Vue.use(Router);
 
@@ -65,7 +67,8 @@ export const router = new Router({
         { path: '/StrategyGame', name: 'StrategyGame', component: StrategyGame },
         { path: '/Error403', name: 'ErrorPage403', component: ErrorPage403 },
         { path: '/UploadPage', name: 'uploadPage', component: UploadPage, meta: { requiresAuth: true, requiredRole: 'dev' }  },
-        { path: '/profile', name: 'personPage', meta: { requiresAuth: true } } // URL не относится к компоненту, нужен, чтобы перенаправлять на нужную страницу (ЛК разработчик или пользователь)
+        { path: '/profile', name: 'personPage', meta: { requiresAuth: true } }, // URL не относится к компоненту, нужен, чтобы перенаправлять на нужную страницу (ЛК разработчик или пользователь)
+        { path: '/gameDownloaded', name: 'gameDownloaded', component: GameDownloaded }
     ]
 })
 

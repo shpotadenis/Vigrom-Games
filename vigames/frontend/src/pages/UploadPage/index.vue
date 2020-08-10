@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="uploadPage">
+            <game-downloaded v-if="isBtnClick" @close="isBtnClick = false"></game-downloaded>
             <div class="title mainTitle">ЗАГРУЗКА ИГРЫ</div>
             <div class="generalInfo container">
                 <div class="partTitle">Основное</div>

@@ -1,13 +1,16 @@
 import FooterComponent from '../../components/FooterComponent/index.vue'
+import GameDownloaded from "../../components/Pop-ups/GameDownloaded/index.vue"
 import user from '../../api/modules/user.js'
 
 export default {
     name: "UploadPage",
     components:{
-        FooterComponent
+        FooterComponent,
+        GameDownloaded
     },
     data(){
       return{
+        isBtnClick: false,
         selectFile:"Перетащите файл или кликните здесь, чтобы добавить его*",
         selectFile1:"Перетащите 3-5 файлов размером 324х255 или кликните здесь, чтобы добавить их",
         array:[{name: 'Перетащите 3-5 файлов размером 324х255 или кликните здесь, чтобы добавить их'}],
@@ -55,6 +58,7 @@ export default {
         },
 
         uploadButtonClick() {
+          isBtnClick = true;
             let data = {
                 title: this.title,
                 short_description: this.short_description,

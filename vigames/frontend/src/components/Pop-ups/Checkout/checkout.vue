@@ -51,11 +51,9 @@
                 <div class="price-text">Всего:</div>
                 <div class="price-sum">{{getGameData.price+ammount_donate}}<img src="@/assets/img/ruble-white.svg" alt="Ruble"></div>
             </div>
-            <div class="btns-footer">
             <div><button @click="buyGame" class="payment">Перейти к оплате</button></div>
             <!-- <div><button @click="isBtnClick2 = true" class="payment">Всплывашка после покупки</button></div>
             !-->
-          </div>
         </div>
     </div>
   </div>
