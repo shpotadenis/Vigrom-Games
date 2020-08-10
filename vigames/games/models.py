@@ -169,7 +169,7 @@ class Game(models.Model):
     rating = models.FloatField(default=0)
     sale_percent = models.PositiveIntegerField(default=0)
     image = models.ManyToManyField(Media, blank=True, related_name='parent_game')
-    num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров игры
+    #num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров игры
     is_hidden = models.BooleanField(default=False)
     '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
@@ -186,6 +186,15 @@ class Game(models.Model):
         verbose_name_plural = "Игры"
 
 
+class Views_Game(models.Model):
+    """ Модель просмотров игры """
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='views_game')
+    num = models.PositiveIntegerField(default=0)  # Хранит количество просмотров игры
+    date = models.DateField(default=date.today)
+
+    class Meta:
+        verbose_name = "Просмотр игры"
+        verbose_name_plural = "Просмотры игр"
 '''
 class Basket(models.Model):
     # Корзина

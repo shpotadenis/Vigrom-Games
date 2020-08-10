@@ -6,7 +6,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .search import Search_engine
-from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre, Orders
+from .models import Account, Posts, Game, Review, Category, FAQ, Comments_Post, Comments_Game, Media, Genre, Orders, \
+    Views_Game
 from .serializers import AccountSerializer, OutputAllNews, GameSerializer, OutputPost, \
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, OutputShortGameInfoSerializer, \
@@ -202,8 +203,15 @@ class GameDetail(APIView):
     def get(self, request, pk):
         game = self.get_game(pk)
         serializer = OutputGameSerializer(game)
-        game.num_views += 1     # Увеличиваем счетчик просмотров на 1
-        game.save()
+        '''
+        try:
+            num_views = Views_Game.objects.get(game=game, date=date.today())
+        except:
+            num_views = Views_Game.objects.create(game=game)
+        '''
+        num_views, create = Views_Game.objects.get_or_create(game=game, date=date.today())
+        num_views.num += 1
+        num_views.save()
         return Response(serializer.data)
 
     def put(self, request, pk):
@@ -595,6 +603,7 @@ class OutputStatistics(ListAPIView):
         account = Account.objects.get(user=user)
         games = Game.objects.filter(author=user)
         orders = {}
+        views = {}
         today = date.today()
         if user.is_authenticated and account.is_developer:
             serializer = StatisticsSerializer(games, many=True)
@@ -603,7 +612,9 @@ class OutputStatistics(ListAPIView):
                 if game.author == user:
                     for i in range(1, 31):
                         orders[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = Orders.objects.filter(game=game, date=today-timedelta(days=i)).count()
-                        data = {'orders': orders, 'rating': list(serializer.data)}
+                        v, create = Views_Game.objects.get_or_create(game=game, date=today-timedelta(days=i))
+                        views[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = v.num
+                        data = {'views': views, 'orders': orders, 'rating': list(serializer.data)}
                     return Response(data)
                 return Response(status=status.HTTP_403_FORBIDDEN)
             data = {'rating': list(serializer.data)}
