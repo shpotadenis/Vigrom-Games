@@ -306,11 +306,11 @@ class GameRatingDetail(APIView):
 
 
 class OutputGames(ListAPIView):
-    """Вывод списка игр за неделю"""
+    """Вывод новинок"""
 
     def get(self, request):
         games = Game.objects.filter(date_release__gte=date.today()-timedelta(days=7), is_hidden=False)\
-            .order_by('-date_release')[:10]
+            .order_by('-rating')[:4]
         serializer = OutputShortGameInfoSerializer(games, many=True)
         return Response(serializer.data)
 
@@ -443,7 +443,7 @@ class OutputLibrary(ListAPIView):
 
 
 class OutputWishlist(ListAPIView):
-    """Вывод библиотеки игр пользователя"""
+    """Вывод вишлиста пользователя"""
 
     def get(self, request):
         user = request.user
