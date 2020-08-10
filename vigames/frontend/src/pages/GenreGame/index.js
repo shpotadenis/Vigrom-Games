@@ -26,6 +26,7 @@ export default{
     // eslint-disable-next-line no-unused-vars
     beforeRouteUpdate(to, from, next) {
         this.fetchData()
+        next()
     },
     beforeMount() {
       this.fetchData()
