@@ -11,7 +11,7 @@ export default {
   data(){
     return{
       loading: false,
-      list: null
+      list:null
     }
   },
   beforeMount() {

@@ -608,7 +608,8 @@ class OutputStatistics(ListAPIView):
                         orders[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = Orders.objects.filter(game=game, date=today-timedelta(days=i)).count()
                         v, create = Views_Game.objects.get_or_create(game=game, date=today-timedelta(days=i))
                         views[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = v.num
-                        data = {'views': views, 'orders': orders, 'rating': list(serializer.data)}
+                    wishlist = game.who_added_to_wishlist.all().count()
+                    data = {'wishlist': wishlist, 'views': views, 'orders': orders, 'rating': list(serializer.data)}
                     return Response(data)
                 return Response(status=status.HTTP_403_FORBIDDEN)
             data = {'rating': list(serializer.data)}
