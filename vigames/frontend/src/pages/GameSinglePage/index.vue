@@ -134,7 +134,7 @@
             !-->
             {{getGameData.description}}
         </div>
-        <reviews-component id="reviews" :reviews="this.getGameData.reviews_game" @update-game="updateGame"></reviews-component>
+        <reviews-component id="reviews" :reviews="this.getGameData.reviews_game" :gameData="this.getGameData" @update-game="updateGame"></reviews-component>
         <div class="wrapper_2">
             <img v-if="getImages[0]" :src="getImages[0].image" alt="" class="full-banner">
             <div class="privacy-policy">

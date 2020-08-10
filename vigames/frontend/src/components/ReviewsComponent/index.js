@@ -12,7 +12,7 @@ export default {
             loading: false,
         }
     },
-    props: ['reviews'],
+    props: ['reviews', 'gameData'],
     methods: {
         sendBtnClick() {
             this.$store.dispatch('user/addReview', {
