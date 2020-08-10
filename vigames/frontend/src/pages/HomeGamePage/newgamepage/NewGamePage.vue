@@ -2,7 +2,7 @@
   <div class="wrappen">
     <div class="NewGamePageComponent">
       <div class="NewGameTitle">
-        <p class="Title">Новинки</p>
+        <p class="Title">Новое</p>
       </div>
       <div class="NewsGamePage">
         <game-card
