@@ -22,6 +22,11 @@
     display: flex;
     justify-content: space-between;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.activeForm {
+    transform: rotate(180deg)
 }
 
 .replay__text {
@@ -67,6 +72,16 @@ button {
     background: #CE6796;
 }
 
+.send_btn:disabled {
+    background: #2D2D42;
+}
+
+.send_btn:hover:disabled {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
 .send_btn:hover {
     -moz-box-shadow:0 0 15px #CE6796;
     -webkit-box-shadow:0 0 15px #CE6796;
@@ -94,34 +109,4 @@ button {
 .comments__replay {
     margin-top: 22px;
     margin-bottom: 40px;
-}
-
-.comments__card {
-    margin-bottom: 120px;
-    display: grid;
-    grid-template-columns: 14% 86%;
-}
-
-.comments__card:first-child {
-    margin-top: 30px;
-}
-
-.comments__header {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.comments__text {
-    margin-top: 17px;
-    font-size: 14px;
-    line-height: 16px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.comments__username {
-    margin-top: 2px;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    color: rgba(255, 255, 255, 0.8);
 }

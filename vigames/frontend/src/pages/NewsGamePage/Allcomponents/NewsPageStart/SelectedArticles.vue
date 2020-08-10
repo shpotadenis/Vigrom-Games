@@ -1,8 +1,10 @@
 <template>
 <div>
 <div class="SelectedArticles">
-  <p class="SelectedArticlesDate">{{Selected_News.date}}</p>
-  <p class="SelectedArticlesText">{{Selected_News.name}}</p>
+  <p class="SelectedArticlesDate">{{getFormattedDate}}</p>
+  <router-link :to="{name: 'newsSinglePage', params: {id: Selected_News.id}}">
+    <p class="SelectedArticlesText">{{Selected_News.title}}</p>
+  </router-link>
 </div>
 </div>
 </template>
@@ -27,6 +29,12 @@ export default{
   data(){
     return{
 
+    }
+  },
+  computed : {
+    getFormattedDate() {
+      let date = new Date(this.Selected_News.date);
+      return new Intl.DateTimeFormat('ru-RU', { day: '2-digit', month: 'long',  year: 'numeric' }).format(date)
     }
   }
 }

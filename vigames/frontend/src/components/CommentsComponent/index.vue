@@ -6,38 +6,32 @@
           </h3>
       </div>
       <div class="comments__replay">
-          <a href="#window" class="replay__link">
-              <div class="replay__text">
+          <a class="replay__link" @click="commentFormShow = !commentFormShow">
+              <div class="replay__text" v-if="!commentFormShow">
                   Оставьте свой комментарий
               </div>
-              <div><img src="@/assets/img/chevron-down-icon.svg" alt="" class="replay__icon"></div>
+              <div class="replay__text" v-else>
+                  Скрыть
+              </div>
+              <div><img src="@/assets/img/chevron-down-icon.svg" :class="{ activeForm: commentFormShow }"  alt="" class="replay__icon"></div>
           </a>
       </div>
 
-      <div id="window">
+      <div v-if="commentFormShow">
         <div class="send_block">
-          <textarea type="text" class="sms" id="message" placeholder="Оставьте свой комментарий">
+          <textarea type="text" class="sms" id="message" v-model="message" placeholder="Оставьте свой комментарий">
           </textarea>
         </div>
         <div>
-          <button class="send_btn">Отправить</button>
+          <button class="send_btn" :disabled="message.length == 0">Отправить</button>
         </div>
       </div>
 
       <div class="comments__cards">
-          <div class="comments__card" v-for="comments in getComments" :key="comments.id">
-              <div class="comments__userplate">
-                  <img src="@/assets/img/userpic.png" alt="avatar" class="userplate__pic">
-              </div>
-              <div class="comments__content">
-                  <div class="comments__header">
-                      <h4 class="comments__username">{{comments.user_nickname}}</h4>
-                  </div>
-                  <div class="comments__text">
-                      <p>{{comments.text}}</p>
-                  </div>
-              </div>
-          </div>
+          <comment-component v-for="comment in comments"
+                             :commentData="comment"
+                             :key="comment.id">
+          </comment-component>
       </div>
   </div>
 </template>

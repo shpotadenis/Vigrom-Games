@@ -1,6 +1,11 @@
+import PasswordChanged from '../PasswordChanged/index.vue'
+
 export default {
     name: "v_popup",
     props: {
+    },
+    components: {
+      PasswordChanged
     },
     data() {
         return {
@@ -17,7 +22,8 @@ export default {
             error_old_pass: [],
             error_new_pass: [],
             error_new_pass_repeat: [],
-            errors: 0
+            errors: 0,
+            isPassChangedPopupVisible: false
         }
     },
     methods: {
@@ -28,6 +34,9 @@ export default {
             if (this.allgood == true){
                 this.$emit('SaveNewPass')
             }
+        },
+        close() {
+            this.closePopup()
         },
         hide(){
             if (!this.nonEye){
@@ -66,8 +75,7 @@ export default {
                     current_password: this.old_pass
                 }).then(response => {
                     if (response) {
-                        this.allgood = true
-                        this.closePopup()
+                        this.isPassChangedPopupVisible = true
                         console.log(response)
                     }
                 }).catch(error => {

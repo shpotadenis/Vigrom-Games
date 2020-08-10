@@ -1,9 +1,7 @@
 <template>
   <div v-if="!loading">
   <div class="wrapper">
-    <router-link :to="{name: 'newsPage'}">
     <breadcrumbs-component :items="breadcrumbs"></breadcrumbs-component>
-    </router-link>
     <checkout v-if="isBtnClick" @close="isBtnClick = false"></checkout>
     <div class="container">
       <div class="Header">
@@ -39,7 +37,7 @@
       </div> !-->
 
       <div class="comments">
-        <comments-component id="reviews"></comments-component>
+        <comments-component id="reviews" :comments="newsData.comments_post"></comments-component>
       </div>
     </div>
 

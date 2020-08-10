@@ -1,0 +1,9 @@
+.review__star:hover {
+    transform: scale(1.3);
+    transition: .2s;
+}
+
+.review__star {
+    cursor: pointer;
+}
+

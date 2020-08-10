@@ -10,22 +10,6 @@ export function convertApiToComponentObj(object) {
         price: object.price
     }
 
-    if (object.image[0]) {
-        obj.scrin = getImageUrl(object.image[0].img)
-    }
-
-    if (object.image[1]) {
-        obj.scrin1 = getImageUrl(object.image[1].img)
-    }
-
-    if (object.image[2]) {
-        obj.scrin2 = getImageUrl(object.image[2].img)
-    }
-
-    if (object.image[3]) {
-        obj.scrin3 = getImageUrl(object.image[3].img)
-    }
-
     return obj
 }
 

@@ -13,7 +13,6 @@ export default {
     data() {
         return {
             isInfoPopupVisible: false,
-            isDownloadPopupVisible: false,
             name: '',
             pass: ''
         }

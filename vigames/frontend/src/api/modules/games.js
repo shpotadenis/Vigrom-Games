@@ -1,7 +1,7 @@
 import { instance } from '../api'
 
 const game_info_endpoint = '/api/games/'
-const game_list_endpoint = '/api/'
+const game_list_endpoint = '/api/main/new'
 
 export default {
     getGameInfo(id) {
@@ -12,6 +12,7 @@ export default {
         return instance.get(game_list_endpoint)
     },
 
+    // DEPRECATED
     getReviews(gameId) {
         return instance.get('/api/games/' + gameId + '/rating')
     },
