@@ -2,18 +2,26 @@
 position:relative;
 width: 160px;
 height: 180px;
-background: #2D2D42;
+  background: #212130;
 border-radius: 10px;
 margin-top:25px;
 transition:all ease 0.3s;
 }
+.cards{
+padding-left: 10px;
+  padding-right: 10px;
+}
+.topComponent{
+  background: #2D2D42;
+  border-radius: 10px;
+  min-height: 270px;
+  min-width: 1155px;
+}
 .CategoriesGamePageComponent:hover{
 background:#CE6796;
-
 }
 .AllCategories{
   display: flex;
-  width: 1090px;
 }
 .ImageCategories{
 position:absolute;
@@ -26,4 +34,9 @@ left:38.75%;
   width:160px;
   text-align:center;
   color:#fff;
+}
+.ItemCard{
+  display: inline;
+  padding-bottom: 15px;
+  padding-top: 20px;
 }

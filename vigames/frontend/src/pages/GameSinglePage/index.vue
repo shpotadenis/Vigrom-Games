@@ -13,12 +13,12 @@
                         <h2 class="info-card__title-text">{{getGameData.title}}</h2>
                         <div v-if="this.$store.getters['user/isLoggedIn']">
                             <div class="info-card__wishlist" v-if="!isInWishlist">
-                                <div @click="addToWishlistClick" class="wishlist__btn">
+                                <div @click="addToWishlistClick" class="wishlist__btn"> <!-- Влад, сердечки тоже не будут отбражаться если игра снята с распространения!-->
                                     <img src="@/assets/img/heart.svg" alt="" class="wishlist__heart">
                                 </div>
                             </div>
                             <div class="info-card__wishlist" v-else>
-                                <div @click="removeFromWishlistClick" class="wishlist__btn">
+                                <div @click="removeFromWishlistClick" class="wishlist__btn"> <!-- Гык !-->
                                     <img src="@/assets/img/heart-filled.svg" alt="" class="wishlist__heart-filled">
                                 </div>
                             </div>
@@ -44,6 +44,11 @@
                             Скачать
                         </button>
                     </div>
+        <!--         <div class="info-card__buy">           Владос, если игра снята с распространения, вылазиет эта кнопка вместо 'купить' или 'скачать'
+                        <button disabled class="not_available_btn">
+                            Недоступно
+                        </button>
+                    </div> !-->
                 </div>
             </div>
         </div>

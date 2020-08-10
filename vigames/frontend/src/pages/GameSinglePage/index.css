@@ -85,6 +85,24 @@
     line-height: 19px;
 }
 
+.not_available_btn {
+  display: flex;
+  align-items: baseline;
+  background: #2D2D42;
+  border-radius: 6px;
+  position: relative;
+  padding: 9px 28px;
+  color: #FFFFFF;
+  margin-top: 10px;
+  border: none;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+}
+
 .buy__btn:hover{
     -moz-box-shadow:0 0 15px #CE6796;
     -webkit-box-shadow:0 0 15px #CE6796;
