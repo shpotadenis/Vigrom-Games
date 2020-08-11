@@ -205,6 +205,16 @@ class GameDetail(APIView):
         game.count_views += 1
         game.save()
         serializer = OutputGameSerializer(game)
+        for i in range(len(serializer.data['reviews_game'])):
+            # Получаем модель юзера по имени автора комментария
+            user = User.objects.get(username=serializer.data['reviews_game'][i]['author'])
+            try:
+                # Отдельный комментарий преобразуем в словарь. затем добавляем в него аватар по модели юзера
+                serializer.data['reviews_game'][i] = dict(serializer.data['reviews_game'][i])
+                serializer.data['reviews_game'][i]['avatar'] = Account.objects.get(user=user).avatar.url
+            except:
+                serializer.data['reviews_game'][i] = dict(serializer.data['reviews_game'][i])
+                serializer.data['reviews_game'][i]['avatar'] = 'None'
         num_views, create = Views_Game.objects.get_or_create(game=game, date=date.today())
         num_views.num += 1
         num_views.save()
@@ -270,9 +280,16 @@ class GameRatingDetail(APIView):
 
     def get(self, request, pk):
         try:
-            user_ratings = Review.objects.get(game=pk)
-            serializer = OutputReviewSerializer(user_ratings)
-            return Response(serializer.data)
+            user_ratings = Review.objects.filter(game=pk)
+            serializer = []
+            for i in user_ratings:
+                serializer.append(dict(OutputReviewSerializer(i).data))
+                user = User.objects.get(username=serializer[-1]['author'])  # Получаем модель пользователя по имени автора
+                try:
+                    serializer[-1]['avatar'] = Account.objects.get(user=user).avatar.url    # По модели юзера вытаскиваем аватарку из модели аккаунта и добавляем ее в словарь сериализатора
+                except:
+                    serializer[-1]['avatar'] = 'None'   # Если аватарки нет, указываем None
+            return Response(serializer)
         except Review.DoesNotExist:
             return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -767,4 +784,18 @@ class OutputDevelopersGames(ListAPIView):
             games = Game.objects.filter(author=user)
             serializer = OutputDevelopersGamesInfoSerializer(games, many=True)
             return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class UsersAvatarDetail(APIView):
+    """Загрузка аватарки пользователя"""
+
+    def post(self, request):
+        user = request.user
+        avatar = request.data['avatar']
+        if user.is_authenticated:
+            account = Account.objects.get(user=user)
+            account.avatar = avatar
+            account.save()
+            return Response(status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)

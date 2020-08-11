@@ -111,11 +111,14 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class OutputReviewSerializer(serializers.ModelSerializer):
     """Сериализатор вывода отзывов к игре"""
+    #account = AvatarSerializer(author, read_only=True)
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+    #account = serializers.SlugRelatedField(slug_field='avatar', read_only=True)
 
     class Meta:
         model = Review
-        fields = '__all__'
+        fields = ('author', 'mark', 'game', 'title', 'comment')
+        #fields = '__all__'
 
 
 class OutputGameSerializer(serializers.ModelSerializer):

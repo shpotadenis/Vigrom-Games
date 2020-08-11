@@ -72,7 +72,7 @@ class Genre1(models.Model):
 class Account(models.Model):
     """Модель аккаунтов пользователей"""
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)  # Достаем из базы
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name="account")  # Достаем из базы
     # данные регистрации
     fav_genres = models.ManyToManyField(Genre, blank=True)
     date_joined = models.DateField(default=date.today)
@@ -93,7 +93,7 @@ class Account(models.Model):
     is_developer = models.BooleanField(default=False, null=True)
     is_administrator = models.BooleanField(default=False, null=True)
     bank_cаrd = models.CharField("Номер карты", max_length=20, null=True)
-    foto = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
+    avatar = models.ImageField("Аватар", upload_to="img/%Y/%m", null=True)
 
     # strategy = models.IntegerField(default=0)
     # simylate = models.IntegerField(default=0)
