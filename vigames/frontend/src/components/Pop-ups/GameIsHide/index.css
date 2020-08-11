@@ -1,0 +1,104 @@
+.popup-wrapper {
+  position: fixed;
+  background: rgba(41, 41, 61, 0.9);
+  display: flex;
+  height: 6000px;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+}
+
+.container {
+  font-family: Open Sans;
+  font-style: normal;
+
+  position: fixed;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+  width: 600px;
+  height: 274px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-top: 200px;
+  margin-bottom: 30px;
+  z-index: 20;
+  border-radius: 10px;
+  background: #2D2D42;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.head-name {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 30px;
+  color: #FFFFFF;
+}
+
+.closer {
+
+}
+
+.close-icon{
+    height: 12px;
+    width: 12px;
+    background: #2D2D42;
+}
+
+hr {
+    width: 540px;
+    height: 1px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    border: 0px;
+
+    background: #414159;
+    border-radius: 10px;
+}
+
+button {
+    border: 0px;
+}
+
+.Content {
+  width: 538px;
+  height: 88px;
+
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #818189;
+}
+
+.Footer {
+
+}
+
+.Btn {
+  width: 187px;
+  height: 44px;
+  border-radius: 6px;
+
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+
+  color: #FFFFFF;
+  background: #CE6796;
+}
+
+.Btn:hover {
+  -moz-box-shadow:0 0 15px #CE6796;
+  -webkit-box-shadow:0 0 15px #CE6796;
+  box-shadow:0 0 15px #CE6796;
+}
