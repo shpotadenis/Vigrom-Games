@@ -171,7 +171,11 @@ export default {
         fd.append('question', data.question)
 
         return instance.post(question_endpoint, fd)
-    }
+    },
+
+    getDeveloperGames() {
+        return instance.get('/api/profile/developers_games')
+    },
 
 
 }

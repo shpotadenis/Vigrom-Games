@@ -35,7 +35,7 @@
             </div>
             <div id="control_panel">
                 <p id="control_panel_title">Панель управления</p>
-                <a href="" class="control_panel_list" id="control_panel_title_first" @click="games = true">Мои игры</a>
+                <a class="control_panel_list" id="control_panel_title_first" @click="games = true">Мои игры</a>
                 <my-games v-if="games" @close="games = false"></my-games>
                 <router-link :to="{name: 'uploadPage'}">
                     <button id="control_panel_button">Загрузить игру</button>
