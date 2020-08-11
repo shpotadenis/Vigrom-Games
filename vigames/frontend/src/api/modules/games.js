@@ -31,5 +31,9 @@ export default {
         fd.append('search', text)
         fd.append('dir', 'games')
         return instance.post('/api/search', fd)
+    },
+
+    getTopInGenre(genre) {
+        return instance.get('/api/genre/' + genre + '/top')
     }
 }
