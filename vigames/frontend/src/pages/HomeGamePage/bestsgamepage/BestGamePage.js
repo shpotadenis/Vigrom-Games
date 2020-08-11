@@ -1,11 +1,11 @@
 import BestsGamePageComponents from "./BestsGamePageComponents.vue"
-import GameCard from "@/components/GameCard/GameCard.vue"
+import GameCardSale from "@/components/GameCardSale/index.vue"
 
 export default {
   name: 'BestsGamePage',
   components: {
     BestsGamePageComponents,
-    GameCard
+    GameCardSale
   },
   data(){
     return{

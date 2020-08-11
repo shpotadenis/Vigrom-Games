@@ -5,7 +5,7 @@
       <p class="NewsSection">Новостной раздел</p>
     </div>
     <div class="Block2">
-      <news-search :key="news"/>
+      <news-search/>
     </div>
     </div>
     <banner-component day="Сегодня"
