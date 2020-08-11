@@ -12,7 +12,7 @@ from .serializers import AccountSerializer, OutputAllNews, GameSerializer, Outpu
     ReviewSerializer, CommentsNewsSerializer, PostSerializer, FaqSerializer, CommentsGameSerializer, \
     OrderSerializer, OutputGameSerializer, QuestionSerializer, SerializerMedia, OutputShortGameInfoSerializer, \
     GenreSerializer, \
-    StatisticsSerializer, OutputReviewSerializer, OutputGameInfoToEditSerializer
+    StatisticsSerializer, OutputReviewSerializer, OutputGameInfoToEditSerializer, OutputDevelopersGamesInfoSerializer
 from django.contrib.auth.models import User
 from scripts import Search
 from collections import OrderedDict
@@ -202,6 +202,8 @@ class GameDetail(APIView):
 
     def get(self, request, pk):
         game = self.get_game(pk)
+        game.count_views += 1
+        game.save()
         serializer = OutputGameSerializer(game)
         num_views, create = Views_Game.objects.get_or_create(game=game, date=date.today())
         num_views.num += 1
@@ -334,6 +336,8 @@ class BuyGameDetail(APIView):
                     serializer = OrderSerializer(data={'user': user.id, 'game': pk, 'price': price, 'date': date.today()})
                     if serializer.is_valid():
                         serializer.save()
+                        game.count_players += 1
+                        game.save()
                     return Response({"message": "success"}, status=status.HTTP_200_OK)
                 return Response({"message": "bought"})
             except Account.DoesNotExist:
@@ -708,3 +712,14 @@ class RecommendedGamesDetail(ListAPIView):
         serializer = OutputShortGameInfoSerializer(recommended_games, many=True)
         return Response(serializer.data)
 
+
+class OutputDevelopersGames(ListAPIView):
+    """Вывод игры на страницу "Мои игры" разработчика"""
+
+    def get(self, request):
+        user = request.user
+        if user.is_authenticated:
+            games = Game.objects.filter(author=user)
+            serializer = OutputDevelopersGamesInfoSerializer(games, many=True)
+            return Response(serializer.data)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
