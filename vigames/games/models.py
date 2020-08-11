@@ -145,6 +145,7 @@ class Game(models.Model):
     """Модель игр"""
 
     players = models.ManyToManyField(User, blank=True, related_name="players")
+    count_players = models.PositiveIntegerField(default=0)
     number_of_players = models.PositiveIntegerField(default=0)
     who_added_to_wishlist = models.ManyToManyField(User, blank=True, related_name="who_added_to_wishlist")
     author = models.ForeignKey(User, on_delete=models.PROTECT,
@@ -171,6 +172,7 @@ class Game(models.Model):
     image = models.ManyToManyField(Media, blank=True, related_name='parent_game')
     #num_views = models.PositiveIntegerField(default=0)  # Хранит количество просмотров игры
     is_hidden = models.BooleanField(default=False)
+    count_views = models.PositiveIntegerField(default=0)
     '''
     screenshots1 = models.ImageField(upload_to='img/%Y/%m', null=True)
     screenshots2 = models.ImageField(upload_to='img/%Y/%m', null=True)

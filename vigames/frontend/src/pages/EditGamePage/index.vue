@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="!loading">
         <div class="editPage">
             <div class="title mainTitle">РЕДАКТИРОВАНИЕ</div>
             <div class="generalInfo container">

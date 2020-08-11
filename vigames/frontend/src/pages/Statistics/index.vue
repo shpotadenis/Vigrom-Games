@@ -14,6 +14,7 @@
                 </div>
                 <div class="games-rating">
                     <p>Рейтинг игр</p>
+                  
                 </div>
                 </div>
             </div>
