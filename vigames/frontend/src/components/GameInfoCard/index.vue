@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
     <div class="container">
+      <game-is-hide v-if="Hide" @close="Hide = false">  </game-is-hide>
+      <game-is-return v-if="Return" @close="Return = false">  </game-is-return>
       <hr>
       <div class="all-item">
         <div class="game-scrin">
@@ -31,9 +33,11 @@
               </router-link>
             </div>
             <div>
-              <button @click="HideGame" class="Btn-2">
-                <div v-if="!isHide">Скрыть игру</div>
-                <div v-if="isHide">Вернуть игру</div>
+              <button v-if="!isHide" @click="HideGame" class="Btn-2">
+                Скрыть игру
+              </button>
+              <button v-if="isHide" @click="ReturnGame" class="Btn-2">
+                Вернуть игру
               </button>
             </div>
           </div>
