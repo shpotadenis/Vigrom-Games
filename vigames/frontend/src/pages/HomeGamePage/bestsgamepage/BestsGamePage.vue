@@ -1,14 +1,14 @@
 <template>
 
-  <div class="BestsGamePage">
+  <div class="BestsGamePage" v-if="!loading">
     <div class="BestsGameTitle">
       <p class="Title">Бестселлеры</p>
     </div>
-    <bests-game-page-components
+    <!-- <bests-game-page-components
       v-for="game in bests"
       :key="game.image"
       :Bests_Game="game"
-    />
+    /> !-->
     <div class="BestsGameComponents">
       <game-card
         v-for="gamebests in bestscomponents"
