@@ -74,3 +74,12 @@ fade-enter{
 fade-leave{
   transition:  0.1s;
 }
+
+.NoResults {
+    padding-top: 13px;
+}
+
+.LinkNoStyle {
+    text-decoration: none;
+    color: inherit;
+}

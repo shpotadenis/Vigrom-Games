@@ -11,7 +11,7 @@
                 <div class="info-card__about">
                     <div class="info-card__title">
                         <h2 class="info-card__title-text">{{getGameData.title}}</h2>
-                        <div v-if="this.$store.getters['user/isLoggedIn']">
+                        <div v-if="this.$store.getters['user/isLoggedIn'] && !this.getGameData.is_hidden">
                             <div class="info-card__wishlist" v-if="!isInWishlist">
                                 <div @click="addToWishlistClick" class="wishlist__btn"> <!-- Влад, сердечки тоже не будут отбражаться если игра снята с распространения!-->
                                     <img src="@/assets/img/heart.svg" alt="" class="wishlist__heart">
@@ -31,12 +31,15 @@
                 </div>
                 <div v-if="this.$store.getters['user/isLoggedIn']">
                     <div class="info-card__buy" v-if="!isPurchased">
-                        <button @click="isBtnClick = true" class="buy__btn">
+                        <button @click="isBtnClick = true" v-if="!getGameData.is_hidden" class="buy__btn">
                             Купить
                             <span class="buy__price">
                                 {{getGameData.price}}
                                 <img src="@/assets/img/ruble-white.svg" alt="" class="buy__btn-ruble">
                             </span>
+                        </button>
+                        <button disabled class="not_available_btn" v-else>
+                            Недоступно
                         </button>
                     </div>
                     <div class="info-card__buy" v-else>
@@ -44,11 +47,7 @@
                             Скачать
                         </button>
                     </div>
-        <!--         <div class="info-card__buy">           Владос, если игра снята с распространения, вылазиет эта кнопка вместо 'купить' или 'скачать'
-                        <button disabled class="not_available_btn">
-                            Недоступно
-                        </button>
-                    </div> !-->
+
                 </div>
             </div>
         </div>

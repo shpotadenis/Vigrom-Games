@@ -1,0 +1,168 @@
+.editPage{
+    width: 1110px;
+    margin: 0 auto;
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 19px;
+}
+.nameInput{
+    height: 40px;
+    width: 300px;
+}
+.priceInput{
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.title{
+    font-style: normal;
+    font-weight: 800;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 19px;
+    padding: 0px 0px 7px 0px;
+}
+.mainTitle{
+    border-bottom: 1px solid #313144;
+    width: 1110px;
+}
+
+.generalInfo{
+    margin-top: 20px;
+    background: #2D2D42;
+    border-radius: 10px;
+    max-height: 550px;
+    padding-left: 50px;
+}
+.blocks{
+    padding-bottom: 30px;
+}
+.partTitle{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    padding: 30px 0px 30px;
+}
+
+.textInputs{
+    background: #212130;
+    border-radius: 8px;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px;
+    min-width: 220px;
+}
+
+.fileInput{
+    outline: 0;
+    opacity:0;
+    pointer-events:none;
+    user-select:none;
+    width: 50px;
+
+}
+.label{
+    border:2px dashed #212130;
+    border-radius:5px;
+    display:block;
+    transition:border 300ms ease;
+    cursor:pointer;
+    text-align: center;
+    padding: 12px;
+    font-weight: lighter;
+    font-size:12px;
+    height: 82px;
+    width: 260px;
+}
+.label,.label .title{
+    color:#3C3C5A;
+    transition:200ms color
+}
+.label:hover{
+    border:2px solid #212130;
+    background: #212130;
+}
+.label:hover, .label:hover .title{
+    color:#FFFFFF;
+}
+.thirdInpits{
+    height: 150px;
+    width: 400px;
+}
+.secondInputs{
+    width: 200px;
+    height: 50px;
+}
+.blockName{
+    color: #D3D3D6;
+    padding: 7px 0px 7px 0px;
+}
+
+.tip{
+    color: #7A7A83;
+    margin-bottom: 10px;
+    padding: 0px 0px 20px 0px;
+}
+
+.uploadBtn{
+    background: #CE6796;
+    border-radius: 6px;
+    position: relative;
+    width: 190px;
+    height: 40px;
+    color: #FFFFFF;
+    border: none;
+    font-weight: 800;
+}
+
+.uploadBtn:hover{
+    -moz-box-shadow:0 0 15px #CE6796;
+    -webkit-box-shadow:0 0 15px #CE6796;
+    box-shadow:0 0 15px #CE6796;
+}
+
+::placeholder{
+    color: #3C3C5A;
+}
+
+.link{
+    padding-left: 4px;
+    text-decoration: underline;
+}
+
+textarea{
+    resize: none;
+}
+.v-select{
+    position: relative;
+    width: 200px;
+}
+.options{
+    border: none;
+    position: absolute;
+    width: 220px;
+    border-radius: 0 0 8px 8px;
+    background: #212130;
+    z-index: 2;
+}
+.options p{
+    padding: 10px;
+}
+.genre_title{
+    cursor: pointer;
+    background: #212130;
+    border-radius: 8px 8px 0 0;
+    border: 0;
+    padding: 15px;
+    min-width: 220px;
+}
+.options p:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.arrow{
+    position: absolute;
+    left: 180px;
+    top: 23px;
+}
