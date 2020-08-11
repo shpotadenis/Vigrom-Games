@@ -1,7 +1,12 @@
-
+import GameIsHide from"../Pop-ups/GameIsHide/index.vue"
+import GameIsReturn from"../Pop-ups/GameIsReturn/index.vue"
 
 export default {
     name: "GameInfoCard",
+    components: {
+        GameIsHide,
+        GameIsReturn
+    },
     props:{
       Game_Info_Card:{
       type:Object,
@@ -13,13 +18,20 @@ export default {
   },
     data(){
         return {
-          isHide: false
+          isHide: false,
+          Hide: false,
+          Return: false
         }
     },
 
     methods: {
         HideGame() {
-          this.isHide = !this.isHide
+          this.isHide = !this.isHide;
+          this.Hide = true;
+        },
+        ReturnGame() {
+          this.isHide = !this.isHide;
+          this.Return = true;
         }
     }
 

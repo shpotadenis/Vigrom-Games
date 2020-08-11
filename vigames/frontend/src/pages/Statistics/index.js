@@ -1,34 +1,26 @@
 import FooterComponent from '../../components/FooterComponent/index.vue'
-import { Line, mixins } from 'vue-chartjs'
-const { reactiveProp } = mixins
+import { Line } from 'vue-chartjs'
 
 export default {
-    extends: Line,
-    mixins: [reactiveProp],
-    props: ['options'],
+  extends:Line,
     name: "Statistics",
     components: {
         FooterComponent,
-
     },
     data(){
-      return {};
+      return {
+
+      }
     },
-    methods:{
-    },
-    computed:{
-    },
-    chartData:{
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          datasets: [{
-              label: 'My First dataset',
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 99, 132)',
-              data: [0, 10, 5, 2, 20, 30, 45]
-          }]
-    },
-    mounted () {
-      this.renderChart(this.chartData, this.options)
+    mounted(){
+      this.renderChart({
+        labels: ["1.08","25.09","23.011"],
+        datasets: [{
+            label: '# of Votes',
+            data: [20, 10, 30],
+
+        }]
+      })
     }
 
 }
