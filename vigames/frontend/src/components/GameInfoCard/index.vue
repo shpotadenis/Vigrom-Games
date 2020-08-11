@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <editing-successful v-if="isEdit" @close="isEdit = false">  </editing-successful>
       <game-is-hide v-if="Hide" @close="Hide = false">  </game-is-hide>
       <game-is-return v-if="Return" @close="Return = false">  </game-is-return>
       <hr>
