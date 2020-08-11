@@ -113,7 +113,7 @@ export default {
             this.fetchData(this.$route.params.id)
         },
 
-        addToWishlistClick() {
+        addToWishlistClick() { //is_hidden
             this.$store.dispatch('user/addToWishlist', {
                 gameId: this.$route.params.id
             }).catch(error => {
