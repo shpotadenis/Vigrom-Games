@@ -1,16 +1,19 @@
 import PasswordReset from "../../../src/components/Pop-ups/PasswordReset/index.vue"
 import PasswordChanged from "../../../src/components/Pop-ups/PasswordChanged/index.vue"
 import ErrorMessage from '../../components/ErrorMessageComponent/index.vue'
+import Support from '../../components/Pop-ups/Support/index.vue'
 
 export default {
     name: "ForgotPass",
     components: {
         PasswordReset,
         PasswordChanged,
-        ErrorMessage
+        ErrorMessage,
+        Support
     },
     data() {
         return {
+            support: false,
             isPassChangePopupVisible: false,
             first_btn: true,
             show_reset_pass: false,

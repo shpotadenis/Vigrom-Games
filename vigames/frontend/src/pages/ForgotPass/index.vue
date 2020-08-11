@@ -63,9 +63,10 @@
                                 <button class="back-btn">Вернуться</button>
                             </router-link>
                         </div>
-                        <router-link :to="{name: 'loginPage'}" class="back-link row justify-content-center">
+                        <a @click="support = true" class="back-link row justify-content-center">
                             Мне не пришло письмо
-                        </router-link>
+                        </a>
+                        <support v-if="support" @close="support = false"></support>
                     </div>
                 </div>
             </div>
