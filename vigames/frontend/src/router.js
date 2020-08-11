@@ -27,6 +27,11 @@ import PasswordChanged from './components/Pop-ups/PasswordChanged/index.vue'
 import PasswordReset from './components/Pop-ups/PasswordReset/index.vue'
 import Support from './components/Pop-ups/Support/index.vue'
 import MyGames from './components/Pop-ups/MyGames/index.vue'
+import GameIsHide from './components/Pop-ups/GameIsHide/index.vue'
+import GameHide from './components/Pop-ups/GameHide/index.vue'
+import GameIsReturn from './components/Pop-ups/GameIsReturn/index.vue'
+import GameReturned from './components/Pop-ups/GameReturned/index.vue'
+import EditingSuccessful from './components/Pop-ups/EditingSuccessful/index.vue'
 import Statistics from './pages/Statistics/index.vue'
 import EditPage from './pages/EditGamePage/index.vue'
 import Vue from "vue";
@@ -68,8 +73,14 @@ export const router = new Router({
         { path: '/PasswordReset', name: 'PasswordReset', component: PasswordReset },
         { path: '/Support', name: 'Support', component: Support },
         { path: '/MyGames', name: 'MyGames', component: MyGames },
+        { path: '/GameIsHide', name: 'GameIsHide', component: GameIsHide },
+        { path: '/GameHide', name: 'GameHide', component: GameHide },
+        { path: '/GameIsReturn', name: 'GameIsReturn', component: GameIsReturn },
+        { path: '/GameReturned', name: 'GameReturned', component: GameReturned },
+        { path: '/EditingSuccessful', name: 'EditingSuccessful', component: EditingSuccessful },
+        { path: '/edit/:id', name: 'EditPage', component: EditPage, meta: { requiresAuth: true, requiredRole: 'dev' } },
         { path: '/Statistics', name: 'Statistics', component: Statistics },
-        { path: '/edit', name: 'EditPage', component: EditPage }
+
     ]
 })
 
@@ -99,9 +110,8 @@ router.beforeEach((to, from, next) => {
 
     // Проверка роли для доступа к странице
     if (to.meta.requiredRole == 'dev' && !router.app.$store.getters['user/isDeveloper']) {
-        alert('Доступ запрещен')
         next({
-            name: 'homePage'
+            name: 'ErrorPage403'
         })
     }
 

@@ -127,6 +127,44 @@ export default {
         })
     },
 
+    updateGame(gameId, data) {
+        let fd = new FormData()
+        fd.append('title', data.title)
+        fd.append('short_description', data.short_description)
+        fd.append('price', data.price)
+        fd.append('description', data.description)
+        if (data.file) {
+            fd.append('file', data.file)
+        }
+        fd.append('genre', data.genre)
+        if (data.img) {
+            fd.append('img', data.img)
+        }
+        if (data.banner) {
+            fd.append('banner', data.banner)
+        }
+
+        fd.append('gameplay_video_link', data.gameplay_video_link)
+        if (data.images) {
+            for (let i in data.images) {
+                fd.append('images[' + i + ']', data.images[i])
+            }
+            fd.append('imagesCount', data.images.length.toString())
+        } else {
+            fd.append('imagesCount', '0')
+        }
+
+        return instance.put('/api/games/' + gameId + '/update', fd, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+    },
+
+    getUploadInfo(gameId) {
+        return instance.get('/api/games/' + gameId + '/show_info')
+    },
+
     makeQuestion(data) {
         let fd = new FormData()
         fd.append('email', data.email)

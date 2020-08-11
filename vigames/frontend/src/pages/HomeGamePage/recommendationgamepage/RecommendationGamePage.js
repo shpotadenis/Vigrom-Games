@@ -1,6 +1,6 @@
-// eslint-disable-next-line no-unused-vars
 import games from '../../../api/modules/games.js'
 import GameCard  from "@/components/GameCard/GameCard.vue"
+import {convertApiToComponentObj} from "../../../utils";
 
 export default {
   name: 'RecommendationGamePage',
@@ -20,8 +20,13 @@ export default {
     fetchData() {
       this.loading = true
       games.getRecommendation().then(response => {
+        let gameCards = response.data // Карточки, полученные из API
+        let gameComponentCards = [] // Сконвертированные карточки для компонента GameCard
+        for (let i in gameCards) {
+          gameComponentCards.push(convertApiToComponentObj(gameCards[i]))
+        }
+        this.recommendation = gameComponentCards
         this.loading = false
-        this.recommendation = response.data
         console.log(response)
       }).catch(error => {
         console.log(error)
