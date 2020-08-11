@@ -10,26 +10,35 @@
                         class="InputFilterGames"
                         placeholder="Поиск..."
                         v-model="searchGames"
-                        v-on:input="showGames"
+                        v-debounce:500ms="showGames"
                 >
             </div>
         </div>
         <div class="BorderTop"></div>
           <div>
             <transition name="fade">
-            <ul class="ListGame" v-if="isShow">
+            <ul class="ListGame" v-if="searchGames.length > 0">
               <li
-                v-for="game in searchData"
+                v-for="(game, idx) in searchData"
                 :key="game.id"
                 >
-                <div class="SearchItemGame">
-                  <img src="game.image" class="SearchItemImage">
-                  <div>
-                    <p class="SearchItemName">{{game.name}}</p>
-                    <p class="SearchItemName">{{game.price}}</p>
-                  </div>
-                </div>
+                  <router-link :to="game.link" class="LinkNoStyle">
+                    <div class="SearchItemGame">
+                      <img :src="getImg(idx)" class="SearchItemImage">
+                      <div>
+                        <p class="SearchItemName">{{game.title}}</p>
+                        <p class="SearchItemName">{{game.sub_title}}</p>
+                      </div>
+                    </div>
+                  </router-link>
             </li>
+                <li v-if="noResults">
+                    <div class="SearchItemGame">
+                        <div>
+                            <p class="SearchItemName NoResults">Поиск не дал результатов</p>
+                        </div>
+                    </div>
+                </li>
             </ul>
           </transition>
           </div>
