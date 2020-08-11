@@ -1,6 +1,7 @@
 import FooterComponent from '../../components/FooterComponent/index.vue'
 import v_popup from "../../../src/components/Pop-ups/ChangePass/index.vue"
 import PasswordChanged from "../../../src/components/Pop-ups/PasswordChanged/index.vue"
+import MyGames from '../../components/Pop-ups/MyGames/index.vue'
 
 
 export default {
@@ -9,9 +10,11 @@ export default {
         FooterComponent,
         v_popup,
         PasswordChanged,
+        MyGames
     },
     data() {
         return {
+            games: false,
             isInfoPopupVisible: false,
             name: '',
             pass: ''

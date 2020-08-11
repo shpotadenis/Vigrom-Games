@@ -24,7 +24,9 @@
           </div>
           <div class="Btns">
             <div>
+              <router-link :to="{name: 'EditPage'}">
               <button class="Btn-1">Редактировать</button>
+              </router-link>
             </div>
             <div>
               <button @click="HideGame" class="Btn-2">
