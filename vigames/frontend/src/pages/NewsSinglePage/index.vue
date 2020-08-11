@@ -36,8 +36,8 @@
         </div>
       </div> !-->
 
-      <div class="comments">
-        <comments-component id="reviews" :comments="newsData.comments_post"></comments-component>
+      <div class="comments" id="comments">
+        <comments-component id="reviews" :comments="newsData.comments_post" :newsData="this.newsData" @update-news="newsUpdate"></comments-component>
       </div>
     </div>
 
