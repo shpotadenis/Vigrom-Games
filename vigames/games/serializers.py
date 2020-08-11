@@ -150,7 +150,15 @@ class OutputShortGameInfoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ('id', 'author', 'img', 'image', 'title', 'price', 'is_hidden')
+        fields = ('id', 'author', 'img', 'image', 'title', 'price', 'sale_percent', 'is_hidden')
+
+
+class OutputDevelopersGamesInfoSerializer(serializers.ModelSerializer):
+    """Сериализатор вывода игры на страницу "Мои игры" разработчика"""
+
+    class Meta:
+        model = Game
+        fields = ('id', 'img', 'title', 'count_players', 'count_views', 'is_hidden')
 
 
 class OutputGameInfoToEditSerializer(serializers.ModelSerializer):

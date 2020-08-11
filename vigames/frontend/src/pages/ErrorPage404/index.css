@@ -1,7 +1,10 @@
 .errorPage{
     color: #FFFFFF;
 }
-
+.image{
+    width: 650px;
+    height: 350px;
+}
 button{
     background: #CE6796;
     border-radius: 6px;
@@ -21,12 +24,12 @@ button:hover{
 
 .error{
     font-weight: bold;
-    font-size: 150px;
-    line-height: 204px;
+    font-size: 60px;
+    line-height: 82px;
 }
 
 .message{
-    font-weight: bold;
-    font-size: 60px;
-    line-height: 82px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 30px;
 }

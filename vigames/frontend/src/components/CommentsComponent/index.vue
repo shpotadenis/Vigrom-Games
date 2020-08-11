@@ -23,7 +23,7 @@
           </textarea>
         </div>
         <div>
-          <button class="send_btn" :disabled="message.length == 0">Отправить</button>
+          <button class="send_btn" :disabled="message.length == 0" @click="sendCommentClick">Отправить</button>
         </div>
       </div>
 
