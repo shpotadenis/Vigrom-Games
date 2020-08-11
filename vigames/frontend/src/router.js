@@ -31,6 +31,7 @@ import GameIsHide from './components/Pop-ups/GameIsHide/index.vue'
 import GameHide from './components/Pop-ups/GameHide/index.vue'
 import GameIsReturn from './components/Pop-ups/GameIsReturn/index.vue'
 import GameReturned from './components/Pop-ups/GameReturned/index.vue'
+import EditingSuccessful from './components/Pop-ups/EditingSuccessful/index.vue'
 import Statistics from './pages/Statistics/index.vue'
 import EditPage from './pages/EditGamePage/index.vue'
 import Vue from "vue";
@@ -76,6 +77,7 @@ export const router = new Router({
         { path: '/GameHide', name: 'GameHide', component: GameHide },
         { path: '/GameIsReturn', name: 'GameIsReturn', component: GameIsReturn },
         { path: '/GameReturned', name: 'GameReturned', component: GameReturned },
+        { path: '/EditingSuccessful', name: 'EditingSuccessful', component: EditingSuccessful },
         { path: '/Statistics', name: 'Statistics', component: Statistics },
         { path: '/edit', name: 'EditPage', component: EditPage }
     ]
