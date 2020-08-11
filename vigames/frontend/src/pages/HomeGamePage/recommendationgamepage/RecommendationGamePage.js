@@ -9,8 +9,24 @@ export default {
   },
   data(){
     return{
-      recommendation:[]
+      recommendation:[],
+      loading: false
     }
   },
+  beforeMount() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      this.loading = true
+      games.getRecommendation().then(response => {
+        this.loading = false
+        this.recommendation = response.data
+        console.log(response)
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+  }
   
 }
