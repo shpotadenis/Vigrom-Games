@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import games from '../../../api/modules/games.js'
 import GameCard  from "@/components/GameCard/GameCard.vue"
 
