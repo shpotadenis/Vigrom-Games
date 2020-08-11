@@ -24,5 +24,12 @@ export default {
 
     getRecommendation() {
         return instance.get(recomendation_list_endpoint)
+    },
+
+    search(text) {
+        let fd = new FormData()
+        fd.append('search', text)
+        fd.append('dir', 'games')
+        return instance.post('/api/search', fd)
     }
 }
