@@ -35,5 +35,14 @@ export default {
 
     getTopInGenre(genre) {
         return instance.get('/api/genre/' + genre + '/top')
+    },
+
+    getBestsellers() {
+        return instance.get('/api/main/best')
+    },
+
+    getPopular() {
+        return instance.get('/api/main/popular')
     }
+
 }

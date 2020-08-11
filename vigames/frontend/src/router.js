@@ -110,9 +110,8 @@ router.beforeEach((to, from, next) => {
 
     // Проверка роли для доступа к странице
     if (to.meta.requiredRole == 'dev' && !router.app.$store.getters['user/isDeveloper']) {
-        alert('Доступ запрещен')
         next({
-            name: 'homePage'
+            name: 'ErrorPage403'
         })
     }
 

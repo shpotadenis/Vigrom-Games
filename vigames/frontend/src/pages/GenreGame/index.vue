@@ -4,7 +4,7 @@
             <div class="AdventuresGames">
                 <internal-menu/>
                 <div class="FilterGames">
-                    <search-component/>
+                    <search-component searchzone="games" />
                 </div>
             </div>
             <div class="AdventuresGamesTitle">
