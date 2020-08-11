@@ -692,13 +692,15 @@ class RecommendedGamesDetail(ListAPIView):
                     else:
                         genres[game.genre] = 1
                 fav_genres = []
+                all_genres = ['adventures', 'puzzles', 'action', 'rpg', 'strategy',
+                              'farms', 'mmo', 'shooters', 'race', 'simulators']
                 while len(genres) > 0 and len(fav_genres) <= 5:
                     fav_genres.append(list(genres.keys())[-1])
                     genres.pop(fav_genres[-1])
                 recommended_games = Game.objects.exclude(players=user)
-                for genre in Genre.objects.all():
+                for genre in all_genres:
                     if genre not in fav_genres:
-                        games = games.exclude(genre)
+                        recommended_games = recommended_games.exclude(genre=genre)
                 recommended_games = recommended_games.order_by('rating')[:8]
                 serializer = OutputShortGameInfoSerializer(recommended_games, many=True)
                 return Response(serializer.data)
