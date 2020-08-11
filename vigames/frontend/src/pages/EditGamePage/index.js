@@ -10,6 +10,7 @@ export default {
     },
     data(){
         return{
+            loading: false,
             isBtnClick: false,
             selectFile:"Перетащите файл или кликните здесь, чтобы добавить его*",
             selectFile1:"Перетащите 3-5 файлов размером 324х255 или кликните здесь, чтобы добавить их",
@@ -54,8 +55,34 @@ export default {
             selected_two: 'Выберите платформу'
         }
     },
-
+    beforeMount() {
+        this.fetchData(this.$route.params.id)
+    },
     methods:{
+        fetchData(id) {
+            this.loading = true
+            user.getUploadInfo(id).then(response => {
+                this.loading = false
+                this.title = response.data.title
+                this.short_description = response.data.short_description
+                this.selectOption(this.options.filter(o => o.value == response.data.genre)[0])
+                this.block1 = response.data.description
+                this.selectFile = response.data.file
+                this.selectFile3 = response.data.img
+                this.selectFile2 = response.data.banner
+                for (let i in response.data.image) {
+                    this.array.clear()
+                    this.array.push({
+                        name: response.data.image[i]
+                    })
+                }
+                this.youtube_link = response.data.gameplay_video_link
+                this.price = response.data.price
+                console.log(response)
+            }).catch(error => {
+                console.log(error)
+            })
+        },
         UpLoadFile(event){
             console.log(event.target.selectFile)
             this.selectFile = event.target.files[0].name       //Это имя файла
@@ -86,15 +113,31 @@ export default {
                 genre: this.genre,
                 price: this.price,
                 description: this.block1 + this.block2 + this.block3,
-                file: this.archiveGame,
-                img: this.img,
-                banner: this.banner,
                 gameplay_video_link: this.youtube_link,
-                images: this.array,
-                OS: this.OS
+                OS: this.OS,
+                images: []
             }
-            console.log(data)
-            user.uploadGame(data).then(response => {
+
+            if (this.archiveGame instanceof File) {
+                data.file = this.archiveGame
+            }
+
+            if (this.img instanceof File) {
+                data.img = this.img
+            }
+
+            if (this.banner instanceof File) {
+                data.banner = this.banner
+            }
+            if (this.array) {
+                for (let i in this.array) {
+                    if (this.array[i] instanceof File) {
+                        data.images.push(this.array[i])
+                    }
+                }
+            }
+
+            user.updateGame(this.$route.params.id, data).then(response => {
                 console.log(response)
                 this.$router.push({
                     name: 'singlePage',

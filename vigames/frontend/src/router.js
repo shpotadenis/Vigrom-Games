@@ -78,8 +78,9 @@ export const router = new Router({
         { path: '/GameIsReturn', name: 'GameIsReturn', component: GameIsReturn },
         { path: '/GameReturned', name: 'GameReturned', component: GameReturned },
         { path: '/EditingSuccessful', name: 'EditingSuccessful', component: EditingSuccessful },
+        { path: '/edit/:id', name: 'EditPage', component: EditPage, meta: { requiresAuth: true, requiredRole: 'dev' } },
         { path: '/Statistics', name: 'Statistics', component: Statistics },
-        { path: '/edit', name: 'EditPage', component: EditPage }
+
     ]
 })
 
