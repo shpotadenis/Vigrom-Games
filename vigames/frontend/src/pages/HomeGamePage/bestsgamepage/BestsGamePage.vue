@@ -10,7 +10,7 @@
       :Bests_Game="game"
     />
     <div class="BestsGameComponents">
-      <game-card-sale
+      <game-card
         v-for="gamebests in bestscomponents"
         :key="gamebests.id"
         :Game="gamebests"
