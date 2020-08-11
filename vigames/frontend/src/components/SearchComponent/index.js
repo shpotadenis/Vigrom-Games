@@ -5,7 +5,35 @@ export default {
     name: 'SearchComponent',
     data(){
       return{
+        best:[
+              {
+              id:"1",
+              image:"MaskGroup.svg",
+              name:"300$",
+              rating:"4.9",
+              undername:"Ubisoft Nadeo | Ubisoft",
+              price:"299.99",
+              scrin:'vessel-5.jpg',
+              scrin1:'c97a9.jpg',
+              scrin2:'Pic1.jpg',
+              scrin3:'c97a9.jpg',
+              icon:'cart-icon.png'
+              },
+              {
+              id:"2",
+              image:"MaskGroup.svg",
+              name:"Yes,sir",
+              rating:"4.9",
+              undername:"Ubisoft Nadeo | Ubisoft",
+              price:"299.99",
 
+              scrin:'vessel-5.jpg',
+              scrin1:'c97a9.jpg',
+              scrin2:'Pic1.jpg',
+              scrin3:'c97a9.jpg',
+              icon:'cart-icon.png'
+              },
+            ],
           bestscomponents:[
                 {
                 id:"1",
@@ -95,6 +123,7 @@ export default {
               searchGames:''
       }
     },
+    props:['searchzone'],
     methods:{
       showGames(){
         for(let i = 0; i<this.searchData.length; i++){
@@ -109,10 +138,18 @@ export default {
     },
     computed:{
       searchData(){
-        return this.bestscomponents.filter(elem => {
+        if(this.searchzone == 'games'){
+          return this.bestscomponents.filter(elem => {
           return elem.name.toLowerCase().includes(this.searchGames);
-        });
-      }
+        })
+        }else{
+          return this.best.filter(elem => {
+          return elem.name.toLowerCase().includes(this.searchGames);
+        }
+      );
+
     }
 
+}
+}
 }

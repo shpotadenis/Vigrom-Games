@@ -29,7 +29,8 @@ export default {
         scrin1:'c97a9.jpg',
         scrin2:'Pic1.jpg',
         scrin3:'c97a9.jpg',
-        icon:'cart-icon.png'
+        icon:'cart-icon.png',
+        sale: 30
         },
         {
         id:"2",

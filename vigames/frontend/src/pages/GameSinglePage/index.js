@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             isBtnClick: false,
-            loading: true,
+            loading: false,
             gameData: null
         }
     },
@@ -76,13 +76,13 @@ export default {
         next()
     },
 
-    mounted() {
+    beforeMount() {
       this.fetchData(this.$route.params.id)
     },
 
     methods: {
         fetchData(gameId) {
-            this.loading = false
+            this.loading = true
              games.getGameInfo(gameId).then(response => {
                 if (response.data) {
                     this.gameData = response.data
@@ -113,7 +113,7 @@ export default {
             this.fetchData(this.$route.params.id)
         },
 
-        addToWishlistClick() {
+        addToWishlistClick() { //is_hidden
             this.$store.dispatch('user/addToWishlist', {
                 gameId: this.$route.params.id
             }).catch(error => {

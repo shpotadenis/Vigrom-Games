@@ -6,7 +6,7 @@
 			<internal-menu/>
 		</div>
 		<div class="FilterGames col-4">
-				<search-component key="game"/>
+				<search-component searchzone="games"/>
 		</div>
 	</div>
 
