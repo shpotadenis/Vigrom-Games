@@ -3,6 +3,7 @@
         <div class="wrapper">
           <Support v-if="isBtnClick" @close="isBtnClick = false"> </Support>
             <div class="header__wrapper">
+                <div class="panel">
                 <div class="header__logo">
                     <router-link :to="{name: 'homePage'}">
                         <img src="@/assets/img/logo.svg" alt="Vigrom" class="header__logo-pic">
@@ -26,18 +27,19 @@
                                 Библиотека
                             </router-link>
                         </li>
-                        <li class="header__item">
-                            <router-link :to="{name: 'featuredPage'}" class="header__link">
-                            Избранное
-                            </router-link>
-                        </li>
+
                         <li class="header__item">
                             <a @click="isBtnClick = true" class="header__link">Поддержка</a>
                         </li>
                     </ul>
                 </nav>
-
+                </div>
                 <div class="header__icons">
+                    <div class="header__icon">
+                        <router-link :to="{name: 'featuredPage'}" class="header__link">
+                            <img src="@/assets/img/heart.svg" alt="Favourite" class="header__icon-pic">
+                        </router-link>
+                    </div>
                     <div class="header__icon">
                         <router-link :to="{name: 'signInPage'}">
                             <div class="header__icon-link">

@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import Account, Posts, Game, Comments_Post, Comments_Game, Review, FAQ, Orders, Media,\
-    Question, Genre
+from .models import Account, Posts, Game, Comments_Post, Comments_Game, Review, FAQ, Orders, Media, \
+    Question, Genre, Views_Game
 
 
 class AccountSerializer(serializers.ModelSerializer):
@@ -194,3 +194,11 @@ class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = '__all__'
+
+
+class ViewsGameSerializer(serializers.ModelSerializer):
+    """ Сериализатор вывода количества просмотров игры """
+
+    class Meta:
+        model = Views_Game
+        fields = "__all__"
