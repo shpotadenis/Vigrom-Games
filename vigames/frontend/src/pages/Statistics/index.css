@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+.wrapper {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+.title{
+    color: #FFFFFF;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    margin-top: 20px;
+}
+.img-1{
+    margin-top: 10px;
+}
+.Download_statistics{
+    width: 730px;
+    height: 554px;
+    background: #2D2D42;
+    border-radius: 10px;
+}
+.watch_statistics{
+    width: 350px;
+    height: 212px;
+    background: #2D2D42;
+    border-radius: 10px;
+}
+.games-rating{
+    width: 350px;
+    height: 312px;
+    background: #2D2D42;
+    border-radius: 10px;
+}
