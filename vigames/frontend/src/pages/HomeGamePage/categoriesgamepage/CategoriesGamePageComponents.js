@@ -16,15 +16,21 @@ export default {
     Imo,
     GameCard
   },
+  methods:{
+    hideShow(id){
+      if (id==this.thisId && this.show){
+        this.show = false;
+      }
+      else{
+        this.show = true;
+      }
+      this.thisId = id
+    }
+  },
 data(){
   return {
-    isBtnClick_1: false,
-    isBtnClick_2: false,
-    isBtnClick_3: false,
-    isBtnClick_4: false,
-    isBtnClick_5: false,
-    isBtnClick_6: false,
     show: false,
+    thisId: 0,
     topGames:[
       {
         id:"1",

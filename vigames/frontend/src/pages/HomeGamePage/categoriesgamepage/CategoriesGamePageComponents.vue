@@ -6,46 +6,46 @@
   <div class="row justify-content-center">
 
   <div class="AllCategories">
-    <a @click="show!=show" class="col-2">
-    <div class="CategoriesGamePageComponent">
-      <img src="@/assets/img/flash-icon.svg" class="ImageCategories">
-      <p class="TitleCategories">Экшен</p>
-    </div>
+    <a @click="hideShow(0)" class="col-2">
+      <div class="CategoriesGamePageComponent">
+        <img src="@/assets/img/flash-icon.svg" class="ImageCategories">
+        <p class="TitleCategories">Экшен</p>
+      </div>
     </a>
-    <a @click="show!=show" class="col-2">
-    <div class="CategoriesGamePageComponent">
-      <img src="@/assets/img/cube-icon.svg" class="ImageCategories">
-      <p class="TitleCategories">Симуляторы</p>
-    </div>
+    <a @click="hideShow(1)" class="col-2">
+      <div class="CategoriesGamePageComponent">
+        <img src="@/assets/img/cube-icon.svg" class="ImageCategories">
+        <p class="TitleCategories">Симуляторы</p>
+      </div>
     </a>
-    <a @click="show!=show" class="col-2">
-    <div class="CategoriesGamePageComponent">
-      <img src="@/assets/img/map-icon.svg" class="ImageCategories">
-      <p class="TitleCategories">Стратегии</p>
-    </div>
+    <a @click="hideShow(2)" class="col-2">
+      <div class="CategoriesGamePageComponent">
+        <img src="@/assets/img/map-icon.svg" class="ImageCategories">
+        <p class="TitleCategories">Стратегии</p>
+      </div>
     </a>
-    <a @click="show!=show" class="col-2">
-    <div class="CategoriesGamePageComponent">
-      <img src="@/assets/img/smiling-face-outline.svg" class="ImageCategories">
-      <p class="TitleCategories">Казуальные</p>
-    </div>
+    <a @click="hideShow(3)" class="col-2">
+      <div class="CategoriesGamePageComponent">
+        <img src="@/assets/img/smiling-face-outline.svg" class="ImageCategories">
+        <p class="TitleCategories">Казуальные</p>
+      </div>
     </a>
-    <a @click="show!=show" class="col-2">
-    <div class="CategoriesGamePageComponent">
-      <img src="@/assets/img/globe-icon.svg" class="ImageCategories">
-      <p class="TitleCategories">Приключения</p>
-    </div>
+    <a @click="hideShow(4)" class="col-2">
+      <div class="CategoriesGamePageComponent">
+        <img src="@/assets/img/globe-icon.svg" class="ImageCategories">
+        <p class="TitleCategories">Приключения</p>
+      </div>
     </a>
-    <a @click="show!=show" class="col-2">
-    <div class="CategoriesGamePageComponent">
-      <img src="@/assets/img/shield-icon.svg" class="ImageCategories">
-      <p class="TitleCategories">ММО</p>
-    </div>
+    <a @click="hideShow(5)" class="col-2">
+      <div class="CategoriesGamePageComponent">
+        <img src="@/assets/img/shield-icon.svg" class="ImageCategories">
+        <p class="TitleCategories">ММО</p>
+      </div>
     </a>
 
   </div>
   </div>
-  <div class="row justify-content-center cards" v-show="show">
+  <div class="row justify-content-center cards" v-if="show">
     <game-card class="ItemCard col-3"
                v-for="game in topGames"
                :key="game.id"
