@@ -5,14 +5,14 @@
       <p class="NewsSection">Новостной раздел</p>
     </div>
     <div class="Block2">
-      <news-search/>
+      <news-search searchzone="news" />
     </div>
     </div>
     <banner-component day="Сегодня"
                       header="НОВЫЕ ИНДИ ИГРЫ УЖЕ НА ГЛАВНОЙ"
                       description="Унитарное государство, однако, доказывает системный политический процесс в современной России"
                       btn_caption="Подробнее"
-                      :btn_route="{ name: 'newsSinglePage' }">
+                      :btn_route="{ name: 'homePage' }">
     </banner-component>
 </div>
 </template>

@@ -6,37 +6,37 @@
   <div class="row justify-content-center">
 
   <div class="AllCategories">
-    <a @click="hideShow(0)" class="col-2">
+    <a @click="hideShow('action')" class="col-2">
       <div class="CategoriesGamePageComponent">
         <img src="@/assets/img/flash-icon.svg" class="ImageCategories">
-        <p class="TitleCategories">Экшен</p>
+        <p class="TitleCategories">Экшн</p>
       </div>
     </a>
-    <a @click="hideShow(1)" class="col-2">
+    <a @click="hideShow('simulators')" class="col-2">
       <div class="CategoriesGamePageComponent">
         <img src="@/assets/img/cube-icon.svg" class="ImageCategories">
         <p class="TitleCategories">Симуляторы</p>
       </div>
     </a>
-    <a @click="hideShow(2)" class="col-2">
+    <a @click="hideShow('strategy')" class="col-2">
       <div class="CategoriesGamePageComponent">
         <img src="@/assets/img/map-icon.svg" class="ImageCategories">
         <p class="TitleCategories">Стратегии</p>
       </div>
     </a>
-    <a @click="hideShow(3)" class="col-2">
+    <a @click="hideShow('puzzles')" class="col-2">
       <div class="CategoriesGamePageComponent">
         <img src="@/assets/img/smiling-face-outline.svg" class="ImageCategories">
-        <p class="TitleCategories">Казуальные</p>
+        <p class="TitleCategories">Головоломки</p>
       </div>
     </a>
-    <a @click="hideShow(4)" class="col-2">
+    <a @click="hideShow('adventures')" class="col-2">
       <div class="CategoriesGamePageComponent">
         <img src="@/assets/img/globe-icon.svg" class="ImageCategories">
         <p class="TitleCategories">Приключения</p>
       </div>
     </a>
-    <a @click="hideShow(5)" class="col-2">
+    <a @click="hideShow('mmo')" class="col-2">
       <div class="CategoriesGamePageComponent">
         <img src="@/assets/img/shield-icon.svg" class="ImageCategories">
         <p class="TitleCategories">ММО</p>

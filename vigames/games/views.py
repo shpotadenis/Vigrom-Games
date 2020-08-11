@@ -636,7 +636,7 @@ class SearchView(APIView):
             serializer = OutputGameSerializer(game, many=True)
         elif request.data['dir'] == 'news':
             post = Posts.objects.filter(draft=False)
-            serializer = OutputPost(post, many=True)
+            serializer = OutputAllNews(post, many=True)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         list_index = Search_engine(text, list(serializer.data))
@@ -712,6 +712,23 @@ class RecommendedGamesDetail(ListAPIView):
         serializer = OutputShortGameInfoSerializer(recommended_games, many=True)
         return Response(serializer.data)
 
+class BestGamesDetail(APIView):
+    """ Вывод бестселлеров (учитывается количество покупок за последний месяц)"""
+
+    def get(self, request):
+        game = Game.objects.all()
+        game_dict = {}
+        serializer = []
+        for i in game:
+            orders = Orders.objects.filter(game=i, date__range=[date.today()-timedelta(days=30), date.today()]).count()
+            if orders not in game_dict:
+                game_dict[orders] = [i, ]
+            else:
+                game_dict[orders].append(i)
+        for j in sorted(game_dict.keys(), reverse=True)[0:5]:
+            for g in game_dict[j]:
+                serializer.append(OutputShortGameInfoSerializer(g).data)
+        return Response(serializer[0:5])
 
 class OutputDevelopersGames(ListAPIView):
     """Вывод игры на страницу "Мои игры" разработчика"""

@@ -4,11 +4,12 @@ from .views import AccountDetail, OutputAllNewsView, GameDetail, OutputGames, \
     PostView, GameCategoryDetail, CommentNewsCreateView, CommentGameCreateView, FaqDetail, RoleView, \
     QuestionDetail, DownloadMedia, OutputStatistics, OutputWishlist, SearchView, OutputGenreGames, \
     OutputGenreTopGames, HideGameDetail, ShowGameDetail, GameInfoToEditDetail, RecommendedGamesDetail, \
-    OutputDevelopersGames
+    BestGamesDetail, OutputDevelopersGames
 
 urlpatterns = [
     path('main/new', OutputGames.as_view(), name="main"),
     path('main/recommended', RecommendedGamesDetail.as_view(), name="recommended_games"),
+    path('main/best', BestGamesDetail.as_view(), name="best_games"),
 
     path('profile', AccountDetail.as_view(), name="profile"),
     path('profile/library', OutputLibrary.as_view(), name="library"),

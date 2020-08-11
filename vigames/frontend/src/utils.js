@@ -9,6 +9,12 @@ export function convertApiToComponentObj(object) {
         image: getImageUrl(object.img),
         price: object.price
     }
+    // Отображение скидки
+    if (object.sale_percent) {
+        obj.sale = object.sale_percent
+    } else {
+        obj.sale = 0
+    }
 
     return obj
 }

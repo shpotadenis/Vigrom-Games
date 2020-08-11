@@ -7,6 +7,14 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 import { router } from './router.js'
 import VueScrollTo from 'vue-scrollto'
+import vueDebounce from 'vue-debounce'
+
+Vue.use(vueDebounce)
+
+Vue.use(vueDebounce, {
+  listenTo: 'input',
+  defaultTime: '700ms'
+})
 
 Vue.use(VueScrollTo)
 Vue.use(VueAwesomeSwiper);
