@@ -1,10 +1,11 @@
 import GameInfoCard from "../../../components/GameInfoCard/index.vue"
 
+
 export default {
     name: "action",
 
     components:{
-      GameInfoCard
+      GameInfoCard,
     },
     data(){
       return{
@@ -19,7 +20,7 @@ export default {
           },
           {
             id:"2",
-            name:"DANGER CREW",
+            name:"222222",
             undername1:"Danger Crew is a classic single player RPG set in the world of programming and hackers.",
             image:"MaskGroup.svg",
             genre:"Ужасы",
@@ -27,7 +28,7 @@ export default {
           },
           {
             id:"3",
-            name:"DANGER CREW",
+            name:"33333",
             undername1:"Danger Crew is a classic single player RPG set in the world of programming and hackers.",
             image:"MaskGroup.svg",
             genre:"Ужасы",

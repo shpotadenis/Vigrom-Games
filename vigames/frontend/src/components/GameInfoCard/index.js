@@ -20,7 +20,8 @@ export default {
         return {
           isHide: false,
           Hide: false,
-          Return: false
+          Return: false,
+          item:Object
         }
     },
 
@@ -33,6 +34,9 @@ export default {
           this.isHide = !this.isHide;
           this.Return = true;
         }
+    },
+    mounted(){
+      this.item = this.Game_Info_Card
     }
 
 

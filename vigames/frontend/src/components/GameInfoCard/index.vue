@@ -1,8 +1,12 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <game-is-hide v-if="Hide" @close="Hide = false">  </game-is-hide>
-      <game-is-return v-if="Return" @close="Return = false">  </game-is-return>
+      <div v-if="Hide">
+      <game-is-hide @close="Hide = false" :Gamehide="item">  </game-is-hide>
+    </div>
+    <div v-if="Return">
+      <game-is-return @close="Return = false" :Gamereturn="item">  </game-is-return>
+    </div>
       <hr>
       <div class="all-item">
         <div class="game-scrin">

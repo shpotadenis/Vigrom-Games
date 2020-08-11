@@ -3,7 +3,7 @@ import GameHide from "../../../components/Pop-ups/GameHide/index.vue"
 export default {
     name: "gameIsHide",
     components: {
-        GameHide
+        GameHide,
     },
     data() {
         return {
@@ -14,6 +14,19 @@ export default {
       hideGame(){
         this.isBtnClick = true;
       }
+    },
+    props:{
+      Gamehide:{
+        type:Object,
+        default(){
+          return{}
+        }
+      },
+      Gamereturn:{
+        type:Object,
+        default(){
+          return{}
+        }
+      }
     }
-
 }

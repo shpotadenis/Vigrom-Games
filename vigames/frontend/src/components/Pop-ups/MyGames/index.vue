@@ -19,6 +19,7 @@
           :key="info.id"
           :Game_Info_Card="info"
         />
+
       </div>
     </div>
   </div>
