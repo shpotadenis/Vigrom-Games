@@ -208,7 +208,7 @@ class Orders(models.Model):
     """Модель заказов (покупки) игр"""
 
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-    game = models.ForeignKey(Game, null=True, on_delete=models.SET_NULL)
+    game = models.ForeignKey(Game, null=True, on_delete=models.SET_NULL, related_name='orders')
     price = models.IntegerField(null=True)
     date = models.DateField(default=date.today)
 
