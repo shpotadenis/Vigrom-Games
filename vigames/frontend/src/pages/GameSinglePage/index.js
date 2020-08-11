@@ -83,11 +83,7 @@ export default {
     methods: {
         fetchData(gameId) {
             this.loading = false
-            this.gameData = {
-                title: 'game'
-            }
-            console.log(gameId)
-            /* games.getGameInfo(gameId).then(response => {
+             games.getGameInfo(gameId).then(response => {
                 if (response.data) {
                     this.gameData = response.data
                     this.gameData.id = gameId
@@ -98,7 +94,7 @@ export default {
                 this.$router.push({
                     name: 'errorPage404'
                 })
-            }) */
+            })
         },
         downloadBtnClick() {
             user.downloadGame(this.$route.params.id).then(response => {

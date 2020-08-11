@@ -6,7 +6,11 @@
 			<internal-menu/>
 		</div>
 		<div class="FilterGames col-4">
+<<<<<<< HEAD
 				<search-component searchzone="games"/>
+=======
+				<search-component key="game"/>
+>>>>>>> d406618dc2755c3f420993429adae26fff763fe0
 		</div>
 	</div>
 

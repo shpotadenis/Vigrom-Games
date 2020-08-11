@@ -608,7 +608,8 @@ class OutputStatistics(ListAPIView):
                         orders[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = Orders.objects.filter(game=game, date=today-timedelta(days=i)).count()
                         v, create = Views_Game.objects.get_or_create(game=game, date=today-timedelta(days=i))
                         views[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = v.num
-                        data = {'views': views, 'orders': orders, 'rating': list(serializer.data)}
+                    wishlist = game.who_added_to_wishlist.all().count()
+                    data = {'wishlist': wishlist, 'views': views, 'orders': orders, 'rating': list(serializer.data)}
                     return Response(data)
                 return Response(status=status.HTTP_403_FORBIDDEN)
             data = {'rating': list(serializer.data)}
@@ -691,13 +692,15 @@ class RecommendedGamesDetail(ListAPIView):
                     else:
                         genres[game.genre] = 1
                 fav_genres = []
+                all_genres = ['adventures', 'puzzles', 'action', 'rpg', 'strategy',
+                              'farms', 'mmo', 'shooters', 'race', 'simulators']
                 while len(genres) > 0 and len(fav_genres) <= 5:
                     fav_genres.append(list(genres.keys())[-1])
                     genres.pop(fav_genres[-1])
                 recommended_games = Game.objects.exclude(players=user)
-                for genre in Genre.objects.all():
+                for genre in all_genres:
                     if genre not in fav_genres:
-                        games = games.exclude(genre)
+                        recommended_games = recommended_games.exclude(genre=genre)
                 recommended_games = recommended_games.order_by('rating')[:8]
                 serializer = OutputShortGameInfoSerializer(recommended_games, many=True)
                 return Response(serializer.data)
