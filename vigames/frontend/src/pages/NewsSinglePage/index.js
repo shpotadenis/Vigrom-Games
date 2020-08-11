@@ -60,6 +60,11 @@ export default {
             }).catch(error => {
                 console.log(error)
             })
+        },
+
+        newsUpdate() {
+            this.fetchData(this.$route.params.id)
+            this.$scrollTo('#comments', 300)
         }
     }
 

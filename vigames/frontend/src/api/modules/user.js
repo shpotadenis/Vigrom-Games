@@ -9,6 +9,7 @@ const wishlist_endpoint = '/api/accounts/profile/wishlist'
 const changepass_endpoint = '/auth/users/set_password/'
 const changename_endpoint = '/auth/users/set_username/'
 const question_endpoint = '/api/question'
+const add_comments = '/api/commentnews/add'
 //const addwishlist_endpoint = '/api/games/{0}/wishlist'
 
 export default {
@@ -92,6 +93,16 @@ export default {
         }
         fd.append('title', data.title)
         return instance.post('/api/games/' + gameId + '/rating', fd)
+    },
+
+    createComment(newsId, data) {
+        let fd = new FormData()
+        fd.append('id', newsId)
+        fd.append('text_comment', data.comment)
+        if (data.parent) {
+            fd.append('parent', data.parent)
+        }
+        return instance.post(add_comments, fd)
     },
 
     uploadGame(data) {
