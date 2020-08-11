@@ -709,7 +709,10 @@ class RecommendedGamesDetail(ListAPIView):
         return Response(serializer.data)
 
 class BestGamesDetail(APIView):
-    """ Вывод бестселлеров (учитывается количество покупок за последний месяц)"""
+    """
+    Вывод бестселлеров (учитывается количество покупок за последний месяц)
+    Выдается 5 самых покупаемых игр
+    """
 
     def get(self, request):
         game = Game.objects.all()
@@ -725,3 +728,26 @@ class BestGamesDetail(APIView):
             for g in game_dict[j]:
                 serializer.append(OutputShortGameInfoSerializer(g).data)
         return Response(serializer[0:5])
+
+
+class PopularGamesDetail(APIView):
+    """
+    Вывод популярного (учитывается количество просмотров за последний месяц)
+    Выдается 4 самых популярных игры
+    """
+
+    def get(self, request):
+        game = Game.objects.all()
+        game_dict = {}
+        serializer = []
+        for i in game:
+            num = [i.num for i in Views_Game.objects.filter(game=i, date__range=[date.today()-timedelta(days=30), date.today()])]
+            num = sum(num)
+            if num not in game_dict:
+                game_dict[num] = [i, ]
+            else:
+                game_dict[num].append(i)
+        for j in sorted(game_dict.keys(), reverse=True)[0:4]:
+            for g in game_dict[j]:
+                serializer.append(OutputShortGameInfoSerializer(g).data)
+        return Response(serializer[0:4])
