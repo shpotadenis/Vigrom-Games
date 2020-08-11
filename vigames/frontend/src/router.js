@@ -69,7 +69,7 @@ export const router = new Router({
         { path: '/Support', name: 'Support', component: Support },
         { path: '/MyGames', name: 'MyGames', component: MyGames },
         { path: '/Statistics', name: 'Statistics', component: Statistics },
-        { path: '/edit', name: 'EditPage', component: EditPage }
+        { path: '/edit/:id', name: 'EditPage', component: EditPage, meta: { requiresAuth: true, requiredRole: 'dev' } }
     ]
 })
 
