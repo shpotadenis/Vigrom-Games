@@ -26,6 +26,7 @@ import MessageSent from './components/Pop-ups/MessageSent/index.vue'
 import PasswordChanged from './components/Pop-ups/PasswordChanged/index.vue'
 import PasswordReset from './components/Pop-ups/PasswordReset/index.vue'
 import Support from './components/Pop-ups/Support/index.vue'
+import MyGames from './components/Pop-ups/MyGames/index.vue'
 import Statistics from './pages/Statistics/index.vue'
 import EditPage from './pages/EditGamePage/index.vue'
 import Vue from "vue";
@@ -66,6 +67,7 @@ export const router = new Router({
         { path: '/PasswordChanged', name: 'PasswordChanged', component: PasswordChanged },
         { path: '/PasswordReset', name: 'PasswordReset', component: PasswordReset },
         { path: '/Support', name: 'Support', component: Support },
+        { path: '/MyGames', name: 'MyGames', component: MyGames },
         { path: '/Statistics', name: 'Statistics', component: Statistics },
         { path: '/edit', name: 'EditPage', component: EditPage }
     ]
