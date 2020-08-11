@@ -21,12 +21,6 @@ export default {
         default(){
           return{}
         }
-      },
-      Gamereturn:{
-        type:Object,
-        default(){
-          return{}
-        }
       }
     }
 }
