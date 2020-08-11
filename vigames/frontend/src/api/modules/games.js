@@ -2,6 +2,7 @@ import { instance } from '../api'
 
 const game_info_endpoint = '/api/games/'
 const game_list_endpoint = '/api/main/new'
+const recomendation_list_endpoint = '/api/main/recommended'
 
 export default {
     getGameInfo(id) {
@@ -19,5 +20,9 @@ export default {
 
     getByGenre(genre) {
         return instance.get('/api/genre/' + genre)
+    },
+
+    getRecommendation() {
+        return instance.get(recomendation_list_endpoint)
     }
 }

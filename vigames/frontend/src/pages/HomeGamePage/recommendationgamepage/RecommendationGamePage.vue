@@ -1,5 +1,5 @@
 <template>
-<div class="RecommendationGamePage">
+<div class="RecommendationGamePage" v-if="!loading">
   <div class="RecommedationGameTitle">
     <p class="Title">Рекомендации</p>
   </div>
