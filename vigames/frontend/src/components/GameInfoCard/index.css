@@ -118,6 +118,15 @@
   border-radius: 10px;
 }
 
+.Btn-2:hover {
+  background: #CE6796;
+}
+
+.Btn-2:active {
+  background: #95486B;
+  border: 0;
+}
+
 hr {
   width: 840px;
   height: 1px;
