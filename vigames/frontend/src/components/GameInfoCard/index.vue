@@ -1,23 +1,37 @@
 <template>
   <div class="wrapper">
     <div class="container">
+      <hr>
       <div class="all-item">
         <div class="game-scrin">
-          <img v-bind:src="require('@/assets/img/' + Game_Info_Card.image)" class="game-image">
+          <img v-bind:src="require('@/assets/img/' + Game_Info_Card.image)" class="game-image" :class='{"Hide-img": isHide}'>
         </div>
         <div class="content">
-          <div class="game-name">
-            {{Game_Info_Card.name}}
+          <div class="game-title">
+            <div class="game-name">{{Game_Info_Card.name}}</div> <div class="notification" v-if="isHide">(Игра скрыта)</div>
           </div>
-          <div class="game-info1">
-            {{Game_Info_Card.undername1}}
+          <div class="views">
+            <div class="views-name">Всего просмотров</div>
+            <div class="views-value">{{Game_Info_Card.views}}</div>
           </div>
-          <div class="game-info2">
-            {{Game_Info_Card.undername2}}
+          <div class="purchases">
+            <div class="purchases-name">Покупок</div>
+            <div class="purchases-value">{{Game_Info_Card.purchases}}</div>
           </div>
           <div class="details">
             <p>Подробнее</p>
             <img src="@/assets/img/VectorPig.svg" class="arrow-pig">
+          </div>
+          <div class="Btns">
+            <div>
+              <button class="Btn-1">Редактировать</button>
+            </div>
+            <div>
+              <button @click="HideGame" class="Btn-2">
+                <div v-if="!isHide">Скрыть игру</div>
+                <div v-if="isHide">Вернуть игру</div>
+              </button>
+            </div>
           </div>
         </div>
       </div>

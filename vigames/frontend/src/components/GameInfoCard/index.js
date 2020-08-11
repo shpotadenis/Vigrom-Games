@@ -6,10 +6,22 @@ export default {
       Game_Info_Card:{
       type:Object,
       default(){
-        return{}
+        return{
+        }
       }
+    }
+  },
+    data(){
+        return {
+          isHide: false
+        }
     },
 
+    methods: {
+        HideGame() {
+          this.isHide = !this.isHide
+        }
+    }
 
-}
+
 }

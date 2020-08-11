@@ -3,52 +3,139 @@
   display: flex;
   margin-top: 60px;
   padding-bottom: 62px;
-  border-bottom:1px solid #414159;
 }
 
 .game-image{
   border-radius: 10px;
 }
+
+.Hide-img {
+  border-radius: 10px;
+  filter: grayscale(100%);
+}
+
 .content{
+  font-family: Open Sans;
+  font-style: normal;
+
+  height: 120px;
+  width: 320px;
   margin-left:85px;
   margin-top: 57px;
+  margin-bottom: 40px;
 }
-.game-name{
-  font-style: normal;
-font-weight: 800;
-font-size: 14px;
-line-height: 19px;
 
-color: #FFFFFF;
-}
-.game-info1{
-  margin-top: 15px;
-  font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 19px;
-
-color: #D3D3D6;
-}
-.game-info2{
-  margin-top: 25px;
-  font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 19px;
-
-color: #D3D3D6;
-}
-.details{
-  font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 19px;
-
-color: #CE6796;
-  margin-top:20px;
+.game-title {
   display: flex;
+  margin-bottom: 17px;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 19px;
+  color: #FFFFFF;
+}
+
+.game-name {
+  padding-right: 15px;
+}
+
+.notification {
+  right: 5px;
+}
+
+.views {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.views-name {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #D3D3D6;
+}
+
+.views-value {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #FFFFFF;
+}
+
+.purchases {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.purchases-name {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #D3D3D6;
+}
+
+.purchases-value {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #FFFFFF;
+}
+
+.details{
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #CE6796;
+  display: flex;
+  margin-bottom: 30px;
 }
 .arrow-pig{
   margin-left:17px;
+}
+
+.Btns {
+  display: flex;
+  justify-content: space-between;
+  width: 430px;
+}
+
+.Btn-1 {
+  background: #CE6796;
+  border-radius: 6px;
+  border: 0;
+}
+
+.Btn-1:hover {
+  -moz-box-shadow:0 0 15px #CE6796;
+  -webkit-box-shadow:0 0 15px #CE6796;
+  box-shadow:0 0 15px #CE6796;
+}
+
+.Btn-2 {
+  border: 2px solid #CE6796;
+  background: #2D2D42;
+  border-radius: 10px;
+}
+
+hr {
+  width: 840px;
+  height: 1px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  border-radius: 10px;
+  border: 0px;
+
+  background: #414159;
+}
+
+button {
+  width: 184px;
+  height: 40px;
+
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #FFFFFF;
 }
