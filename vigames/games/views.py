@@ -665,7 +665,7 @@ class HideGameDetail(APIView):
 
     def post(self, request, pk):
         try:
-            game = Game.objects.get(pk)
+            game = Game.objects.get(pk=pk)
             game.is_hidden = True
             game.save()
             return Response(status=status.HTTP_200_OK)
@@ -678,7 +678,7 @@ class ShowGameDetail(APIView):
 
     def post(self, request, pk):
         try:
-            game = Game.objects.get(pk)
+            game = Game.objects.get(pk=pk)
             game.is_hidden = False
             game.save()
             return Response(status=status.HTTP_200_OK)
