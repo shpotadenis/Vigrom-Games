@@ -44,7 +44,8 @@
         <div class="review__cards" v-if="this.reviews.length > 0">
             <div class="review__card" v-for="(review, idx) in this.reviews" :key="idx">
                 <div class="review__userplate">
-                    <img src="@/assets/img/userpic.png" alt="" class="userplate__pic">
+                    <img src="@/assets/img/userpic.png" alt="" class="userplate__pic" v-if="review.avatar == 'None'">
+                    <img :src="getImage(idx)" alt="" class="userplate__pic">
                     <p class="review__username">
                         {{review.author}}
                     </p>

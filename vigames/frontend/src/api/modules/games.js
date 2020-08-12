@@ -43,6 +43,14 @@ export default {
 
     getPopular() {
         return instance.get('/api/main/popular')
+    },
+
+    hide(gameId) {
+        return instance.post('/api/games/' + gameId + '/hide')
+    },
+
+    show(gameId) {
+        return instance.post('/api/games/' + gameId + '/show')
     }
 
 }
