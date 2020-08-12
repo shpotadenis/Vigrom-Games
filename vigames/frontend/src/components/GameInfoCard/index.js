@@ -40,11 +40,11 @@ export default {
         },
 
         hide() {
-            this.isHide = true
+            this.Game_Info_Card.is_hidden = true
         },
 
         show() {
-            this.isHide = false
+            this.Game_Info_Card.is_hidden = false
         }
     },
     mounted(){

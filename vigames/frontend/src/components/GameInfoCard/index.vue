@@ -10,11 +10,11 @@
       <hr>
       <div class="all-item">
         <div class="game-scrin">
-          <img v-bind:src="getImage" class="game-image" :class='{"Hide-img": isHide}'>
+          <img v-bind:src="getImage" class="game-image" :class='{"Hide-img": Game_Info_Card.is_hidden}'>
         </div>
         <div class="content">
           <div class="game-title">
-            <div class="game-name">{{Game_Info_Card.title}}</div> <div class="notification" v-if="isHide">(Игра скрыта)</div>
+            <div class="game-name">{{Game_Info_Card.title}}</div> <div class="notification" v-if="Game_Info_Card.is_hidden">(Игра скрыта)</div>
           </div>
           <div class="views">
             <div class="views-name">Всего просмотров</div>
@@ -37,10 +37,10 @@
               </router-link>
             </div>
             <div>
-              <button v-if="!isHide" @click="HideGame" class="Btn-2">
+              <button v-if="!Game_Info_Card.is_hidden" @click="HideGame" class="Btn-2">
                 Скрыть игру
               </button>
-              <button v-if="isHide" @click="ReturnGame" class="Btn-2">
+              <button v-if="Game_Info_Card.is_hidden" @click="ReturnGame" class="Btn-2">
                 Вернуть игру
               </button>
             </div>

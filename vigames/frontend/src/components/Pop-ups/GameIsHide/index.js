@@ -1,4 +1,5 @@
 import GameHide from "../../../components/Pop-ups/GameHide/index.vue"
+import games from '../../../api/modules/games.js'
 
 export default {
     name: "gameIsHide",
@@ -12,8 +13,15 @@ export default {
     },
     methods: {
         hideGame(){
-            this.isBtnClick = true;
-            this.$emit('hide-game')
+            games.hide(this.Gamehide.id).then(response => {
+                if (response) {
+                    this.isBtnClick = true;
+                    this.$emit('hide-game')
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+
         },
         closeOk() {
             this.isBtnClick = false
