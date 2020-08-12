@@ -2,7 +2,8 @@ import FooterComponent from '../../components/FooterComponent/index.vue'
 import v_popup from "../../../src/components/Pop-ups/ChangePass/index.vue"
 import PasswordChanged from "../../../src/components/Pop-ups/PasswordChanged/index.vue"
 import MyGames from '../../components/Pop-ups/MyGames/index.vue'
-
+import user from '../../api/modules/user.js'
+import {getImageUrl} from "../../utils";
 
 export default {
     name: 'PersonPage',
@@ -17,15 +18,43 @@ export default {
             games: false,
             isInfoPopupVisible: false,
             name: '',
-            pass: ''
+            pass: '',
+            loading: false,
+            avatarUrl: ''
         }
     },
     computed: {
         username() {
             return this.$store.getters['user/getUserName']
+        },
+        getAvatar() {
+            return getImageUrl(this.avatarUrl)
         }
     },
+    beforeMount() {
+      this.fetchData()
+    },
     methods: {
+        fetchData() {
+            this.loading = true
+            user.getAvatar().then(response => {
+                this.avatarUrl = response.data
+                this.loading = false
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        setAvatar(event) {
+            user.setAvatar({
+                avatar: event.target.files[0]
+            }).then(response => {
+                if (response) {
+                    this.fetchData()
+                }
+            }).catch(error => {
+                console.log(error)
+            })
+        },
         showPopupinfo() {
             this.isInfoPopupVisible = true;
         },
