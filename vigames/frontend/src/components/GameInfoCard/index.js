@@ -1,3 +1,4 @@
+import { getImageUrl } from '../../utils.js'
 import GameIsHide from"../Pop-ups/GameIsHide/index.vue"
 import GameIsReturn from"../Pop-ups/GameIsReturn/index.vue"
 
@@ -24,10 +25,15 @@ export default {
           item:Object
         }
     },
+    computed: {
+        getImage() {
+            return getImageUrl(this.Game_Info_Card.img)
+        }
+    },
 
     methods: {
         HideGame() {
-          this.isHide = !this.isHide;
+          this.isHide = !this.isHide
           this.Hide = true;
         },
         ReturnGame() {

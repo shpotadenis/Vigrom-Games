@@ -1,5 +1,5 @@
 <template>
-  <div class="popup-wrapper">
+  <div class="popup-wrapper" v-if="!loading">
   <div class="scroll-opacity">
     <div class="container">
       <div class="Header">
