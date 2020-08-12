@@ -63,6 +63,24 @@ class PostView(APIView):
             serializer = OutputPost(post)
             post.num_views += 1     # Увеличиваем счетчик просмотров на 1
             post.save()
+            print(serializer.data)
+            for i in range(len(serializer.data['comments_post'])):
+                user = User.objects.get(username=serializer.data['comments_post'][i]['user'])
+                # Отдельный комментарий преобразуем в словарь. затем добавляем в него аватар по модели юзера
+                serializer.data['comments_post'][i] = dict(serializer.data['comments_post'][i])
+                try:
+                    serializer.data['comments_post'][i]['avatar'] = Account.objects.get(user=user).avatar.url
+                except:
+                    serializer.data['comments_post'][i]['avatar'] = 'None'
+
+                for ch in range(len(serializer.data['comments_post'][i]['children_post'])):
+                    user = User.objects.get(username=serializer.data['comments_post'][i]['children_post'][ch]['user'])
+                    # Отдельный комментарий преобразуем в словарь. затем добавляем в него аватар по модели юзера
+                    serializer.data['comments_post'][i]['children_post'][ch] = dict(serializer.data['comments_post'][i]['children_post'][ch])
+                    try:
+                        serializer.data['comments_post'][i]['children_post'][ch]['avatar'] = Account.objects.get(user=user).avatar.url
+                    except:
+                        serializer.data['comments_post'][i]['children_post'][ch]['avatar'] = 'None'
             return Response(serializer.data)
         except:
             raise Http404
@@ -665,7 +683,7 @@ class HideGameDetail(APIView):
 
     def post(self, request, pk):
         try:
-            game = Game.objects.get(pk)
+            game = Game.objects.get(pk=pk)
             game.is_hidden = True
             game.save()
             return Response(status=status.HTTP_200_OK)
@@ -678,7 +696,7 @@ class ShowGameDetail(APIView):
 
     def post(self, request, pk):
         try:
-            game = Game.objects.get(pk)
+            game = Game.objects.get(pk=pk)
             game.is_hidden = False
             game.save()
             return Response(status=status.HTTP_200_OK)
@@ -798,4 +816,11 @@ class UsersAvatarDetail(APIView):
             account.avatar = avatar
             account.save()
             return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def get(self, request):
+        user = request.user
+        if user.is_authenticated:
+            account = Account.objects.get(user=user)
+            return Response(account.avatar.url, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)

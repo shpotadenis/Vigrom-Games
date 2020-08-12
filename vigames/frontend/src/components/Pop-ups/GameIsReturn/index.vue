@@ -1,7 +1,7 @@
 <template>
     <div class="popup-wrapper">
       <div class="container">
-        <game-returned v-if="isBtnClick" @close="isBtnClick = false">  </game-returned>
+        <game-returned v-if="isBtnClick" @close="closeOk">  </game-returned>
         <div class="Header">
           <div class="head-name">Вернуть игру</div>
           <div class="closer">
@@ -13,7 +13,7 @@
          <hr>
 
         <div class="Content">
-          Вы уверены, что хотите вернуть игру {{Gamereturn.name}}? Она станет снова
+          Вы уверены, что хотите вернуть игру {{Gamereturn.title}}? Она станет снова
           доступна для покупки, просмотра и поиска игроками.
          </div>
         <div class="Footer">

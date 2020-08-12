@@ -1,6 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-import games from '../../api/modules/games.js'
 import StarComponent from '../StarComponent/index.vue'
+import { getImageUrl } from "../../utils";
 
 export default {
     name: "ReviewsComponent",
@@ -37,19 +36,11 @@ export default {
                 console.log(error)
             })
         },
+        getImage(i) {
+            return getImageUrl(this.reviews[i].avatar)
+        },
         selectedRating(i) {
             this.rating = i
-            console.log(i)
         }
-       /* fetchData() {
-            this.loading = true
-            games.getReviews(this.gameData.id).then(response => {
-                this.reviews = response.data
-                console.log(response)
-                this.loading = false
-            }).catch(error => {
-                console.log(error)
-            })
-        }, */
     }
 }

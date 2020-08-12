@@ -33,16 +33,22 @@ export default {
 
     methods: {
         HideGame() {
-          this.isHide = !this.isHide
           this.Hide = true;
         },
         ReturnGame() {
-          this.isHide = !this.isHide;
           this.Return = true;
+        },
+
+        hide() {
+            this.Game_Info_Card.is_hidden = true
+        },
+
+        show() {
+            this.Game_Info_Card.is_hidden = false
         }
     },
     mounted(){
-      this.item = this.Game_Info_Card
+
     }
 
 
