@@ -9,6 +9,7 @@ import { router } from './router.js'
 import VueScrollTo from 'vue-scrollto'
 import vueDebounce from 'vue-debounce'
 
+
 Vue.use(vueDebounce)
 
 Vue.use(vueDebounce, {
