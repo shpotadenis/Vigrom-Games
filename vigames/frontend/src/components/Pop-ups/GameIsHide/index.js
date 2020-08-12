@@ -11,9 +11,14 @@ export default {
         }
     },
     methods: {
-      hideGame(){
-        this.isBtnClick = true;
-      }
+        hideGame(){
+            this.isBtnClick = true;
+            this.$emit('hide-game')
+        },
+        closeOk() {
+            this.isBtnClick = false
+            this.$emit('close')
+        }
     },
     props:{
       Gamehide:{

@@ -2,10 +2,10 @@
   <div class="wrapper">
     <div class="container">
       <div v-if="Hide">
-      <game-is-hide @close="Hide = false" :Gamehide="item">  </game-is-hide>
+      <game-is-hide @close="Hide = false" :Gamehide="this.Game_Info_Card" @hide-game="hide">  </game-is-hide>
     </div>
     <div v-if="Return">
-      <game-is-return @close="Return = false" :Gamereturn="item">  </game-is-return>
+      <game-is-return @close="Return = false" :Gamereturn="this.Game_Info_Card" @show-game="show">  </game-is-return>
     </div>
       <hr>
       <div class="all-item">

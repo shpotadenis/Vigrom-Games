@@ -11,9 +11,14 @@ export default {
         }
     },
     methods: {
-      gameReturn(){
-        this.isBtnClick = true;
-      }
+        gameReturn(){
+            this.isBtnClick = true;
+            this.$emit('show-game')
+        },
+        closeOk() {
+            this.isBtnClick = false
+            this.$emit('close')
+        }
     },
     props:{
       Gamereturn:{
