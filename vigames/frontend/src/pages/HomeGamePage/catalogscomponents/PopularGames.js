@@ -38,7 +38,7 @@ methods:{
 
 		}else{
 			this.currentsSlideIndex++
-
+      console.log(this.Interval)
 		}
 	}
 
@@ -49,7 +49,6 @@ methods:{
 			setInterval(function(){
         if(this.currentsSlideIndex++){
           vm.Interval = 0
-          console.log(this.Interval)
         }else{
           vm.rightFunc()
         }
