@@ -14,5 +14,13 @@ export default {
       gameReturn(){
         this.isBtnClick = true;
       }
+    },
+    props:{
+      Gamereturn:{
+        type:Object,
+        default(){
+          return{}
+        }
+      }
     }
 }

@@ -111,6 +111,7 @@ export default {
         },
         updateGame() {
             this.fetchData(this.$route.params.id)
+            this.$scrollTo('#reviews', 100)
         },
 
         addToWishlistClick() { //is_hidden
