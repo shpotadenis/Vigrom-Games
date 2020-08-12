@@ -52,6 +52,7 @@
     border: none;
     padding: 15px;
     min-width: 220px;
+    margin-top: 7px;
 }
 
 .fileInput{
@@ -74,6 +75,7 @@
     font-size:12px;
     height: 82px;
     width: 260px;
+    margin-top: 7px;
 }
 .label,.label .title{
     color:#3C3C5A;
@@ -124,6 +126,7 @@
 
 ::placeholder{
     color: #3C3C5A;
+    font-family: "Open Sans";
 }
 
 .link{
@@ -137,6 +140,7 @@ textarea{
 .v-select{
     position: relative;
     width: 200px;
+    margin-top: 7px;
 }
 .options{
     border: none;
