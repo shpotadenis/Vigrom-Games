@@ -10,19 +10,12 @@
                       <p class="StatName">Статистика скачиваний</p>
                       <div class="AllButton">
                         <button class="Arrow1"><img src="@/assets/img/chevron-right-icon.svg" class="Arrow1Image"></button>
-                        <button class="button">Name1</button>
-                        <button class="button">Name2</button>
-                        <button class="button">Name3</button>
+                          <button class="button">Name1</button>
                         <button class="Arrow2"><img src="@/assets/img/chevron-right-icon.svg" class="Arrow1Image"></button>
                       </div>
-                      <div class="Chart">
-                        <line-chart :labels="labels" :datasets="datasets" class="Line"/>
-                        <div class="AllDataButton">
-                          <button class="Data">Неделя</button>
-                          <button class="Data">Месяц</button>
-                          <button class="Data">Год</button>
-                        </div>
-                      </div>
+
+                        <canvas  ref="canvas" class="Line"></canvas>
+
 
                   </div>
                   <div>
@@ -43,7 +36,7 @@
                     </div>
                     <div class="games-rating">
                         <p class="StatName1">Рейтинг игр</p>
-                        
+                        <bar-chart/>
                     </div>
                   </div>
                 </div>

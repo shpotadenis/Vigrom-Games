@@ -1,17 +1,23 @@
 import FooterComponent from '../../components/FooterComponent/index.vue'
-import LineChart from "./index2.js"
+import { Line } from 'vue-chartjs'
+import BarChart from './index1.vue'
 
 export default {
+    extends: Line,
     name: "Statistics",
     components: {
         FooterComponent,
-        LineChart
+        BarChart
     },
+    props:{
 
+    },
     data(){
-      return {
+      return {};
+    },
+    mounted () {
+      this.renderChart({
             labels:['3.08','6.08','9.08','12.08','15.08','19.08','24.08','29.08','2.09','5.09'],
-            labels2: ['Foo', 'Bar','Bar1'],
               datasets: [{
                 type:'line',
                 fill:false,
@@ -24,6 +30,6 @@ export default {
             }],
 
 
-      }
+      })
     }
   }
