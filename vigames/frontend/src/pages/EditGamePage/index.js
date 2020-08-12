@@ -95,6 +95,7 @@ export default {
                 this.price = response.data.price
                 console.log(response)
             }).catch(error => {
+
                 console.log(error)
             })
         },
@@ -217,8 +218,48 @@ export default {
                     }
                 })
             }).catch(error => {
+                let e = error.response.data
+                if (e.title) {
+                    this.error_name = [...e.title]
+                }
+
+                if (e.short_description) {
+                    this.error_shortDescription = [...e.short_description]
+                }
+
+                if (e.genre) {
+                    this.error_genre = [...e.genre]
+                }
+
+                if (e.price) {
+                    this.error_price = [...e.price]
+                }
+
+                if (e.description) {
+                    this.error_block1 = [...e.description]
+                }
+
+                if (e.file) {
+                    this.error_file = [...e.file]
+                }
+
+                if (e.img) {
+                    this.error_img = [...e.img]
+                }
+
+                if (e.banner) {
+                    this.error_banner = [...e.banner]
+                }
+
+                if (e.gameplay_video_link) {
+                    this.error_link = [...e.gameplay_video_link]
+                }
+
+                if (e.images) {
+                    this.error_images = [...e.images]
+                }
+
                 console.log(error)
-                console.log(error.response)
             })
         },
         selectOption(option) {
