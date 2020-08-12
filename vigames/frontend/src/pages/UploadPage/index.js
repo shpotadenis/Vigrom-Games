@@ -1,16 +1,34 @@
 import FooterComponent from '../../components/FooterComponent/index.vue'
 import GameDownloaded from "../../components/Pop-ups/GameDownloaded/index.vue"
 import user from '../../api/modules/user.js'
+import ErrorMessage from '../../components/ErrorMessageComponent/index.vue'
 
 export default {
     name: "UploadPage",
     components:{
         FooterComponent,
-        GameDownloaded
+        GameDownloaded,
+        ErrorMessage
     },
     data(){
       return{
-        isBtnClick: false,
+          error_shortDescription: [],
+          error_genre: [],
+          error_price: [],
+          error_block1: [],
+          error_block2: [],
+          error_block3: [],
+          error_name: [],
+          error_link: [],
+          error_platform: [],
+          error_file: [],
+          error_img: [],
+          error_images: [],
+          error_banner: [],
+
+
+          isBtnClick: false,
+          agree: false,
         selectFile:"Перетащите файл или кликните здесь, чтобы добавить его*",
         selectFile1:"Перетащите 3-5 файлов размером 324х255 или кликните здесь, чтобы добавить их",
         array:[{name: 'Перетащите 3-5 файлов размером 324х255 или кликните здесь, чтобы добавить их'}],
@@ -78,8 +96,63 @@ export default {
             this.selectFile3 = event.target.files[0].name       //Это имя файла
             this.img = event.target.files[0]
         },
-        uploadButtonClick() {
-          this.isBtnClick = true;
+        uploadButtonClick(e) {
+            this.error_shortDescription = [];
+            this.error_price = [];
+            this.error_block1 = [];
+            this.error_block2 = [];
+            this.error_block3 = [];
+            this.error_name = [];
+            this.error_link = [];
+            this.error_genre = [];
+            this.error_platform = [];
+            this.error_file = [];
+            this.error_img = [];
+            this.error_images = [];
+            this.error_banner = [];
+
+            if (!this.short_description) {
+                this.error_shortDescription.push('*Обязательное поле');
+            }
+            if (!this.OS) {
+                this.error_platform.push('*Обязательное поле');
+            }
+            if (!this.youtube_link) {
+                this.error_link.push('*Обязательное поле');
+            }
+            if (!this.price) {
+                this.error_price.push('*Обязательное поле');
+            }
+            if (!this.block1) {
+                this.error_block1.push('*Обязательное поле');
+            }
+            if (!this.block2) {
+                this.error_block2.push('*Обязательное поле');
+            }
+            if (!this.block3) {
+                this.error_block3.push('*Обязательное поле');
+            }
+            if (!this.title) {
+                this.error_name.push('*Обязательное поле');
+            }
+            if (!this.genre) {
+                this.error_genre.push('*Обязательное поле');
+            }
+            if (!this.file) {
+                this.error_file.push('*Обязательное поле');
+            }
+            if (!this.img) {
+                this.error_img.push('*Обязательное поле');
+            }
+            if (!this.images) {
+                this.error_images.push('*Обязательное поле');
+            }
+            if (!this.banner) {
+                this.error_banner.push('*Обязательное поле');
+            }
+            e.preventDefault();
+
+
             let data = {
                 title: this.title,
                 short_description: this.short_description,
@@ -96,6 +169,7 @@ export default {
             console.log(data)
             user.uploadGame(data).then(response => {
                 console.log(response)
+                this.isBtnClick = true;
                 this.$router.push({
                     name: 'singlePage',
                     params: {
@@ -117,6 +191,7 @@ export default {
             this.selected_two = option.name;
             this.areOptionsVisible_second = false;
         },
+
     }
 
 }
