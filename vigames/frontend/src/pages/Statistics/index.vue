@@ -15,16 +15,35 @@
                         <button class="button">Name3</button>
                         <button class="Arrow2"><img src="@/assets/img/chevron-right-icon.svg" class="Arrow1Image"></button>
                       </div>
-                      
-                        <canvas ref="canvas" class="Chart"></canvas>
+                      <div class="Chart">
+                        <line-chart :labels="labels" :datasets="datasets" class="Line"/>
+                        <div class="AllDataButton">
+                          <button class="Data">Неделя</button>
+                          <button class="Data">Месяц</button>
+                          <button class="Data">Год</button>
+                        </div>
+                      </div>
+
                   </div>
                   <div>
                     <div class="watch_statistics">
-                        <p>Dager crew</p>
+                        <p class="StatName1">Dager crew</p>
+                        <div class="Stata">
+                          <p>Просмотров за последних 7 дней</p>
+                          <P>5638</p>
+                        </div>
+                        <div class="Stata">
+                          <p>Всего просмотров</p>
+                          <P>5638</p>
+                        </div>
+                        <div class="Stata">
+                          <p>Добавления в избранное</p>
+                          <P>5638</p>
+                        </div>
                     </div>
                     <div class="games-rating">
-                        <p>Рейтинг игр</p>
-
+                        <p class="StatName1">Рейтинг игр</p>
+                        
                     </div>
                   </div>
                 </div>
