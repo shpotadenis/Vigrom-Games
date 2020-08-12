@@ -1,11 +1,12 @@
 import GameInfoCard from "../../../components/GameInfoCard/index.vue"
 import user from '../../../api/modules/user.js'
 
+
 export default {
     name: "action",
 
     components:{
-      GameInfoCard
+      GameInfoCard,
     },
     data() {
       return {
