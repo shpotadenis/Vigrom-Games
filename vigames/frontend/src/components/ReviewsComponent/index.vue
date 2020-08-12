@@ -13,8 +13,8 @@
                 </a>
             </div>
         </div>
-        <div v-if="this.$store.getters['user/isLoggedIn']">
-            <div class="reviews__replay">
+        <div>
+            <div class="reviews__replay" v-if="canReview">
                 <a class="replay__link" @click="reviewFormShow = !reviewFormShow">
                     <span class="replay__text" v-if="!reviewFormShow">
                         Оставить свой отзыв

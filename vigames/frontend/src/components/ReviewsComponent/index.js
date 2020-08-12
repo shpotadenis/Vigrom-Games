@@ -16,6 +16,11 @@ export default {
             loading: false,
         }
     },
+    computed: {
+      canReview() {
+          return this.$store.getters['user/isLoggedIn'] && !this.reviews.some(i => i.author == this.$store.getters['user/getUserName']);
+      }
+    },
     props: ['reviews', 'gameData'],
     methods: {
         sendBtnClick() {
