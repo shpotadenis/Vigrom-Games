@@ -636,7 +636,8 @@ class OutputStatistics(ListAPIView):
         account = Account.objects.get(user=user)
         games = Game.objects.filter(author=user)
         orders = {}
-        views = {}
+        views_all = 0
+        views_week = 0
         today = date.today()
         if user.is_authenticated and account.is_developer:
             serializer = StatisticsSerializer(games, many=True)
@@ -645,10 +646,13 @@ class OutputStatistics(ListAPIView):
                 if game.author == user:
                     for i in range(1, 31):
                         orders[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = Orders.objects.filter(game=game, date=today-timedelta(days=i)).count()
+                    for i in Views_Game.objects.filter(game=game):
+                        views_all += i.num
+                    for i in range(1, 8):
                         v, create = Views_Game.objects.get_or_create(game=game, date=today-timedelta(days=i))
-                        views[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = v.num
+                        views_week += v.num
                     wishlist = game.who_added_to_wishlist.all().count()
-                    data = {'wishlist': wishlist, 'views': views, 'orders': orders, 'rating': list(serializer.data)}
+                    data = {'wishlist': wishlist, 'views_all': views_all, 'views_week': views_week, 'orders': orders, 'rating': list(serializer.data)}
                     return Response(data)
                 return Response(status=status.HTTP_403_FORBIDDEN)
             data = {'rating': list(serializer.data)}
