@@ -23,5 +23,12 @@
 
 }
 .IndiPopularGame{
-  display:flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  grid-gap: 30px;
+  margin-top: 25px;
+}
+.game_card {
+  width: auto !important;
+  margin: 0 !important;
 }

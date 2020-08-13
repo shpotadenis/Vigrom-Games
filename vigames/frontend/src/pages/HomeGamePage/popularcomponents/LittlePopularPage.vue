@@ -8,6 +8,7 @@
         v-for="item in populars"
         :key="item.id"
         :Game="item"
+        class="game-card"
       />
       </div>
   </div>
