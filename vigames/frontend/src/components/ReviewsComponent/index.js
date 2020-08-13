@@ -17,10 +17,10 @@ export default {
     },
     computed: {
       canReview() {
-          return this.$store.getters['user/isLoggedIn'] && !this.reviews.some(i => i.author == this.$store.getters['user/getUserName']);
+          return this.$store.getters['user/isLoggedIn'] && !this.reviews.some(i => i.author == this.$store.getters['user/getUserName']) && this.gamePurchased;
       }
     },
-    props: ['reviews', 'gameData'],
+    props: ['reviews', 'gameData', 'gamePurchased'],
     methods: {
         sendBtnClick() {
             this.$store.dispatch('user/addReview', {

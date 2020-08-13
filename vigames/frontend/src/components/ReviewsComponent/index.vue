@@ -4,6 +4,7 @@
             <h3 class="header__text">
                 Отзывы
             </h3>
+           <!-- TODO: Добавить фильтрацию
             <div class="filter">
                 <a href="#!" class="filter__link">
                     <span class="filter__text">
@@ -11,7 +12,7 @@
                     </span>
                     <img src="@/assets/img/chevron-down-icon.svg" alt="" class="filter__icon">
                 </a>
-            </div>
+            </div> !-->
         </div>
         <div>
             <div class="reviews__replay" v-if="canReview">
