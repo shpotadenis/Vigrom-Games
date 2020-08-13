@@ -58,7 +58,7 @@
     border: none !important;
 }
 
-.router-link-active {
+.router-link-exact-active {
     font-style: normal;
     font-weight: bold;
     font-size: 14px;

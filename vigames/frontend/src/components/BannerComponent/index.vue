@@ -11,7 +11,7 @@
                 <p class="content__text">
                     {{description}}
                 </p>
-                <router-link :to="btn_route">
+                <router-link :to="btn_route" exact>
                     <div class="content__btn">
                         <span>
                             {{btn_caption}}

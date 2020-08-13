@@ -5,7 +5,7 @@
             <div class="header__wrapper">
                 <div class="panel">
                 <div class="header__logo">
-                    <router-link :to="{name: 'homePage'}">
+                    <router-link :to="{name: 'homePage'}" exact>
                         <img src="@/assets/img/logo.svg" alt="Vigrom" class="header__logo-pic">
                     </router-link>
                 </div>
