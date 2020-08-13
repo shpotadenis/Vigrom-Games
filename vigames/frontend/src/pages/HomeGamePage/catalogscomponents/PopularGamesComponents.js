@@ -1,3 +1,5 @@
+import {getImageUrl} from "../../../utils";
+
 export default {
 name: 'PopularGamesComponents',
 components: {
@@ -10,7 +12,13 @@ props:{
 			return{}
 		}
 	}
-}
+},
+	computed: {
+		getImage() {
+			return getImageUrl(this.Game_Popular.banner)
+		}
+	}
+
 
 
 }

@@ -6,6 +6,7 @@ import BestsGamePage from "./bestsgamepage/BestsGamePage.vue"
 import CategoriesGamePage from "./categoriesgamepage/CategoriesGamePage.vue"
 import RecommendationGamePage from "./recommendationgamepage/RecommendationGamePage.vue"
 import FooterComponents from "../../components/FooterComponent/index.vue"
+import games from "../../api/modules/games";
 
 export default {
   name: 'HomePage',
@@ -19,42 +20,64 @@ export default {
     RecommendationGamePage,
     FooterComponents
   },
-  data(){
-  return{
-  items:[
-      {
-      name:"Bastion",
-      discription:'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
-      image:"bastion_7.jpg",
-      id:"1"
-      },
-      {
-      name:"UnderRail",
-      discription:'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
-      image:"underrail_3.jpg",
-      id:"2"
-      },
-      {
-      name:"Vessel",
-      discription:'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
-      image:"vessel-5.jpg",
-      id:"3"
-      },
-      {
-      name:"Runic Games",
-      discription:'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
-      image:"Pic1.jpg",
-      id:"4"
-      },
-      {
-      name:"Light Fall",
-      discription:'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
-      image:"c97a9.jpg",
-      id:"5"
+ /* data() {
+      return {
+          items: [
+              {
+                  name: "Bastion",
+                  discription: 'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
+                  image: "bastion_7.jpg",
+                  id: "1"
+              },
+              {
+                  name: "UnderRail",
+                  discription: 'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
+                  image: "underrail_3.jpg",
+                  id: "2"
+              },
+              {
+                  name: "Vessel",
+                  discription: 'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
+                  image: "vessel-5.jpg",
+                  id: "3"
+              },
+              {
+                  name: "Runic Games",
+                  discription: 'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
+                  image: "Pic1.jpg",
+                  id: "4"
+              },
+              {
+                  name: "Light Fall",
+                  discription: 'Мультиплатформенная компьютерная игра в жанре action/RPG, разработанная польской студией CD Projekt RED',
+                  image: "c97a9.jpg",
+                  id: "5"
+              },
+
+          ],
+      }
+  },*/
+      data(){
+          return{
+              items:[],
+              loading: false
+          }
       },
 
-    ],
+      beforeMount() {
+          this.fetchData()
+      },
 
-}
-},
+      methods: {
+          fetchData() {
+              this.loading = true
+              games.getPopular().then(response => {
+                  this.items = response.data
+                  this.loading = false
+
+              }).catch(error => {
+                  console.log(error)
+              })
+          }
+      }
 }
