@@ -1,6 +1,7 @@
 <template>
     <footer class="footer">
         <div class="wrapper">
+            <Support v-if="isBtnClick" @close="isBtnClick = false"> </Support>
             <div class="footer__wrapper">
                 <div class="footer__logo">
                     <a href="#!">
@@ -15,13 +16,7 @@
                 <div class="footer__links">
                     <ul class="footer__links-list">
                         <li class="list__item">
-                            <a href="#!" class="list__link">Поддержка</a>
-                        </li>
-                        <li class="list__item">
-                            <a href="#!" class="list__link">Дистрибуция</a>
-                        </li>
-                        <li class="list__item">
-                            <a href="#!" class="list__link">Правовая информация</a>
+                            <a @click="isBtnClick = true" class="list__link">Поддержка</a>
                         </li>
                     </ul>
                 </div>
