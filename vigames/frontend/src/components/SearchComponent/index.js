@@ -19,6 +19,10 @@ export default {
                 this.search()
             }
         },
+        // FIXME: Осторожно! Расположенный ниже код может нанести вред психическому здоровью.
+        // FIXME: Нуждается в рефакторинге
+
+        // Производит поиск в связи с поисковой зоной (игры, библиотека, вишлист, новости)
         search() {
             if (this.searchzone == 'games') {
                 games.search(this.searchGames).then(response => {

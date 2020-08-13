@@ -71,9 +71,9 @@
                         <li class="category__title">
                             Разработчик:
                         </li>
-                        <!-- <li class="category__title">
-                            Категория:
-                        </li> !-->
+                         <li class="category__title">
+                            Жанр:
+                        </li>
                         <li class="category__title">
                             Рейтинг:
                         </li>
@@ -91,11 +91,9 @@
                         <li class="value">
                             {{getGameData.author}}
                         </li>
-                        <!-- <li class="value">
-                            <div v-for="(category, idx) in getGameData.categories" :key="'cat' + idx">
-                                {{category}}
-                            </div>
-                        </li> !-->
+                        <li class="value">
+                            {{getGenre}}
+                        </li>
                         <li class="value">
                             {{getGameData.rating}}
                         </li>

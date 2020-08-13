@@ -47,6 +47,20 @@ export default {
             }
             return images
         },
+        getGenre() {
+            let genres = [{name: 'Приключения', value: 'adventures'},
+            {name: 'Головоломки', value: 'puzzles'},
+            {name: 'Экшн', value: 'action'},
+            {name: 'РПГ', value: 'rpg'},
+            {name: 'Стратегии', value: 'strategy'},
+            {name: 'Фермы', value: 'farms'},
+            {name: 'ММО', value: 'mmo'},
+            {name: 'Шутеры', value: 'shooters'},
+            {name: 'Гонки', value: 'race'},
+            {name: 'Симуляторы', value: 'simulators'}]
+            return genres.filter(g => g.value == this.getGameData.genre)[0].name
+        },
+
         getCheckoutGameData() {
             return {
                 id: this.getGameData.id,
