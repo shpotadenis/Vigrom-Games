@@ -34,6 +34,10 @@
 .button:hover{
   background: #CE6796;
 }
+.button-active {
+    background: #CE6796;
+}
+
 .Arrow1{
   background: none;
   border: none;

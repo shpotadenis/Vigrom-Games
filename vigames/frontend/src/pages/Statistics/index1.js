@@ -6,18 +6,15 @@ export default {
     components: {
 
     },
-    props:{
-
-    },
+    props: ['labels', 'datasets'],
     data(){
       return {
-        datasets:[2,3,5,1,4]
       }
     },
     mounted () {
       this.renderChart({
           defaultFontColor:'#fff',
-          labels:['game1','game2','game3','game4','game5'],
+          labels: this.labels,
           datasets:[
             {
               data:this.datasets,

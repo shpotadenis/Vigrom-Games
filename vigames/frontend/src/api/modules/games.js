@@ -51,6 +51,14 @@ export default {
 
     show(gameId) {
         return instance.post('/api/games/' + gameId + '/show')
+    },
+
+    getStatisticsGameList() {
+        return instance.get('/api/profile/statistics')
+    },
+
+    getStatistics(gameId) {
+        return instance.get('/api/profile/statistics/' + gameId)
     }
 
 }
