@@ -38,7 +38,7 @@
             </div>
         </div>
       </transition>
-      <router-link :to="{name: 'discountsGame'}" class="AllChooseLi">
+      <!-- <router-link :to="{name: 'discountsGame'}" class="AllChooseLi">
         Скидки
       </router-link>
       <router-link :to="{name: 'freeGames'}" class="AllChooseLi">
@@ -46,7 +46,7 @@
       </router-link>
       <router-link :to="{name: 'earlyAccessGame'}" class="AllChooseLi">
         Ранний доступ
-      </router-link>
+      </router-link> !-->
     </ul>
   </div>
 </div>

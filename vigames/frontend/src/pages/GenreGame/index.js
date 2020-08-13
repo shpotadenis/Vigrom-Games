@@ -4,6 +4,7 @@ import GameCard from  '../../components/GameCard/GameCard.vue'
 import BannerComponent from  '../../components/BannerComponent/index.vue'
 import FooterComponent from '../../components/FooterComponent/index.vue'
 import games from '../../api/modules/games.js'
+import {convertApiToComponentObj} from "../../utils";
 
 export default{
 
@@ -25,11 +26,11 @@ export default{
 
     // eslint-disable-next-line no-unused-vars
     beforeRouteUpdate(to, from, next) {
-        this.fetchData()
+        this.fetchData(to.params.genre)
         next()
     },
     beforeMount() {
-      this.fetchData()
+      this.fetchData(this.$route.params.genre)
     },
     computed: {
         array() {
@@ -41,9 +42,12 @@ export default{
     },
 
     methods: {
-        fetchData() {
+        fetchData(genre) {
             this.loading = true;
-            games.getByGenre(this.$route.params.genre).then(response => {
+            games.getByGenre(genre).then(response => {
+                for (let i in response.data) {
+                    response.data[i] = convertApiToComponentObj(response.data[i])
+                }
                 this.discountgames = response.data
                 this.loading = false
             }).catch(error => {
