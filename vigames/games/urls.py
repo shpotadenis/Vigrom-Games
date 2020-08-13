@@ -14,7 +14,9 @@ urlpatterns = [
 
     path('profile', AccountDetail.as_view(), name="profile"),
     path('profile/library', OutputLibrary.as_view(), name="library"),
+    path('profile/library/search', SearchView.as_view(), name="library_search"),
     path('profile/wishlist', OutputWishlist.as_view(), name="profile_wishlist"),
+    path('profile/wishlist/search', SearchView.as_view(), name="wishlist_search"),
     path('profile/avatar', UsersAvatarDetail.as_view(), name="profile_set_avatar"),
     path('profile/developers_games', OutputDevelopersGames.as_view(), name="developers_games"),
     path('profile/statistics/', OutputStatistics.as_view(), name="statistics"),

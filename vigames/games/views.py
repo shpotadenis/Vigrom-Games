@@ -676,6 +676,14 @@ class SearchView(APIView):
         elif request.data['dir'] == 'news':
             post = Posts.objects.filter(draft=False)
             serializer = OutputAllNews(post, many=True)
+        elif request.data['dir'] == 'library':
+            user = request.user
+            game = Game.objects.filter(players=user)
+            serializer = OutputGameSerializer(game, many=True)
+        elif request.data['dir'] == 'wishlist':
+            user = request.user
+            game = Game.objects.filter(who_added_to_wishlist=user, is_hidden=False)
+            serializer = OutputGameSerializer(game, many=True)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         list_index = Search_engine(text, list(serializer.data))
