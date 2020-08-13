@@ -42,8 +42,9 @@ Vue.use(Router);
 export const router = new Router({
     // TODO: Добавить " meta: { requiresAuth: true } " к страницам, требующим авторизации
     // TODO: Добавить " meta: { requiredRole: 'dev' } " к страницам, доступным только для разработчиков (для пользователя аналогичное пока недоступно)
+    mode: 'history',
     routes: [
-        { path: '/home', name: 'homePage', component: HomePage },
+        { path: '/', name: 'homePage', component: HomePage},
         { path: '/login', name: 'loginPage', component: LoginPage },
         { path: '/game/:id', name: 'singlePage', component: GameSinglePage },
         { path: '/genre/:genre', name: 'genrePage', component: GenreGame },
