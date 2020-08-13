@@ -103,7 +103,7 @@ class Account(models.Model):
     # horror = models.IntegerField(default=0)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.user.username)
 
     class Meta:
         verbose_name = "Аккаунт"
