@@ -153,7 +153,8 @@ class OutputShortGameInfoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ('id', 'author', 'img', 'image', 'title', 'price', 'sale_percent', 'is_hidden')
+        fields = ('id', 'author', 'img', 'image', 'title', 'price', 'sale_percent', 'is_hidden', 'short_description',
+                  'banner')
 
 
 class OutputDevelopersGamesInfoSerializer(serializers.ModelSerializer):
