@@ -10,7 +10,7 @@
         <div class="AllCategoriesItem" v-show="isCategories" @mouseleave="mouseleave">
             <ul class="AllUlBlock">
               <li class="LiBlock">Жанры игр</li>
-              <li class="LiBlock">Платформа</li>
+              <!-- <li class="LiBlock">Платформа</li> !-->
             </ul>
             <div class="LinkGerne">
               <ul class="UlComponent">
@@ -30,11 +30,11 @@
                   <router-link :to="{name: 'genrePage', params: {genre: 'simulators'}}" class="LiBlock1">Симуляторы</router-link>
 
               </ul>
-              <ul class="UlComponent">
+              <!-- <ul class="UlComponent">
                   <li class="LiBlock1">Windows</li>
                   <li class="LiBlock1">MacOS</li>
 
-              </ul>
+              </ul> !-->
             </div>
         </div>
       </transition>
