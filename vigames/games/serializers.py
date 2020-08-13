@@ -136,7 +136,7 @@ class OutputGameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = ('id', 'author', 'reviews_game', 'categories', 'genre', 'image', 'title', 'price', 'rating',
-                  'description', 'short_description', 'is_hidden')
+                  'description', 'short_description', 'is_hidden', 'img')
 
 
 class StatisticsSerializer(serializers.ModelSerializer):
