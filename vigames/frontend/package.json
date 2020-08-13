@@ -12,6 +12,7 @@
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
+    "dr-vue-echarts": "^1.0.13",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "swiper": "^6.1.1",

@@ -2,7 +2,8 @@
     <div>
         <div class="comments__card" :key="commentData.id">
             <div class="comments__userplate">
-                <img src="@/assets/img/userpic.png" alt="avatar" class="userplate__pic">
+                <img src="@/assets/img/userpic.png" alt="avatar" class="userplate__pic" v-if="commentData.avatar == 'None'">
+                <img :src="getImage" alt="avatar" class="userplate__pic" v-else>
             </div>
             <div class="comments__content">
                 <div class="comments__header">

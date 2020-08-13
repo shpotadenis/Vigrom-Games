@@ -177,5 +177,13 @@ export default {
         return instance.get('/api/profile/developers_games')
     },
 
+    getAvatar() {
+        return instance.get('/api/profile/avatar')
+    },
 
+    setAvatar(data) {
+        let fd = new FormData()
+        fd.append('avatar', data.avatar)
+        return instance.post('/api/profile/avatar', fd)
+    }
 }

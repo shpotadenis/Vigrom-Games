@@ -8,7 +8,14 @@ import 'swiper/swiper-bundle.css'
 import { router } from './router.js'
 import VueScrollTo from 'vue-scrollto'
 import vueDebounce from 'vue-debounce'
+import DrVueEcharts from 'dr-vue-echarts';
 
+Vue.use(DrVueEcharts)
+import { BarChart,LineChart,PieChart} from 'dr-vue-echarts'
+
+Vue.use(BarChart);
+Vue.use(LineChart)
+Vue.use(PieChart)
 
 Vue.use(vueDebounce)
 

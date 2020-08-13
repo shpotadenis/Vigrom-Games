@@ -17,7 +17,11 @@
     color: #fff;
 }
 
-
+.userplate__pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
 
 .activeForm {
     transform: rotate(180deg);

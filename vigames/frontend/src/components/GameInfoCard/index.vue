@@ -2,19 +2,19 @@
   <div class="wrapper">
     <div class="container">
       <div v-if="Hide">
-      <game-is-hide @close="Hide = false" :Gamehide="item">  </game-is-hide>
+      <game-is-hide @close="Hide = false" :Gamehide="this.Game_Info_Card" @hide-game="hide">  </game-is-hide>
     </div>
     <div v-if="Return">
-      <game-is-return @close="Return = false" :Gamereturn="item">  </game-is-return>
+      <game-is-return @close="Return = false" :Gamereturn="this.Game_Info_Card" @show-game="show">  </game-is-return>
     </div>
       <hr>
       <div class="all-item">
         <div class="game-scrin">
-          <img v-bind:src="getImage" class="game-image" :class='{"Hide-img": isHide}'>
+          <img v-bind:src="getImage" class="game-image" :class='{"Hide-img": Game_Info_Card.is_hidden}'>
         </div>
         <div class="content">
           <div class="game-title">
-            <div class="game-name">{{Game_Info_Card.title}}</div> <div class="notification" v-if="isHide">(Игра скрыта)</div>
+            <div class="game-name">{{Game_Info_Card.title}}</div> <div class="notification" v-if="Game_Info_Card.is_hidden">(Игра скрыта)</div>
           </div>
           <div class="views">
             <div class="views-name">Всего просмотров</div>
@@ -37,10 +37,10 @@
               </router-link>
             </div>
             <div>
-              <button v-if="!isHide" @click="HideGame" class="Btn-2">
+              <button v-if="!Game_Info_Card.is_hidden" @click="HideGame" class="Btn-2">
                 Скрыть игру
               </button>
-              <button v-if="isHide" @click="ReturnGame" class="Btn-2">
+              <button v-if="Game_Info_Card.is_hidden" @click="ReturnGame" class="Btn-2">
                 Вернуть игру
               </button>
             </div>

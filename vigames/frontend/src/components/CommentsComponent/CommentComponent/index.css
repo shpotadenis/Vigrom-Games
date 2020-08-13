@@ -12,6 +12,12 @@
     margin-top: 30px;
 }
 
+.userplate__pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
+
 .comments__header {
     display: flex;
     flex-wrap: wrap;

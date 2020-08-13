@@ -51,7 +51,38 @@
     margin-top: 10px;
 }
 .Chart{
-
+  margin-top: 41px;
+  margin-left: 130px;
+  width:470px;
+  height:333px;
+}
+.AllDataButton{
+  position: relative;
+  left:60px;
+  top:26px;
+  width:352px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Data{
+  width:97px;
+  height: 27px;
+  border: 2px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 6px;
+  background: #2D2D42;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #FFFFFF;
+}
+.Data:hover{
+  background: #CE6796;
+  border:none;
 }
 .Download_statistics{
     width: 730px;
@@ -64,6 +95,14 @@
   justify-content: space-between;
   margin-top: 30px;
 }
+.Line{
+  width: 430px;
+  height: 260px;
+}
+.Bar{
+  width: 227px;
+  height: 200px;
+}
 .StatName{
   font-family: Open Sans;
   font-style: normal;
@@ -73,6 +112,27 @@
     margin-top: 30px;
   margin-left: 30px;
   color: #FFFFFF;
+}
+.StatName1{
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 30px;
+  width:350px;
+  text-align: center;
+  position: relative;
+  top:15px;
+  color: #FFFFFF;
+}
+.Stata{
+  position: relative;
+  top:35px;
+  margin-left: 15px;
+  width: 320px;
+  display: flex;
+  justify-content:space-between;
+  margin-bottom: 15px;
 }
 .watch_statistics{
     width: 350px;

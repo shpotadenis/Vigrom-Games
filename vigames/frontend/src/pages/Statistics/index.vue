@@ -10,21 +10,33 @@
                       <p class="StatName">Статистика скачиваний</p>
                       <div class="AllButton">
                         <button class="Arrow1"><img src="@/assets/img/chevron-right-icon.svg" class="Arrow1Image"></button>
-                        <button class="button">Name1</button>
-                        <button class="button">Name2</button>
-                        <button class="button">Name3</button>
+                          <button class="button">Name1</button>
                         <button class="Arrow2"><img src="@/assets/img/chevron-right-icon.svg" class="Arrow1Image"></button>
                       </div>
-                      
-                        <canvas ref="canvas" class="Chart"></canvas>
+
+                        <canvas  ref="canvas" class="Line"></canvas>
+
+
                   </div>
                   <div>
                     <div class="watch_statistics">
-                        <p>Dager crew</p>
+                        <p class="StatName1">Dager crew</p>
+                        <div class="Stata">
+                          <p>Просмотров за последних 7 дней</p>
+                          <P>5638</p>
+                        </div>
+                        <div class="Stata">
+                          <p>Всего просмотров</p>
+                          <P>5638</p>
+                        </div>
+                        <div class="Stata">
+                          <p>Добавления в избранное</p>
+                          <P>5638</p>
+                        </div>
                     </div>
                     <div class="games-rating">
-                        <p>Рейтинг игр</p>
-
+                        <p class="StatName1">Рейтинг игр</p>
+                        <bar-chart/>
                     </div>
                   </div>
                 </div>
