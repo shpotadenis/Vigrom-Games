@@ -27,8 +27,11 @@ export default {
           return this.$store.getters['user/getUserName']
       },
       getAvatar() {
-        return getImageUrl(this.avatarUrl)
-      }
+            if (typeof this.avatarUrl != 'string')
+                return null
+            else
+                return getImageUrl(this.avatarUrl)
+        }
     },
     beforeMount() {
         this.fetchData()

@@ -20,7 +20,7 @@ export default {
             name: '',
             pass: '',
             loading: false,
-            avatarUrl: ''
+            avatarUrl: null
         }
     },
     computed: {
@@ -28,7 +28,10 @@ export default {
             return this.$store.getters['user/getUserName']
         },
         getAvatar() {
-            return getImageUrl(this.avatarUrl)
+            if (typeof this.avatarUrl != 'string')
+                return null
+            else
+                return getImageUrl(this.avatarUrl)
         }
     },
     beforeMount() {
