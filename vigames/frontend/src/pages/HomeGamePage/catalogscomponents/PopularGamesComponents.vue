@@ -12,7 +12,7 @@
 
 				</p>
 
-				<p class="DiscriptionGame">{{Game_Popular.description}}</p>
+				<p class="DiscriptionGame">{{Game_Popular.short_description}}</p>
 				<p class="LinkGame"><router-link :to="{name: 'singlePage', params: { id: Game_Popular.id }}" >Подробнее <img src="@/assets/img/strelka.svg" class="ImageArrow"></router-link></p>
 
 			</div>
