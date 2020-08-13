@@ -33,6 +33,20 @@ export default {
         return instance.post('/api/search', fd)
     },
 
+    searchWishlist(text) {
+        let fd = new FormData()
+        fd.append('search', text)
+        fd.append('dir', 'wishlist')
+        return instance.post('/api/profile/wishlist/search', fd)
+    },
+
+    searchLibrary(text) {
+        let fd = new FormData()
+        fd.append('search', text)
+        fd.append('dir', 'library')
+        return instance.post('/api/profile/library/search', fd)
+    },
+
     getTopInGenre(genre) {
         return instance.get('/api/genre/' + genre + '/top')
     },

@@ -35,7 +35,37 @@ export default {
                 }).catch(error => {
                     console.log(error)
                 })
-            } else {
+            } else if (this.searchzone == 'library') {
+                games.searchLibrary(this.searchGames).then(response => {
+                    this.searchData = response.data
+                    if (this.searchData.length == 0) {
+                        this.noResults = true
+                    } else {
+                        this.noResults = false
+                        for (let i in this.searchData) {
+                            this.searchData[i] = this.convertGameObjToSearch(this.searchData[i])
+                        }
+                    }
+                    console.log(response)
+                }).catch(error => {
+                    console.log(error)
+                })
+            } else if (this.searchzone == 'wishlist') {
+                games.searchWishlist(this.searchGames).then(response => {
+                    this.searchData = response.data
+                    if (this.searchData.length == 0) {
+                        this.noResults = true
+                    } else {
+                        this.noResults = false
+                        for (let i in this.searchData) {
+                            this.searchData[i] = this.convertGameObjToSearch(this.searchData[i])
+                        }
+                    }
+                    console.log(response)
+                }).catch(error => {
+                    console.log(error)
+                })
+            } else if(this.searchzone == 'news') {
                 news.search(this.searchGames).then(response => {
                     this.searchData = response.data
                     if (this.searchData.length == 0) {

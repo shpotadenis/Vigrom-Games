@@ -8,7 +8,7 @@
                     </h1>
                 </div>
                 <div class="head__search">
-                    <search-component></search-component>
+                    <search-component searchzone="library"></search-component>
                 </div>
             </div>
 
