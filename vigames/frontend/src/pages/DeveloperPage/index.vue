@@ -36,10 +36,10 @@
             </div>
             <div id="control_panel">
                 <p id="control_panel_title">Панель управления</p>
-                <a class="control_panel_list" id="control_panel_title_first" @click="games = true">Мои игры</a>
                 <div class="cp_title">
                     <router-link class="control_panel_list" :to="{name: 'Statistics'}">Статистика</router-link>
                 </div>
+                <a class="control_panel_list" id="control_panel_title_first" @click="games = true">Мои игры</a>
                 <my-games v-if="games" @close="games = false"></my-games>
                 <router-link :to="{name: 'uploadPage'}">
                     <button id="control_panel_button">Загрузить игру</button>

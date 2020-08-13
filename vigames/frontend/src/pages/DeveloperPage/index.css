@@ -201,12 +201,12 @@ input{
 #control_panel_title_first{
     position: absolute;
     left: 30px;
-    top: 80px;
+    top: 108px;
 }
 .cp_title {
     position: absolute;
     left: 30px;
-    top: 108px;
+    top: 80px;
     margin-bottom: 10px;
     display: block;
 }
