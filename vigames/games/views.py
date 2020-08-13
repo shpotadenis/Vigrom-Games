@@ -829,5 +829,5 @@ class UsersAvatarDetail(APIView):
             try:
                 return Response(account.avatar.url, status=status.HTTP_200_OK)
             except:
-                return Response(status=status.HTTP_200_OK)
+                return Response({"avatar": None})
         return Response(status=status.HTTP_400_BAD_REQUEST)
