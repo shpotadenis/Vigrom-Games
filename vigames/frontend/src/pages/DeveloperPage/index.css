@@ -203,13 +203,21 @@ input{
     left: 30px;
     top: 80px;
 }
+.cp_title {
+    position: absolute;
+    left: 30px;
+    top: 108px;
+    margin-bottom: 10px;
+    display: block;
+}
+
 #control_panel_button{
     border: 2px solid #CE6796;
     width: 184px;
     height: 40px;
     box-sizing: border-box;
     border-radius: 6px;
-    margin-top: 130px;
+    margin-top: 140px;
     margin-left: 30px;
     background: transparent;
     font-family: Open Sans;
