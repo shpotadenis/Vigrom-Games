@@ -11,7 +11,8 @@
         <div id="personal_account_info">
             <div id="border_user_info">
                 <div id="img_container">
-                    <img :src="getAvatar" alt="ellipse" id="img_ellipse">
+                    <img :src="getAvatar" alt="ellipse" id="img_ellipse" v-if="getAvatar != null">
+                    <img src="@/assets/img/userpic.png" alt="" class="userplate__pic" v-else>
                     <div @click="$refs.file.click()" class="file_click">
                         <img src="@/assets/img/case.svg" alt="case" id="img_case">
                         <img src="@/assets/img/case_ring.svg" alt="case_ring" id="img_case_ring">
