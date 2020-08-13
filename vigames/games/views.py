@@ -826,5 +826,8 @@ class UsersAvatarDetail(APIView):
         user = request.user
         if user.is_authenticated:
             account = Account.objects.get(user=user)
-            return Response(account.avatar.url, status=status.HTTP_200_OK)
+            try:
+                return Response(account.avatar.url, status=status.HTTP_200_OK)
+            except:
+                return Response(status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)
