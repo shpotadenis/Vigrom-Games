@@ -283,8 +283,11 @@ class GameRatingDetail(APIView):
         mark = request.POST.get('mark')
         game = self.get_game(pk)
         comment = request.POST.get('comment')
-        comment = Search.comments(Search(), comment)
         title = request.POST.get('title')
+        if comment:
+            comment = Search.comments(Search(), comment)
+        if title:
+            title = Search.comments(Search(), title)
         serializer = ReviewSerializer(data={'author': user, 'mark': mark, 'game': pk,
                                             'comment': comment, 'title': title})
         if serializer.is_valid() and user.is_authenticated and user in game.players.all():
@@ -644,11 +647,11 @@ class OutputStatistics(APIView):
             if pk != 0:
                 game = Game.objects.get(id=pk)
                 if game.author == user:
-                    for i in range(1, 31):
+                    for i in range(30):
                         orders[(today-timedelta(days=i)).strftime("%Y-%m-%d")] = Orders.objects.filter(game=game, date=today-timedelta(days=i)).count()
                     for i in Views_Game.objects.filter(game=game):
                         views_all += i.num
-                    for i in range(1, 8):
+                    for i in range(7):
                         v, create = Views_Game.objects.get_or_create(game=game, date=today-timedelta(days=i))
                         views_week += v.num
                     wishlist = game.who_added_to_wishlist.all().count()
