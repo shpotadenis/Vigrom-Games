@@ -142,11 +142,6 @@
         <reviews-component id="reviews" :reviews="this.getGameData.reviews_game" :gamePurchased="isPurchased" :gameData="this.getGameData" @update-game="updateGame"></reviews-component>
         <div class="wrapper_2">
             <img v-if="getImages[0]" :src="getImages[0].image" alt="" class="full-banner">
-            <div class="privacy-policy">
-                <a href="#!" class="privacy-policy__link">
-                    Политика конфиденциальности
-                </a>
-            </div>
         </div>
     </div>
         <footer-component></footer-component>
