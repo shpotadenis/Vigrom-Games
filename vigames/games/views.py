@@ -344,7 +344,7 @@ class GameRatingDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class OutputGames(ListAPIView):
+class OutputGames(APIView):
     """Вывод новинок"""
 
     def get(self, request):
@@ -471,7 +471,7 @@ class AssessPostDetail(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class OutputLibrary(ListAPIView):
+class OutputLibrary(APIView):
     """Вывод библиотеки игр пользователя"""
 
     def get(self, request):
@@ -483,7 +483,7 @@ class OutputLibrary(ListAPIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class OutputWishlist(ListAPIView):
+class OutputWishlist(APIView):
     """Вывод вишлиста пользователя"""
 
     def get(self, request):
@@ -495,7 +495,7 @@ class OutputWishlist(ListAPIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class DownloadGame(ListAPIView):
+class DownloadGame(APIView):
     """Скачивание игры"""
 
     def get(self, request, pk):
@@ -515,7 +515,7 @@ class DownloadGame(ListAPIView):
         return Response({"message": "fail"})
 
 
-class GameCategoryDetail(ListAPIView):
+class GameCategoryDetail(APIView):
     """Вывод игр соответствующей категории"""
 
     def get(self, request, pk):
@@ -525,7 +525,7 @@ class GameCategoryDetail(ListAPIView):
         return Response(serializer.data)
 
 
-class FaqDetail(ListAPIView):
+class FaqDetail(APIView):
     """Вывод вопросов и ответов"""
 
     def get(self, request):
@@ -598,7 +598,7 @@ class DownloadMedia(APIView):
     #    return Response(serializer.data)
 
 
-class OutputGenreGames(ListAPIView):
+class OutputGenreGames(APIView):
 
     def get(self, request, pk):
         games = Game.objects.filter(genre=pk, is_hidden=False).order_by('rating')
@@ -606,7 +606,7 @@ class OutputGenreGames(ListAPIView):
         return Response(serializer.data)
 
 
-class OutputGenreTopGames(ListAPIView):
+class OutputGenreTopGames(APIView):
 
     def get(self, request, pk):
         games = Game.objects.filter(genre=pk, is_hidden=False).order_by('rating')[:8]
@@ -628,7 +628,7 @@ class OutputStatistics(ListAPIView):
 '''
 
 
-class OutputStatistics(ListAPIView):
+class OutputStatistics(APIView):
     """Вывод статистики разработчика (игра-рейтинг)"""
 
     def get(self, request, pk=0):
@@ -716,7 +716,7 @@ class ShowGameDetail(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class GameInfoToEditDetail(ListAPIView):
+class GameInfoToEditDetail(APIView):
     """Вывод информации по игре для последующего редактирования"""
 
     def get(self, request, pk):
@@ -728,7 +728,7 @@ class GameInfoToEditDetail(ListAPIView):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class RecommendedGamesDetail(ListAPIView):
+class RecommendedGamesDetail(APIView):
     """Вывод рекомендуемых игр"""
 
     def get(self, request):
@@ -805,7 +805,7 @@ class PopularGamesDetail(APIView):
         return Response(serializer[0:4])
 
 
-class OutputDevelopersGames(ListAPIView):
+class OutputDevelopersGames(APIView):
     """Вывод игры на страницу "Мои игры" разработчика"""
 
     def get(self, request):

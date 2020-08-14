@@ -88,9 +88,7 @@ export default {
     createReview(gameId, data) {
         let fd = new FormData()
         fd.append('mark', data.mark)
-        if (data.comment) {
-            fd.append('comment', data.comment)
-        }
+        fd.append('comment', data.comment)
         fd.append('title', data.title)
         return instance.post('/api/games/' + gameId + '/rating', fd)
     },
