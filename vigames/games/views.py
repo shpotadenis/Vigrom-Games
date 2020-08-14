@@ -283,8 +283,11 @@ class GameRatingDetail(APIView):
         mark = request.POST.get('mark')
         game = self.get_game(pk)
         comment = request.POST.get('comment')
-        comment = Search.comments(Search(), comment)
         title = request.POST.get('title')
+        if comment:
+            comment = Search.comments(Search(), comment)
+        if title:
+            title = Search.comments(Search(), title)
         serializer = ReviewSerializer(data={'author': user, 'mark': mark, 'game': pk,
                                             'comment': comment, 'title': title})
         if serializer.is_valid() and user.is_authenticated and user in game.players.all():
