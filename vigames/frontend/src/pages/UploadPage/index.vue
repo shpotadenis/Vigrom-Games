@@ -64,35 +64,6 @@
                         </div>
                         <div class="blocks">
                             <div>
-                                <label class="blockName">Платформа</label>
-                                <error-message :error="error_platform[0]"
-                                               v-show="error_platform.length>0">
-                                </error-message>
-                            </div>
-                            <div class="v-select">
-                                <div
-                                        class="genre_title"
-                                        @click="areOptionsVisible_second = !areOptionsVisible_second"
-                                >
-                                    {{selected_two}}
-                                    <img src="@/assets/img/genre-arrow.png" alt="" class="arrow">
-                                </div>
-                                <div
-                                        class="options"
-                                        v-if="areOptionsVisible_second"
-                                >
-                                    <p
-                                            v-for="option in options_second"
-                                            :key="option.value"
-                                            @click="select_second_Option(option)"
-                                    >
-                                        {{option.name}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blocks">
-                            <div>
                                 <label class="blockName" for="price">Цена</label>
                                 <error-message :error="error_price[0]"
                                                v-show="error_price.length>0">
@@ -242,7 +213,7 @@
                                 каждый максимум по 440 символов
                             </div>
                             <input type="checkbox" class="agreement" v-model="agreement" id="agreement" name="agreement" @click="agree = !agree">
-                            <label for="agreement">Я принимаю <a href="/user_agreement.pdf" class="link"> пользовательское соглашение</a></label><br>
+                            <label for="agreement">Я принимаю <a href="/user_agreement.pdf" class="link" target="_blank"> пользовательское соглашение</a></label><br>
                             <button class="active uploadBtn" v-if="agree" @click="uploadButtonClick">Опубликовать игру</button>
                             <button class="nonBtn uploadBtn" v-if="!agree" >Опубликовать игру</button>
                         </div>
