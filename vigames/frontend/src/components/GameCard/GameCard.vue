@@ -1,12 +1,14 @@
 <template>
   <div class="wrappen">
       <div class="GameComponentPopular">
+          <router-link :to="{ name: 'singlePage', params: { id: Game.id } }">
       <div class="ImagePopular">
         <img class="ImageComponentPopular" v-bind:src="Game.image" wigth="255" height="324">
         <div v-if="Game.sale > 0" class="Sale-block">
           <div class="Sale-value">СКИДКА {{Game.sale}} %</div>
         </div>
       </div>
+          </router-link>
         <div class="RatingAndTitlePopular">
           <router-link :to="{ name: 'singlePage', params: { id: Game.id } }">
               <p class="NameGamePopular">{{Game.name}}</p>
