@@ -2,7 +2,8 @@
 margin-top:100px;
 }
 .BestsGameComponents{
-display:flex;
-justify-content:space-between;
-margin-top:60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  grid-gap: 30px;
+  margin-top: 25px;
 }
