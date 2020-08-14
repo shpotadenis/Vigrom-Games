@@ -1,6 +1,6 @@
 import { instance } from '../api'
 
-const list_endpoint = '/api/news'
+const list_endpoint = '/api/news/'
 
 export default {
     getListOfNews() {
@@ -8,7 +8,7 @@ export default {
     },
 
     getNewsInfo(newsId) {
-        return instance.get('/api/news/' + newsId)
+        return instance.get('/api/news/' + newsId + '/')
     },
 
     search(text) {

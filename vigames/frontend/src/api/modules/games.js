@@ -68,7 +68,7 @@ export default {
     },
 
     getStatisticsGameList() {
-        return instance.get('/api/profile/statistics')
+        return instance.get('/api/profile/statistics/')
     },
 
     getStatistics(gameId) {
