@@ -8,25 +8,18 @@
       <news-search searchzone="news" />
     </div>
     </div>
-    <banner-component day="Сегодня"
-                      header="НОВЫЕ ИНДИ ИГРЫ УЖЕ НА ГЛАВНОЙ"
-                      description="Унитарное государство, однако, доказывает системный политический процесс в современной России"
-                      btn_caption="Подробнее"
-                      :btn_route="{ name: 'homePage' }">
-    </banner-component>
+
 </div>
 </template>
 
 
 <script>
 
-import BannerComponent from "@/components/BannerComponent/index.vue"
 import NewsSearch from "@/components/SearchComponent/index.vue"
 
 export default{
   name:"NewsPageStart",
   components:{
-    BannerComponent,
     NewsSearch
   },
   props:{},

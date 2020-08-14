@@ -1,6 +1,5 @@
 import FooterComponent from '../../components/FooterComponent/index.vue'
 import SearchComponent from '../../components/SearchComponent/index.vue'
-import BannerComponent from '../../components/BannerComponent/index.vue'
 import ContentCardComponent from '../../components/ContentCardComponent/index.vue'
 import GameCard from "@/components/GameCard/GameCard.vue"
 import { convertApiToComponentObj } from '../../utils.js'
@@ -10,7 +9,6 @@ export default {
     components: {
         FooterComponent,
         SearchComponent,
-        BannerComponent,
         ContentCardComponent,
         GameCard
     },

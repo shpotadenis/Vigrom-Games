@@ -1,7 +1,6 @@
 import InternalMenu from '../../components/InternalMenu/InternalMenu.vue'
 import SearchComponent from '../../components/SearchComponent/index.vue'
 import GameCard from  '../../components/GameCard/GameCard.vue'
-import BannerComponent from  '../../components/BannerComponent/index.vue'
 import FooterComponent from '../../components/FooterComponent/index.vue'
 import games from '../../api/modules/games.js'
 import {convertApiToComponentObj} from "../../utils";
@@ -13,7 +12,6 @@ export default{
         InternalMenu,
         SearchComponent,
         GameCard,
-        BannerComponent,
         FooterComponent
     },
 
