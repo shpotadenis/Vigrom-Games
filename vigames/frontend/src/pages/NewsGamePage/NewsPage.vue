@@ -21,6 +21,7 @@
 						v-for="news in Feeds"
 						:key="news.id"
 						:News_Feed="news"
+						class="News"
 					/>
 				</div>
 			</div>
@@ -40,7 +41,9 @@
 
 
 <style scoped>
-
+.News{
+margin-bottom: 70px;	
+}
 .NewsWrappen{
 width:1110px;
 margin:auto;
@@ -72,6 +75,6 @@ text-transform:uppercase;
 color: #FFFFFF;
 }
 .foot{
-margin-top:150px;	
+margin-top:150px;
 }
 </style>

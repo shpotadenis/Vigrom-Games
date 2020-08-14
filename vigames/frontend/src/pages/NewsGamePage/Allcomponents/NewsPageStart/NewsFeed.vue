@@ -46,11 +46,12 @@ export default{
 
 <style scoped>
 .NewsFeedComponents{
-display: inline-block;
+display: inline-grid;
   width: 540px;
   height: 324px;
 margin-top:25px;
 margin-right:15px;
+
 
 }
 .NewsFeedName{
